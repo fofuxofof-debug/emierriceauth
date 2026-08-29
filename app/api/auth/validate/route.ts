@@ -156,12 +156,27 @@ export async function POST(request: NextRequest) {
 
   const sessionToken = issueSessionToken(keyData.id, hwid)
 
+  let discordUsername = keyData.label || 'User'
+  if (keyData.discord_id) {
+    try {
+      const { fetchDiscordUser } = await import('@/lib/discord')
+      const du = await fetchDiscordUser(keyData.discord_id)
+      if (du) {
+        discordUsername = du.global_name || du.username || keyData.discord_id
+      } else {
+        discordUsername = keyData.discord_id
+      }
+    } catch {}
+  }
+
   return NextResponse.json({
     success: true,
     message: 'Autenticado com sucesso.',
     data: {
       key: keyData.key,
       label: keyData.label,
+      username: discordUsername,
+      discord_username: discordUsername,
       expires_at: keyData.expires_at,
       expires_in_seconds: secondsUntil(keyData.expires_at),
       discord_id: keyData.discord_id,

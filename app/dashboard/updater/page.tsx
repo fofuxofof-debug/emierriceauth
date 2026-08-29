@@ -46,12 +46,16 @@ export default function UpdaterPage() {
         body: formData,
       })
 
-      if (!res.ok) throw new Error('Erro ao enviar')
       const data = await res.json()
+
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || data.error || 'Falha no upload.')
+      }
+
       mutate()
       toast.success(`Build "${file.name}" publicada com sucesso! Todos os loaders receberão na próxima inicialização.`)
-    } catch {
-      toast.error('Erro ao enviar o arquivo de atualização.')
+    } catch (err: any) {
+      toast.error(err.message || 'Erro ao enviar o arquivo de atualização.')
     } finally {
       setIsUploading(false)
     }

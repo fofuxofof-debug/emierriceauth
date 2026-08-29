@@ -350,6 +350,29 @@ html, body {
 }
 
 /* ============ Glow Beacon ============ */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.bg-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.glow-red {
+  background: radial-gradient(circle at center, rgba(239, 68, 68, 0.18), transparent 65%);
+}
 @keyframes beacon-ping {
   0% { transform: scale(0.95); opacity: 0.8; }
   50% { transform: scale(1.4); opacity: 0; }
