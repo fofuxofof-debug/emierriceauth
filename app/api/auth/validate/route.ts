@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { keysDb, hwidsDb, logsDb } from '@/lib/db'
 import { issueSessionToken, secondsUntil } from '@/lib/session-token'
+import { getSystemStatus } from '@/lib/system-state'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -21,6 +22,18 @@ function isRateLimited(ip: string): boolean {
 }
 
 export async function POST(request: NextRequest) {
+  const systemStatus = getSystemStatus()
+  if (!systemStatus.auth_enabled) {
+    return NextResponse.json(
+      {
+        success: false,
+        error: 'auth_paused',
+        message: systemStatus.maintenance_message || 'Autenticação temporariamente pausada pelo administrador.',
+      },
+      { status: 503 }
+    )
+  }
+
   const ip =
     request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ??
     request.headers.get('x-real-ip') ??

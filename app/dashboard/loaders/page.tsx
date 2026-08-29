@@ -31,8 +31,8 @@ const products: LoaderProduct[] = [
     productId: 'freefire',
     tag: 'BlueStacks · HD-Player',
     icon: Flame,
-    accent: 'from-orange-500/25 via-orange-400/10 to-red-400/5',
-    glow: 'rgba(249,115,22,0.20)',
+    accent: 'from-white/10 via-zinc-500/5 to-transparent',
+    glow: 'rgba(255,255,255,0.15)',
     description: 'Loader principal com bypass anti-detecção e suporte a múltiplas versões do emulador.',
     variants: [
       { id: 'basic',   name: 'Basic',   description: 'Aimbot + ESP essencial. Compatível com qualquer config.', version: '4.2.1', size: '12.4 MB' },
@@ -45,8 +45,8 @@ const products: LoaderProduct[] = [
     productId: 'valorant',
     tag: 'Aim Color',
     icon: Crosshair,
-    accent: 'from-violet-500/25 via-fuchsia-400/10 to-violet-400/5',
-    glow: 'rgba(139,92,246,0.20)',
+    accent: 'from-white/10 via-zinc-500/5 to-transparent',
+    glow: 'rgba(255,255,255,0.15)',
     description: 'Aim color com trigger bot e aim assist otimizado para o anti-cheat da Riot.',
     variants: [
       { id: 'aimcolor', name: 'Aim Color', description: 'Pacote completo: aim, trigger e visuais.', version: '2.5.3', size: '6.8 MB' },
@@ -57,8 +57,8 @@ const products: LoaderProduct[] = [
     productId: 'cs2',
     tag: 'Counter-Strike 2',
     icon: Target,
-    accent: 'from-amber-500/25 via-yellow-400/10 to-amber-400/5',
-    glow: 'rgba(245,158,11,0.20)',
+    accent: 'from-white/10 via-zinc-500/5 to-transparent',
+    glow: 'rgba(255,255,255,0.15)',
     description: 'Loader externo para CS2 com aim, ESP, radar e configs customizáveis.',
     variants: [
       { id: 'cs2', name: 'CS2 Loader', description: 'Build externo. Compatível com VAC e premier.', version: '1.3.7', size: '9.1 MB' },
@@ -225,10 +225,14 @@ export default function LoadersPage() {
 
   return (
     <div className="page-in flex flex-col gap-6 max-w-6xl">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-foreground">Loaders</h1>
-        <p className="text-sm text-muted-foreground">
-          Builds atualizados de cada produto. Selecione a versão e baixe.
+      <div className="border-b border-zinc-800 pb-6 card-in">
+        <div className="flex items-center gap-2 mb-1">
+          <span className="h-2 w-2 rounded-full bg-white animate-beacon" />
+          <span className="text-[11px] font-sans font-semibold uppercase tracking-wider text-zinc-400">BUILDS & EXECUTÁVEIS</span>
+        </div>
+        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-sans">Loaders & Downloads</h1>
+        <p className="text-xs sm:text-sm text-zinc-400 font-sans font-medium">
+          Builds atualizados de cada produto. Selecione a versão e baixe com proteção de integridade.
         </p>
       </div>
 

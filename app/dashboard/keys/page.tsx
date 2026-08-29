@@ -51,38 +51,42 @@ export default function KeysPage() {
   })
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <div className="flex flex-col gap-6 max-w-7xl mx-auto">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-zinc-800 pb-6 card-in">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-foreground">Keys</h1>
-          <p className="text-sm text-muted-foreground">Gerencie todas as licencas do sistema</p>
+          <div className="flex items-center gap-2 mb-1">
+            <span className="h-2 w-2 rounded-full bg-white" />
+            <span className="text-[11px] font-sans font-semibold uppercase tracking-wider text-zinc-400">GERENCIADOR DE LICENÇAS</span>
+          </div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-sans">Keys & Clientes</h1>
+          <p className="text-xs sm:text-sm text-zinc-400 font-sans font-medium">Emissão, bloqueio e acompanhamento de licenças ativas</p>
         </div>
         <Button
           onClick={() => setShowCreate(true)}
-          className="bg-primary text-primary-foreground hover:bg-primary/90"
+          className="button-shine bg-white text-black hover:bg-zinc-200 font-sans font-semibold text-xs uppercase tracking-wider rounded-xl cursor-pointer hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,255,255,0.15)]"
         >
-          <Plus className="mr-2 h-4 w-4" />
+          <Plus className="mr-1.5 h-3.5 w-3.5" />
           Nova Key
         </Button>
       </div>
 
       <div className="flex flex-col gap-3 sm:flex-row">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
           <Input
-            placeholder="Buscar por key, label ou Discord ID..."
+            placeholder="Buscar por key, label, HWID ou Discord ID..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="border-border bg-secondary pl-9 text-foreground placeholder:text-muted-foreground"
+            className="border-zinc-800 bg-[#121215] pl-10 text-white placeholder:text-zinc-500 font-mono text-xs rounded-xl focus-visible:ring-1 focus-visible:ring-zinc-400"
           />
         </div>
         <Select value={statusFilter} onValueChange={setStatusFilter}>
-          <SelectTrigger className="w-full border-border bg-secondary text-foreground sm:w-44">
-            <Filter className="mr-2 h-4 w-4 text-muted-foreground" />
+          <SelectTrigger className="w-full border-zinc-800 bg-[#121215] text-white sm:w-44 font-mono text-xs rounded-xl">
+            <Filter className="mr-2 h-3.5 w-3.5 text-zinc-400" />
             <SelectValue />
           </SelectTrigger>
-          <SelectContent className="border-border bg-card">
-            <SelectItem value="all">Todos</SelectItem>
+          <SelectContent className="border-zinc-800 bg-[#0e0e11] text-white">
+            <SelectItem value="all">Todos os Status</SelectItem>
             <SelectItem value="active">Ativas</SelectItem>
             <SelectItem value="paused">Pausadas</SelectItem>
             <SelectItem value="expired">Expiradas</SelectItem>

