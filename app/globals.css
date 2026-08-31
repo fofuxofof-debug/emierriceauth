@@ -3,72 +3,72 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: rgb(8, 8, 9);
-  --foreground: rgb(250, 250, 250);
-  --card: rgb(15, 15, 17);
-  --card-foreground: rgb(250, 250, 250);
-  --popover: rgb(15, 15, 17);
-  --popover-foreground: rgb(250, 250, 250);
-  --primary: rgb(255, 255, 255);
-  --primary-foreground: rgb(0, 0, 0);
-  --secondary: rgb(22, 22, 25);
-  --secondary-foreground: rgb(250, 250, 250);
-  --muted: rgb(22, 22, 25);
-  --muted-foreground: rgb(145, 145, 155);
-  --accent: rgb(28, 28, 32);
-  --accent-foreground: rgb(255, 255, 255);
-  --destructive: rgb(230, 70, 70);
+  --background: rgb(255, 255, 255);
+  --foreground: rgb(15, 23, 42);
+  --card: rgb(255, 255, 255);
+  --card-foreground: rgb(15, 23, 42);
+  --popover: rgb(255, 255, 255);
+  --popover-foreground: rgb(15, 23, 42);
+  --primary: rgb(37, 99, 235);
+  --primary-foreground: rgb(255, 255, 255);
+  --secondary: rgb(241, 245, 249);
+  --secondary-foreground: rgb(15, 23, 42);
+  --muted: rgb(248, 250, 252);
+  --muted-foreground: rgb(100, 116, 139);
+  --accent: rgb(239, 246, 255);
+  --accent-foreground: rgb(29, 78, 216);
+  --destructive: rgb(239, 68, 68);
   --destructive-foreground: rgb(255, 255, 255);
-  --success: rgb(255, 255, 255);
-  --success-foreground: rgb(0, 0, 0);
-  --warning: rgb(200, 200, 200);
-  --warning-foreground: rgb(0, 0, 0);
-  --border: rgb(34, 34, 38);
-  --input: rgb(20, 20, 24);
-  --ring: rgb(255, 255, 255);
+  --success: rgb(16, 185, 129);
+  --success-foreground: rgb(255, 255, 255);
+  --warning: rgb(245, 158, 11);
+  --warning-foreground: rgb(255, 255, 255);
+  --border: rgb(226, 232, 240);
+  --input: rgb(241, 245, 249);
+  --ring: rgb(59, 130, 246);
   --radius: 0.75rem;
-  --sidebar: rgb(10, 10, 12);
-  --sidebar-foreground: rgb(250, 250, 250);
-  --sidebar-primary: rgb(255, 255, 255);
-  --sidebar-primary-foreground: rgb(0, 0, 0);
-  --sidebar-accent: rgb(22, 22, 26);
-  --sidebar-accent-foreground: rgb(255, 255, 255);
-  --sidebar-border: rgb(34, 34, 38);
-  --sidebar-ring: rgb(255, 255, 255);
+  --sidebar: rgb(255, 255, 255);
+  --sidebar-foreground: rgb(15, 23, 42);
+  --sidebar-primary: rgb(37, 99, 235);
+  --sidebar-primary-foreground: rgb(255, 255, 255);
+  --sidebar-accent: rgb(239, 246, 255);
+  --sidebar-accent-foreground: rgb(29, 78, 216);
+  --sidebar-border: rgb(226, 232, 240);
+  --sidebar-ring: rgb(59, 130, 246);
 }
 
 .dark {
-  --background: rgb(8, 8, 9);
-  --foreground: rgb(250, 250, 250);
-  --card: rgb(15, 15, 17);
-  --card-foreground: rgb(250, 250, 250);
-  --popover: rgb(15, 15, 17);
-  --popover-foreground: rgb(250, 250, 250);
-  --primary: rgb(255, 255, 255);
-  --primary-foreground: rgb(0, 0, 0);
-  --secondary: rgb(22, 22, 25);
-  --secondary-foreground: rgb(250, 250, 250);
-  --muted: rgb(22, 22, 25);
-  --muted-foreground: rgb(145, 145, 155);
-  --accent: rgb(28, 28, 32);
-  --accent-foreground: rgb(255, 255, 255);
-  --destructive: rgb(230, 70, 70);
+  --background: rgb(255, 255, 255);
+  --foreground: rgb(15, 23, 42);
+  --card: rgb(255, 255, 255);
+  --card-foreground: rgb(15, 23, 42);
+  --popover: rgb(255, 255, 255);
+  --popover-foreground: rgb(15, 23, 42);
+  --primary: rgb(37, 99, 235);
+  --primary-foreground: rgb(255, 255, 255);
+  --secondary: rgb(241, 245, 249);
+  --secondary-foreground: rgb(15, 23, 42);
+  --muted: rgb(248, 250, 252);
+  --muted-foreground: rgb(100, 116, 139);
+  --accent: rgb(239, 246, 255);
+  --accent-foreground: rgb(29, 78, 216);
+  --destructive: rgb(239, 68, 68);
   --destructive-foreground: rgb(255, 255, 255);
-  --success: rgb(255, 255, 255);
-  --success-foreground: rgb(0, 0, 0);
-  --warning: rgb(200, 200, 200);
-  --warning-foreground: rgb(0, 0, 0);
-  --border: rgb(34, 34, 38);
-  --input: rgb(20, 20, 24);
-  --ring: rgb(255, 255, 255);
-  --sidebar: rgb(10, 10, 12);
-  --sidebar-foreground: rgb(250, 250, 250);
-  --sidebar-primary: rgb(255, 255, 255);
-  --sidebar-primary-foreground: rgb(0, 0, 0);
-  --sidebar-accent: rgb(22, 22, 26);
-  --sidebar-accent-foreground: rgb(255, 255, 255);
-  --sidebar-border: rgb(34, 34, 38);
-  --sidebar-ring: rgb(255, 255, 255);
+  --success: rgb(16, 185, 129);
+  --success-foreground: rgb(255, 255, 255);
+  --warning: rgb(245, 158, 11);
+  --warning-foreground: rgb(255, 255, 255);
+  --border: rgb(226, 232, 240);
+  --input: rgb(241, 245, 249);
+  --ring: rgb(59, 130, 246);
+  --sidebar: rgb(255, 255, 255);
+  --sidebar-foreground: rgb(15, 23, 42);
+  --sidebar-primary: rgb(37, 99, 235);
+  --sidebar-primary-foreground: rgb(255, 255, 255);
+  --sidebar-accent: rgb(239, 246, 255);
+  --sidebar-accent-foreground: rgb(29, 78, 216);
+  --sidebar-border: rgb(226, 232, 240);
+  --sidebar-ring: rgb(59, 130, 246);
 }
 
 @theme inline {
@@ -127,8 +127,8 @@ html, body {
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.28); }
+::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.4); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(37, 99, 235, 0.6); }
 
 /* Animations */
 @keyframes card-in {
@@ -147,9 +147,9 @@ html, body {
   transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out;
 }
 .hover-lift:hover {
-  transform: translate3d(0, -1px, 0);
-  border-color: rgba(0,0,0,0.12);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transform: translate3d(0, -2px, 0);
+  border-color: rgba(37, 99, 235, 0.3);
+  box-shadow: 0 10px 28px rgba(37, 99, 235, 0.08);
 }
 
 /* ============ Route fade (transicao entre rotas dentro do dashboard) ============ */
@@ -170,12 +170,12 @@ html, body {
   left: 50%;
   width: 0;
   height: 2px;
-  background: var(--foreground);
+  background: var(--primary);
   transform: translate3d(-50%, 0, 0);
   transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   pointer-events: none;
   border-radius: 2px;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 .field-anim:focus-within::after {
   width: 100%;
@@ -190,14 +190,14 @@ html, body {
 .field-anim:focus-within > label,
 .field-anim:focus-within > [role="label"] {
   transform: translate3d(0, -1px, 0) scale(1.02);
-  color: var(--foreground);
+  color: var(--primary);
   letter-spacing: 0.04em;
 }
 
 /* Input/textarea: caret colorido + transicao suave de letter-spacing */
 .field-anim input,
 .field-anim textarea {
-  caret-color: var(--foreground);
+  caret-color: var(--primary);
   transition: letter-spacing 0.3s ease, border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
 }
 .field-anim input:focus,
@@ -212,31 +212,125 @@ html, body {
 }
 .nav-link {
   position: relative;
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+              color 0.2s ease,
+              box-shadow 0.26s ease,
+              border-color 0.24s ease;
 }
-.nav-link::before {
-  content: '';
-  position: absolute;
-  left: -4px;
-  top: 50%;
-  width: 3px;
-  height: 0;
-  background: currentColor;
-  border-radius: 0 3px 3px 0;
-  transform: translate3d(0, -50%, 0);
-  transition: height 0.25s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
-  pointer-events: none;
-  opacity: 0.6;
+.nav-link:not(.is-active):hover {
+  background-color: rgba(239, 246, 255, 0.9);
+  color: rgb(37, 99, 235);
+  transform: translate3d(5px, 0, 0) scale(1.015);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.08);
 }
-.nav-link:not(.is-active):hover::before {
-  height: 60%;
+.nav-link:active {
+  transform: scale(0.97) !important;
 }
 
-/* ============ Logo glitch + glow ============ */
+/* ============ Logo shimmer & glow ============ */
 @keyframes logo-glow {
-  0%, 100% { text-shadow: 0 0 8px rgba(255,255,255,0.15), 0 0 18px rgba(255,255,255,0.05); }
-  50% { text-shadow: 0 0 14px rgba(255,255,255,0.4), 0 0 32px rgba(255,255,255,0.15); }
+  0%, 100% { text-shadow: 0 0 10px rgba(37, 99, 235, 0.15), 0 0 24px rgba(37, 99, 235, 0.05); }
+  50% { text-shadow: 0 0 16px rgba(37, 99, 235, 0.35), 0 0 32px rgba(37, 99, 235, 0.12); }
 }
 .logo-glow { animation: logo-glow 3s ease-in-out infinite; }
+
+/* ============ Smooth Global Animations ============ */
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes float-tilt {
+  0%, 100% {
+    transform: translateY(0px) rotate(14deg) scale(1);
+  }
+  50% {
+    transform: translateY(-16px) rotate(8deg) scale(1.04);
+  }
+}
+.animate-float-tilt {
+  animation: float-tilt 6s ease-in-out infinite;
+}
+
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.animate-float-gentle {
+  animation: float-gentle 4s ease-in-out infinite;
+}
+
+@keyframes pulse-aura {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1) translate(-50%, -50%);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.08) translate(-50%, -50%);
+  }
+}
+.animate-pulse-aura {
+  animation: pulse-aura 8s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.2), 0 0 40px rgba(37, 99, 235, 0.08);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(37, 99, 235, 0.35), 0 0 70px rgba(37, 99, 235, 0.15);
+  }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in-down {
+  animation: fade-in-down 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes scale-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animate-scale-fade-in {
+  animation: scale-fade-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
 
 @keyframes logo-shimmer {
   0% { background-position: -200% center; }
@@ -245,11 +339,11 @@ html, body {
 .logo-shimmer {
   background-image: linear-gradient(
     90deg,
-    #71717a 0%,
-    #ffffff 25%,
-    #a1a1aa 50%,
-    #ffffff 75%,
-    #71717a 100%
+    #0f172a 0%,
+    #2563eb 25%,
+    #60a5fa 50%,
+    #2563eb 75%,
+    #0f172a 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -258,15 +352,14 @@ html, body {
   animation: logo-shimmer 4s linear infinite;
 }
 
-/* Variante escura do shimmer ajustada para brilho prata/branco puro */
 .logo-shimmer-dark {
   background-image: linear-gradient(
     90deg,
-    #71717a 0%,
-    #ffffff 25%,
-    #a1a1aa 50%,
-    #ffffff 75%,
-    #71717a 100%
+    #0f172a 0%,
+    #2563eb 25%,
+    #60a5fa 50%,
+    #2563eb 75%,
+    #0f172a 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -275,8 +368,8 @@ html, body {
   animation: logo-shimmer 4s linear infinite;
 }
 @keyframes logo-glow-dark {
-  0%, 100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.25), 0 0 24px rgba(255, 255, 255, 0.08); }
-  50%      { text-shadow: 0 0 18px rgba(255, 255, 255, 0.45), 0 0 36px rgba(255, 255, 255, 0.15); }
+  0%, 100% { text-shadow: 0 0 10px rgba(37, 99, 235, 0.15), 0 0 24px rgba(37, 99, 235, 0.05); }
+  50%      { text-shadow: 0 0 16px rgba(37, 99, 235, 0.35), 0 0 32px rgba(37, 99, 235, 0.12); }
 }
 .logo-glow-dark { animation: logo-glow-dark 3s ease-in-out infinite; }
 
@@ -298,7 +391,7 @@ html, body {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255,255,255,0.22) 50%,
+    rgba(255,255,255,0.3) 50%,
     transparent 100%
   );
   transform: translateX(-100%) skewX(-20deg);
@@ -313,8 +406,8 @@ html, body {
 
 /* ============ Pulse soft glow ============ */
 @keyframes soft-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.0), 0 0 18px rgba(255,255,255,0.08); }
-  50% { box-shadow: 0 0 0 4px rgba(255,255,255,0.06), 0 0 28px rgba(255,255,255,0.18); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37,99,235,0.0), 0 0 18px rgba(37,99,235,0.08); }
+  50% { box-shadow: 0 0 0 4px rgba(37,99,235,0.12), 0 0 28px rgba(37,99,235,0.22); }
 }
 .soft-pulse { animation: soft-pulse 2.5s ease-in-out infinite; }
 
@@ -339,16 +432,6 @@ html, body {
   animation: radar-spin 4s linear infinite;
 }
 
-/* ============ Border Beam Animation ============ */
-@keyframes border-beam {
-  0%, 100% {
-    offset-distance: 0%;
-  }
-  100% {
-    offset-distance: 100%;
-  }
-}
-
 /* ============ Glow Beacon ============ */
 @keyframes marquee {
   0% { transform: translateX(0%); }
@@ -366,13 +449,14 @@ html, body {
 }
 
 .bg-dots {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(37, 99, 235, 0.12) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
-.glow-red {
-  background: radial-gradient(circle at center, rgba(239, 68, 68, 0.18), transparent 65%);
+.glow-blue {
+  background: radial-gradient(circle at center, rgba(37, 99, 235, 0.15), transparent 65%);
 }
+
 @keyframes beacon-ping {
   0% { transform: scale(0.95); opacity: 0.8; }
   50% { transform: scale(1.4); opacity: 0; }
@@ -399,29 +483,29 @@ html, body {
 .bg-grid {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(37, 99, 235, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(37, 99, 235, 0.04) 1px, transparent 1px);
 }
 
-/* ============ Background escuro profundo com iluminação ambiente PB ============ */
+/* ============ Background limpo com suave iluminacao ambiente azul ============ */
 .bg-sky {
-  background-color: rgb(8, 8, 9);
+  background-color: #f8fafc;
   background-image:
-    radial-gradient(ellipse 70% 50% at 50% -5%, rgba(255, 255, 255, 0.06) 0%, transparent 65%),
-    radial-gradient(ellipse 50% 40% at 100% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 40% at 0% 70%, rgba(255, 255, 255, 0.02) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(255, 255, 255, 0.03) 0%, transparent 65%);
+    radial-gradient(ellipse 70% 50% at 50% -5%, rgba(37, 99, 235, 0.08) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 100% 30%, rgba(96, 165, 250, 0.05) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 0% 70%, rgba(37, 99, 235, 0.04) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(37, 99, 235, 0.05) 0%, transparent 65%);
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
 
 .dark .bg-sky {
-  background-color: rgb(8, 8, 9);
+  background-color: #f8fafc;
   background-image:
-    radial-gradient(ellipse 70% 50% at 50% -5%, rgba(255, 255, 255, 0.06) 0%, transparent 65%),
-    radial-gradient(ellipse 50% 40% at 100% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 40% at 0% 70%, rgba(255, 255, 255, 0.02) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(255, 255, 255, 0.03) 0%, transparent 65%);
+    radial-gradient(ellipse 70% 50% at 50% -5%, rgba(37, 99, 235, 0.08) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 100% 30%, rgba(96, 165, 250, 0.05) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 0% 70%, rgba(37, 99, 235, 0.04) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(37, 99, 235, 0.05) 0%, transparent 65%);
 }
 
 /* Transição suave durante o toggle de tema */
@@ -440,7 +524,7 @@ html.theme-transitioning *::after {
     box-shadow 600ms ease !important;
 }
 
-/* Orbs flutuantes em tons de branco suave (só desktop) */
+/* Orbs flutuantes em tons de azul suave (só desktop) */
 .cloud {
   position: absolute;
   border-radius: 50%;
@@ -452,25 +536,24 @@ html.theme-transitioning *::after {
 .cloud-1 {
   width: 38vw; height: 38vw;
   top: 5%; left: -10%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.06), rgba(37, 99, 235, 0));
   animation: drift-a 32s ease-in-out infinite;
 }
 .cloud-2 {
   width: 32vw; height: 32vw;
   top: 45%; right: -10%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.05), rgba(96, 165, 250, 0));
   animation: drift-c 38s ease-in-out infinite;
 }
 .cloud-3 {
   width: 28vw; height: 28vw;
   bottom: 8%; left: 22%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0));
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.04), rgba(37, 99, 235, 0));
   animation: drift-b 30s ease-in-out infinite;
 }
 
 /* ============ Otimização mobile: cortar animações pesadas ============ */
 @media (max-width: 768px), (pointer: coarse) {
-  /* Tudo que é loop infinito = morre no mobile (economiza CPU/bateria) */
   .cloud, .cloud-1, .cloud-2, .cloud-3 { display: none !important; }
   .drift-a, .drift-b, .drift-c, .drift-d { animation: none !important; }
   .bg-aurora, .bg-aurora-dark { display: none !important; }
@@ -480,14 +563,12 @@ html.theme-transitioning *::after {
   .soft-pulse { animation: none !important; }
   .button-shine::after { display: none !important; }
 
-  /* Logo shimmer: vira gradient estático (sem keyframe rodando) */
   .logo-shimmer, .logo-shimmer-dark {
     animation: none !important;
     background-size: 100% auto;
     background-position: 0 center;
   }
 
-  /* Reveal mais rápido e curto no mobile (menos distância, menos duração) */
   .reveal.in-view,
   .reveal-up.in-view,
   .reveal-left.in-view,
@@ -497,17 +578,12 @@ html.theme-transitioning *::after {
     animation-timing-function: ease-out !important;
   }
 
-  /* Encurta hover-lift (touch não tem hover real, evita layout shift) */
   .hover-lift { transition: none !important; }
   .hover-lift:hover { transform: none !important; box-shadow: none !important; }
 
-  /* Route fade ainda mais rapido no mobile */
   .route-fade-in { animation-duration: 0.22s !important; }
-
-  /* Hover indicator da sidebar desligado em touch (nao ha hover real) */
   .nav-link::before { display: none !important; }
 
-  /* Transition global mais leve no mobile — sem transform/box-shadow */
   button, a, input, select, [role="button"] {
     transition:
       color 0.2s ease,
@@ -534,8 +610,6 @@ html.theme-transitioning *::after {
 @keyframes reveal-right { from { opacity: 0; transform: translate3d(22px, 0, 0);  } to { opacity: 1; transform: translate3d(0, 0, 0); } }
 @keyframes reveal-zoom  { from { opacity: 0; transform: scale(0.96);              } to { opacity: 1; transform: scale(1); } }
 
-/* Acessibilidade: respeita preferencia do sistema. Desliga TUDO que e animacao,
-   nao so as de reveal (incluindo loops infinitos) */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -588,11 +662,11 @@ html.theme-transitioning *::after {
   background:
     conic-gradient(
       from 0deg at 50% 50%,
-      rgba(255,255,255,0.00) 0deg,
-      rgba(255,255,255,0.045) 90deg,
-      rgba(255,255,255,0.00) 180deg,
-      rgba(255,255,255,0.035) 270deg,
-      rgba(255,255,255,0.00) 360deg
+      rgba(37,99,235,0.00) 0deg,
+      rgba(37,99,235,0.045) 90deg,
+      rgba(37,99,235,0.00) 180deg,
+      rgba(37,99,235,0.035) 270deg,
+      rgba(37,99,235,0.00) 360deg
     );
   filter: blur(70px);
   opacity: 0.55;
@@ -600,64 +674,21 @@ html.theme-transitioning *::after {
   pointer-events: none;
 }
 
-/* Aurora variante escura (pra fundos brancos) */
 .bg-aurora-dark {
   position: absolute;
   inset: -30%;
   background:
     conic-gradient(
       from 0deg at 50% 50%,
-      rgba(0,0,0,0.00) 0deg,
-      rgba(0,0,0,0.045) 90deg,
-      rgba(0,0,0,0.00) 180deg,
-      rgba(0,0,0,0.030) 270deg,
-      rgba(0,0,0,0.00) 360deg
+      rgba(37,99,235,0.00) 0deg,
+      rgba(37,99,235,0.045) 90deg,
+      rgba(37,99,235,0.00) 180deg,
+      rgba(37,99,235,0.030) 270deg,
+      rgba(37,99,235,0.00) 360deg
     );
   filter: blur(70px);
   opacity: 0.55;
   animation: aurora-spin 60s linear infinite;
-  pointer-events: none;
-}
-
-/* Linhas verticais sutis cruzando devagar */
-@keyframes scan-line {
-  0%   { transform: translateY(-100%); opacity: 0; }
-  10%  { opacity: 1; }
-  90%  { opacity: 1; }
-  100% { transform: translateY(100vh); opacity: 0; }
-}
-.scan-line {
-  position: absolute;
-  left: var(--x, 30%);
-  top: 0;
-  width: 1px;
-  height: 100vh;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(255,255,255,0.12) 50%,
-    transparent 100%
-  );
-  animation: scan-line var(--dur, 14s) linear infinite;
-  animation-delay: var(--delay, 0s);
-  pointer-events: none;
-}
-
-/* Variante escura da scan line */
-.scan-line-dark {
-  position: absolute;
-  left: var(--x, 30%);
-  top: 0;
-  width: 1px;
-  height: 100vh;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(0,0,0,0.10) 50%,
-    transparent 100%
-  );
-  animation: scan-line var(--dur, 14s) linear infinite;
-  animation-delay: var(--delay, 0s);
   pointer-events: none;
 }
 
@@ -671,82 +702,6 @@ button, a, input, select, [role="button"] {
     opacity 0.2s ease;
 }
 
-
-/* ============ Video player custom range ============ */
-.vp-range {
-  -webkit-appearance: none;
-  appearance: none;
-  height: 5px;
-  width: 100%;
-  border-radius: 9999px;
-  outline: none;
-  cursor: pointer;
-  transition: height 0.2s ease;
-}
-.vp-range:hover {
-  height: 7px;
-}
-.vp-range::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  background: #ffffff;
-  cursor: pointer;
-  border: 0;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.45);
-  transition: transform 0.2s ease;
-}
-.vp-range:hover::-webkit-slider-thumb {
-  transform: scale(1.25);
-}
-.vp-range::-moz-range-thumb {
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  background: #ffffff;
-  cursor: pointer;
-  border: 0;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.45);
-  transition: transform 0.2s ease;
-}
-.vp-range:hover::-moz-range-thumb {
-  transform: scale(1.25);
-}
-.vp-range::-webkit-slider-runnable-track,
-.vp-range::-moz-range-track {
-  background: transparent;
-  border: 0;
-}
-
-/* Wrapper do seek que cresce a área tocável vertical (sem aumentar visual) */
-.vp-seek-wrap {
-  display: flex;
-  align-items: center;
-  padding: 8px 0; /* hit area extra */
-  cursor: pointer;
-}
-.vp-seek-wrap .vp-seek { display: block; }
-
-/* ============ Touch / mobile (área tocável maior) ============ */
-@media (pointer: coarse), (max-width: 640px) {
-  .vp-range {
-    height: 6px;
-  }
-  .vp-range::-webkit-slider-thumb {
-    width: 18px;
-    height: 18px;
-  }
-  .vp-range::-moz-range-thumb {
-    width: 18px;
-    height: 18px;
-  }
-  .vp-seek-wrap {
-    padding: 12px 0; /* hit area maior em touch */
-  }
-}
-
 /* ============ Global Label Typography: Inter SemiBold (600) ============ */
 label,
 [data-slot="label"],
@@ -755,3 +710,4 @@ form label {
   font-family: var(--font-inter), 'Inter', sans-serif !important;
   font-weight: 600 !important;
 }
+

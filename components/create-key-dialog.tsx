@@ -78,29 +78,29 @@ export function CreateKeyDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="border-border bg-card text-foreground sm:max-w-md">
+      <DialogContent className="border-slate-200 bg-white text-slate-900 sm:max-w-md shadow-xl">
         <DialogHeader>
-          <DialogTitle className="text-foreground">Criar Nova Key</DialogTitle>
-          <DialogDescription className="text-muted-foreground">
-            Configure os parametros da licenca
+          <DialogTitle className="text-slate-950 font-bold">Criar Nova Key</DialogTitle>
+          <DialogDescription className="text-slate-500">
+            Configure os parâmetros da licença
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleCreate} className="flex flex-col gap-4">
           <div className="field-anim flex flex-col gap-2">
-            <Label className="text-sm text-muted-foreground inline-flex items-center gap-1.5">
-              <Gamepad2 className="h-3.5 w-3.5" />
+            <Label className="text-xs uppercase tracking-wider font-semibold text-slate-600 inline-flex items-center gap-1.5">
+              <Gamepad2 className="h-3.5 w-3.5 text-blue-600" />
               Game
             </Label>
             <Select value={product} onValueChange={setProduct}>
-              <SelectTrigger className="border-border bg-secondary text-foreground hover:border-foreground/40 focus:ring-foreground/30 transition-all duration-200">
+              <SelectTrigger className="border-slate-200 bg-slate-50 text-slate-900 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="border-border bg-card text-foreground">
+              <SelectContent className="border-slate-200 bg-white text-slate-900">
                 {GAMES.map((g) => (
                   <SelectItem
                     key={g.value}
                     value={g.value}
-                    className="text-foreground focus:bg-accent focus:text-foreground cursor-pointer"
+                    className="text-slate-800 focus:bg-blue-50 focus:text-blue-600 cursor-pointer"
                   >
                     {g.label}
                   </SelectItem>
@@ -110,45 +110,47 @@ export function CreateKeyDialog({
           </div>
 
           <div className="field-anim flex flex-col gap-2">
-            <Label className="text-sm text-muted-foreground">User</Label>
+            <Label className="text-xs uppercase tracking-wider font-semibold text-slate-600">User / Label</Label>
             <Input
               value={user}
               onChange={(e) => setUser(e.target.value)}
-              className="border-border bg-secondary text-foreground placeholder:text-muted-foreground/60 focus-visible:ring-foreground/30"
+              placeholder="ex: João Silva"
+              className="border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-500/20 focus-visible:border-blue-500"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div className="field-anim flex flex-col gap-2">
-              <Label className="text-sm text-muted-foreground">Max Dispositivos</Label>
+              <Label className="text-xs uppercase tracking-wider font-semibold text-slate-600">Max Dispositivos</Label>
               <Input
                 type="number"
                 min={1}
                 value={maxDevices}
                 onChange={(e) => setMaxDevices(e.target.value)}
-                className="border-border bg-secondary text-foreground focus-visible:ring-foreground/30"
+                className="border-slate-200 bg-slate-50 text-slate-900 focus-visible:ring-2 focus-visible:ring-blue-500/20 focus-visible:border-blue-500"
               />
             </div>
             <div className="field-anim flex flex-col gap-2">
-              <Label className="text-sm text-muted-foreground">Validade (dias)</Label>
+              <Label className="text-xs uppercase tracking-wider font-semibold text-slate-600">Validade (dias)</Label>
               <Input
                 type="number"
                 min={1}
                 value={expiryDays}
                 onChange={(e) => setExpiryDays(e.target.value)}
-                className="border-border bg-secondary text-foreground focus-visible:ring-foreground/30"
+                className="border-slate-200 bg-slate-50 text-slate-900 focus-visible:ring-2 focus-visible:ring-blue-500/20 focus-visible:border-blue-500"
               />
             </div>
           </div>
 
           <div className="field-anim flex flex-col gap-2">
-            <Label className="text-sm text-muted-foreground">Discord ID</Label>
+            <Label className="text-xs uppercase tracking-wider font-semibold text-slate-600">Discord ID (Opcional)</Label>
             <Input
               value={discordId}
               onChange={(e) => setDiscordId(e.target.value)}
-              className="border-border bg-secondary text-foreground placeholder:text-muted-foreground/60 focus-visible:ring-foreground/30"
+              placeholder="ex: 123456789012345678"
+              className="border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-500/20 focus-visible:border-blue-500"
             />
-            <p className="text-[11px] text-muted-foreground">
+            <p className="text-[11px] text-slate-400">
               Se preenchido, esse valor será usado como a própria key.
             </p>
           </div>
@@ -156,7 +158,7 @@ export function CreateKeyDialog({
           <Button
             type="submit"
             disabled={isLoading}
-            className="bg-foreground text-background hover:opacity-90 transition-all duration-300 hover:scale-[1.01] active:scale-[0.97]"
+            className="bg-blue-600 text-white hover:bg-blue-700 font-bold uppercase tracking-wider text-xs transition-all duration-300 hover:scale-[1.01] active:scale-[0.97] shadow-md shadow-blue-500/20 py-2.5"
           >
             {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             Criar Key

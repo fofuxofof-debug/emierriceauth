@@ -225,13 +225,13 @@ export default function LoadersPage() {
 
   return (
     <div className="page-in flex flex-col gap-6 max-w-6xl">
-      <div className="border-b border-zinc-800 pb-6 card-in">
+      <div className="border-b border-slate-200 pb-6 card-in">
         <div className="flex items-center gap-2 mb-1">
-          <span className="h-2 w-2 rounded-full bg-white animate-beacon" />
-          <span className="text-[11px] font-sans font-semibold uppercase tracking-wider text-zinc-400">BUILDS & EXECUTÁVEIS</span>
+          <span className="h-2 w-2 rounded-full bg-blue-600 animate-beacon" />
+          <span className="text-[11px] font-sans font-semibold uppercase tracking-wider text-blue-600">BUILDS & EXECUTÁVEIS</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-sans">Loaders & Downloads</h1>
-        <p className="text-xs sm:text-sm text-zinc-400 font-sans font-medium">
+        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-950 font-sans">Loaders & Downloads</h1>
+        <p className="text-xs sm:text-sm text-slate-500 font-sans font-medium">
           Builds atualizados de cada produto. Selecione a versão e baixe com proteção de integridade.
         </p>
       </div>

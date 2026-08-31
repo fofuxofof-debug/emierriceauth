@@ -39,25 +39,28 @@ export default function LoginPage() {
 
   return (
     <div
-      className="bg-sky flex min-h-screen w-full items-center justify-center p-6 text-zinc-100"
+      className="bg-sky relative flex min-h-screen w-full items-center justify-center p-6 text-slate-900 overflow-hidden"
     >
-      <div className="w-full max-w-sm card-in">
+      {/* Ambient Glow */}
+      <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.15),transparent_65%)] opacity-80 blur-[100px] animate-pulse-aura" />
+
+      <div className="w-full max-w-sm card-in animate-scale-fade-in">
         <div className="mb-8 flex flex-col items-center gap-3">
-          <h1 className="logo-shimmer logo-glow text-5xl font-black tracking-tight text-white">
+          <h1 className="logo-shimmer logo-glow text-5xl font-black tracking-tight text-slate-950">
             MRC Bypass
           </h1>
         </div>
 
         <div
-          className="rounded-2xl border border-zinc-800 bg-[#0e0e11] p-7 hover-lift shadow-[0_16px_50px_rgba(0,0,0,0.7)] backdrop-blur-xl"
+          className="rounded-2xl border border-slate-200 bg-white p-7 hover-lift shadow-[0_16px_50px_rgba(37,99,235,0.08)] backdrop-blur-xl"
         >
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
             <div className="flex flex-col gap-2">
-              <Label htmlFor="username" className="text-xs text-zinc-400 uppercase tracking-wider font-sans font-semibold">
+              <Label htmlFor="username" className="text-xs text-slate-600 uppercase tracking-wider font-sans font-semibold">
                 Usuário
               </Label>
-              <div className="flex items-center gap-3 rounded-xl border border-zinc-800 bg-[#151518] px-4 py-3 transition-all duration-300 focus-within:border-zinc-500 focus-within:shadow-[0_0_0_4px_rgba(255,255,255,0.05)]">
-                <User className="h-4 w-4 text-zinc-400 shrink-0" />
+              <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 transition-all duration-300 focus-within:border-blue-500 focus-within:ring-4 focus-within:ring-blue-500/10">
+                <User className="h-4 w-4 text-blue-600 shrink-0" />
                 <input
                   id="username"
                   type="text"
@@ -65,17 +68,17 @@ export default function LoginPage() {
                   autoComplete="username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="flex-1 bg-transparent text-white placeholder-zinc-500 focus:outline-none text-sm font-mono"
+                  className="flex-1 bg-transparent text-slate-900 placeholder-slate-400 focus:outline-none text-sm font-sans font-semibold tracking-normal"
                 />
               </div>
             </div>
 
             <div className="flex flex-col gap-2">
-              <Label htmlFor="password" className="text-xs text-zinc-400 uppercase tracking-wider font-sans font-semibold">
+              <Label htmlFor="password" className="text-xs text-slate-600 uppercase tracking-wider font-sans font-semibold">
                 Senha
               </Label>
-              <div className="flex items-center gap-3 rounded-xl border border-zinc-800 bg-[#151518] px-4 py-3 transition-all duration-300 focus-within:border-zinc-500 focus-within:shadow-[0_0_0_4px_rgba(255,255,255,0.05)]">
-                <KeyRound className="h-4 w-4 text-zinc-400 shrink-0" />
+              <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 transition-all duration-300 focus-within:border-blue-500 focus-within:ring-4 focus-within:ring-blue-500/10">
+                <KeyRound className="h-4 w-4 text-blue-600 shrink-0" />
                 <input
                   id="password"
                   type="password"
@@ -83,13 +86,13 @@ export default function LoginPage() {
                   autoComplete="current-password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="flex-1 bg-transparent text-white focus:outline-none text-sm font-mono"
+                  className="flex-1 bg-transparent text-slate-900 focus:outline-none text-sm font-sans font-semibold tracking-normal"
                 />
               </div>
             </div>
 
             {error && (
-              <div className="rounded-lg border border-red-900/50 bg-red-950/40 p-3 text-xs text-red-400 animate-in fade-in slide-in-from-top-1 duration-300 font-mono">
+              <div className="rounded-lg border border-red-200 bg-red-50 p-3 text-xs text-red-600 animate-in fade-in slide-in-from-top-1 duration-300 font-mono">
                 {error}
               </div>
             )}
@@ -97,7 +100,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="group button-shine relative flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-white text-black font-bold text-xs uppercase tracking-widest hover:bg-zinc-200 hover:scale-[1.02] active:scale-[0.97] hover:shadow-[0_0_30px_rgba(255,255,255,0.25)] disabled:opacity-50 transition-all cursor-pointer"
+              className="group button-shine relative flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-blue-600 text-white font-bold text-xs uppercase tracking-widest hover:bg-blue-700 hover:scale-[1.02] active:scale-[0.97] hover:shadow-[0_0_30px_rgba(37,99,235,0.25)] disabled:opacity-50 transition-all cursor-pointer shadow-md shadow-blue-500/20"
             >
               {isLoading ? (
                 <Loader2 className="h-4 w-4 animate-spin" />

@@ -16,26 +16,26 @@ export default function LogsPage() {
   const logs = resp?.data
 
   return (
-    <div className="flex flex-col gap-6 max-w-7xl mx-auto">
-      <div className="border-b border-zinc-800 pb-6">
+    <div className="flex flex-col gap-6 max-w-7xl mx-auto page-in">
+      <div className="border-b border-slate-200 pb-6 card-in">
         <div className="flex items-center gap-2 mb-1">
-          <span className="h-2 w-2 rounded-full bg-white" />
-          <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-400">AUDITORIA E TELEMETRIA</span>
+          <span className="h-2 w-2 rounded-full bg-blue-600 animate-beacon" />
+          <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-blue-600">AUDITORIA E TELEMETRIA</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white font-mono">Logs de Autenticação</h1>
-        <p className="text-xs sm:text-sm text-zinc-400">
+        <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-950 font-sans">Logs de Autenticação</h1>
+        <p className="text-xs sm:text-sm text-slate-500 font-sans">
           Histórico detalhado de requisições, eventos de HWID e tentativas de login
         </p>
       </div>
 
       {isLoading && (
-        <div className="flex items-center justify-center rounded-2xl border border-zinc-800 bg-[#0e0e11] p-12">
-          <Loader2 className="h-6 w-6 animate-spin text-white" />
+        <div className="flex items-center justify-center rounded-2xl border border-slate-200 bg-white p-12 shadow-sm">
+          <Loader2 className="h-6 w-6 animate-spin text-blue-600" />
         </div>
       )}
 
       {error && (
-        <div className="rounded-2xl border border-red-900/50 bg-red-950/40 p-4 text-xs text-red-400 font-mono">
+        <div className="rounded-2xl border border-red-200 bg-red-50 p-4 text-xs text-red-600 font-mono">
           Erro ao carregar registros de auditoria.
         </div>
       )}

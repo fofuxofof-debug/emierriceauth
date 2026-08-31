@@ -14,9 +14,7 @@ const navItems = [
   { href: '/dashboard/keys', label: 'Keys', icon: Key },
   { href: '/dashboard/logs', label: 'Logs', icon: Activity },
   { href: '/dashboard/discord', label: 'Discord', icon: MessageCircle },
-  { href: '/dashboard/products', label: 'Products', icon: Package },
   { href: '/dashboard/loaders', label: 'Loaders', icon: Download },
-  { href: '/dashboard/updater', label: 'Atualizações', icon: UploadCloud },
   { href: '/dashboard/system', label: 'Parar / Status', icon: Power },
 ]
 
@@ -78,24 +76,19 @@ export function DashboardShell({
     <div className="bg-sky flex min-h-screen relative">
       {/* Desktop Sidebar */}
       <aside
-        className="hidden w-64 flex-col border-r md:flex"
-        style={{
-          backgroundColor: 'var(--sidebar)',
-          borderColor: 'var(--sidebar-border)',
-        }}
+        className="hidden w-64 flex-col border-r md:flex bg-white border-slate-200"
       >
         <Link href="/dashboard" className="block">
           <div
-            className="flex h-16 items-center justify-center border-b px-6 group cursor-pointer"
-            style={{ borderColor: 'var(--sidebar-border)' }}
+            className="flex h-16 items-center justify-center border-b px-6 group cursor-pointer border-slate-200"
           >
-            <span className={`${dark ? 'logo-shimmer' : 'logo-shimmer-dark'} ${dark ? 'logo-glow' : 'logo-glow-dark'} text-2xl font-black tracking-tight transition-transform duration-300 group-hover:scale-[1.04]`}>
-              MRC Bypass
+            <span className="logo-shimmer logo-glow text-2xl font-black tracking-tight text-slate-950 transition-transform duration-300 group-hover:scale-[1.04]">
+              MRC <span className="text-blue-600 font-bold">Bypass</span>
             </span>
           </div>
         </Link>
 
-        <nav className="flex flex-1 flex-col gap-1.5 p-4">
+        <nav className="flex flex-1 flex-col gap-2 p-4">
           {navItems.map((item, idx) => {
             const isActive =
               pathname === item.href ||
@@ -104,42 +97,48 @@ export function DashboardShell({
               <Link
                 key={item.href}
                 href={item.href}
-                style={{ animationDelay: `${idx * 60}ms` }}
-                className={`nav-link group flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-sans font-semibold card-in transition-all duration-200 ease-out ${
+                style={{ animationDelay: `${idx * 50}ms` }}
+                className={`nav-link group relative flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-sans font-semibold card-in transition-all duration-300 ease-out select-none ${
                   isActive
-                    ? 'is-active bg-white text-black shadow-[0_4px_16px_rgba(255,255,255,0.15)] scale-[1.02]'
-                    : 'text-zinc-400 hover:bg-zinc-800/60 hover:text-white hover:translate-x-1'
+                    ? 'is-active bg-blue-50 text-blue-600 border border-blue-200/90 shadow-sm shadow-blue-500/10'
+                    : 'text-slate-600 hover:bg-blue-50/80 hover:text-blue-600 hover:border-blue-200/60 border border-transparent hover:shadow-xs'
                 }`}
               >
-                <item.icon
-                  className={`h-4 w-4 transition-transform duration-300 ease-out ${
-                    isActive ? 'text-black' : 'text-zinc-400 group-hover:scale-110 group-hover:text-white'
+                <div
+                  className={`flex h-7 w-7 items-center justify-center rounded-lg transition-all duration-300 ${
+                    isActive
+                      ? 'bg-blue-600 text-white shadow-xs shadow-blue-500/30 scale-105'
+                      : 'bg-slate-100 text-slate-500 group-hover:bg-blue-100 group-hover:text-blue-600 group-hover:scale-110'
                   }`}
-                />
-                {item.label}
+                >
+                  <item.icon className="h-3.5 w-3.5 transition-transform duration-300" />
+                </div>
+                <span className="transition-transform duration-300 group-hover:translate-x-1">
+                  {item.label}
+                </span>
               </Link>
             )
           })}
         </nav>
 
         <div
-          className="border-t border-zinc-800 p-4 bg-[#0a0a0c]"
+          className="border-t border-slate-200 p-4 bg-slate-50/70"
         >
           <div className="mb-3 flex items-center gap-3 px-1">
             <div
-              className="flex h-8 w-8 items-center justify-center rounded-xl bg-zinc-800 text-xs font-sans font-bold text-white border border-zinc-700"
+              className="flex h-8 w-8 items-center justify-center rounded-xl bg-blue-600 text-xs font-sans font-bold text-white shadow-sm shadow-blue-500/20"
             >
               {user.email?.[0]?.toUpperCase() ?? 'M'}
             </div>
             <div className="flex-1 truncate">
-              <p className="truncate text-xs font-sans font-semibold text-white">{user.email}</p>
-              <p className="text-[10px] font-sans font-semibold text-zinc-500">Administrador</p>
+              <p className="truncate text-xs font-sans font-semibold text-slate-900">{user.email}</p>
+              <p className="text-[10px] font-sans font-semibold text-slate-500">Administrador</p>
             </div>
           </div>
           <Button
             variant="ghost"
             size="sm"
-            className="button-shine w-full justify-start gap-2 border border-zinc-800 bg-[#121215] text-zinc-300 hover:text-white hover:bg-zinc-800 font-sans font-semibold text-xs active:scale-[0.97] rounded-xl"
+            className="button-shine w-full justify-start gap-2 border border-slate-200 bg-white text-slate-700 hover:text-red-600 hover:bg-red-50 font-sans font-semibold text-xs active:scale-[0.97] rounded-xl shadow-xs"
             onClick={handleLogout}
           >
             <LogOut className="h-4 w-4" />
@@ -151,15 +150,11 @@ export function DashboardShell({
       {/* Mobile */}
       <div className="flex flex-1 flex-col">
         <header
-          className="flex h-16 items-center justify-between border-b px-4 md:hidden"
-          style={{
-            backgroundColor: 'var(--sidebar)',
-            borderColor: 'var(--sidebar-border)',
-          }}
+          className="flex h-16 items-center justify-between border-b px-4 md:hidden bg-white border-slate-200"
         >
           <Link href="/dashboard">
-            <span className={`${dark ? 'logo-shimmer' : 'logo-shimmer-dark'} ${dark ? 'logo-glow' : 'logo-glow-dark'} text-xl font-black tracking-tight`}>
-              MRC Bypass
+            <span className="logo-shimmer logo-glow text-xl font-black tracking-tight text-slate-950">
+              MRC <span className="text-blue-600 font-bold">Bypass</span>
             </span>
           </Link>
           <Button variant="ghost" size="icon" onClick={() => setMobileOpen(!mobileOpen)}>
@@ -169,11 +164,7 @@ export function DashboardShell({
 
         {mobileOpen && (
           <div
-            className="border-b p-4 md:hidden card-in"
-            style={{
-              backgroundColor: 'var(--sidebar)',
-              borderColor: 'var(--sidebar-border)',
-            }}
+            className="border-b p-4 md:hidden card-in bg-white border-slate-200"
           >
             <nav className="flex flex-col gap-1">
               {navItems.map((item) => {
@@ -185,10 +176,10 @@ export function DashboardShell({
                     key={item.href}
                     href={item.href}
                     onClick={() => setMobileOpen(false)}
-                    className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium ${
+                    className={`flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-sans font-semibold transition-all ${
                       isActive
-                        ? 'bg-foreground text-background'
-                        : 'text-muted-foreground hover:bg-accent hover:text-foreground'
+                        ? 'bg-blue-50 text-blue-600 border border-blue-200/90 shadow-xs'
+                        : 'text-slate-600 hover:bg-blue-50/70 hover:text-blue-600'
                     }`}
                   >
                     <item.icon className="h-4 w-4" />
@@ -198,18 +189,12 @@ export function DashboardShell({
               })}
             </nav>
             <div
-              className="mt-3 border-t pt-3"
-              style={{ borderColor: 'var(--sidebar-border)' }}
+              className="mt-3 border-t pt-3 border-slate-200"
             >
               <Button
                 variant="ghost"
                 size="sm"
-                className="button-shine w-full justify-start gap-2 border"
-                style={{
-                  backgroundColor: 'var(--card)',
-                  color: 'var(--muted-foreground)',
-                  borderColor: 'var(--border)',
-                }}
+                className="button-shine w-full justify-start gap-2 border border-slate-200 bg-white text-slate-700 hover:text-red-600 hover:bg-red-50"
                 onClick={handleLogout}
               >
                 <LogOut className="h-4 w-4" />

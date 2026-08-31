@@ -52,18 +52,18 @@ export default function KeysPage() {
 
   return (
     <div className="flex flex-col gap-6 max-w-7xl mx-auto">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-zinc-800 pb-6 card-in">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-slate-200 pb-6 card-in">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="h-2 w-2 rounded-full bg-white" />
-            <span className="text-[11px] font-sans font-semibold uppercase tracking-wider text-zinc-400">GERENCIADOR DE LICENÇAS</span>
+            <span className="h-2 w-2 rounded-full bg-blue-600" />
+            <span className="text-[11px] font-sans font-semibold uppercase tracking-wider text-blue-600">GERENCIADOR DE LICENÇAS</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-sans">Keys & Clientes</h1>
-          <p className="text-xs sm:text-sm text-zinc-400 font-sans font-medium">Emissão, bloqueio e acompanhamento de licenças ativas</p>
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-950 font-sans">Keys & Clientes</h1>
+          <p className="text-xs sm:text-sm text-slate-500 font-sans font-medium">Emissão, bloqueio e acompanhamento de licenças ativas</p>
         </div>
         <Button
           onClick={() => setShowCreate(true)}
-          className="button-shine bg-white text-black hover:bg-zinc-200 font-sans font-semibold text-xs uppercase tracking-wider rounded-xl cursor-pointer hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,255,255,0.15)]"
+          className="button-shine bg-blue-600 text-white hover:bg-blue-700 font-sans font-semibold text-xs uppercase tracking-wider rounded-xl cursor-pointer hover:scale-105 transition-all shadow-md shadow-blue-500/20"
         >
           <Plus className="mr-1.5 h-3.5 w-3.5" />
           Nova Key
@@ -72,20 +72,20 @@ export default function KeysPage() {
 
       <div className="flex flex-col gap-3 sm:flex-row">
         <div className="relative flex-1">
-          <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
+          <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
           <Input
             placeholder="Buscar por key, label, HWID ou Discord ID..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="border-zinc-800 bg-[#121215] pl-10 text-white placeholder:text-zinc-500 font-mono text-xs rounded-xl focus-visible:ring-1 focus-visible:ring-zinc-400"
+            className="border-slate-200 bg-white pl-10 text-slate-900 placeholder:text-slate-400 font-mono text-xs rounded-xl focus-visible:ring-2 focus-visible:ring-blue-500/20 focus-visible:border-blue-500"
           />
         </div>
         <Select value={statusFilter} onValueChange={setStatusFilter}>
-          <SelectTrigger className="w-full border-zinc-800 bg-[#121215] text-white sm:w-44 font-mono text-xs rounded-xl">
-            <Filter className="mr-2 h-3.5 w-3.5 text-zinc-400" />
+          <SelectTrigger className="w-full border-slate-200 bg-white text-slate-900 sm:w-44 font-mono text-xs rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500">
+            <Filter className="mr-2 h-3.5 w-3.5 text-slate-400" />
             <SelectValue />
           </SelectTrigger>
-          <SelectContent className="border-zinc-800 bg-[#0e0e11] text-white">
+          <SelectContent className="border-slate-200 bg-white text-slate-900">
             <SelectItem value="all">Todos os Status</SelectItem>
             <SelectItem value="active">Ativas</SelectItem>
             <SelectItem value="paused">Pausadas</SelectItem>
@@ -96,7 +96,7 @@ export default function KeysPage() {
       </div>
 
       {error && (
-        <div className="rounded-lg border border-destructive/30 bg-destructive/10 p-4 text-sm text-destructive">
+        <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-600">
           Erro ao carregar keys.
         </div>
       )}

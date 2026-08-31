@@ -20,10 +20,10 @@ function statusFor(key: LicenseKey) {
 }
 
 const STATUS_BADGE = {
-  active:  { label: 'Ativa',    className: 'border-zinc-600 bg-white/10 text-white font-mono text-[10px]' },
-  expired: { label: 'Expirada', className: 'border-zinc-800 bg-zinc-900 text-zinc-400 font-mono text-[10px]' },
-  banned:  { label: 'Banida',   className: 'border-zinc-800 bg-zinc-950 text-zinc-500 line-through font-mono text-[10px]' },
-  paused:  { label: 'Pausada',  className: 'border-zinc-700 bg-zinc-900 text-zinc-300 font-mono text-[10px]' },
+  active:  { label: 'Ativa',    className: 'border-blue-200 bg-blue-50 text-blue-700 font-mono text-[10px]' },
+  expired: { label: 'Expirada', className: 'border-slate-200 bg-slate-100 text-slate-500 font-mono text-[10px]' },
+  banned:  { label: 'Banida',   className: 'border-red-200 bg-red-50 text-red-600 line-through font-mono text-[10px]' },
+  paused:  { label: 'Pausada',  className: 'border-amber-200 bg-amber-50 text-amber-700 font-mono text-[10px]' },
 } as const
 
 function StatusBadge({ licenseKey }: { licenseKey: LicenseKey }) {
@@ -35,7 +35,7 @@ function StatusBadge({ licenseKey }: { licenseKey: LicenseKey }) {
 // Render do HWID: mostra os primeiros 12 chars + "..." e botao de copiar.
 function HwidCell({ hwids }: { hwids?: HWID[] }) {
   if (!hwids || hwids.length === 0) {
-    return <span className="text-xs text-zinc-500 font-mono">—</span>
+    return <span className="text-xs text-slate-400 font-mono">—</span>
   }
   const first = hwids[0].hwid
   const shortened = first.length > 12 ? `${first.slice(0, 12)}…` : first
@@ -52,20 +52,20 @@ function HwidCell({ hwids }: { hwids?: HWID[] }) {
     <div className="flex items-center gap-2 font-mono">
       <code
         title={first}
-        className="rounded-lg border border-zinc-800 bg-zinc-900 px-2 py-1 font-mono text-[11px] text-zinc-300"
+        className="rounded-lg border border-slate-200 bg-slate-50 px-2 py-1 font-mono text-[11px] text-slate-700"
       >
         {shortened}
       </code>
       <Button
         variant="ghost"
         size="icon"
-        className="h-6 w-6 text-zinc-500 hover:text-white"
+        className="h-6 w-6 text-slate-400 hover:text-blue-600 hover:bg-blue-50"
         onClick={copy}
       >
         <Copy className="h-3 w-3" />
       </Button>
       {extra > 0 && (
-        <span className="text-[11px] text-zinc-400">+{extra}</span>
+        <span className="text-[11px] text-slate-500">+{extra}</span>
       )}
     </div>
   )
@@ -86,16 +86,16 @@ export function KeysTable({
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center rounded-2xl border border-zinc-800 bg-[#0e0e11] p-12">
-        <Loader2 className="h-6 w-6 animate-spin text-white" />
+      <div className="flex items-center justify-center rounded-2xl border border-slate-200 bg-white p-12 shadow-sm">
+        <Loader2 className="h-6 w-6 animate-spin text-blue-600" />
       </div>
     )
   }
 
   if (keys.length === 0) {
     return (
-      <div className="rounded-2xl border border-zinc-800 bg-[#0e0e11] p-12 text-center shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
-        <p className="text-sm text-zinc-400 font-mono">Nenhuma chave de licença encontrada.</p>
+      <div className="rounded-2xl border border-slate-200 bg-white p-12 text-center shadow-sm">
+        <p className="text-sm text-slate-500 font-mono">Nenhuma chave de licença encontrada.</p>
       </div>
     )
   }
@@ -109,25 +109,25 @@ export function KeysTable({
           return (
             <div
               key={key.id}
-              className="rounded-2xl border border-zinc-800 bg-[#0e0e11] p-4 shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
+              className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"
             >
               <div className="flex items-start justify-between gap-3 mb-3">
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
-                    <code className="block truncate rounded-lg border border-zinc-800 bg-zinc-900 px-2 py-1 font-mono text-[11px] text-white">
+                    <code className="block truncate rounded-lg border border-slate-200 bg-slate-50 px-2 py-1 font-mono text-[11px] text-slate-900">
                       {key.key.length > 22 ? `${key.key.slice(0, 22)}…` : key.key}
                     </code>
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="h-7 w-7 text-zinc-400 hover:text-white shrink-0"
+                      className="h-7 w-7 text-slate-400 hover:text-blue-600 shrink-0"
                       onClick={() => copyKey(key.key)}
                     >
                       <Copy className="h-3.5 w-3.5" />
                     </Button>
                   </div>
                   {key.label && (
-                    <p className="mt-2 text-xs font-mono text-zinc-300 truncate">{key.label}</p>
+                    <p className="mt-2 text-xs font-mono text-slate-700 truncate">{key.label}</p>
                   )}
                 </div>
                 <StatusBadge licenseKey={key} />
@@ -135,38 +135,38 @@ export function KeysTable({
 
               <div className="grid grid-cols-2 gap-3 text-xs mb-3 font-mono">
                 <div className="flex flex-col">
-                  <span className="text-zinc-500 text-[10px] uppercase tracking-wider flex items-center gap-1">
-                    <Cpu className="h-3 w-3" /> HWID
+                  <span className="text-slate-400 text-[10px] uppercase tracking-wider flex items-center gap-1">
+                    <Cpu className="h-3 w-3 text-blue-600" /> HWID
                   </span>
-                  <span className="text-zinc-200 font-medium">
+                  <span className="text-slate-800 font-medium">
                     <HwidCell hwids={key.hwids} />
                   </span>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-zinc-500 text-[10px] uppercase tracking-wider flex items-center gap-1">
-                    <Monitor className="h-3 w-3" /> Dispositivos
+                  <span className="text-slate-400 text-[10px] uppercase tracking-wider flex items-center gap-1">
+                    <Monitor className="h-3 w-3 text-blue-600" /> Dispositivos
                   </span>
-                  <span className="text-zinc-200 font-medium text-xs mt-1">
+                  <span className="text-slate-800 font-medium text-xs mt-1">
                     {(key.hwids?.length ?? 0)}/{key.max_devices}
                   </span>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-zinc-500 text-[10px] uppercase tracking-wider">Validade</span>
-                  <span className="font-medium text-zinc-200 text-xs">
+                  <span className="text-slate-400 text-[10px] uppercase tracking-wider">Validade</span>
+                  <span className="font-medium text-slate-800 text-xs">
                     {daysLeft <= 0 ? 'Expirada' : `${daysLeft} dias`}
                   </span>
                 </div>
               </div>
 
-              <div className="flex items-center justify-between border-t border-zinc-800 pt-3">
-                <span className="text-[10px] font-mono text-zinc-500">
+              <div className="flex items-center justify-between border-t border-slate-100 pt-3">
+                <span className="text-[10px] font-mono text-slate-400">
                   {formatDate(key.expires_at)}
                 </span>
                 <Link href={`/dashboard/keys/${key.id}`}>
                   <Button
                     variant="outline"
                     size="sm"
-                    className="h-7 gap-1.5 text-xs font-mono border-zinc-800 bg-zinc-900 text-zinc-200 hover:text-white hover:bg-zinc-800 rounded-lg"
+                    className="h-7 gap-1.5 text-xs font-mono border-slate-200 bg-slate-50 text-slate-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg"
                   >
                     <Eye className="h-3 w-3" />
                     Detalhes
@@ -179,58 +179,58 @@ export function KeysTable({
       </div>
 
       {/* ========= DESKTOP: table ========= */}
-      <div className="hidden md:block overflow-hidden rounded-2xl border border-zinc-800 bg-[#0e0e11] shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
+      <div className="hidden md:block overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
         <div className="overflow-x-auto">
-          <table className="w-full font-mono text-xs">
+          <table className="w-full text-xs">
             <thead>
-              <tr className="border-b border-zinc-800 text-[10px] uppercase tracking-wider text-zinc-500 bg-zinc-900/40">
-                <th className="px-4 py-3.5 text-left font-semibold">Key de Licença</th>
-                <th className="px-4 py-3.5 text-left font-semibold">Label / Cliente</th>
-                <th className="px-4 py-3.5 text-left font-semibold">Status</th>
-                <th className="px-4 py-3.5 text-left font-semibold">HWID Vinculado</th>
-                <th className="px-4 py-3.5 text-left font-semibold">Slots</th>
-                <th className="px-4 py-3.5 text-left font-semibold">Expiração</th>
-                <th className="px-4 py-3.5 text-right font-semibold">Ações</th>
+              <tr className="border-b border-slate-200 text-[11px] uppercase tracking-wider text-slate-500 bg-slate-50/80 font-sans font-semibold">
+                <th className="px-4 py-3.5 text-left font-sans font-semibold">Key de Licença</th>
+                <th className="px-4 py-3.5 text-left font-sans font-semibold">Label / Cliente</th>
+                <th className="px-4 py-3.5 text-left font-sans font-semibold">Status</th>
+                <th className="px-4 py-3.5 text-left font-sans font-semibold">HWID Vinculado</th>
+                <th className="px-4 py-3.5 text-left font-sans font-semibold">Slots</th>
+                <th className="px-4 py-3.5 text-left font-sans font-semibold">Expiração</th>
+                <th className="px-4 py-3.5 text-right font-sans font-semibold">Ações</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-zinc-800/60">
+            <tbody className="divide-y divide-slate-100">
               {keys.map((key) => {
                 const daysLeft = getDaysRemaining(key.expires_at)
                 const used = key.hwids?.length ?? 0
                 return (
-                  <tr key={key.id} className="transition-colors hover:bg-zinc-800/30">
+                  <tr key={key.id} className="transition-colors hover:bg-blue-50/30">
                     <td className="whitespace-nowrap px-4 py-3">
                       <div className="flex items-center gap-2">
-                        <code className="rounded-lg border border-zinc-800 bg-zinc-900 px-2 py-1 font-mono text-xs text-white">
+                        <code className="rounded-lg border border-slate-200 bg-slate-50 px-2 py-1 font-mono text-xs text-slate-900">
                           {key.key.length > 22 ? `${key.key.slice(0, 22)}…` : key.key}
                         </code>
                         <Button
                           variant="ghost"
                           size="icon"
-                          className="h-7 w-7 text-zinc-400 hover:text-white"
+                          className="h-7 w-7 text-slate-400 hover:text-blue-600 hover:bg-blue-50"
                           onClick={() => copyKey(key.key)}
                         >
                           <Copy className="h-3.5 w-3.5" />
                         </Button>
                       </div>
                     </td>
-                    <td className="whitespace-nowrap px-4 py-3 text-xs text-zinc-300">{key.label ?? '-'}</td>
+                    <td className="whitespace-nowrap px-4 py-3 text-xs text-slate-700">{key.label ?? '-'}</td>
                     <td className="whitespace-nowrap px-4 py-3"><StatusBadge licenseKey={key} /></td>
                     <td className="whitespace-nowrap px-4 py-3">
                       <HwidCell hwids={key.hwids} />
                     </td>
-                    <td className="whitespace-nowrap px-4 py-3 text-xs text-zinc-400">{used}/{key.max_devices}</td>
+                    <td className="whitespace-nowrap px-4 py-3 text-xs text-slate-600">{used}/{key.max_devices}</td>
                     <td className="whitespace-nowrap px-4 py-3">
                       <div className="flex flex-col">
-                        <span className="text-xs text-zinc-200">{formatDate(key.expires_at)}</span>
-                        <span className="text-[10px] text-zinc-500">
+                        <span className="text-xs text-slate-800">{formatDate(key.expires_at)}</span>
+                        <span className="text-[10px] text-slate-400">
                           {daysLeft <= 0 ? 'Expirada' : `${daysLeft} dias restantes`}
                         </span>
                       </div>
                     </td>
                     <td className="whitespace-nowrap px-4 py-3 text-right">
                       <Link href={`/dashboard/keys/${key.id}`}>
-                        <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400 hover:text-white hover:bg-zinc-800 rounded-lg">
+                        <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg">
                           <Eye className="h-4 w-4" />
                         </Button>
                       </Link>

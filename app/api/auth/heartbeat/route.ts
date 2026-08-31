@@ -83,13 +83,20 @@ export async function POST(request: NextRequest) {
   }
   if (keyData.status === 'paused') {
     return NextResponse.json(
-      { success: false, error: 'key_paused' },
+      { success: false, error: 'key_paused', message: 'A sua chave de licença foi pausada.' },
       { status: 403 }
     )
   }
-  if (new Date(keyData.expires_at) < new Date()) {
+  if (new Date(keyData.expires_at) < new Date() || secondsUntil(keyData.expires_at) <= 0) {
+    await logsDb.create({
+      key_id: keyData.id,
+      event_type: 'key_expired',
+      ip_address: ip,
+      hwid,
+      details: { reason: 'key_expired_during_session' },
+    })
     return NextResponse.json(
-      { success: false, error: 'key_expired' },
+      { success: false, error: 'key_expired', message: 'A sua chave de licença expirou.' },
       { status: 403 }
     )
   }
