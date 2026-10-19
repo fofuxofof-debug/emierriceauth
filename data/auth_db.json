@@ -1,0 +1,160 @@
+{
+  "keys": {
+    "d5ce45f4-6ca9-4f35-b13f-f3f6f18ef174": {
+      "id": "d5ce45f4-6ca9-4f35-b13f-f3f6f18ef174",
+      "key": "SMOOTH-JRREN-6Z89O-922RP-N7DDQ",
+      "label": "Demo Key",
+      "status": "active",
+      "max_devices": 3,
+      "expires_at": "2026-11-18T00:01:21.006Z",
+      "discord_id": null,
+      "notes": null,
+      "product": null,
+      "created_at": "2026-10-19T00:01:21.007Z",
+      "updated_at": "2026-10-19T00:01:21.007Z",
+      "created_by": null
+    },
+    "f872f409-59e9-403c-be6d-681f25e8d025": {
+      "id": "f872f409-59e9-403c-be6d-681f25e8d025",
+      "key": "SMOOTH-76YEQ-S7V1B-H1J9F-2OX5M",
+      "label": "Cleber (687820421711233055)",
+      "status": "active",
+      "max_devices": 1,
+      "expires_at": "2026-11-18T00:01:21.026Z",
+      "discord_id": "687820421711233055",
+      "notes": "Venda Automática Discord Bot • Smooth Sales",
+      "product": "ff_external_30d",
+      "created_at": "2026-10-19T00:01:21.026Z",
+      "updated_at": "2026-10-19T00:01:21.026Z",
+      "created_by": null
+    },
+    "2f717363-230d-44c0-bd66-40d3aa370f7c": {
+      "id": "2f717363-230d-44c0-bd66-40d3aa370f7c",
+      "key": "1517054236041416800",
+      "label": "rlqdosrlq",
+      "status": "active",
+      "max_devices": 1,
+      "expires_at": "2026-11-20T00:11:14.507Z",
+      "discord_id": "1517054236041416800",
+      "notes": "Venda Discord Bot • Smooth Sales (Free Fire External (30 Dias))",
+      "product": "ff_external_30d",
+      "created_at": "2026-10-19T00:11:14.507Z",
+      "updated_at": "2026-10-19T00:53:28.025Z",
+      "created_by": null
+    },
+    "f9c98573-8049-4653-ba6f-72584bd563ff": {
+      "id": "f9c98573-8049-4653-ba6f-72584bd563ff",
+      "key": "1442199182348910793",
+      "label": "foqon",
+      "status": "active",
+      "max_devices": 1,
+      "expires_at": "2026-11-18T00:53:53.453Z",
+      "discord_id": "1442199182348910793",
+      "notes": "Venda Discord Bot • Smooth Sales (Free Fire External (30 Dias))",
+      "product": "ff_external_30d",
+      "created_at": "2026-10-19T00:53:53.453Z",
+      "updated_at": "2026-10-19T00:53:53.453Z",
+      "created_by": null
+    }
+  },
+  "hwids": {
+    "9fc49c0d-c081-47f8-9e95-4496641f91f5": {
+      "id": "9fc49c0d-c081-47f8-9e95-4496641f91f5",
+      "key_id": "f872f409-59e9-403c-be6d-681f25e8d025",
+      "hwid": "TESTE-HWID-PC-12345",
+      "device_label": null,
+      "ip_address": "::1",
+      "registered_at": "2026-10-19T00:01:47.019Z"
+    }
+  },
+  "logs": [
+    {
+      "id": "df282877-71f0-48ce-92ee-0698a5c0cc99",
+      "key_id": "f9c98573-8049-4653-ba6f-72584bd563ff",
+      "event_type": "key_created",
+      "ip_address": null,
+      "hwid": null,
+      "details": {
+        "key": "1442199182348910793",
+        "label": "foqon",
+        "product": "ff_external_30d",
+        "custom": true
+      },
+      "created_at": "2026-10-19T00:53:53.454Z"
+    },
+    {
+      "id": "4b932198-ab6d-4408-9a89-1d0908f16410",
+      "key_id": "2f717363-230d-44c0-bd66-40d3aa370f7c",
+      "event_type": "key_renewed",
+      "ip_address": null,
+      "hwid": null,
+      "details": {
+        "key": "1517054236041416800",
+        "days": 30,
+        "newExpires": "2026-11-20T00:11:14.507Z"
+      },
+      "created_at": "2026-10-19T00:53:28.028Z"
+    },
+    {
+      "id": "bb4d7b0c-b6de-410f-be2c-c38ef86e1798",
+      "key_id": "2f717363-230d-44c0-bd66-40d3aa370f7c",
+      "event_type": "key_renewed",
+      "ip_address": null,
+      "hwid": null,
+      "details": {
+        "key": "1517054236041416800",
+        "days": 1,
+        "newExpires": "2026-10-21T00:11:14.507Z"
+      },
+      "created_at": "2026-10-19T00:17:03.919Z"
+    },
+    {
+      "id": "dfc07e6e-dfaa-4a76-8cac-afa1e161569a",
+      "key_id": "2f717363-230d-44c0-bd66-40d3aa370f7c",
+      "event_type": "key_created",
+      "ip_address": null,
+      "hwid": null,
+      "details": {
+        "key": "SMOOTH-H481O-Y7H0D-LHQ7J-UTQZC",
+        "label": "rlqdosrlq (1517054236041416800)",
+        "product": "ff_external_1d"
+      },
+      "created_at": "2026-10-19T00:11:14.509Z"
+    },
+    {
+      "id": "8e8d82fb-378c-458c-8347-0eef388c445f",
+      "key_id": "f872f409-59e9-403c-be6d-681f25e8d025",
+      "event_type": "auth_success",
+      "ip_address": "::1",
+      "hwid": "TESTE-HWID-PC-12345",
+      "details": {},
+      "created_at": "2026-10-19T00:01:47.020Z"
+    },
+    {
+      "id": "5cc094fa-4b0d-4865-997e-86ecfa9dc580",
+      "key_id": "f872f409-59e9-403c-be6d-681f25e8d025",
+      "event_type": "key_created",
+      "ip_address": null,
+      "hwid": null,
+      "details": {
+        "key": "SMOOTH-76YEQ-S7V1B-H1J9F-2OX5M",
+        "label": "Cleber (687820421711233055)",
+        "product": "ff_external_30d"
+      },
+      "created_at": "2026-10-19T00:01:21.027Z"
+    },
+    {
+      "id": "e15d9357-e4fc-43c0-9e82-f8bb8e987611",
+      "key_id": "d5ce45f4-6ca9-4f35-b13f-f3f6f18ef174",
+      "event_type": "key_created",
+      "ip_address": null,
+      "hwid": null,
+      "details": {
+        "key": "SMOOTH-JRREN-6Z89O-922RP-N7DDQ",
+        "label": "Demo Key",
+        "demo": true
+      },
+      "created_at": "2026-10-19T00:01:21.010Z"
+    }
+  ]
+}

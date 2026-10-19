@@ -1,16 +1,8 @@
 import React from 'react'
 import type { Metadata, Viewport } from 'next'
-import { Inter, JetBrains_Mono } from 'next/font/google'
 import { Toaster } from 'sonner'
 
 import './globals.css'
-
-const _inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  weight: ['400', '500', '600', '700', '800', '900'],
-})
-const _jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains-mono' })
 
 export const metadata: Metadata = {
   title: 'MRC Bypass',
@@ -18,7 +10,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#ffffff',
+  themeColor: '#060911',
 }
 
 export default function RootLayout({
@@ -27,17 +19,25 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR" className="light" style={{ colorScheme: 'light' }}>
-      <body className={`${_inter.variable} ${_jetbrainsMono.variable} font-sans antialiased bg-[#f8fafc] text-slate-900 min-h-screen selection:bg-blue-100 selection:text-blue-900`}>
+    <html lang="pt-BR" className="dark" style={{ colorScheme: 'dark' }}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="font-sans antialiased bg-[#060911] text-[#f1f5f9] min-h-screen selection:bg-blue-500/30 selection:text-blue-200">
         {children}
         <Toaster
-          theme="light"
+          theme="dark"
           position="top-right"
           toastOptions={{
             style: {
-              background: 'rgb(255, 255, 255)',
-              border: '1px solid rgb(226, 232, 240)',
-              color: 'rgb(15, 23, 42)',
+              background: '#0b1222',
+              border: '1px solid #15233c',
+              color: '#f1f5f9',
             },
           }}
         />

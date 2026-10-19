@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useMemo } from 'react'
 import useSWR from 'swr'
@@ -31,8 +31,8 @@ const products: LoaderProduct[] = [
     productId: 'freefire',
     tag: 'BlueStacks · HD-Player',
     icon: Flame,
-    accent: 'from-white/10 via-zinc-500/5 to-transparent',
-    glow: 'rgba(255,255,255,0.15)',
+    accent: 'from-blue-500/15 via-blue-600/5 to-transparent',
+    glow: 'rgba(59,130,246,0.25)',
     description: 'Loader principal com bypass anti-detecção e suporte a múltiplas versões do emulador.',
     variants: [
       { id: 'basic',   name: 'Basic',   description: 'Aimbot + ESP essencial. Compatível com qualquer config.', version: '4.2.1', size: '12.4 MB' },
@@ -45,8 +45,8 @@ const products: LoaderProduct[] = [
     productId: 'valorant',
     tag: 'Aim Color',
     icon: Crosshair,
-    accent: 'from-white/10 via-zinc-500/5 to-transparent',
-    glow: 'rgba(255,255,255,0.15)',
+    accent: 'from-blue-500/15 via-blue-600/5 to-transparent',
+    glow: 'rgba(59,130,246,0.25)',
     description: 'Aim color com trigger bot e aim assist otimizado para o anti-cheat da Riot.',
     variants: [
       { id: 'aimcolor', name: 'Aim Color', description: 'Pacote completo: aim, trigger e visuais.', version: '2.5.3', size: '6.8 MB' },
@@ -57,8 +57,8 @@ const products: LoaderProduct[] = [
     productId: 'cs2',
     tag: 'Counter-Strike 2',
     icon: Target,
-    accent: 'from-white/10 via-zinc-500/5 to-transparent',
-    glow: 'rgba(255,255,255,0.15)',
+    accent: 'from-blue-500/15 via-blue-600/5 to-transparent',
+    glow: 'rgba(59,130,246,0.25)',
     description: 'Loader externo para CS2 com aim, ESP, radar e configs customizáveis.',
     variants: [
       { id: 'cs2', name: 'CS2 Loader', description: 'Build externo. Compatível com VAC e premier.', version: '1.3.7', size: '9.1 MB' },
@@ -132,8 +132,8 @@ function ProductCard({ p, idx, userCount }: { p: LoaderProduct; idx: number; use
                   onClick={() => setSelected(v.id)}
                   className={`px-3 py-2 rounded-lg text-xs font-bold uppercase tracking-widest border transition-all duration-300 ${
                     selected === v.id
-                      ? 'bg-foreground text-background border-transparent shadow-[0_4px_16px_rgba(0,0,0,0.18)] scale-[1.02]'
-                      : 'bg-card text-muted-foreground border-border hover:bg-accent hover:text-foreground hover:border-foreground/30'
+                      ? 'bg-blue-600 text-white border-transparent shadow-[0_4px_16px_rgba(59,130,246,0.3)] scale-[1.02]'
+                      : 'bg-card text-muted-foreground border-border hover:bg-blue-950/40 hover:text-blue-300 hover:border-blue-500/30'
                   }`}
                 >
                   {v.name}
@@ -151,7 +151,7 @@ function ProductCard({ p, idx, userCount }: { p: LoaderProduct; idx: number; use
           <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{variant.description}</p>
           <div className="mt-3 flex items-center gap-3 text-[10px] uppercase tracking-widest text-muted-foreground">
             <span className="inline-flex items-center gap-1">
-              <Cpu className="h-3 w-3" />
+              <Cpu className="h-3 w-3 text-blue-400" />
               v
               <span
                 className="text-foreground tabular-nums"
@@ -174,7 +174,7 @@ function ProductCard({ p, idx, userCount }: { p: LoaderProduct; idx: number; use
           <Button
             onClick={handleDownload}
             disabled={downloading}
-            className="button-shine flex-1 bg-foreground text-background hover:opacity-90 hover:scale-[1.02] active:scale-[0.97] disabled:opacity-50"
+            className="button-shine flex-1 bg-blue-600 text-white hover:bg-blue-500 hover:scale-[1.02] active:scale-[0.97] disabled:opacity-50 shadow-md shadow-blue-500/25 font-semibold"
           >
             {done ? (
               <>
@@ -225,13 +225,13 @@ export default function LoadersPage() {
 
   return (
     <div className="page-in flex flex-col gap-6 max-w-6xl">
-      <div className="border-b border-slate-200 pb-6 card-in">
+      <div className="border-b border-[#15233c] pb-6 card-in">
         <div className="flex items-center gap-2 mb-1">
-          <span className="h-2 w-2 rounded-full bg-blue-600 animate-beacon" />
-          <span className="text-[11px] font-sans font-semibold uppercase tracking-wider text-blue-600">BUILDS & EXECUTÁVEIS</span>
+          <span className="h-2 w-2 rounded-full bg-blue-500 animate-beacon" />
+          <span className="text-[11px] font-sans font-semibold uppercase tracking-wider text-blue-400">BUILDS & EXECUTÁVEIS</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-950 font-sans">Loaders & Downloads</h1>
-        <p className="text-xs sm:text-sm text-slate-500 font-sans font-medium">
+        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#f1f5f9] font-sans">Loaders & Downloads</h1>
+        <p className="text-xs sm:text-sm text-slate-400 font-sans font-medium">
           Builds atualizados de cada produto. Selecione a versão e baixe com proteção de integridade.
         </p>
       </div>

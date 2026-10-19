@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import React, { useState } from 'react'
 import {
@@ -78,29 +78,29 @@ export function CreateKeyDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="border-slate-200 bg-white text-slate-900 sm:max-w-md shadow-xl">
+      <DialogContent className="border-[#15233c] bg-[#0b1222] text-[#f1f5f9] sm:max-w-md shadow-2xl">
         <DialogHeader>
-          <DialogTitle className="text-slate-950 font-bold">Criar Nova Key</DialogTitle>
-          <DialogDescription className="text-slate-500">
+          <DialogTitle className="text-[#f1f5f9] font-bold">Criar Nova Key</DialogTitle>
+          <DialogDescription className="text-[#94a3b8]">
             Configure os parâmetros da licença
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleCreate} className="flex flex-col gap-4">
           <div className="field-anim flex flex-col gap-2">
-            <Label className="text-xs uppercase tracking-wider font-semibold text-slate-600 inline-flex items-center gap-1.5">
-              <Gamepad2 className="h-3.5 w-3.5 text-blue-600" />
+            <Label className="text-xs uppercase tracking-wider font-semibold text-[#94a3b8] inline-flex items-center gap-1.5">
+              <Gamepad2 className="h-3.5 w-3.5 text-[#60a5fa]" />
               Game
             </Label>
             <Select value={product} onValueChange={setProduct}>
-              <SelectTrigger className="border-slate-200 bg-slate-50 text-slate-900 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200">
+              <SelectTrigger className="border-[#15233c] bg-[#0e1830] text-[#f1f5f9] focus:ring-2 focus:ring-blue-500/20 focus:border-[#3b82f6] transition-all duration-200">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="border-slate-200 bg-white text-slate-900">
+              <SelectContent className="border-[#15233c] bg-[#0b1222] text-[#f1f5f9]">
                 {GAMES.map((g) => (
                   <SelectItem
                     key={g.value}
                     value={g.value}
-                    className="text-slate-800 focus:bg-blue-50 focus:text-blue-600 cursor-pointer"
+                    className="text-[#cbd5e1] focus:bg-[#0e1830] focus:text-[#60a5fa] cursor-pointer"
                   >
                     {g.label}
                   </SelectItem>
@@ -110,47 +110,47 @@ export function CreateKeyDialog({
           </div>
 
           <div className="field-anim flex flex-col gap-2">
-            <Label className="text-xs uppercase tracking-wider font-semibold text-slate-600">User / Label</Label>
+            <Label className="text-xs uppercase tracking-wider font-semibold text-[#94a3b8]">User / Label</Label>
             <Input
               value={user}
               onChange={(e) => setUser(e.target.value)}
               placeholder="ex: João Silva"
-              className="border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-500/20 focus-visible:border-blue-500"
+              className="border-[#15233c] bg-[#0e1830] text-[#f1f5f9] placeholder:text-[#64748b] focus-visible:ring-2 focus-visible:ring-blue-500/20 focus-visible:border-[#3b82f6]"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div className="field-anim flex flex-col gap-2">
-              <Label className="text-xs uppercase tracking-wider font-semibold text-slate-600">Max Dispositivos</Label>
+              <Label className="text-xs uppercase tracking-wider font-semibold text-[#94a3b8]">Max Dispositivos</Label>
               <Input
                 type="number"
                 min={1}
                 value={maxDevices}
                 onChange={(e) => setMaxDevices(e.target.value)}
-                className="border-slate-200 bg-slate-50 text-slate-900 focus-visible:ring-2 focus-visible:ring-blue-500/20 focus-visible:border-blue-500"
+                className="border-[#15233c] bg-[#0e1830] text-[#f1f5f9] focus-visible:ring-2 focus-visible:ring-blue-500/20 focus-visible:border-[#3b82f6]"
               />
             </div>
             <div className="field-anim flex flex-col gap-2">
-              <Label className="text-xs uppercase tracking-wider font-semibold text-slate-600">Validade (dias)</Label>
+              <Label className="text-xs uppercase tracking-wider font-semibold text-[#94a3b8]">Validade (dias)</Label>
               <Input
                 type="number"
                 min={1}
                 value={expiryDays}
                 onChange={(e) => setExpiryDays(e.target.value)}
-                className="border-slate-200 bg-slate-50 text-slate-900 focus-visible:ring-2 focus-visible:ring-blue-500/20 focus-visible:border-blue-500"
+                className="border-[#15233c] bg-[#0e1830] text-[#f1f5f9] focus-visible:ring-2 focus-visible:ring-blue-500/20 focus-visible:border-[#3b82f6]"
               />
             </div>
           </div>
 
           <div className="field-anim flex flex-col gap-2">
-            <Label className="text-xs uppercase tracking-wider font-semibold text-slate-600">Discord ID (Opcional)</Label>
+            <Label className="text-xs uppercase tracking-wider font-semibold text-[#94a3b8]">Discord ID (Opcional)</Label>
             <Input
               value={discordId}
               onChange={(e) => setDiscordId(e.target.value)}
               placeholder="ex: 123456789012345678"
-              className="border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-blue-500/20 focus-visible:border-blue-500"
+              className="border-[#15233c] bg-[#0e1830] text-[#f1f5f9] placeholder:text-[#64748b] focus-visible:ring-2 focus-visible:ring-blue-500/20 focus-visible:border-[#3b82f6]"
             />
-            <p className="text-[11px] text-slate-400">
+            <p className="text-[11px] text-[#64748b]">
               Se preenchido, esse valor será usado como a própria key.
             </p>
           </div>
@@ -158,7 +158,7 @@ export function CreateKeyDialog({
           <Button
             type="submit"
             disabled={isLoading}
-            className="bg-blue-600 text-white hover:bg-blue-700 font-bold uppercase tracking-wider text-xs transition-all duration-300 hover:scale-[1.01] active:scale-[0.97] shadow-md shadow-blue-500/20 py-2.5"
+            className="bg-[#3b82f6] text-white hover:bg-[#2563eb] font-bold uppercase tracking-wider text-xs transition-all duration-300 hover:scale-[1.01] active:scale-[0.97] shadow-md shadow-blue-500/20 py-2.5 cursor-pointer"
           >
             {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             Criar Key

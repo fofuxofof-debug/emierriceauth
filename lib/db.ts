@@ -5,8 +5,44 @@
 // API agora é async (todas as funções retornam Promise).
 // =============================================================================
 
+import fs from 'fs'
+import path from 'path'
 import { randomUUID } from 'crypto'
 import type { LicenseKey, HWID, AuthLog } from './types'
+
+const DB_DIR = path.join(process.cwd(), 'data')
+const DB_FILE = path.join(DB_DIR, 'auth_db.json')
+
+function loadMem(): MemDB {
+  try {
+    if (fs.existsSync(DB_FILE)) {
+      const parsed = JSON.parse(fs.readFileSync(DB_FILE, 'utf-8'))
+      return {
+        keys: new Map(Object.entries(parsed.keys || {})),
+        hwids: new Map(Object.entries(parsed.hwids || {})),
+        logs: parsed.logs || [],
+        seeded: true,
+      }
+    }
+  } catch (e) {
+    console.error('Erro ao ler auth_db.json:', e)
+  }
+  return { keys: new Map(), hwids: new Map(), logs: [], seeded: false }
+}
+
+export function persistMem(m: MemDB) {
+  try {
+    if (!fs.existsSync(DB_DIR)) fs.mkdirSync(DB_DIR, { recursive: true })
+    const data = {
+      keys: Object.fromEntries(m.keys.entries()),
+      hwids: Object.fromEntries(m.hwids.entries()),
+      logs: m.logs.slice(0, 5000),
+    }
+    fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2))
+  } catch (e) {
+    console.error('Erro ao salvar auth_db.json:', e)
+  }
+}
 
 const useKv = !!(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN)
 
@@ -20,7 +56,7 @@ async function kv(): Promise<KvClient> {
   return _kv
 }
 
-// ---------- Memória local (dev sem KV) ----------
+// ---------- Memória local (dev sem KV com persistência em disco) ----------
 interface MemDB {
   keys: Map<string, LicenseKey>
   hwids: Map<string, HWID>
@@ -29,7 +65,7 @@ interface MemDB {
 }
 const globalAny = globalThis as unknown as { __havocMem?: MemDB }
 const mem: MemDB =
-  globalAny.__havocMem ?? { keys: new Map(), hwids: new Map(), logs: [], seeded: false }
+  globalAny.__havocMem ?? loadMem()
 if (process.env.NODE_ENV !== 'production') globalAny.__havocMem = mem
 
 // =============================================================================
@@ -87,6 +123,7 @@ export const keysDb = {
       await c.hset('keys', { [item.id]: item })
     } else {
       mem.keys.set(item.id, item)
+      persistMem(mem)
     }
     return item
   },
@@ -105,6 +142,7 @@ export const keysDb = {
       await c.hset('keys', { [id]: next })
     } else {
       mem.keys.set(id, next)
+      persistMem(mem)
     }
     return next
   },
@@ -125,7 +163,9 @@ export const keysDb = {
       const removed = await c.hdel('keys', id)
       return !!removed
     }
-    return mem.keys.delete(id)
+    const res = mem.keys.delete(id)
+    persistMem(mem)
+    return res
   },
 }
 
@@ -179,6 +219,7 @@ export const hwidsDb = {
       await c.hset('hwids', { [item.id]: item })
     } else {
       mem.hwids.set(item.id, item)
+      persistMem(mem)
     }
     return item
   },
@@ -189,7 +230,9 @@ export const hwidsDb = {
       const removed = await c.hdel('hwids', id)
       return !!removed
     }
-    return mem.hwids.delete(id)
+    const res = mem.hwids.delete(id)
+    persistMem(mem)
+    return res
   },
 
   async removeAllByKey(keyId: string): Promise<number> {
@@ -202,6 +245,7 @@ export const hwidsDb = {
     }
     let n = 0
     for (const h of list) if (mem.hwids.delete(h.id)) n++
+    persistMem(mem)
     return n
   },
 }
@@ -252,6 +296,7 @@ export const logsDb = {
     } else {
       mem.logs.unshift(item)
       if (mem.logs.length > 5000) mem.logs.length = 5000
+      persistMem(mem)
     }
     return item
   },
@@ -281,7 +326,7 @@ export async function buildStats() {
 // =============================================================================
 // Util
 // =============================================================================
-export function generateKey(prefix = 'SYNC'): string {
+export function generateKey(prefix = 'SMOOTH'): string {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
   const seg = () =>
     Array.from({ length: 5 }, () => chars[Math.floor(Math.random() * chars.length)]).join('')

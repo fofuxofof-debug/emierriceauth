@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { Check } from 'lucide-react'
 
@@ -33,47 +33,47 @@ export function PricingCard({
     <div
       className={`reveal reveal-up hover-lift relative flex flex-col rounded-2xl border p-6 sm:p-7 transition-all ${
         highlight
-          ? 'border-blue-500 bg-gradient-to-b from-blue-50/50 to-white shadow-xl shadow-blue-500/10 ring-2 ring-blue-500/20'
-          : 'border-slate-200 bg-white shadow-sm hover:border-blue-300'
+          ? 'border-blue-500/80 bg-gradient-to-b from-blue-950/30 to-[#0b1222] shadow-xl shadow-blue-500/10 ring-1 ring-blue-500/40'
+          : 'border-[#15233c] bg-[#0b1222] shadow-sm hover:border-blue-500/40'
       }`}
       style={{
         animationDelay: `${delay}ms`,
       }}
     >
       {badge && (
-        <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-blue-600 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-md shadow-blue-500/20">
+        <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-blue-600 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-md shadow-blue-500/30">
           {badge}
         </span>
       )}
 
       <div className="mb-5">
-        <h3 className="text-lg font-bold text-slate-950">{name}</h3>
+        <h3 className="text-lg font-bold text-[#f1f5f9]">{name}</h3>
         {description && (
-          <p className="mt-1 text-xs text-slate-500">{description}</p>
+          <p className="mt-1 text-xs text-slate-400">{description}</p>
         )}
       </div>
 
       <div className="mb-6 flex items-baseline gap-1.5">
         <span
-          className="text-3xl sm:text-4xl font-black text-slate-950 tabular-nums"
+          className="text-3xl sm:text-4xl font-black text-[#f1f5f9] tabular-nums"
           style={{ fontFamily: "var(--font-jetbrains-mono), 'JetBrains Mono', monospace" }}
         >
           {price}
         </span>
         {pricePeriod && (
-          <span className="text-sm text-slate-500">{pricePeriod}</span>
+          <span className="text-sm text-slate-400">{pricePeriod}</span>
         )}
       </div>
 
       {priceUsd && (
-        <p className="-mt-4 mb-5 text-[11px] text-slate-400">≈ {priceUsd}</p>
+        <p className="-mt-4 mb-5 text-[11px] text-slate-500">≈ {priceUsd}</p>
       )}
 
-      <ul className="mb-7 flex flex-col gap-2.5 text-sm text-slate-700">
+      <ul className="mb-7 flex flex-col gap-2.5 text-sm text-slate-300">
         {features.map((f, i) => (
           <li key={i} className="flex items-start gap-2.5">
-            <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-blue-50 border border-blue-200">
-              <Check className="h-2.5 w-2.5 text-blue-600" />
+            <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-blue-500/15 border border-blue-500/30">
+              <Check className="h-2.5 w-2.5 text-blue-400" />
             </span>
             <span>{f}</span>
           </li>
@@ -86,8 +86,8 @@ export function PricingCard({
         rel="noopener noreferrer"
         className={`button-shine group mt-auto inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold uppercase tracking-wider transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.02] active:scale-[0.97] ${
           highlight
-            ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-md shadow-blue-500/20'
-            : 'border border-slate-200 bg-slate-50 text-slate-700 hover:border-blue-300 hover:text-blue-600 hover:bg-blue-50'
+            ? 'bg-blue-600 text-white hover:bg-blue-500 shadow-md shadow-blue-500/25'
+            : 'border border-blue-500/30 bg-[#0e1830] text-blue-400 hover:border-blue-500/60 hover:text-blue-300 hover:bg-blue-950/40'
         }`}
       >
         {ctaLabel}

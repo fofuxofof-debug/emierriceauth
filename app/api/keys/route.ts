@@ -38,19 +38,36 @@ export async function POST(request: NextRequest) {
   // Normaliza o produto pra slug (lowercase, sem espacos)
   const product = body.product?.trim().toLowerCase() || null
 
-  // Se custom_key foi passado, valida unicidade e usa como key.
-  const customKey = body.custom_key?.trim() || null
+  // Se custom_key foi passado OU discord_id foi passado, usa como chave de licença
+  const targetKey = (body.custom_key || body.discord_id)?.trim() || null
 
-  if (customKey) {
-    if (await keysDb.findByKey(customKey)) {
-      return NextResponse.json(
-        { error: 'duplicate_key', message: 'Já existe uma key com esse valor.' },
-        { status: 409 }
-      )
+  if (targetKey) {
+    const existing = await keysDb.findByKey(targetKey)
+    if (existing) {
+      // Se a key já existe (renovação do cliente):
+      const baseTime = new Date(existing.expires_at) > new Date()
+        ? new Date(existing.expires_at).getTime()
+        : Date.now()
+      const newExpires = new Date(baseTime + days * 24 * 60 * 60 * 1000).toISOString()
+      const updated = await keysDb.update(existing.id, {
+        status: 'active',
+        expires_at: newExpires,
+        discord_id: body.discord_id || existing.discord_id,
+        label: body.label || existing.label,
+        notes: body.notes || existing.notes,
+        product: product || existing.product,
+      })
+      await logsDb.create({
+        key_id: existing.id,
+        event_type: 'key_renewed',
+        details: { key: targetKey, days, newExpires },
+      })
+      return NextResponse.json({ data: [updated || existing], count: 1 })
     }
-    // Quando há custom_key, ignora quantity (cria só uma)
+
+    // Cria nova key tendo o Discord ID como a própria Key de Licença
     const k = await keysDb.create({
-      key: customKey,
+      key: targetKey,
       label: body.label || null,
       max_devices: devices,
       expires_at: expires,

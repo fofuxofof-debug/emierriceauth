@@ -15,3 +15,6 @@ public/Video/*.mp4
 public/Video/*.webm
 public/Video/*.mov
 *.mp4
+iniciar_site.bat
+subir_git.bat
+
