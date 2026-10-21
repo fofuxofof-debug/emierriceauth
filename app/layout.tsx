@@ -5,12 +5,12 @@ import { Toaster } from 'sonner'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'MRC Bypass',
-  description: 'Sistema de gerenciamento de licenças com HWID binding, expiração e Discord ID.',
+  title: 'Smooth Store — Performance & Autenticação de Alta Tecnologia',
+  description: 'Plataforma oficial Smooth Store. Ativação instantânea, proteção HWID e softwares de alta performance para Free Fire e Valorant.',
 }
 
 export const viewport: Viewport = {
-  themeColor: '#060911',
+  themeColor: '#050811',
 }
 
 export default function RootLayout({

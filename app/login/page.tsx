@@ -1,11 +1,10 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { KeyRound, Loader2, ChevronRight, User } from 'lucide-react'
+import { KeyRound, Loader2, ChevronRight, User, ArrowLeft, Shield } from 'lucide-react'
+import { Label } from '@/components/ui/label'
 
 export default function LoginPage() {
   const [username, setUsername] = useState('')
@@ -26,7 +25,7 @@ export default function LoginPage() {
         body: JSON.stringify({ username, password }),
       })
       const data = await res.json()
-      if (!res.ok || !data.success) throw new Error(data.message || 'Erro ao entrar.')
+      if (!res.ok || !data.success) throw new Error(data.message || 'Credenciais inválidas.')
 
       router.push('/dashboard')
       router.refresh()
@@ -38,61 +37,88 @@ export default function LoginPage() {
   }
 
   return (
-    <div
-      className="bg-sky relative flex min-h-screen w-full items-center justify-center p-6 text-[#f1f5f9] overflow-hidden"
-    >
-      {/* Ambient Glow */}
-      <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.22),transparent_65%)] opacity-80 blur-[100px] animate-pulse-aura" />
+    <div className="relative min-h-screen w-full flex flex-col items-center justify-center p-6 bg-[#050811] text-[#f1f5f9] overflow-hidden font-sans">
+      
+      {/* Background Ambient Glows */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.15),transparent_70%)] blur-[120px]"
+      />
+      <div className="grid-ambient-dots absolute inset-0 -z-20 opacity-30 pointer-events-none" aria-hidden="true" />
 
-      <div className="w-full max-w-sm card-in animate-scale-fade-in">
-        <div className="mb-8 flex flex-col items-center gap-3">
-          <h1 className="logo-shimmer logo-glow text-5xl font-black tracking-tight text-[#f1f5f9]">
-            MRC Bypass
-          </h1>
+      {/* Back button */}
+      <div className="absolute top-6 left-6 z-20">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-[#080d1a]/80 px-4 py-2 text-xs font-semibold text-slate-400 hover:text-white hover:border-sky-500/30 transition-all backdrop-blur-md"
+        >
+          <ArrowLeft className="h-3.5 w-3.5" />
+          <span>Voltar para a Loja</span>
+        </Link>
+      </div>
+
+      <div className="w-full max-w-sm z-10">
+        
+        {/* Brand Header */}
+        <div className="mb-8 flex flex-col items-center gap-3 text-center">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-tr from-blue-600 via-sky-500 to-indigo-500 text-white font-extrabold text-xl shadow-[0_0_25px_rgba(14,165,233,0.4)]">
+            S
+          </div>
+          <div>
+            <h1 className="text-2xl font-black tracking-tight text-white flex items-center justify-center gap-1.5">
+              Smooth <span className="text-sky-400">Store</span>
+            </h1>
+            <p className="text-xs text-slate-400 font-medium mt-1">
+              Painel de Controle & Gestão de Licenças
+            </p>
+          </div>
         </div>
 
-        <div
-          className="rounded-2xl border border-[#15233c] bg-[#0b1222]/90 p-7 hover-lift shadow-[0_0_50px_rgba(37,99,235,0.18)] backdrop-blur-xl"
-        >
-          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="username" className="text-xs text-[#94a3b8] uppercase tracking-wider font-sans font-semibold">
+        {/* Login Glass Card */}
+        <div className="glass-panel rounded-3xl p-7 shadow-2xl relative">
+          
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            
+            <div className="flex flex-col gap-1.5">
+              <Label htmlFor="username" className="text-xs text-slate-400 uppercase tracking-wider font-semibold">
                 Usuário
               </Label>
-              <div className="flex items-center gap-3 rounded-xl border border-[#1a2b4a] bg-[#0e1830] px-4 py-3 transition-all duration-300 focus-within:border-[#3b82f6] focus-within:ring-4 focus-within:ring-blue-500/20">
-                <User className="h-4 w-4 text-[#60a5fa] shrink-0" />
+              <div className="flex items-center gap-3 rounded-xl border border-slate-800 bg-[#070c18]/90 px-4 py-3 transition-all duration-300 focus-within:border-sky-500 focus-within:ring-2 focus-within:ring-sky-500/20">
+                <User className="h-4 w-4 text-sky-400 shrink-0" />
                 <input
                   id="username"
                   type="text"
                   required
+                  placeholder="Nome de usuário"
                   autoComplete="username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="flex-1 bg-transparent text-[#f1f5f9] placeholder-slate-500 focus:outline-none text-sm font-sans font-semibold tracking-normal"
+                  className="flex-1 bg-transparent text-[#f1f5f9] placeholder-slate-600 focus:outline-none text-sm font-medium tracking-normal"
                 />
               </div>
             </div>
 
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="password" className="text-xs text-[#94a3b8] uppercase tracking-wider font-sans font-semibold">
+            <div className="flex flex-col gap-1.5">
+              <Label htmlFor="password" className="text-xs text-slate-400 uppercase tracking-wider font-semibold">
                 Senha
               </Label>
-              <div className="flex items-center gap-3 rounded-xl border border-[#1a2b4a] bg-[#0e1830] px-4 py-3 transition-all duration-300 focus-within:border-[#3b82f6] focus-within:ring-4 focus-within:ring-blue-500/20">
-                <KeyRound className="h-4 w-4 text-[#60a5fa] shrink-0" />
+              <div className="flex items-center gap-3 rounded-xl border border-slate-800 bg-[#070c18]/90 px-4 py-3 transition-all duration-300 focus-within:border-sky-500 focus-within:ring-2 focus-within:ring-sky-500/20">
+                <KeyRound className="h-4 w-4 text-sky-400 shrink-0" />
                 <input
                   id="password"
                   type="password"
                   required
+                  placeholder="Sua senha secreta"
                   autoComplete="current-password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="flex-1 bg-transparent text-[#f1f5f9] focus:outline-none text-sm font-sans font-semibold tracking-normal"
+                  className="flex-1 bg-transparent text-[#f1f5f9] placeholder-slate-600 focus:outline-none text-sm font-medium tracking-normal"
                 />
               </div>
             </div>
 
             {error && (
-              <div className="rounded-lg border border-red-500/30 bg-red-500/10 p-3 text-xs text-red-400 animate-in fade-in slide-in-from-top-1 duration-300 font-mono">
+              <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-xs text-red-400 font-medium">
                 {error}
               </div>
             )}
@@ -100,19 +126,28 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="group button-shine relative flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold text-xs uppercase tracking-widest hover:from-blue-500 hover:to-blue-400 hover:scale-[1.02] active:scale-[0.97] hover:shadow-[0_0_30px_rgba(59,130,246,0.35)] disabled:opacity-50 transition-all cursor-pointer shadow-md shadow-blue-500/20 border border-blue-400/30"
+              className="neon-btn-primary mt-2 flex items-center justify-center gap-2 w-full py-3.5 rounded-xl text-white font-bold text-xs uppercase tracking-wider transition-all disabled:opacity-50 cursor-pointer"
             >
               {isLoading ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
               ) : (
                 <>
-                  <span>ACESSAR PAINEL</span>
-                  <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  <span>Entrar no Painel</span>
+                  <ChevronRight className="h-4 w-4" />
                 </>
               )}
             </button>
+
           </form>
+
         </div>
+
+        {/* Footer Note */}
+        <p className="text-center text-[11px] text-slate-500 font-medium mt-6 flex items-center justify-center gap-1.5">
+          <Shield className="h-3.5 w-3.5 text-sky-500" />
+          Acesso protegido com autenticação segura
+        </p>
+
       </div>
     </div>
   )

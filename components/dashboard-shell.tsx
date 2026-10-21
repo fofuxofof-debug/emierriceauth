@@ -80,10 +80,13 @@ export function DashboardShell({
       >
         <Link href="/dashboard" className="block">
           <div
-            className="flex h-16 items-center justify-center border-b px-6 group cursor-pointer border-[#131d35]"
+            className="flex h-16 items-center gap-3 border-b px-6 group cursor-pointer border-[#131d35]"
           >
-            <span className="logo-shimmer logo-glow text-2xl font-black tracking-tight text-[#f1f5f9] transition-transform duration-300 group-hover:scale-[1.04]">
-              MRC <span className="text-blue-500 font-bold">Bypass</span>
+            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-tr from-blue-600 via-sky-500 to-indigo-500 text-white font-extrabold text-sm shadow-[0_0_15px_rgba(14,165,233,0.4)] group-hover:scale-105 transition-transform duration-300">
+              S
+            </div>
+            <span className="logo-shimmer logo-glow text-xl font-black tracking-tight text-[#f1f5f9] transition-transform duration-300 group-hover:scale-[1.02]">
+              Smooth <span className="text-sky-400 font-black">Store</span>
             </span>
           </div>
         </Link>
@@ -161,9 +164,12 @@ export function DashboardShell({
         <header
           className="flex h-16 items-center justify-between border-b px-4 md:hidden bg-[#070c18] border-[#131d35]"
         >
-          <Link href="/dashboard">
-            <span className="logo-shimmer logo-glow text-xl font-black tracking-tight text-[#f1f5f9]">
-              MRC <span className="text-blue-500 font-bold">Bypass</span>
+          <Link href="/dashboard" className="flex items-center gap-2">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-tr from-blue-600 via-sky-500 to-indigo-500 text-white font-extrabold text-xs shadow-sm">
+              S
+            </div>
+            <span className="logo-shimmer logo-glow text-lg font-black tracking-tight text-[#f1f5f9]">
+              Smooth <span className="text-sky-400 font-black">Store</span>
             </span>
           </Link>
           <Button variant="ghost" size="icon" onClick={() => setMobileOpen(!mobileOpen)} className="text-slate-300 hover:text-blue-400">

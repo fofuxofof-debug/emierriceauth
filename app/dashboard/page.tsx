@@ -26,8 +26,8 @@ export default function DashboardPage() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-[#15233c] pb-6 card-in">
         <div>
           <div className="flex items-center gap-2 mb-1.5">
-            <span className="h-2 w-2 rounded-full bg-[#3b82f6] animate-beacon" />
-            <span className="text-[11px] font-sans font-semibold uppercase tracking-wider text-[#60a5fa]">MRC BYPASS CLOUD CORE</span>
+            <span className="h-2 w-2 rounded-full bg-sky-400 animate-beacon" />
+            <span className="text-[11px] font-sans font-semibold uppercase tracking-wider text-sky-400">SMOOTH CLOUD CORE</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#f1f5f9] font-sans">Painel de Controle</h1>
           <p className="text-xs sm:text-sm text-[#94a3b8] font-sans font-medium mt-0.5">Gerenciamento central de licenças, HWID e integridade de conexões</p>
