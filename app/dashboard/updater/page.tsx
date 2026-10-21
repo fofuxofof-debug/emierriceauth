@@ -157,7 +157,7 @@ export default function UpdaterPage() {
 
       {/* QUICK STATUS METRICS */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
-        <div className="card-in rounded-[0.6rem] border border-white/5 bg-[#101012] p-4.5 flex items-center gap-3.5 shadow-sm hover:border-[#db00ff]/30 transition-all">
+        <div className="card-in rounded-[0.6rem] border border-[#171819] bg-[#101010] p-4.5 flex items-center gap-3.5 shadow-sm hover:border-[#db00ff]/30 transition-all">
           <div className="flex h-11 w-11 items-center justify-center rounded-[0.5rem] border border-[#db00ff]/20 bg-[#db00ff]/10 text-[#db00ff]">
             <Cpu className="h-5 w-5" />
           </div>
@@ -169,7 +169,7 @@ export default function UpdaterPage() {
           </div>
         </div>
 
-        <div className="card-in rounded-[0.6rem] border border-white/5 bg-[#101012] p-4.5 flex items-center gap-3.5 shadow-sm hover:border-[#db00ff]/30 transition-all">
+        <div className="card-in rounded-[0.6rem] border border-[#171819] bg-[#101010] p-4.5 flex items-center gap-3.5 shadow-sm hover:border-[#db00ff]/30 transition-all">
           <div className="flex h-11 w-11 items-center justify-center rounded-[0.5rem] border border-[#db00ff]/20 bg-[#db00ff]/10 text-[#db00ff]">
             <HardDrive className="h-5 w-5" />
           </div>
@@ -181,7 +181,7 @@ export default function UpdaterPage() {
           </div>
         </div>
 
-        <div className="card-in rounded-[0.6rem] border border-white/5 bg-[#101012] p-4.5 flex items-center gap-3.5 shadow-sm hover:border-[#db00ff]/30 transition-all">
+        <div className="card-in rounded-[0.6rem] border border-[#171819] bg-[#101010] p-4.5 flex items-center gap-3.5 shadow-sm hover:border-[#db00ff]/30 transition-all">
           <div className="flex h-11 w-11 items-center justify-center rounded-[0.5rem] border border-[#db00ff]/20 bg-[#db00ff]/10 text-[#db00ff]">
             <ShieldCheck className="h-5 w-5" />
           </div>
@@ -206,7 +206,7 @@ export default function UpdaterPage() {
         className={`card-in rounded-[0.6rem] border-2 border-dashed p-10 sm:p-14 text-center cursor-pointer transition-all duration-300 flex flex-col items-center justify-center gap-4 ${
           isDragging
             ? 'border-[#db00ff] bg-[#db00ff]/10 scale-[1.01]'
-            : 'border-white/10 bg-[#101012] hover:border-[#db00ff]/40 hover:bg-white/[0.02]'
+            : 'border-[#171819] bg-[#101010] hover:border-[#db00ff]/40 hover:bg-white/[0.02]'
         }`}
       >
         <input
@@ -245,8 +245,8 @@ export default function UpdaterPage() {
 
       {/* ACTIVE BUILD SHOWCASE & DIRECT DOWNLOAD */}
       {activeBuild && (
-        <div className="card-in rounded-[0.6rem] border border-white/5 bg-[#101012] p-6 shadow-sm">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/5 pb-4 mb-5">
+        <div className="card-in rounded-[0.6rem] border border-[#171819] bg-[#101010] p-6 shadow-sm">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#171819] pb-4 mb-5">
             <div className="flex items-center gap-2.5">
               <span className="h-2.5 w-2.5 rounded-full bg-[#db00ff]" />
               <h2 className="text-sm font-sans font-bold uppercase tracking-wider text-white">
@@ -265,22 +265,22 @@ export default function UpdaterPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-            <div className="rounded-[0.5rem] border border-white/5 bg-white/[0.02] p-4 flex flex-col gap-1">
+            <div className="rounded-[0.5rem] border border-[#171819] bg-white/[0.02] p-4 flex flex-col gap-1">
               <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500">Nome do Arquivo</span>
               <p className="text-xs font-mono font-bold text-white truncate" title={activeBuild.name}>{activeBuild.name}</p>
             </div>
 
-            <div className="rounded-[0.5rem] border border-white/5 bg-white/[0.02] p-4 flex flex-col gap-1">
+            <div className="rounded-[0.5rem] border border-[#171819] bg-white/[0.02] p-4 flex flex-col gap-1">
               <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500">Tamanho</span>
               <p className="text-xs font-mono font-bold text-white">{formatBytes(activeBuild.size)}</p>
             </div>
 
-            <div className="rounded-[0.5rem] border border-white/5 bg-white/[0.02] p-4 flex flex-col gap-1">
+            <div className="rounded-[0.5rem] border border-[#171819] bg-white/[0.02] p-4 flex flex-col gap-1">
               <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500">Assinatura SHA256</span>
               <p className="text-xs font-mono font-bold text-white">{activeBuild.hash}...</p>
             </div>
 
-            <div className="rounded-[0.5rem] border border-white/5 bg-white/[0.02] p-4 flex flex-col gap-1">
+            <div className="rounded-[0.5rem] border border-[#171819] bg-white/[0.02] p-4 flex flex-col gap-1">
               <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500">Publicado em</span>
               <p className="text-xs font-mono font-bold text-white">
                 {new Date(activeBuild.mtime).toLocaleDateString('pt-BR')} {new Date(activeBuild.mtime).toLocaleTimeString('pt-BR')}
@@ -291,8 +291,8 @@ export default function UpdaterPage() {
       )}
 
       {/* BUILD HISTORY & 1-CLICK ROLLBACK */}
-      <div className="card-in rounded-[0.6rem] border border-white/5 bg-[#101012] overflow-hidden shadow-sm">
-        <div className="p-5 border-b border-white/5 flex items-center justify-between">
+      <div className="card-in rounded-[0.6rem] border border-[#171819] bg-[#101010] overflow-hidden shadow-sm">
+        <div className="p-5 border-b border-[#171819] flex items-center justify-between">
           <div>
             <h2 className="text-sm font-sans font-bold uppercase tracking-wider text-white">
               Histórico de Versões & Rollback

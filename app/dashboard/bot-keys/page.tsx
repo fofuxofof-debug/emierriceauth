@@ -87,7 +87,7 @@ export default function BotKeysPage() {
 
       {/* Cards de Métricas */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="rounded-[0.6rem] border border-white/5 bg-[#101012] p-5 shadow-sm hover:border-[#db00ff]/30 transition-all">
+        <div className="rounded-[0.6rem] border border-[#171819] bg-[#101010] p-5 shadow-sm hover:border-[#db00ff]/30 transition-all">
           <div className="flex items-center justify-between text-zinc-400 mb-2">
             <span className="text-xs font-semibold uppercase font-sans tracking-wider">Total Geradas pelo Bot</span>
             <Bot className="h-4 w-4 text-[#db00ff]" />
@@ -96,7 +96,7 @@ export default function BotKeysPage() {
           <p className="text-[11px] text-zinc-500 mt-1 font-mono">Vinculadas via Discord ID</p>
         </div>
 
-        <div className="rounded-[0.6rem] border border-white/5 bg-[#101012] p-5 shadow-sm hover:border-[#db00ff]/30 transition-all">
+        <div className="rounded-[0.6rem] border border-[#171819] bg-[#101010] p-5 shadow-sm hover:border-[#db00ff]/30 transition-all">
           <div className="flex items-center justify-between text-zinc-400 mb-2">
             <span className="text-xs font-semibold uppercase font-sans tracking-wider">Keys Ativas no Loader</span>
             <ShieldCheck className="h-4 w-4 text-[#db00ff]" />
@@ -105,7 +105,7 @@ export default function BotKeysPage() {
           <p className="text-[11px] text-zinc-500 mt-1 font-mono">Autorizadas para autenticação</p>
         </div>
 
-        <div className="rounded-[0.6rem] border border-white/5 bg-[#101012] p-5 shadow-sm hover:border-[#db00ff]/30 transition-all">
+        <div className="rounded-[0.6rem] border border-[#171819] bg-[#101010] p-5 shadow-sm hover:border-[#db00ff]/30 transition-all">
           <div className="flex items-center justify-between text-zinc-400 mb-2">
             <span className="text-xs font-semibold uppercase font-sans tracking-wider">Status da Conexão</span>
             <Sparkles className="h-4 w-4 text-[#db00ff]" />
@@ -125,15 +125,15 @@ export default function BotKeysPage() {
             placeholder="Buscar por Discord ID, Key, Tag de cliente ou plano..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="border-white/10 bg-[#101012] pl-10 text-white placeholder:text-zinc-600 font-mono text-xs rounded-[0.6rem] focus-visible:ring-2 focus-visible:ring-[#db00ff]/30 focus-visible:border-[#db00ff]"
+            className="border-[#171819] bg-[#101010] pl-10 text-white placeholder:text-zinc-600 font-mono text-xs rounded-[0.6rem] focus-visible:ring-2 focus-visible:ring-[#db00ff]/30 focus-visible:border-[#db00ff]"
           />
         </div>
         <Select value={statusFilter} onValueChange={setStatusFilter}>
-          <SelectTrigger className="w-full border-white/10 bg-[#101012] text-white sm:w-44 font-mono text-xs rounded-[0.6rem] focus:ring-2 focus:ring-[#db00ff]/30 focus:border-[#db00ff]">
+          <SelectTrigger className="w-full border-[#171819] bg-[#101010] text-white sm:w-44 font-mono text-xs rounded-[0.6rem] focus:ring-2 focus:ring-[#db00ff]/30 focus:border-[#db00ff]">
             <Filter className="mr-2 h-3.5 w-3.5 text-zinc-400" />
             <SelectValue />
           </SelectTrigger>
-          <SelectContent className="border-white/10 bg-[#101012] text-white">
+          <SelectContent className="border-[#171819] bg-[#101010] text-white">
             <SelectItem value="all">Todos os Status</SelectItem>
             <SelectItem value="active">Ativas</SelectItem>
             <SelectItem value="paused">Pausadas</SelectItem>

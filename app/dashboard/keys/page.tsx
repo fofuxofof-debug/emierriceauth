@@ -77,15 +77,15 @@ export default function KeysPage() {
             placeholder="Buscar por key, label, HWID ou Discord ID..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="border-white/10 bg-[#101012] pl-10 text-white placeholder:text-zinc-500 font-mono text-xs rounded-[0.6rem] focus-visible:ring-2 focus-visible:ring-[#db00ff]/30 focus-visible:border-[#db00ff]"
+            className="border-[#171819] bg-[#101010] pl-10 text-white placeholder:text-zinc-500 font-mono text-xs rounded-[0.6rem] focus-visible:ring-2 focus-visible:ring-[#db00ff]/30 focus-visible:border-[#db00ff]"
           />
         </div>
         <Select value={statusFilter} onValueChange={setStatusFilter}>
-          <SelectTrigger className="w-full border-white/10 bg-[#101012] text-white sm:w-44 font-mono text-xs rounded-[0.6rem] focus:ring-2 focus:ring-[#db00ff]/30 focus:border-[#db00ff]">
+          <SelectTrigger className="w-full border-[#171819] bg-[#101010] text-white sm:w-44 font-mono text-xs rounded-[0.6rem] focus:ring-2 focus:ring-[#db00ff]/30 focus:border-[#db00ff]">
             <Filter className="mr-2 h-3.5 w-3.5 text-zinc-400" />
             <SelectValue />
           </SelectTrigger>
-          <SelectContent className="border-white/10 bg-[#101012] text-white">
+          <SelectContent className="border-[#171819] bg-[#101010] text-white">
             <SelectItem value="all">Todos os Status</SelectItem>
             <SelectItem value="active">Ativas</SelectItem>
             <SelectItem value="paused">Pausadas</SelectItem>

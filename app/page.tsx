@@ -53,7 +53,7 @@ export default function HomePage() {
       : valPlans.find((p) => p.id === valSelectedPlan) || valPlans[1]
 
   return (
-    <div className="relative min-h-screen bg-[#09090b] text-[#fafafa] font-sans antialiased selection:bg-[#db00ff]/30 selection:text-white flex flex-col justify-between">
+    <div className="relative min-h-screen bg-[#0c0c0c] text-[#fafafa] font-sans antialiased selection:bg-[#db00ff]/30 selection:text-white flex flex-col justify-between">
       
       {/* Subtle Purple Ambient Lighting (Xerecao Style) */}
       <div
@@ -65,11 +65,11 @@ export default function HomePage() {
         className="pointer-events-none absolute right-0 top-1/3 -z-10 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_at_center,rgba(200,2,224,0.1),transparent_70%)] blur-[130px]"
       />
 
-      {/* ================= HEADER (XERECAO.COM STYLE) ================= */}
-      <header className="sticky z-20 top-0 backdrop-blur-md py-3.5 flex items-center border-b border-white/5 bg-[#09090b]/85 px-4 sm:px-8">
+      {/* ================= HEADER ================= */}
+      <header className="sticky z-20 top-0 backdrop-blur-md py-3.5 flex items-center border-b border-[#171819] bg-[#0c0c0c]/90 px-4 sm:px-8">
         <div className="max-w-7xl mx-auto w-full flex items-center justify-between gap-4">
           
-          {/* Logo & Verified Badge */}
+          {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#db00ff] text-white font-black text-lg shadow-[0_0_20px_rgba(219,0,255,0.45)] group-hover:scale-105 transition-transform duration-300">
               S
@@ -78,21 +78,8 @@ export default function HomePage() {
               <span className="font-bold tracking-tight text-lg text-white">
                 Smooth <span className="text-[#db00ff]">Store</span>
               </span>
-              <BadgeCheck className="h-5 w-5 text-blue-500 fill-blue-500/20" />
             </div>
           </Link>
-
-          {/* Central Search Bar (Xerecao Style) */}
-          <div className="hidden md:flex relative flex-1 max-w-md mx-6">
-            <Search className="h-4 w-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 pointer-events-none" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Buscar software ou jogo..."
-              className="w-full h-10 ps-10 pe-4 bg-white/5 border border-white/10 rounded-full text-xs text-white placeholder:text-zinc-500 focus:outline-none focus:border-[#db00ff] focus:ring-1 focus:ring-[#db00ff]/40 transition-all"
-            />
-          </div>
 
           {/* Action Buttons */}
           <div className="flex items-center gap-3">
@@ -100,7 +87,7 @@ export default function HomePage() {
               href="https://discord.gg/sswR4rK4r"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-[0.6rem] px-4 py-2 text-xs font-semibold text-zinc-300 bg-white/5 hover:text-white hover:bg-white/10 border border-white/10 transition-all hover:border-[#db00ff]/50"
+              className="inline-flex items-center gap-2 rounded-[0.6rem] px-4 py-2 text-xs font-semibold text-zinc-300 bg-[#101010] hover:text-white border border-[#171819] transition-all hover:border-[#db00ff]/50"
             >
               <MessageCircle className="h-4 w-4 text-[#db00ff]" />
               <span className="hidden sm:inline">Discord</span>
@@ -124,7 +111,7 @@ export default function HomePage() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Abrir Discord Oficial"
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/15 bg-[#101012]/95 text-[#db00ff] shadow-[0_0_30px_rgba(219,0,255,0.35)] backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:border-[#db00ff] active:scale-95 group"
+        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-2xl border border-[#171819] bg-[#101010]/95 text-[#db00ff] shadow-[0_0_30px_rgba(219,0,255,0.35)] backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:border-[#db00ff] active:scale-95 group"
       >
         <MessageCircle className="h-6 w-6 transition-transform duration-300 group-hover:rotate-12" />
       </a>
@@ -132,32 +119,11 @@ export default function HomePage() {
       {/* ================= MAIN CONTENT ================= */}
       <main className="flex-1 flex flex-col justify-center">
 
-        {/* ===== HERO SECTION (XERECAO MOTTO) ===== */}
-        <section className="container mx-auto px-4 py-16 sm:py-24 flex flex-col items-center justify-center text-center max-w-4xl">
-          
+        {/* ===== HERO SECTION ===== */}
+        <section className="container mx-auto px-4 py-20 sm:py-28 flex flex-col items-center justify-center text-center max-w-4xl">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
             <span className="text-[#db00ff]">SMOOTH</span> is not just a store but also a community
           </h1>
-
-          <p className="mt-5 text-sm sm:text-base text-zinc-400 max-w-xl font-normal leading-relaxed">
-            A melhor tecnologia para quem busca estabilidade, proteção avançada de HWID e entrega 100% automatizada no Discord.
-          </p>
-
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <a href="#loja" className="btn-primary text-sm h-11 px-6 rounded-[0.6rem]">
-              Ver produtos <ArrowRight className="h-4 w-4" />
-            </a>
-            <a
-              href="https://discord.gg/sswR4rK4r"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-secondary text-sm h-11 px-6 rounded-[0.6rem]"
-            >
-              <MessageCircle className="h-4 w-4 text-[#db00ff]" />
-              Entrar no Discord
-            </a>
-          </div>
-
         </section>
 
         {/* ===== CATEGORIAS POPULARES ===== */}
@@ -170,7 +136,7 @@ export default function HomePage() {
               className={`p-4 rounded-[0.6rem] border text-left flex items-center gap-3 cursor-pointer ${
                 activeGame === 'ff'
                   ? 'border-[#db00ff] bg-[#db00ff]/10 shadow-[0_0_20px_rgba(219,0,255,0.2)]'
-                  : 'border-white/5 bg-[#101012]'
+                  : 'border-[#171819] bg-[#101010]'
               }`}
             >
               <div className="h-10 w-10 rounded-lg bg-[#db00ff]/20 text-[#db00ff] flex items-center justify-center shrink-0">
@@ -187,7 +153,7 @@ export default function HomePage() {
               className={`p-4 rounded-[0.6rem] border text-left flex items-center gap-3 cursor-pointer ${
                 activeGame === 'val'
                   ? 'border-[#db00ff] bg-[#db00ff]/10 shadow-[0_0_20px_rgba(219,0,255,0.2)]'
-                  : 'border-white/5 bg-[#101012]'
+                  : 'border-[#171819] bg-[#101010]'
               }`}
             >
               <div className="h-10 w-10 rounded-lg bg-[#db00ff]/20 text-[#db00ff] flex items-center justify-center shrink-0">
@@ -199,7 +165,7 @@ export default function HomePage() {
               </div>
             </button>
 
-            <div className="p-4 rounded-[0.6rem] border border-white/5 bg-[#101012] flex items-center gap-3">
+            <div className="p-4 rounded-[0.6rem] border border-[#171819] bg-[#101010] flex items-center gap-3">
               <div className="h-10 w-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0">
                 <Zap className="h-5 w-5" />
               </div>
@@ -209,7 +175,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="p-4 rounded-[0.6rem] border border-white/5 bg-[#101012] flex items-center gap-3">
+            <div className="p-4 rounded-[0.6rem] border border-[#171819] bg-[#101010] flex items-center gap-3">
               <div className="h-10 w-10 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
                 <ShieldCheck className="h-5 w-5" />
               </div>
@@ -315,7 +281,7 @@ export default function HomePage() {
               </div>
 
               {/* Plan Selection & Checkout Card */}
-              <div className="lg:col-span-5 bg-[#09090b] rounded-[0.6rem] p-5 border border-white/10 flex flex-col justify-between">
+              <div className="lg:col-span-5 bg-[#0c0c0c] rounded-[0.6rem] p-5 border border-[#171819] flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-xs uppercase font-semibold tracking-wider text-zinc-400">
@@ -338,7 +304,7 @@ export default function HomePage() {
                               className={`p-3 rounded-[0.6rem] border text-left relative cursor-pointer ${
                                 isSelected
                                   ? 'border-[#db00ff] bg-[#db00ff]/10 shadow-[0_0_15px_rgba(219,0,255,0.25)]'
-                                  : 'border-white/10 bg-white/[0.02]'
+                                  : 'border-[#171819] bg-[#101010]'
                               }`}
                             >
                               {plan.badge && (
@@ -365,7 +331,7 @@ export default function HomePage() {
                               className={`p-3 rounded-[0.6rem] border text-left relative cursor-pointer ${
                                 isSelected
                                   ? 'border-[#db00ff] bg-[#db00ff]/10 shadow-[0_0_15px_rgba(219,0,255,0.25)]'
-                                  : 'border-white/10 bg-white/[0.02]'
+                                  : 'border-[#171819] bg-[#101010]'
                               } ${plan.id === 'val_uni' ? 'col-span-2' : ''}`}
                             >
                               {plan.badge && (
@@ -384,7 +350,7 @@ export default function HomePage() {
                         })}
                   </div>
 
-                  <div className="p-3 rounded-[0.6rem] bg-white/[0.02] border border-white/5 text-xs text-zinc-400 mb-5">
+                  <div className="p-3 rounded-[0.6rem] bg-[#101010] border border-[#171819] text-xs text-zinc-400 mb-5">
                     <p className="font-semibold text-white mb-1 flex items-center gap-1.5 text-[11px]">
                       <CreditCard className="h-3.5 w-3.5 text-[#db00ff]" />
                       Pagamento Automático:
@@ -445,7 +411,7 @@ export default function HomePage() {
       </main>
 
       {/* ================= FOOTER ================= */}
-      <footer className="border-t border-white/5 bg-[#09090b] px-4 py-8 text-zinc-500 text-xs">
+      <footer className="border-t border-[#171819] bg-[#0c0c0c] px-4 py-8 text-zinc-500 text-xs">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <div className="flex h-6 w-6 items-center justify-center rounded bg-[#db00ff] text-white font-bold text-xs">

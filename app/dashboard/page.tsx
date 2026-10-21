@@ -41,7 +41,7 @@ export default function DashboardPage() {
             </Button>
           </Link>
           <Link href="/dashboard/bot-keys">
-            <Button variant="outline" className="border-white/10 bg-[#101012] text-zinc-300 hover:text-white hover:border-[#db00ff]/40 font-mono text-xs uppercase tracking-wider rounded-[0.6rem] transition-all shadow-xs">
+            <Button variant="outline" className="border-[#171819] bg-[#101010] text-zinc-300 hover:text-white hover:border-[#db00ff]/40 font-mono text-xs uppercase tracking-wider rounded-[0.6rem] transition-all shadow-xs">
               <Bot className="mr-1.5 h-3.5 w-3.5 text-[#db00ff]" />
               Keys Bot
             </Button>
@@ -51,8 +51,8 @@ export default function DashboardPage() {
 
       {/* System Health Matrix Telemetry Box */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-        <div className="card-in hover-lift rounded-[0.6rem] border border-white/10 bg-[#101012] p-4 flex items-center gap-3.5 shadow-sm group hover:border-[#db00ff]/40 transition-all" style={{ animationDelay: '100ms' }}>
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-[#db00ff]/10 text-[#db00ff] group-hover:scale-110 transition-transform">
+        <div className="card-in hover-lift rounded-[0.6rem] border border-[#171819] bg-[#101010] p-4 flex items-center gap-3.5 shadow-sm group hover:border-[#db00ff]/40 transition-all" style={{ animationDelay: '100ms' }}>
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#171819] bg-[#db00ff]/10 text-[#db00ff] group-hover:scale-110 transition-transform">
             <Cpu className="h-4 w-4" />
           </div>
           <div>
@@ -61,8 +61,8 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        <div className="card-in hover-lift rounded-[0.6rem] border border-white/10 bg-[#101012] p-4 flex items-center gap-3.5 shadow-sm group hover:border-[#db00ff]/40 transition-all" style={{ animationDelay: '150ms' }}>
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-[#db00ff]/10 text-[#db00ff] group-hover:scale-110 transition-transform">
+        <div className="card-in hover-lift rounded-[0.6rem] border border-[#171819] bg-[#101010] p-4 flex items-center gap-3.5 shadow-sm group hover:border-[#db00ff]/40 transition-all" style={{ animationDelay: '150ms' }}>
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#171819] bg-[#db00ff]/10 text-[#db00ff] group-hover:scale-110 transition-transform">
             <Database className="h-4 w-4" />
           </div>
           <div>
@@ -71,8 +71,8 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        <div className="card-in hover-lift rounded-[0.6rem] border border-white/10 bg-[#101012] p-4 flex items-center gap-3.5 shadow-sm group hover:border-[#db00ff]/40 transition-all" style={{ animationDelay: '200ms' }}>
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-[#db00ff]/10 text-[#db00ff] group-hover:scale-110 transition-transform">
+        <div className="card-in hover-lift rounded-[0.6rem] border border-[#171819] bg-[#101010] p-4 flex items-center gap-3.5 shadow-sm group hover:border-[#db00ff]/40 transition-all" style={{ animationDelay: '200ms' }}>
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#171819] bg-[#db00ff]/10 text-[#db00ff] group-hover:scale-110 transition-transform">
             <ShieldCheck className="h-4 w-4" />
           </div>
           <div>
@@ -81,8 +81,8 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        <div className="card-in hover-lift rounded-[0.6rem] border border-white/10 bg-[#101012] p-4 flex items-center gap-3.5 shadow-sm group hover:border-[#db00ff]/40 transition-all" style={{ animationDelay: '250ms' }}>
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-[#db00ff]/10 text-[#db00ff] group-hover:scale-110 transition-transform">
+        <div className="card-in hover-lift rounded-[0.6rem] border border-[#171819] bg-[#101010] p-4 flex items-center gap-3.5 shadow-sm group hover:border-[#db00ff]/40 transition-all" style={{ animationDelay: '250ms' }}>
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#171819] bg-[#db00ff]/10 text-[#db00ff] group-hover:scale-110 transition-transform">
             <Activity className="h-4 w-4" />
           </div>
           <div>
@@ -93,7 +93,7 @@ export default function DashboardPage() {
       </div>
 
       {!statsResp ? (
-        <div className="flex items-center justify-center rounded-[0.6rem] border border-white/10 bg-[#101012] p-12 shadow-sm">
+        <div className="flex items-center justify-center rounded-[0.6rem] border border-[#171819] bg-[#101010] p-12 shadow-sm">
           <Loader2 className="h-6 w-6 animate-spin text-[#db00ff]" />
         </div>
       ) : (

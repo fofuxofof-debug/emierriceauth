@@ -71,14 +71,14 @@ export function DashboardShell({
   }
 
   return (
-    <div className="flex min-h-screen relative text-[#fafafa] bg-[#09090b]">
+    <div className="flex min-h-screen relative text-[#fafafa] bg-[#0c0c0c]">
       {/* Desktop Sidebar */}
       <aside
-        className="hidden w-64 flex-col border-r md:flex bg-[#0c0c0e] border-white/10 text-[#fafafa]"
+        className="hidden w-64 flex-col border-r md:flex bg-[#101010] border-[#171819] text-[#fafafa]"
       >
         <Link href="/dashboard" className="block">
           <div
-            className="flex h-16 items-center gap-3 border-b px-6 group cursor-pointer border-white/10"
+            className="flex h-16 items-center gap-3 border-b px-6 group cursor-pointer border-[#171819]"
           >
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#db00ff] text-white font-black text-sm shadow-[0_0_15px_rgba(219,0,255,0.4)] group-hover:scale-105 transition-transform duration-300">
               S
@@ -87,7 +87,6 @@ export function DashboardShell({
               <span className="text-base font-bold tracking-tight text-white transition-transform duration-300">
                 Smooth <span className="text-[#db00ff]">Store</span>
               </span>
-              <BadgeCheck className="h-4 w-4 text-blue-500 fill-blue-500/20" />
             </div>
           </div>
         </Link>
@@ -105,7 +104,7 @@ export function DashboardShell({
                 className={`nav-link relative flex items-center gap-3 rounded-[0.6rem] px-3 py-2 text-xs font-sans select-none card-in border-0 overflow-hidden ${
                   isActive
                     ? 'is-active bg-[#db00ff] text-white font-bold shadow-[0_0_20px_rgba(219,0,255,0.4)]'
-                    : 'text-zinc-400 font-medium bg-white/[0.02]'
+                    : 'text-zinc-400 font-medium bg-[#101010]'
                 }`}
               >
                 {isActive && (
@@ -132,7 +131,7 @@ export function DashboardShell({
         </nav>
 
         <div
-          className="border-t border-white/10 p-4 bg-[#09090b]"
+          className="border-t border-[#171819] p-4 bg-[#101010]"
         >
           <div className="mb-3 flex items-center gap-3 px-1">
             <div
@@ -148,7 +147,7 @@ export function DashboardShell({
           <Button
             variant="ghost"
             size="sm"
-            className="w-full justify-start gap-2 border border-white/10 bg-[#121215] text-zinc-400 hover:text-white hover:bg-white/10 font-sans font-semibold text-xs active:scale-[0.97] rounded-[0.6rem] shadow-xs"
+            className="w-full justify-start gap-2 border border-[#171819] bg-[#101010] text-zinc-400 hover:text-white hover:bg-white/5 font-sans font-semibold text-xs active:scale-[0.97] rounded-[0.6rem] shadow-xs"
             onClick={handleLogout}
           >
             <LogOut className="h-4 w-4" />
@@ -160,7 +159,7 @@ export function DashboardShell({
       {/* Mobile */}
       <div className="flex flex-1 flex-col">
         <header
-          className="flex h-16 items-center justify-between border-b px-4 md:hidden bg-[#0c0c0e] border-white/10"
+          className="flex h-16 items-center justify-between border-b px-4 md:hidden bg-[#101010] border-[#171819]"
         >
           <Link href="/dashboard" className="flex items-center gap-2">
             <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#db00ff] text-white font-extrabold text-xs shadow-xs">
@@ -177,7 +176,7 @@ export function DashboardShell({
 
         {mobileOpen && (
           <div
-            className="border-b p-3 md:hidden card-in bg-[#0c0c0e]/95 backdrop-blur-md border-white/10"
+            className="border-b p-3 md:hidden card-in bg-[#101010]/95 backdrop-blur-md border-[#171819]"
           >
             <nav className="flex flex-col gap-1.5">
               {navItems.map((item) => {
@@ -192,7 +191,7 @@ export function DashboardShell({
                     className={`nav-link relative flex items-center gap-3 rounded-[0.6rem] px-3 py-2 text-xs font-sans select-none border-0 overflow-hidden ${
                       isActive
                         ? 'is-active bg-[#db00ff] text-white font-bold shadow-[0_0_20px_rgba(219,0,255,0.4)]'
-                        : 'text-zinc-400 font-medium bg-white/[0.02]'
+                        : 'text-zinc-400 font-medium bg-[#101010]'
                     }`}
                   >
                     {isActive && (
@@ -217,12 +216,12 @@ export function DashboardShell({
               })}
             </nav>
             <div
-              className="mt-3 border-t pt-3 border-white/10"
+              className="mt-3 border-t pt-3 border-[#171819]"
             >
               <Button
                 variant="ghost"
                 size="sm"
-                className="w-full justify-start gap-2 border border-white/10 bg-[#121215] text-zinc-400 hover:text-white hover:bg-white/10 font-sans font-semibold text-xs rounded-[0.6rem]"
+                className="w-full justify-start gap-2 border border-[#171819] bg-[#101010] text-zinc-400 hover:text-white hover:bg-white/5 font-sans font-semibold text-xs rounded-[0.6rem]"
                 onClick={handleLogout}
               >
                 <LogOut className="h-4 w-4" />
@@ -232,7 +231,7 @@ export function DashboardShell({
           </div>
         )}
 
-        <main key={pathname} className="route-fade-in flex-1 overflow-auto p-4 md:p-8 bg-[#09090b]">
+        <main key={pathname} className="route-fade-in flex-1 overflow-auto p-4 md:p-8 bg-[#0c0c0c]">
           {children}
         </main>
       </div>
@@ -242,7 +241,7 @@ export function DashboardShell({
         <button
           onClick={toggleTheme}
           aria-label={dark ? 'Mudar para tema claro' : 'Mudar para tema escuro'}
-          className="theme-toggle group fixed bottom-5 right-5 z-50 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[#121215] text-white shadow-lg transition-all duration-500 hover:scale-110 active:scale-95 hover:border-[#db00ff]/50"
+          className="theme-toggle group fixed bottom-5 right-5 z-50 inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#171819] bg-[#101010] text-white shadow-lg transition-all duration-500 hover:scale-110 active:scale-95 hover:border-[#db00ff]/50"
         >
           <span className="relative inline-flex h-5 w-5 items-center justify-center overflow-hidden">
             <Sun

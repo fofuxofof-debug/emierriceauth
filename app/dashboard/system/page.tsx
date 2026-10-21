@@ -93,7 +93,7 @@ export default function SystemControlPage() {
       <div
         className={`rounded-[0.6rem] border p-6 sm:p-8 card-in transition-all duration-300 ${
           authEnabled
-            ? 'border-white/5 bg-[#101012] shadow-sm'
+            ? 'border-[#171819] bg-[#101010] shadow-sm'
             : 'border-red-500/30 bg-red-950/20 shadow-md'
         }`}
       >
@@ -134,7 +134,7 @@ export default function SystemControlPage() {
             disabled={isSaving}
             className={`font-sans font-semibold text-xs uppercase tracking-wider px-6 py-5 rounded-[0.6rem] cursor-pointer transition-all shadow-md ${
               authEnabled
-                ? 'border border-white/10 bg-[#16161a] hover:bg-white/10 text-white'
+                ? 'border border-[#171819] bg-[#101010] hover:bg-white/10 text-white'
                 : 'btn-primary'
             }`}
           >
@@ -145,7 +145,7 @@ export default function SystemControlPage() {
       </div>
 
       {/* MAINTENANCE MESSAGE INPUT */}
-      <div className="rounded-[0.6rem] border border-white/5 bg-[#101012] p-6 card-in shadow-sm">
+      <div className="rounded-[0.6rem] border border-[#171819] bg-[#101010] p-6 card-in shadow-sm">
         <h3 className="text-sm font-sans font-bold uppercase tracking-wider text-white mb-2">
           Mensagem de Manutenção / Pausa
         </h3>
@@ -157,7 +157,7 @@ export default function SystemControlPage() {
             value={maintenanceMessage}
             onChange={(e) => setMaintenanceMessage(e.target.value)}
             placeholder="Ex: Sistema em atualização de segurança. Retorno em breve."
-            className="flex-1 border-white/10 bg-[#141418] text-white placeholder:text-zinc-600 font-mono text-xs rounded-[0.6rem] focus-visible:ring-2 focus-visible:ring-[#db00ff]/30 focus-visible:border-[#db00ff]"
+            className="flex-1 border-[#171819] bg-[#101010] text-white placeholder:text-zinc-600 font-mono text-xs rounded-[0.6rem] focus-visible:ring-2 focus-visible:ring-[#db00ff]/30 focus-visible:border-[#db00ff]"
           />
           <Button
             onClick={() => handleSave()}
@@ -171,7 +171,7 @@ export default function SystemControlPage() {
       </div>
 
       {/* GAME STATUS GRID */}
-      <div className="rounded-[0.6rem] border border-white/5 bg-[#101012] p-6 card-in shadow-sm">
+      <div className="rounded-[0.6rem] border border-[#171819] bg-[#101010] p-6 card-in shadow-sm">
         <h3 className="text-sm font-sans font-bold uppercase tracking-wider text-white mb-2">
           Status Individual por Produto
         </h3>

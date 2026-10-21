@@ -37,7 +37,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="relative min-h-screen w-full flex flex-col items-center justify-center p-6 bg-[#09090b] text-[#fafafa] overflow-hidden font-sans">
+    <div className="relative min-h-screen w-full flex flex-col items-center justify-center p-6 bg-[#0c0c0c] text-[#fafafa] overflow-hidden font-sans">
       
       {/* Background Ambient Glow */}
       <div
@@ -49,7 +49,7 @@ export default function LoginPage() {
       <div className="absolute top-6 left-6 z-20">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 rounded-[0.6rem] border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold text-zinc-400 hover:text-white hover:border-[#db00ff]/40 transition-all backdrop-blur-md"
+          className="inline-flex items-center gap-2 rounded-[0.6rem] border border-[#171819] bg-[#101010] px-4 py-2 text-xs font-semibold text-zinc-400 hover:text-white hover:border-[#db00ff]/40 transition-all backdrop-blur-md"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           <span>Voltar para a Loja</span>
@@ -66,7 +66,6 @@ export default function LoginPage() {
           <div>
             <h1 className="text-2xl font-bold tracking-tight text-white flex items-center justify-center gap-1.5">
               Smooth <span className="text-[#db00ff]">Store</span>
-              <BadgeCheck className="h-5 w-5 text-blue-500 fill-blue-500/20" />
             </h1>
             <p className="text-xs text-zinc-400 font-medium mt-1">
               Painel de Controle & Gestão de Licenças
@@ -83,7 +82,7 @@ export default function LoginPage() {
               <Label htmlFor="username" className="text-xs text-zinc-400 uppercase tracking-wider font-semibold">
                 Usuário
               </Label>
-              <div className="flex items-center gap-3 rounded-[0.6rem] border border-white/10 bg-white/[0.03] px-4 py-3 transition-all duration-200 focus-within:border-[#db00ff] focus-within:ring-2 focus-within:ring-[#db00ff]/20">
+              <div className="flex items-center gap-3 rounded-[0.6rem] border border-[#171819] bg-[#101010] px-4 py-3 transition-all duration-200 focus-within:border-[#db00ff] focus-within:ring-2 focus-within:ring-[#db00ff]/20">
                 <User className="h-4 w-4 text-zinc-400 shrink-0" />
                 <input
                   id="username"
@@ -102,7 +101,7 @@ export default function LoginPage() {
               <Label htmlFor="password" className="text-xs text-zinc-400 uppercase tracking-wider font-semibold">
                 Senha
               </Label>
-              <div className="flex items-center gap-3 rounded-[0.6rem] border border-white/10 bg-white/[0.03] px-4 py-3 transition-all duration-200 focus-within:border-[#db00ff] focus-within:ring-2 focus-within:ring-[#db00ff]/20">
+              <div className="flex items-center gap-3 rounded-[0.6rem] border border-[#171819] bg-[#101010] px-4 py-3 transition-all duration-200 focus-within:border-[#db00ff] focus-within:ring-2 focus-within:ring-[#db00ff]/20">
                 <KeyRound className="h-4 w-4 text-zinc-400 shrink-0" />
                 <input
                   id="password"

@@ -107,7 +107,7 @@ export function KeysTable({
           return (
             <div
               key={key.id}
-              className="rounded-[0.6rem] border border-white/10 bg-[#101012] p-4 shadow-sm"
+              className="rounded-[0.6rem] border border-[#171819] bg-[#101010] p-4 shadow-sm"
             >
               <div className="flex items-start justify-between gap-3 mb-3">
                 <div className="min-w-0 flex-1">
@@ -177,11 +177,11 @@ export function KeysTable({
       </div>
 
       {/* ========= DESKTOP: table ========= */}
-      <div className="hidden md:block overflow-hidden rounded-[0.6rem] border border-white/10 bg-[#101012] shadow-sm">
+      <div className="hidden md:block overflow-hidden rounded-[0.6rem] border border-[#171819] bg-[#101010] shadow-sm">
         <div className="overflow-x-auto">
           <table className="w-full text-xs">
             <thead>
-              <tr className="border-b border-white/10 text-[11px] uppercase tracking-wider text-zinc-400 bg-white/[0.03] font-semibold">
+              <tr className="border-b border-[#171819] text-[11px] uppercase tracking-wider text-zinc-400 bg-[#101010] font-semibold">
                 <th className="px-4 py-3.5 text-left font-sans font-semibold">Key de Licença</th>
                 <th className="px-4 py-3.5 text-left font-sans font-semibold">Label / Cliente</th>
                 <th className="px-4 py-3.5 text-left font-sans font-semibold">Status</th>
@@ -191,7 +191,7 @@ export function KeysTable({
                 <th className="px-4 py-3.5 text-right font-sans font-semibold">Ações</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5">
+            <tbody className="divide-y divide-[#171819]">
               {keys.map((key) => {
                 const daysLeft = getDaysRemaining(key.expires_at)
                 const used = key.hwids?.length ?? 0

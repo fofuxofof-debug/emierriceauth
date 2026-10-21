@@ -80,11 +80,11 @@ function ProductCard({ p, idx, userCount }: { p: LoaderProduct; idx: number; use
 
   return (
     <div
-      className="card-in hover-lift relative overflow-hidden rounded-[0.6rem] border border-white/5 group bg-[#101012] shadow-sm hover:border-[#db00ff]/30 transition-all"
+      className="card-in hover-lift relative overflow-hidden rounded-[0.6rem] border border-[#171819] group bg-[#101010] shadow-sm hover:border-[#db00ff]/30 transition-all"
       style={{ animationDelay: `${idx * 100}ms` }}
     >
       <div
-        className="flex items-center gap-3 border-b border-white/5 px-5 py-3 relative bg-white/[0.02]"
+        className="flex items-center gap-3 border-b border-[#171819] px-5 py-3 relative bg-white/[0.02]"
       >
         <span
           className="inline-flex h-8 w-8 items-center justify-center rounded-[0.5rem] bg-[#db00ff]/10 text-[#db00ff] border border-[#db00ff]/20"
@@ -120,7 +120,7 @@ function ProductCard({ p, idx, userCount }: { p: LoaderProduct; idx: number; use
                   className={`px-3 py-2 rounded-[0.5rem] text-xs font-bold uppercase tracking-widest border font-mono ${
                     selected === v.id
                       ? 'bg-[#db00ff] text-white border-transparent shadow-[0_0_15px_rgba(219,0,255,0.4)]'
-                      : 'bg-[#141418] text-zinc-400 border-white/5'
+                      : 'bg-[#101010] text-zinc-400 border-[#171819]'
                   }`}
                 >
                   {v.name}
@@ -132,7 +132,7 @@ function ProductCard({ p, idx, userCount }: { p: LoaderProduct; idx: number; use
 
         <div
           key={variant.id}
-          className="row-in rounded-[0.5rem] border border-white/5 bg-white/[0.02] p-3 sm:p-4"
+          className="row-in rounded-[0.5rem] border border-[#171819] bg-white/[0.02] p-3 sm:p-4"
         >
           <p className="text-sm font-semibold text-white">{variant.name}</p>
           <p className="text-xs text-zinc-400 mt-1 leading-relaxed">{variant.description}</p>

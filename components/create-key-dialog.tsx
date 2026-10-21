@@ -78,7 +78,7 @@ export function CreateKeyDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="border border-white/10 bg-[#101012] text-white sm:max-w-md shadow-2xl rounded-[0.6rem]">
+      <DialogContent className="border border-[#171819] bg-[#101010] text-white sm:max-w-md shadow-2xl rounded-[0.6rem]">
         <DialogHeader>
           <DialogTitle className="text-white font-bold">Criar Nova Key</DialogTitle>
           <DialogDescription className="text-zinc-400">
@@ -92,10 +92,10 @@ export function CreateKeyDialog({
               Game
             </Label>
             <Select value={product} onValueChange={setProduct}>
-              <SelectTrigger className="border-white/10 bg-[#141418] text-white focus:ring-2 focus:ring-[#db00ff]/30 focus:border-[#db00ff] transition-all rounded-[0.6rem]">
+              <SelectTrigger className="border-[#171819] bg-[#101010] text-white focus:ring-2 focus:ring-[#db00ff]/30 focus:border-[#db00ff] transition-all rounded-[0.6rem]">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="border-white/10 bg-[#101012] text-white">
+              <SelectContent className="border-[#171819] bg-[#101010] text-white">
                 {GAMES.map((g) => (
                   <SelectItem
                     key={g.value}
@@ -115,7 +115,7 @@ export function CreateKeyDialog({
               value={user}
               onChange={(e) => setUser(e.target.value)}
               placeholder="ex: João Silva"
-              className="border-white/10 bg-[#141418] text-white placeholder:text-zinc-500 focus-visible:ring-2 focus-visible:ring-[#db00ff]/30 focus-visible:border-[#db00ff] rounded-[0.6rem]"
+              className="border-[#171819] bg-[#101010] text-white placeholder:text-zinc-500 focus-visible:ring-2 focus-visible:ring-[#db00ff]/30 focus-visible:border-[#db00ff] rounded-[0.6rem]"
             />
           </div>
 
@@ -127,7 +127,7 @@ export function CreateKeyDialog({
                 min={1}
                 value={maxDevices}
                 onChange={(e) => setMaxDevices(e.target.value)}
-                className="border-white/10 bg-[#141418] text-white focus-visible:ring-2 focus-visible:ring-[#db00ff]/30 focus-visible:border-[#db00ff] rounded-[0.6rem]"
+                className="border-[#171819] bg-[#101010] text-white focus-visible:ring-2 focus-visible:ring-[#db00ff]/30 focus-visible:border-[#db00ff] rounded-[0.6rem]"
               />
             </div>
             <div className="field-anim flex flex-col gap-2">
@@ -137,7 +137,7 @@ export function CreateKeyDialog({
                 min={1}
                 value={expiryDays}
                 onChange={(e) => setExpiryDays(e.target.value)}
-                className="border-white/10 bg-[#141418] text-white focus-visible:ring-2 focus-visible:ring-[#db00ff]/30 focus-visible:border-[#db00ff] rounded-[0.6rem]"
+                className="border-[#171819] bg-[#101010] text-white focus-visible:ring-2 focus-visible:ring-[#db00ff]/30 focus-visible:border-[#db00ff] rounded-[0.6rem]"
               />
             </div>
           </div>
@@ -148,7 +148,7 @@ export function CreateKeyDialog({
               value={discordId}
               onChange={(e) => setDiscordId(e.target.value)}
               placeholder="ex: 123456789012345678"
-              className="border-white/10 bg-[#141418] text-white placeholder:text-zinc-500 focus-visible:ring-2 focus-visible:ring-[#db00ff]/30 focus-visible:border-[#db00ff] rounded-[0.6rem]"
+              className="border-[#171819] bg-[#101010] text-white placeholder:text-zinc-500 focus-visible:ring-2 focus-visible:ring-[#db00ff]/30 focus-visible:border-[#db00ff] rounded-[0.6rem]"
             />
             <p className="text-[11px] text-zinc-500">
               Se preenchido, esse valor será usado como a própria key.

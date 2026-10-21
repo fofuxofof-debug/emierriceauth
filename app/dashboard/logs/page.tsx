@@ -17,7 +17,7 @@ export default function LogsPage() {
 
   return (
     <div className="flex flex-col gap-6 max-w-7xl mx-auto page-in">
-      <div className="border-b border-white/10 pb-6 card-in">
+      <div className="border-b border-[#171819] pb-6 card-in">
         <div className="flex items-center gap-2 mb-1">
           <span className="h-2 w-2 rounded-full bg-[#db00ff] animate-pulse" />
           <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#db00ff]">AUDITORIA E TELEMETRIA</span>
@@ -29,7 +29,7 @@ export default function LogsPage() {
       </div>
 
       {isLoading && (
-        <div className="flex items-center justify-center rounded-[0.6rem] border border-white/5 bg-[#101012] p-12 shadow-sm">
+        <div className="flex items-center justify-center rounded-[0.6rem] border border-[#171819] bg-[#101010] p-12 shadow-sm">
           <Loader2 className="h-6 w-6 animate-spin text-[#db00ff]" />
         </div>
       )}

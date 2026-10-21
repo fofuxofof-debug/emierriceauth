@@ -126,11 +126,11 @@ export default function ProductsPage() {
       {Object.entries(grouped).map(([cat, items], gi) => (
         <div
           key={cat}
-          className="card-in rounded-[0.6rem] border border-white/5 overflow-hidden shadow-sm bg-[#101012]"
+          className="card-in rounded-[0.6rem] border border-[#171819] overflow-hidden shadow-sm bg-[#101010]"
           style={{ animationDelay: `${gi * 60}ms` }}
         >
           <div
-            className="flex items-center justify-between border-b border-white/5 px-5 py-3 bg-white/[0.02]"
+            className="flex items-center justify-between border-b border-[#171819] px-5 py-3 bg-white/[0.02]"
           >
             <span className="text-xs font-bold uppercase tracking-widest text-[#db00ff] font-mono">{cat}</span>
             <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-mono">
@@ -138,7 +138,7 @@ export default function ProductsPage() {
             </span>
           </div>
 
-          <div className="divide-y divide-white/5">
+          <div className="divide-y divide-[#171819]">
             {items.map((p, i) => {
               const isEditing = editingId === p.id && draft
               return (
@@ -152,7 +152,7 @@ export default function ProductsPage() {
                       <select
                         value={draft!.category}
                         onChange={(e) => setDraft({ ...draft!, category: e.target.value })}
-                        className="rounded-[0.5rem] border border-white/10 bg-[#141418] px-2 py-1.5 text-xs text-white outline-none focus:border-[#db00ff]"
+                        className="rounded-[0.5rem] border border-[#171819] bg-[#101010] px-2 py-1.5 text-xs text-white outline-none focus:border-[#db00ff]"
                       >
                         {['Public', 'Private', 'Remote', 'Valorant'].map((c) => (
                           <option key={c} value={c}>
@@ -163,17 +163,17 @@ export default function ProductsPage() {
                       <input
                         value={draft!.name}
                         onChange={(e) => setDraft({ ...draft!, name: e.target.value })}
-                        className="flex-1 min-w-0 rounded-[0.5rem] border border-white/10 bg-[#141418] px-2 py-1.5 text-sm text-white outline-none focus:border-[#db00ff]"
+                        className="flex-1 min-w-0 rounded-[0.5rem] border border-[#171819] bg-[#101010] px-2 py-1.5 text-sm text-white outline-none focus:border-[#db00ff]"
                       />
                       <input
                         value={draft!.price}
                         onChange={(e) => setDraft({ ...draft!, price: e.target.value })}
-                        className="w-28 rounded-[0.5rem] border border-white/10 bg-[#141418] px-2 py-1.5 text-sm text-[#db00ff] outline-none focus:border-[#db00ff] font-mono font-bold"
+                        className="w-28 rounded-[0.5rem] border border-[#171819] bg-[#101010] px-2 py-1.5 text-sm text-[#db00ff] outline-none focus:border-[#db00ff] font-mono font-bold"
                       />
                       <input
                         value={draft!.period}
                         onChange={(e) => setDraft({ ...draft!, period: e.target.value })}
-                        className="w-24 rounded-[0.5rem] border border-white/10 bg-[#141418] px-2 py-1.5 text-sm text-zinc-400 outline-none focus:border-[#db00ff]"
+                        className="w-24 rounded-[0.5rem] border border-[#171819] bg-[#101010] px-2 py-1.5 text-sm text-zinc-400 outline-none focus:border-[#db00ff]"
                       />
                       <div className="flex gap-1">
                         <Button
