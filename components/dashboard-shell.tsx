@@ -102,31 +102,28 @@ export function DashboardShell({
                 key={item.href}
                 href={item.href}
                 style={{ animationDelay: `${idx * 25}ms` }}
-                className={`nav-link group relative flex items-center gap-3 rounded-[0.6rem] px-3 py-2 text-xs font-sans select-none card-in transition-all duration-300 border-0 overflow-hidden ${
+                className={`nav-link relative flex items-center gap-3 rounded-[0.6rem] px-3 py-2 text-xs font-sans select-none card-in border-0 overflow-hidden ${
                   isActive
                     ? 'is-active bg-[#db00ff] text-white font-bold shadow-[0_0_20px_rgba(219,0,255,0.4)]'
-                    : 'text-zinc-400 font-medium bg-white/[0.02] hover:bg-white/[0.06] hover:text-white hover:translate-x-1'
+                    : 'text-zinc-400 font-medium bg-white/[0.02]'
                 }`}
               >
-                {/* Left glowing accent indicator on hover & active */}
-                <span
-                  className={`absolute left-0 top-1/2 -translate-y-1/2 w-1 rounded-r-full transition-all duration-300 ease-out ${
-                    isActive
-                      ? 'h-4 bg-white opacity-100'
-                      : 'h-0 bg-[#db00ff] group-hover:h-3.5 group-hover:opacity-100 opacity-0'
-                  }`}
-                />
+                {isActive && (
+                  <span
+                    className="absolute left-0 top-1/2 -translate-y-1/2 w-1 rounded-r-full h-4 bg-white"
+                  />
+                )}
 
                 <div
-                  className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg transition-all duration-300 border-0 ${
+                  className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border-0 ${
                     isActive
-                      ? 'bg-white/20 text-white scale-100'
-                      : 'bg-white/5 text-zinc-400 group-hover:bg-[#db00ff] group-hover:text-white group-hover:scale-110'
+                      ? 'bg-white/20 text-white'
+                      : 'bg-white/5 text-zinc-400'
                   }`}
                 >
-                  <item.icon className="h-3.5 w-3.5 transition-transform duration-300" />
+                  <item.icon className="h-3.5 w-3.5" />
                 </div>
-                <span className={`text-xs tracking-wide transition-colors duration-200 ${isActive ? 'font-bold text-white' : 'text-zinc-400 group-hover:text-white'}`}>
+                <span className={`text-xs tracking-wide ${isActive ? 'font-bold text-white' : 'text-zinc-400'}`}>
                   {item.label}
                 </span>
               </Link>
@@ -192,29 +189,27 @@ export function DashboardShell({
                     key={item.href}
                     href={item.href}
                     onClick={() => setMobileOpen(false)}
-                    className={`nav-link group relative flex items-center gap-3 rounded-[0.6rem] px-3 py-2 text-xs font-sans select-none transition-all duration-300 border-0 overflow-hidden ${
+                    className={`nav-link relative flex items-center gap-3 rounded-[0.6rem] px-3 py-2 text-xs font-sans select-none border-0 overflow-hidden ${
                       isActive
                         ? 'is-active bg-[#db00ff] text-white font-bold shadow-[0_0_20px_rgba(219,0,255,0.4)]'
-                        : 'text-zinc-400 font-medium bg-white/[0.02] hover:bg-white/[0.06] hover:text-white'
+                        : 'text-zinc-400 font-medium bg-white/[0.02]'
                     }`}
                   >
-                    <span
-                      className={`absolute left-0 top-1/2 -translate-y-1/2 w-1 rounded-r-full transition-all duration-300 ease-out ${
-                        isActive
-                          ? 'h-4 bg-white opacity-100'
-                          : 'h-0 bg-[#db00ff] group-hover:h-3.5 group-hover:opacity-100 opacity-0'
-                      }`}
-                    />
+                    {isActive && (
+                      <span
+                        className="absolute left-0 top-1/2 -translate-y-1/2 w-1 rounded-r-full h-4 bg-white"
+                      />
+                    )}
                     <div
-                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg transition-all duration-300 border-0 ${
+                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border-0 ${
                         isActive
                           ? 'bg-white/20 text-white'
-                          : 'bg-white/5 text-zinc-400 group-hover:bg-[#db00ff] group-hover:text-white'
+                          : 'bg-white/5 text-zinc-400'
                       }`}
                     >
                       <item.icon className="h-3.5 w-3.5" />
                     </div>
-                    <span className={`text-xs tracking-wide transition-colors duration-200 ${isActive ? 'font-bold text-white' : 'text-zinc-400 group-hover:text-white'}`}>
+                    <span className={`text-xs tracking-wide ${isActive ? 'font-bold text-white' : 'text-zinc-400'}`}>
                       {item.label}
                     </span>
                   </Link>

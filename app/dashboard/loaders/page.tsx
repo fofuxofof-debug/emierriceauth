@@ -117,10 +117,10 @@ function ProductCard({ p, idx, userCount }: { p: LoaderProduct; idx: number; use
                 <button
                   key={v.id}
                   onClick={() => setSelected(v.id)}
-                  className={`px-3 py-2 rounded-[0.5rem] text-xs font-bold uppercase tracking-widest border transition-all duration-300 font-mono ${
+                  className={`px-3 py-2 rounded-[0.5rem] text-xs font-bold uppercase tracking-widest border font-mono ${
                     selected === v.id
                       ? 'bg-[#db00ff] text-white border-transparent shadow-[0_0_15px_rgba(219,0,255,0.4)]'
-                      : 'bg-[#141418] text-zinc-400 border-white/5 hover:text-white hover:bg-white/5'
+                      : 'bg-[#141418] text-zinc-400 border-white/5'
                   }`}
                 >
                   {v.name}

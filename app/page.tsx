@@ -167,10 +167,10 @@ export default function HomePage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <button
               onClick={() => setActiveGame('ff')}
-              className={`p-4 rounded-[0.6rem] border text-left flex items-center gap-3 transition-all cursor-pointer ${
+              className={`p-4 rounded-[0.6rem] border text-left flex items-center gap-3 cursor-pointer ${
                 activeGame === 'ff'
                   ? 'border-[#db00ff] bg-[#db00ff]/10 shadow-[0_0_20px_rgba(219,0,255,0.2)]'
-                  : 'border-white/5 bg-[#101012] hover:border-white/20'
+                  : 'border-white/5 bg-[#101012]'
               }`}
             >
               <div className="h-10 w-10 rounded-lg bg-[#db00ff]/20 text-[#db00ff] flex items-center justify-center shrink-0">
@@ -184,10 +184,10 @@ export default function HomePage() {
 
             <button
               onClick={() => setActiveGame('val')}
-              className={`p-4 rounded-[0.6rem] border text-left flex items-center gap-3 transition-all cursor-pointer ${
+              className={`p-4 rounded-[0.6rem] border text-left flex items-center gap-3 cursor-pointer ${
                 activeGame === 'val'
                   ? 'border-[#db00ff] bg-[#db00ff]/10 shadow-[0_0_20px_rgba(219,0,255,0.2)]'
-                  : 'border-white/5 bg-[#101012] hover:border-white/20'
+                  : 'border-white/5 bg-[#101012]'
               }`}
             >
               <div className="h-10 w-10 rounded-lg bg-[#db00ff]/20 text-[#db00ff] flex items-center justify-center shrink-0">
@@ -335,10 +335,10 @@ export default function HomePage() {
                               key={plan.id}
                               type="button"
                               onClick={() => setFfSelectedPlan(plan.id)}
-                              className={`p-3 rounded-[0.6rem] border text-left transition-all relative cursor-pointer ${
+                              className={`p-3 rounded-[0.6rem] border text-left relative cursor-pointer ${
                                 isSelected
                                   ? 'border-[#db00ff] bg-[#db00ff]/10 shadow-[0_0_15px_rgba(219,0,255,0.25)]'
-                                  : 'border-white/10 bg-white/[0.02] hover:border-white/20'
+                                  : 'border-white/10 bg-white/[0.02]'
                               }`}
                             >
                               {plan.badge && (
@@ -362,10 +362,10 @@ export default function HomePage() {
                               key={plan.id}
                               type="button"
                               onClick={() => setValSelectedPlan(plan.id)}
-                              className={`p-3 rounded-[0.6rem] border text-left transition-all relative cursor-pointer ${
+                              className={`p-3 rounded-[0.6rem] border text-left relative cursor-pointer ${
                                 isSelected
                                   ? 'border-[#db00ff] bg-[#db00ff]/10 shadow-[0_0_15px_rgba(219,0,255,0.25)]'
-                                  : 'border-white/10 bg-white/[0.02] hover:border-white/20'
+                                  : 'border-white/10 bg-white/[0.02]'
                               } ${plan.id === 'val_uni' ? 'col-span-2' : ''}`}
                             >
                               {plan.badge && (
