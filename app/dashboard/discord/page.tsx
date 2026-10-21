@@ -176,10 +176,10 @@ export default function DiscordPage() {
 
       {/* ===== Bot Token ===== */}
       <div
-        className="card-in rounded-2xl border border-zinc-800 overflow-hidden shadow-sm bg-[#0e0e11]"
+        className="card-in rounded-[0.6rem] border border-white/5 overflow-hidden shadow-sm bg-[#101012]"
       >
         <div
-          className="flex items-center gap-2 border-b border-zinc-800 px-5 py-3 text-xs font-bold uppercase tracking-widest text-zinc-300 bg-[#141418] font-mono"
+          className="flex items-center gap-2 border-b border-white/5 px-5 py-3 text-xs font-bold uppercase tracking-widest text-[#db00ff] bg-white/[0.02] font-mono"
         >
           <Bot className="h-3.5 w-3.5" />
           Bot Token
@@ -187,10 +187,10 @@ export default function DiscordPage() {
 
         <div className="p-5 sm:p-6 flex flex-col gap-4">
           {/* Status atual */}
-          <div className="flex items-center gap-3 rounded-lg border border-zinc-800 bg-[#141418] px-4 py-3">
+          <div className="flex items-center gap-3 rounded-[0.6rem] border border-white/5 bg-white/[0.02] px-4 py-3">
             {botStatus.has ? (
               <>
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white border border-white/20">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#db00ff]/15 text-[#db00ff] border border-[#db00ff]/30">
                   <ShieldCheck className="h-4 w-4" />
                 </span>
                 <div className="flex-1 min-w-0">
@@ -198,7 +198,7 @@ export default function DiscordPage() {
                   <p className="text-xs text-zinc-400 font-mono">
                     Origem: <span className="text-zinc-200">{botStatus.source === 'env' ? '.env' : 'runtime'}</span>
                     <span className="mx-1.5 text-zinc-600">·</span>
-                    <span className="text-zinc-200">{botStatus.preview}</span>
+                    <span className="text-[#db00ff]">{botStatus.preview}</span>
                   </p>
                 </div>
               </>
@@ -210,7 +210,7 @@ export default function DiscordPage() {
                 <div className="flex-1">
                   <p className="text-sm font-semibold text-white">Sem token configurado</p>
                   <p className="text-xs text-zinc-400 font-mono">
-                    Defina <span className="text-white">DISCORD_BOT_TOKEN</span> no <span className="text-white">.env.local</span> ou cole abaixo.
+                    Defina <span className="text-[#db00ff]">DISCORD_BOT_TOKEN</span> no <span className="text-white">.env.local</span> ou cole abaixo.
                   </p>
                 </div>
               </>
@@ -223,7 +223,7 @@ export default function DiscordPage() {
               Cole novo token (override em runtime)
             </label>
             <div className="flex gap-2">
-              <div className="flex-1 flex items-center gap-2 rounded-lg border border-zinc-800 bg-[#141418] px-3 py-2.5 focus-within:border-white/50 focus-within:ring-1 focus-within:ring-white/20">
+              <div className="flex-1 flex items-center gap-2 rounded-[0.6rem] border border-white/10 bg-[#141418] px-3 py-2.5 focus-within:border-[#db00ff] focus-within:ring-1 focus-within:ring-[#db00ff]/30">
                 <input
                   type={showToken ? 'text' : 'password'}
                   value={botInput}
@@ -250,9 +250,9 @@ export default function DiscordPage() {
           {/* Mensagem flash */}
           {botMessage && (
             <div
-              className={`text-xs px-3 py-2 rounded-lg border font-mono ${
+              className={`text-xs px-3 py-2 rounded-[0.6rem] border font-mono ${
                 botMessage.type === 'ok'
-                  ? 'border-white/30 bg-white/10 text-white'
+                  ? 'border-[#db00ff]/40 bg-[#db00ff]/10 text-[#db00ff]'
                   : 'border-red-500/30 bg-red-950/20 text-red-400'
               }`}
             >
@@ -264,7 +264,7 @@ export default function DiscordPage() {
             <Button
               onClick={handleTestBot}
               disabled={botSaving}
-              className="bg-[#141418] border border-zinc-800 text-zinc-300 hover:bg-zinc-800 hover:text-white disabled:opacity-50"
+              className="bg-[#141418] border border-white/10 text-zinc-300 hover:bg-white/10 hover:text-white rounded-[0.6rem] disabled:opacity-50"
             >
               <Send className="h-4 w-4 mr-2" />
               Testar
@@ -272,7 +272,7 @@ export default function DiscordPage() {
             <Button
               onClick={handleSaveBot}
               disabled={botSaving || !botInput.trim()}
-              className="bg-white text-black hover:bg-zinc-200 font-bold disabled:opacity-50 shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+              className="btn-primary flex items-center justify-center font-bold disabled:opacity-50"
             >
               <Save className="h-4 w-4 mr-2" />
               Salvar token
@@ -283,11 +283,11 @@ export default function DiscordPage() {
 
       {/* ===== Webhook ===== */}
       <div
-        className="card-in rounded-2xl border border-zinc-800 overflow-hidden shadow-sm bg-[#0e0e11]"
+        className="card-in rounded-[0.6rem] border border-white/5 overflow-hidden shadow-sm bg-[#101012]"
         style={{ animationDelay: '60ms' }}
       >
         <div
-          className="flex items-center gap-2 border-b border-zinc-800 px-5 py-3 text-xs font-bold uppercase tracking-widest text-zinc-300 bg-[#141418] font-mono"
+          className="flex items-center gap-2 border-b border-white/5 px-5 py-3 text-xs font-bold uppercase tracking-widest text-[#db00ff] bg-white/[0.02] font-mono"
         >
           <Webhook className="h-3.5 w-3.5" />
           Webhook
@@ -303,7 +303,7 @@ export default function DiscordPage() {
               value={s.webhook_url}
               placeholder="https://discord.com/api/webhooks/..."
               onChange={(e) => update('webhook_url', e.target.value)}
-              className="rounded-lg border border-zinc-800 bg-[#141418] px-3 py-2.5 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-white/50 focus:ring-1 focus:ring-white/20 font-mono"
+              className="rounded-[0.6rem] border border-white/10 bg-[#141418] px-3 py-2.5 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-[#db00ff] focus:ring-1 focus:ring-[#db00ff]/30 font-mono"
             />
           </div>
 
@@ -317,7 +317,7 @@ export default function DiscordPage() {
                 value={s.channel_id}
                 placeholder="123456789012345678"
                 onChange={(e) => update('channel_id', e.target.value)}
-                className="rounded-lg border border-zinc-800 bg-[#141418] px-3 py-2.5 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-white/50 focus:ring-1 focus:ring-white/20 font-mono"
+                className="rounded-[0.6rem] border border-white/10 bg-[#141418] px-3 py-2.5 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-[#db00ff] focus:ring-1 focus:ring-[#db00ff]/30 font-mono"
               />
             </div>
 
@@ -330,13 +330,13 @@ export default function DiscordPage() {
                   type="color"
                   value={s.embed_color}
                   onChange={(e) => update('embed_color', e.target.value)}
-                  className="h-10 w-12 cursor-pointer rounded-lg border border-zinc-800 bg-[#141418]"
+                  className="h-10 w-12 cursor-pointer rounded-[0.6rem] border border-white/10 bg-[#141418]"
                 />
                 <input
                   type="text"
                   value={s.embed_color}
                   onChange={(e) => update('embed_color', e.target.value)}
-                  className="flex-1 rounded-lg border border-zinc-800 bg-[#141418] px-3 py-2.5 text-sm text-white outline-none focus:border-white/50 focus:ring-1 focus:ring-white/20 font-mono"
+                  className="flex-1 rounded-[0.6rem] border border-white/10 bg-[#141418] px-3 py-2.5 text-sm text-white outline-none focus:border-[#db00ff] focus:ring-1 focus:ring-[#db00ff]/30 font-mono"
                 />
               </div>
             </div>
@@ -346,14 +346,14 @@ export default function DiscordPage() {
             <Button
               onClick={handleTest}
               disabled={testing || !s.webhook_url}
-              className="bg-[#141418] border border-zinc-800 text-zinc-300 hover:bg-zinc-800 hover:text-white disabled:opacity-50"
+              className="bg-[#141418] border border-white/10 text-zinc-300 hover:bg-white/10 hover:text-white rounded-[0.6rem] disabled:opacity-50"
             >
               <Send className="h-4 w-4 mr-2" />
               {testing ? 'Enviando...' : testStatus === 'ok' ? 'Enviado!' : testStatus === 'err' ? 'Falhou' : 'Enviar teste'}
             </Button>
             <Button
               onClick={handleSave}
-              className="bg-white text-black hover:bg-zinc-200 font-bold shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+              className="btn-primary flex items-center justify-center font-bold"
             >
               {saved ? <Check className="h-4 w-4 mr-2" /> : <Save className="h-4 w-4 mr-2" />}
               {saved ? 'Salvo' : 'Salvar'}
@@ -364,17 +364,17 @@ export default function DiscordPage() {
 
       {/* ===== Notificações toggles ===== */}
       <div
-        className="card-in rounded-2xl border border-zinc-800 overflow-hidden shadow-sm bg-[#0e0e11]"
+        className="card-in rounded-[0.6rem] border border-white/5 overflow-hidden shadow-sm bg-[#101012]"
         style={{ animationDelay: '120ms' }}
       >
         <div
-          className="flex items-center gap-2 border-b border-zinc-800 px-5 py-3 text-xs font-bold uppercase tracking-widest text-zinc-300 bg-[#141418] font-mono"
+          className="flex items-center gap-2 border-b border-white/5 px-5 py-3 text-xs font-bold uppercase tracking-widest text-[#db00ff] bg-white/[0.02] font-mono"
         >
           <Bell className="h-3.5 w-3.5" />
           Notificações
         </div>
 
-        <div className="divide-y divide-zinc-800">
+        <div className="divide-y divide-white/5">
           {toggles.map((t, i) => {
             const enabled = !!s[t.k]
             return (
@@ -390,7 +390,7 @@ export default function DiscordPage() {
                 <button
                   onClick={() => update(t.k, !enabled as any)}
                   className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors duration-300 ${
-                    enabled ? 'bg-white shadow-[0_0_10px_rgba(255,255,255,0.4)]' : 'bg-zinc-800 border border-zinc-700'
+                    enabled ? 'bg-[#db00ff] shadow-[0_0_10px_rgba(219,0,255,0.5)]' : 'bg-zinc-800 border border-zinc-700'
                   }`}
                   aria-pressed={enabled}
                 >

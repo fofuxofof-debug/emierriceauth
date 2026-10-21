@@ -52,18 +52,18 @@ export default function KeysPage() {
 
   return (
     <div className="flex flex-col gap-6 max-w-7xl mx-auto">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-zinc-800 pb-6 card-in">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-white/10 pb-6 card-in">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="h-2 w-2 rounded-full bg-white" />
-            <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-zinc-400">GERENCIADOR DE LICENÇAS</span>
+            <span className="h-2 w-2 rounded-full bg-[#db00ff] animate-pulse" />
+            <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[#db00ff]">GERENCIADOR DE LICENÇAS</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-sans">Keys & Clientes</h1>
           <p className="text-xs sm:text-sm text-zinc-400 font-sans font-medium">Emissão, bloqueio e acompanhamento de licenças ativas</p>
         </div>
         <Button
           onClick={() => setShowCreate(true)}
-          className="bg-white text-black hover:bg-zinc-200 font-sans font-bold text-xs uppercase tracking-wider rounded-xl cursor-pointer hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,255,255,0.25)]"
+          className="btn-primary rounded-[0.6rem] text-xs uppercase tracking-wider font-bold"
         >
           <Plus className="mr-1.5 h-3.5 w-3.5" />
           Nova Key
@@ -77,15 +77,15 @@ export default function KeysPage() {
             placeholder="Buscar por key, label, HWID ou Discord ID..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="border-zinc-800 bg-[#0e0e11] pl-10 text-white placeholder:text-zinc-600 font-mono text-xs rounded-xl focus-visible:ring-2 focus-visible:ring-white/20 focus-visible:border-white/40"
+            className="border-white/10 bg-[#101012] pl-10 text-white placeholder:text-zinc-500 font-mono text-xs rounded-[0.6rem] focus-visible:ring-2 focus-visible:ring-[#db00ff]/30 focus-visible:border-[#db00ff]"
           />
         </div>
         <Select value={statusFilter} onValueChange={setStatusFilter}>
-          <SelectTrigger className="w-full border-zinc-800 bg-[#0e0e11] text-white sm:w-44 font-mono text-xs rounded-xl focus:ring-2 focus:ring-white/20 focus:border-white/40">
+          <SelectTrigger className="w-full border-white/10 bg-[#101012] text-white sm:w-44 font-mono text-xs rounded-[0.6rem] focus:ring-2 focus:ring-[#db00ff]/30 focus:border-[#db00ff]">
             <Filter className="mr-2 h-3.5 w-3.5 text-zinc-400" />
             <SelectValue />
           </SelectTrigger>
-          <SelectContent className="border-zinc-800 bg-[#0e0e11] text-white">
+          <SelectContent className="border-white/10 bg-[#101012] text-white">
             <SelectItem value="all">Todos os Status</SelectItem>
             <SelectItem value="active">Ativas</SelectItem>
             <SelectItem value="paused">Pausadas</SelectItem>

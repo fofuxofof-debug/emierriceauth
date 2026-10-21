@@ -3,13 +3,13 @@ import { formatDate } from '@/lib/keys'
 import { CheckCircle, XCircle, RotateCcw, Ban, Key, Clock, Monitor, AlertTriangle, Pause } from 'lucide-react'
 
 const eventConfig: Record<string, { icon: typeof CheckCircle; color: string; label: string }> = {
-  auth_success:    { icon: CheckCircle,    color: 'text-white',     label: 'Auth OK' },
+  auth_success:    { icon: CheckCircle,    color: 'text-[#db00ff]', label: 'Auth OK' },
   auth_fail:       { icon: XCircle,        color: 'text-zinc-400',  label: 'Auth Falhou' },
   hwid_reset:      { icon: RotateCcw,      color: 'text-zinc-300',  label: 'HWID Reset' },
   key_banned:      { icon: Ban,            color: 'text-zinc-400',  label: 'Key Banida' },
   key_paused:      { icon: Pause,          color: 'text-zinc-400',  label: 'Key Pausada' },
-  key_reactivated: { icon: CheckCircle,    color: 'text-white',     label: 'Key Reativada' },
-  key_created:     { icon: Key,            color: 'text-white',     label: 'Key Criada' },
+  key_reactivated: { icon: CheckCircle,    color: 'text-[#db00ff]', label: 'Key Reativada' },
+  key_created:     { icon: Key,            color: 'text-[#db00ff]', label: 'Key Criada' },
   key_deleted:     { icon: XCircle,        color: 'text-zinc-500',  label: 'Key Deletada' },
   key_expired:     { icon: Clock,          color: 'text-zinc-500',  label: 'Key Expirada' },
   hwid_mismatch:   { icon: Monitor,        color: 'text-zinc-400',  label: 'HWID Mismatch' },
@@ -19,19 +19,19 @@ const eventConfig: Record<string, { icon: typeof CheckCircle; color: string; lab
 export function RecentActivity({ logs }: { logs: AuthLog[] }) {
   if (logs.length === 0) {
     return (
-      <div className="card-in rounded-2xl border border-zinc-800 bg-[#0e0e11] p-8 text-center shadow-sm" style={{ animationDelay: '500ms' }}>
+      <div className="card-in rounded-[0.6rem] border border-white/5 bg-[#101012] p-8 text-center shadow-sm" style={{ animationDelay: '500ms' }}>
         <p className="text-sm text-zinc-400 font-sans font-medium">Nenhuma atividade recente registrada.</p>
       </div>
     )
   }
 
   return (
-    <div className="card-in rounded-2xl border border-zinc-800 bg-[#0e0e11] shadow-sm overflow-hidden" style={{ animationDelay: '500ms' }}>
-      <div className="border-b border-zinc-800 p-4 sm:p-5 flex items-center justify-between bg-[#141418]">
+    <div className="card-in rounded-[0.6rem] border border-white/5 bg-[#101012] shadow-sm overflow-hidden" style={{ animationDelay: '500ms' }}>
+      <div className="border-b border-white/5 p-4 sm:p-5 flex items-center justify-between bg-white/[0.02]">
         <h2 className="text-sm sm:text-base font-sans font-bold text-white uppercase tracking-wider">Atividade Recente</h2>
-        <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-zinc-400">FEED EM TEMPO REAL</span>
+        <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[#db00ff]">FEED EM TEMPO REAL</span>
       </div>
-      <div className="divide-y divide-zinc-800">
+      <div className="divide-y divide-white/5">
         {logs.map((log) => {
           const config = eventConfig[log.event_type] ?? {
             icon: CheckCircle,
@@ -40,8 +40,8 @@ export function RecentActivity({ logs }: { logs: AuthLog[] }) {
           }
           const Icon = config.icon
           return (
-            <div key={log.id} className="flex items-start sm:items-center gap-3 sm:gap-4 p-3.5 sm:p-4 hover:bg-zinc-900/40 transition-colors">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-zinc-800 bg-[#141418] text-white">
+            <div key={log.id} className="flex items-start sm:items-center gap-3 sm:gap-4 p-3.5 sm:p-4 hover:bg-white/[0.02] transition-colors">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[0.5rem] border border-white/10 bg-[#16161a] text-white">
                 <Icon className={`h-4 w-4 ${config.color}`} />
               </div>
               <div className="flex-1 min-w-0">

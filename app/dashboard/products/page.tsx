@@ -108,14 +108,14 @@ export default function ProductsPage() {
         </div>
         <div className="flex items-center gap-2">
           {saved && (
-            <span className="inline-flex items-center gap-1 text-xs text-green-600">
+            <span className="inline-flex items-center gap-1 text-xs text-[#db00ff] font-mono">
               <Check className="h-3 w-3" />
               Salvo
             </span>
           )}
           <Button
             onClick={addNew}
-            className="button-shine bg-zinc-900 text-white hover:bg-black hover:scale-[1.02] active:scale-[0.97]"
+            className="btn-primary"
           >
             <Plus className="h-4 w-4 mr-2" />
             Novo produto
@@ -126,25 +126,25 @@ export default function ProductsPage() {
       {Object.entries(grouped).map(([cat, items], gi) => (
         <div
           key={cat}
-          className="card-in rounded-2xl border border-border overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.03)] bg-card"
+          className="card-in rounded-[0.6rem] border border-white/5 overflow-hidden shadow-sm bg-[#101012]"
           style={{ animationDelay: `${gi * 60}ms` }}
         >
           <div
-            className="flex items-center justify-between border-b border-border px-5 py-3 bg-secondary"
+            className="flex items-center justify-between border-b border-white/5 px-5 py-3 bg-white/[0.02]"
           >
-            <span className="text-xs font-bold uppercase tracking-widest text-foreground">{cat}</span>
-            <span className="text-[10px] uppercase tracking-widest text-muted-foreground">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#db00ff] font-mono">{cat}</span>
+            <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-mono">
               {items.length} plano{items.length === 1 ? '' : 's'}
             </span>
           </div>
 
-          <div className="divide-y divide-border">
+          <div className="divide-y divide-white/5">
             {items.map((p, i) => {
               const isEditing = editingId === p.id && draft
               return (
                 <div
                   key={p.id}
-                  className="row-in flex flex-col sm:flex-row sm:items-center gap-3 px-5 py-4"
+                  className="row-in flex flex-col sm:flex-row sm:items-center gap-3 px-5 py-4 hover:bg-white/[0.02] transition-colors"
                   style={{ animationDelay: `${i * 40}ms` }}
                 >
                   {isEditing ? (
@@ -152,7 +152,7 @@ export default function ProductsPage() {
                       <select
                         value={draft!.category}
                         onChange={(e) => setDraft({ ...draft!, category: e.target.value })}
-                        className="rounded-lg border border-border bg-secondary px-2 py-1.5 text-xs text-foreground outline-none focus:border-foreground/40"
+                        className="rounded-[0.5rem] border border-white/10 bg-[#141418] px-2 py-1.5 text-xs text-white outline-none focus:border-[#db00ff]"
                       >
                         {['Public', 'Private', 'Remote', 'Valorant'].map((c) => (
                           <option key={c} value={c}>
@@ -163,23 +163,23 @@ export default function ProductsPage() {
                       <input
                         value={draft!.name}
                         onChange={(e) => setDraft({ ...draft!, name: e.target.value })}
-                        className="flex-1 min-w-0 rounded-lg border border-border bg-secondary px-2 py-1.5 text-sm text-foreground outline-none focus:border-foreground/40"
+                        className="flex-1 min-w-0 rounded-[0.5rem] border border-white/10 bg-[#141418] px-2 py-1.5 text-sm text-white outline-none focus:border-[#db00ff]"
                       />
                       <input
                         value={draft!.price}
                         onChange={(e) => setDraft({ ...draft!, price: e.target.value })}
-                        className="w-28 rounded-lg border border-border bg-secondary px-2 py-1.5 text-sm text-foreground outline-none focus:border-foreground/40 font-mono"
+                        className="w-28 rounded-[0.5rem] border border-white/10 bg-[#141418] px-2 py-1.5 text-sm text-[#db00ff] outline-none focus:border-[#db00ff] font-mono font-bold"
                       />
                       <input
                         value={draft!.period}
                         onChange={(e) => setDraft({ ...draft!, period: e.target.value })}
-                        className="w-24 rounded-lg border border-border bg-secondary px-2 py-1.5 text-sm text-muted-foreground outline-none focus:border-foreground/40"
+                        className="w-24 rounded-[0.5rem] border border-white/10 bg-[#141418] px-2 py-1.5 text-sm text-zinc-400 outline-none focus:border-[#db00ff]"
                       />
                       <div className="flex gap-1">
                         <Button
                           size="icon"
                           onClick={saveEdit}
-                          className="h-8 w-8 bg-foreground text-background hover:opacity-90"
+                          className="h-8 w-8 btn-primary"
                         >
                           <Save className="h-3.5 w-3.5" />
                         </Button>
@@ -187,7 +187,7 @@ export default function ProductsPage() {
                           size="icon"
                           variant="ghost"
                           onClick={cancelEdit}
-                          className="h-8 w-8 text-muted-foreground hover:text-foreground"
+                          className="h-8 w-8 text-zinc-400 hover:text-white"
                         >
                           <X className="h-3.5 w-3.5" />
                         </Button>
@@ -196,26 +196,26 @@ export default function ProductsPage() {
                   ) : (
                     <>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-semibold text-foreground">{p.name}</p>
-                        <p className="text-[11px] text-muted-foreground mt-0.5 uppercase tracking-widest">
+                        <p className="text-sm font-semibold text-white">{p.name}</p>
+                        <p className="text-[11px] text-zinc-400 mt-0.5 uppercase tracking-widest font-mono">
                           {p.category}
                         </p>
                       </div>
                       <div className="flex items-baseline gap-1">
                         <span
-                          className="text-lg font-black text-foreground tabular-nums"
+                          className="text-lg font-black text-white tabular-nums"
                           style={{ fontFamily: "var(--font-jetbrains-mono), 'JetBrains Mono', monospace" }}
                         >
                           {p.price}
                         </span>
-                        <span className="text-xs text-muted-foreground">{p.period}</span>
+                        <span className="text-xs text-zinc-400 font-mono">{p.period}</span>
                       </div>
                       <button
                         onClick={() => toggleStatus(p.id)}
-                        className={`text-[10px] font-bold uppercase tracking-widest rounded-full px-2.5 py-1 border transition-colors duration-300 ${
+                        className={`text-[10px] font-bold uppercase tracking-widest rounded-full px-2.5 py-1 border transition-colors duration-300 font-mono ${
                           p.status === 'active'
-                            ? 'bg-green-500/10 text-green-600 border-green-500/30 hover:bg-green-500/20'
-                            : 'bg-secondary text-muted-foreground border-border hover:bg-accent'
+                            ? 'bg-[#db00ff]/20 text-[#db00ff] border-[#db00ff]/40 hover:bg-[#db00ff]/30'
+                            : 'bg-white/5 text-zinc-400 border-white/10 hover:bg-white/10'
                         }`}
                       >
                         {p.status}
@@ -225,7 +225,7 @@ export default function ProductsPage() {
                           size="icon"
                           variant="ghost"
                           onClick={() => startEdit(p)}
-                          className="h-8 w-8 text-muted-foreground hover:text-foreground hover:bg-accent"
+                          className="h-8 w-8 text-zinc-400 hover:text-white hover:bg-white/5 rounded-[0.5rem]"
                         >
                           <Edit3 className="h-3.5 w-3.5" />
                         </Button>
@@ -233,7 +233,7 @@ export default function ProductsPage() {
                           size="icon"
                           variant="ghost"
                           onClick={() => removeProduct(p.id)}
-                          className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
+                          className="h-8 w-8 text-zinc-400 hover:text-red-400 hover:bg-red-950/20 rounded-[0.5rem]"
                         >
                           <Trash2 className="h-3.5 w-3.5" />
                         </Button>

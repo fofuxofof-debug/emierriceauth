@@ -60,11 +60,11 @@ export default function BotKeysPage() {
   return (
     <div className="flex flex-col gap-6 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-zinc-800 pb-6 card-in">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-white/10 pb-6 card-in">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
-            <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-zinc-400 flex items-center gap-1.5">
+            <span className="h-2 w-2 rounded-full bg-[#db00ff] animate-pulse" />
+            <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[#db00ff] flex items-center gap-1.5">
               <Bot className="h-3.5 w-3.5" /> INTEGRAÇÃO DISCORD BOT
             </span>
           </div>
@@ -78,40 +78,40 @@ export default function BotKeysPage() {
 
         <Button
           onClick={() => setShowCreate(true)}
-          className="bg-white text-black hover:bg-zinc-200 font-sans font-bold text-xs uppercase tracking-wider rounded-xl cursor-pointer hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,255,255,0.25)]"
+          className="btn-primary flex items-center gap-2 text-xs uppercase tracking-wider cursor-pointer"
         >
-          <Plus className="mr-1.5 h-3.5 w-3.5" />
+          <Plus className="h-3.5 w-3.5" />
           Gerar Key Bot Manual
         </Button>
       </div>
 
       {/* Cards de Métricas */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="rounded-2xl border border-zinc-800 bg-[#0e0e11] p-5 shadow-sm">
+        <div className="rounded-[0.6rem] border border-white/5 bg-[#101012] p-5 shadow-sm hover:border-[#db00ff]/30 transition-all">
           <div className="flex items-center justify-between text-zinc-400 mb-2">
             <span className="text-xs font-semibold uppercase font-sans tracking-wider">Total Geradas pelo Bot</span>
-            <Bot className="h-4 w-4 text-zinc-300" />
+            <Bot className="h-4 w-4 text-[#db00ff]" />
           </div>
           <div className="text-2xl font-black text-white font-mono">{totalBotKeys}</div>
           <p className="text-[11px] text-zinc-500 mt-1 font-mono">Vinculadas via Discord ID</p>
         </div>
 
-        <div className="rounded-2xl border border-zinc-800 bg-[#0e0e11] p-5 shadow-sm">
+        <div className="rounded-[0.6rem] border border-white/5 bg-[#101012] p-5 shadow-sm hover:border-[#db00ff]/30 transition-all">
           <div className="flex items-center justify-between text-zinc-400 mb-2">
             <span className="text-xs font-semibold uppercase font-sans tracking-wider">Keys Ativas no Loader</span>
-            <ShieldCheck className="h-4 w-4 text-zinc-300" />
+            <ShieldCheck className="h-4 w-4 text-[#db00ff]" />
           </div>
           <div className="text-2xl font-black text-white font-mono">{activeBotKeys}</div>
           <p className="text-[11px] text-zinc-500 mt-1 font-mono">Autorizadas para autenticação</p>
         </div>
 
-        <div className="rounded-2xl border border-zinc-800 bg-[#0e0e11] p-5 shadow-sm">
+        <div className="rounded-[0.6rem] border border-white/5 bg-[#101012] p-5 shadow-sm hover:border-[#db00ff]/30 transition-all">
           <div className="flex items-center justify-between text-zinc-400 mb-2">
             <span className="text-xs font-semibold uppercase font-sans tracking-wider">Status da Conexão</span>
-            <Sparkles className="h-4 w-4 text-zinc-300" />
+            <Sparkles className="h-4 w-4 text-[#db00ff]" />
           </div>
           <div className="text-sm font-bold text-white mt-1 flex items-center gap-2 font-mono">
-            <span className="h-2 w-2 rounded-full bg-white" /> API /api/keys Pronta
+            <span className="h-2 w-2 rounded-full bg-[#db00ff]" /> API /api/keys Pronta
           </div>
           <p className="text-[11px] text-zinc-500 mt-1 font-mono">Recebendo compras do Smooth Sales</p>
         </div>
@@ -125,15 +125,15 @@ export default function BotKeysPage() {
             placeholder="Buscar por Discord ID, Key, Tag de cliente ou plano..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="border-zinc-800 bg-[#0e0e11] pl-10 text-white placeholder:text-zinc-600 font-mono text-xs rounded-xl focus-visible:ring-2 focus-visible:ring-white/20 focus-visible:border-white/40"
+            className="border-white/10 bg-[#101012] pl-10 text-white placeholder:text-zinc-600 font-mono text-xs rounded-[0.6rem] focus-visible:ring-2 focus-visible:ring-[#db00ff]/30 focus-visible:border-[#db00ff]"
           />
         </div>
         <Select value={statusFilter} onValueChange={setStatusFilter}>
-          <SelectTrigger className="w-full border-zinc-800 bg-[#0e0e11] text-white sm:w-44 font-mono text-xs rounded-xl focus:ring-2 focus:ring-white/20 focus:border-white/40">
+          <SelectTrigger className="w-full border-white/10 bg-[#101012] text-white sm:w-44 font-mono text-xs rounded-[0.6rem] focus:ring-2 focus:ring-[#db00ff]/30 focus:border-[#db00ff]">
             <Filter className="mr-2 h-3.5 w-3.5 text-zinc-400" />
             <SelectValue />
           </SelectTrigger>
-          <SelectContent className="border-zinc-800 bg-[#0e0e11] text-white">
+          <SelectContent className="border-white/10 bg-[#101012] text-white">
             <SelectItem value="all">Todos os Status</SelectItem>
             <SelectItem value="active">Ativas</SelectItem>
             <SelectItem value="paused">Pausadas</SelectItem>

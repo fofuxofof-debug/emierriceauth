@@ -74,10 +74,10 @@ export default function SystemControlPage() {
   return (
     <div className="flex flex-col gap-8 max-w-5xl mx-auto page-in">
       {/* Header */}
-      <div className="border-b border-zinc-800 pb-6 card-in">
+      <div className="border-b border-white/10 pb-6 card-in">
         <div className="flex items-center gap-2 mb-1.5">
-          <span className={`h-2.5 w-2.5 rounded-full ${authEnabled ? 'bg-white animate-pulse' : 'bg-red-500'}`} />
-          <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-zinc-400">
+          <span className={`h-2.5 w-2.5 rounded-full ${authEnabled ? 'bg-[#db00ff] animate-pulse' : 'bg-red-500'}`} />
+          <span className={`text-[11px] font-mono font-semibold uppercase tracking-wider ${authEnabled ? 'text-[#db00ff]' : 'text-red-400'}`}>
             {authEnabled ? 'SISTEMA ONLINE & AUTENTICANDO' : 'SISTEMA PAUSADO / KILLSWITCH ATIVO'}
           </span>
         </div>
@@ -91,18 +91,18 @@ export default function SystemControlPage() {
 
       {/* MASTER KILLSWITCH CARD */}
       <div
-        className={`rounded-2xl border p-6 sm:p-8 card-in transition-all duration-300 ${
+        className={`rounded-[0.6rem] border p-6 sm:p-8 card-in transition-all duration-300 ${
           authEnabled
-            ? 'border-zinc-800 bg-[#0e0e11] shadow-sm'
+            ? 'border-white/5 bg-[#101012] shadow-sm'
             : 'border-red-500/30 bg-red-950/20 shadow-md'
         }`}
       >
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <div className="flex items-start sm:items-center gap-4">
             <div
-              className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border transition-all ${
+              className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-[0.6rem] border transition-all ${
                 authEnabled
-                  ? 'border-zinc-700 bg-zinc-800 text-white'
+                  ? 'border-[#db00ff]/30 bg-[#db00ff]/10 text-[#db00ff]'
                   : 'border-red-500/30 bg-red-950/40 text-red-400 animate-pulse'
               }`}
             >
@@ -115,7 +115,7 @@ export default function SystemControlPage() {
                 </h2>
                 <span
                   className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider border ${
-                    authEnabled ? 'bg-white/10 text-white border-white/30' : 'bg-red-500/20 text-red-400 border-red-500/40'
+                    authEnabled ? 'bg-[#db00ff]/20 text-[#db00ff] border-[#db00ff]/40' : 'bg-red-500/20 text-red-400 border-red-500/40'
                   }`}
                 >
                   {authEnabled ? 'Ativa' : 'Pausada'}
@@ -132,10 +132,10 @@ export default function SystemControlPage() {
           <Button
             onClick={toggleAuth}
             disabled={isSaving}
-            className={`font-sans font-semibold text-xs uppercase tracking-wider px-6 py-5 rounded-xl cursor-pointer transition-all hover:scale-105 shadow-md ${
+            className={`font-sans font-semibold text-xs uppercase tracking-wider px-6 py-5 rounded-[0.6rem] cursor-pointer transition-all shadow-md ${
               authEnabled
-                ? 'bg-zinc-800 hover:bg-zinc-700 text-white border border-zinc-700'
-                : 'bg-white text-black hover:bg-zinc-200'
+                ? 'border border-white/10 bg-[#16161a] hover:bg-white/10 text-white'
+                : 'btn-primary'
             }`}
           >
             <Power className="mr-2 h-4 w-4" />
@@ -145,7 +145,7 @@ export default function SystemControlPage() {
       </div>
 
       {/* MAINTENANCE MESSAGE INPUT */}
-      <div className="rounded-2xl border border-zinc-800 bg-[#0e0e11] p-6 card-in shadow-sm">
+      <div className="rounded-[0.6rem] border border-white/5 bg-[#101012] p-6 card-in shadow-sm">
         <h3 className="text-sm font-sans font-bold uppercase tracking-wider text-white mb-2">
           Mensagem de Manutenção / Pausa
         </h3>
@@ -157,12 +157,12 @@ export default function SystemControlPage() {
             value={maintenanceMessage}
             onChange={(e) => setMaintenanceMessage(e.target.value)}
             placeholder="Ex: Sistema em atualização de segurança. Retorno em breve."
-            className="flex-1 border-zinc-800 bg-[#141418] text-white placeholder:text-zinc-600 font-mono text-xs rounded-xl focus-visible:ring-2 focus-visible:ring-white/20 focus-visible:border-white/40"
+            className="flex-1 border-white/10 bg-[#141418] text-white placeholder:text-zinc-600 font-mono text-xs rounded-[0.6rem] focus-visible:ring-2 focus-visible:ring-[#db00ff]/30 focus-visible:border-[#db00ff]"
           />
           <Button
             onClick={() => handleSave()}
             disabled={isSaving}
-            className="bg-white text-black hover:bg-zinc-200 font-sans font-bold text-xs uppercase tracking-wider rounded-xl shrink-0 shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+            className="btn-primary shrink-0"
           >
             <Save className="mr-1.5 h-3.5 w-3.5" />
             Salvar Mensagem
@@ -171,7 +171,7 @@ export default function SystemControlPage() {
       </div>
 
       {/* GAME STATUS GRID */}
-      <div className="rounded-2xl border border-zinc-800 bg-[#0e0e11] p-6 card-in shadow-sm">
+      <div className="rounded-[0.6rem] border border-white/5 bg-[#101012] p-6 card-in shadow-sm">
         <h3 className="text-sm font-sans font-bold uppercase tracking-wider text-white mb-2">
           Status Individual por Produto
         </h3>
@@ -181,18 +181,18 @@ export default function SystemControlPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {/* FreeFire */}
-          <div className="rounded-xl border border-zinc-800 bg-[#141418] p-4 flex flex-col justify-between gap-4">
+          <div className="rounded-[0.6rem] border border-white/5 bg-white/[0.02] p-4 flex flex-col justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-800/80 text-white">
+              <div className="flex h-9 w-9 items-center justify-center rounded-[0.5rem] border border-[#db00ff]/20 bg-[#db00ff]/10 text-[#db00ff]">
                 <Flame className="h-4 w-4" />
               </div>
               <div>
                 <p className="text-xs font-sans font-bold text-white">FreeFire</p>
-                <p className="text-[10px] font-sans font-semibold text-zinc-400">BlueStacks / Emuladores</p>
+                <p className="text-[10px] font-sans font-semibold text-[#db00ff]">BlueStacks / Emuladores</p>
               </div>
             </div>
-            <div className="flex items-center justify-between border-t border-zinc-800 pt-3">
-              <span className={`text-[11px] font-mono font-bold ${ffEnabled ? 'text-white' : 'text-zinc-500'}`}>
+            <div className="flex items-center justify-between border-t border-white/5 pt-3">
+              <span className={`text-[11px] font-mono font-bold ${ffEnabled ? 'text-[#db00ff]' : 'text-zinc-500'}`}>
                 {ffEnabled ? 'Ativo' : 'Pausado'}
               </span>
               <Button
@@ -203,7 +203,7 @@ export default function SystemControlPage() {
                   setFfEnabled(next)
                   handleSave({ freefire_enabled: next })
                 }}
-                className="h-7 text-xs font-sans font-semibold border-zinc-800 bg-[#121215] text-zinc-300 hover:text-white hover:bg-zinc-800 rounded-lg shadow-xs"
+                className="h-7 text-xs font-sans font-semibold border-white/10 bg-[#16161a] text-zinc-300 hover:text-white hover:bg-white/10 rounded-[0.5rem]"
               >
                 {ffEnabled ? 'Pausar' : 'Ativar'}
               </Button>
@@ -211,18 +211,18 @@ export default function SystemControlPage() {
           </div>
 
           {/* Valorant */}
-          <div className="rounded-xl border border-zinc-800 bg-[#141418] p-4 flex flex-col justify-between gap-4">
+          <div className="rounded-[0.6rem] border border-white/5 bg-white/[0.02] p-4 flex flex-col justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-800/80 text-white">
+              <div className="flex h-9 w-9 items-center justify-center rounded-[0.5rem] border border-[#db00ff]/20 bg-[#db00ff]/10 text-[#db00ff]">
                 <Crosshair className="h-4 w-4" />
               </div>
               <div>
                 <p className="text-xs font-sans font-bold text-white">Valorant</p>
-                <p className="text-[10px] font-sans font-semibold text-zinc-400">Vanguard Ring-3</p>
+                <p className="text-[10px] font-sans font-semibold text-[#db00ff]">Vanguard Ring-3</p>
               </div>
             </div>
-            <div className="flex items-center justify-between border-t border-zinc-800 pt-3">
-              <span className={`text-[11px] font-mono font-bold ${valEnabled ? 'text-white' : 'text-zinc-500'}`}>
+            <div className="flex items-center justify-between border-t border-white/5 pt-3">
+              <span className={`text-[11px] font-mono font-bold ${valEnabled ? 'text-[#db00ff]' : 'text-zinc-500'}`}>
                 {valEnabled ? 'Ativo' : 'Pausado'}
               </span>
               <Button
@@ -233,7 +233,7 @@ export default function SystemControlPage() {
                   setValEnabled(next)
                   handleSave({ valorant_enabled: next })
                 }}
-                className="h-7 text-xs font-sans font-semibold border-zinc-800 bg-[#121215] text-zinc-300 hover:text-white hover:bg-zinc-800 rounded-lg shadow-xs"
+                className="h-7 text-xs font-sans font-semibold border-white/10 bg-[#16161a] text-zinc-300 hover:text-white hover:bg-white/10 rounded-[0.5rem]"
               >
                 {valEnabled ? 'Pausar' : 'Ativar'}
               </Button>
@@ -241,18 +241,18 @@ export default function SystemControlPage() {
           </div>
 
           {/* CS2 */}
-          <div className="rounded-xl border border-zinc-800 bg-[#141418] p-4 flex flex-col justify-between gap-4">
+          <div className="rounded-[0.6rem] border border-white/5 bg-white/[0.02] p-4 flex flex-col justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-800/80 text-white">
+              <div className="flex h-9 w-9 items-center justify-center rounded-[0.5rem] border border-[#db00ff]/20 bg-[#db00ff]/10 text-[#db00ff]">
                 <Target className="h-4 w-4" />
               </div>
               <div>
                 <p className="text-xs font-sans font-bold text-white">Counter-Strike 2</p>
-                <p className="text-[10px] font-sans font-semibold text-zinc-400">VAC Ring-3</p>
+                <p className="text-[10px] font-sans font-semibold text-[#db00ff]">VAC Ring-3</p>
               </div>
             </div>
-            <div className="flex items-center justify-between border-t border-zinc-800 pt-3">
-              <span className={`text-[11px] font-mono font-bold ${cs2Enabled ? 'text-white' : 'text-zinc-500'}`}>
+            <div className="flex items-center justify-between border-t border-white/5 pt-3">
+              <span className={`text-[11px] font-mono font-bold ${cs2Enabled ? 'text-[#db00ff]' : 'text-zinc-500'}`}>
                 {cs2Enabled ? 'Ativo' : 'Pausado'}
               </span>
               <Button
@@ -263,7 +263,7 @@ export default function SystemControlPage() {
                   setCs2Enabled(next)
                   handleSave({ cs2_enabled: next })
                 }}
-                className="h-7 text-xs font-sans font-semibold border-zinc-800 bg-[#121215] text-zinc-300 hover:text-white hover:bg-zinc-800 rounded-lg shadow-xs"
+                className="h-7 text-xs font-sans font-semibold border-white/10 bg-[#16161a] text-zinc-300 hover:text-white hover:bg-white/10 rounded-[0.5rem]"
               >
                 {cs2Enabled ? 'Pausar' : 'Ativar'}
               </Button>

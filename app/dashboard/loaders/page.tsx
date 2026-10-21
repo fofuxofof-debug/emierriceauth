@@ -80,26 +80,26 @@ function ProductCard({ p, idx, userCount }: { p: LoaderProduct; idx: number; use
 
   return (
     <div
-      className="card-in hover-lift relative overflow-hidden rounded-2xl border border-zinc-800 group bg-[#0e0e11] shadow-sm"
+      className="card-in hover-lift relative overflow-hidden rounded-[0.6rem] border border-white/5 group bg-[#101012] shadow-sm hover:border-[#db00ff]/30 transition-all"
       style={{ animationDelay: `${idx * 100}ms` }}
     >
       <div
-        className="flex items-center gap-3 border-b border-zinc-800 px-5 py-3 relative bg-[#141418]"
+        className="flex items-center gap-3 border-b border-white/5 px-5 py-3 relative bg-white/[0.02]"
       >
         <span
-          className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-zinc-800 text-white border border-zinc-700"
+          className="inline-flex h-8 w-8 items-center justify-center rounded-[0.5rem] bg-[#db00ff]/10 text-[#db00ff] border border-[#db00ff]/20"
         >
-          <Icon className="h-4 w-4 text-white" />
+          <Icon className="h-4 w-4 text-[#db00ff]" />
         </span>
         <div className="flex-1 min-w-0">
           <p className="text-sm font-bold text-white">{p.game}</p>
-          <p className="text-[10px] text-zinc-400 uppercase tracking-widest mt-0.5 font-mono">{p.tag}</p>
+          <p className="text-[10px] text-[#db00ff] uppercase tracking-widest mt-0.5 font-mono">{p.tag}</p>
         </div>
         <span
-          className="inline-flex items-center gap-1.5 rounded-full border border-zinc-700 bg-zinc-800 px-2.5 py-1 text-[11px] font-semibold text-white shadow-sm font-mono"
+          className="inline-flex items-center gap-1.5 rounded-full border border-[#db00ff]/30 bg-[#db00ff]/10 px-2.5 py-1 text-[11px] font-semibold text-[#db00ff] shadow-sm font-mono"
           title={`${userCount} usuário${userCount === 1 ? '' : 's'} criado${userCount === 1 ? '' : 's'} para ${p.game}`}
         >
-          <Users className="h-3 w-3 text-zinc-400" />
+          <Users className="h-3 w-3 text-[#db00ff]" />
           <span className="tabular-nums">{userCount}</span>
         </span>
       </div>
@@ -117,10 +117,10 @@ function ProductCard({ p, idx, userCount }: { p: LoaderProduct; idx: number; use
                 <button
                   key={v.id}
                   onClick={() => setSelected(v.id)}
-                  className={`px-3 py-2 rounded-lg text-xs font-bold uppercase tracking-widest border transition-all duration-300 font-mono ${
+                  className={`px-3 py-2 rounded-[0.5rem] text-xs font-bold uppercase tracking-widest border transition-all duration-300 font-mono ${
                     selected === v.id
-                      ? 'bg-white text-black border-transparent shadow-[0_0_15px_rgba(255,255,255,0.25)]'
-                      : 'bg-[#141418] text-zinc-400 border-zinc-800 hover:text-white hover:bg-zinc-800'
+                      ? 'bg-[#db00ff] text-white border-transparent shadow-[0_0_15px_rgba(219,0,255,0.4)]'
+                      : 'bg-[#141418] text-zinc-400 border-white/5 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   {v.name}
@@ -132,13 +132,13 @@ function ProductCard({ p, idx, userCount }: { p: LoaderProduct; idx: number; use
 
         <div
           key={variant.id}
-          className="row-in rounded-lg border border-zinc-800 bg-[#141418] p-3 sm:p-4"
+          className="row-in rounded-[0.5rem] border border-white/5 bg-white/[0.02] p-3 sm:p-4"
         >
           <p className="text-sm font-semibold text-white">{variant.name}</p>
           <p className="text-xs text-zinc-400 mt-1 leading-relaxed">{variant.description}</p>
           <div className="mt-3 flex items-center gap-3 text-[10px] uppercase tracking-widest text-zinc-400 font-mono">
             <span className="inline-flex items-center gap-1">
-              <Cpu className="h-3 w-3 text-zinc-300" />
+              <Cpu className="h-3 w-3 text-[#db00ff]" />
               v
               <span className="text-white tabular-nums">
                 {variant.version}
@@ -155,7 +155,7 @@ function ProductCard({ p, idx, userCount }: { p: LoaderProduct; idx: number; use
           <Button
             onClick={handleDownload}
             disabled={downloading}
-            className="flex-1 bg-white text-black hover:bg-zinc-200 font-bold uppercase tracking-wider text-xs rounded-xl shadow-[0_0_15px_rgba(255,255,255,0.2)] disabled:opacity-50"
+            className="flex-1 btn-primary flex items-center justify-center uppercase tracking-wider text-xs font-bold disabled:opacity-50"
           >
             {done ? (
               <>
@@ -176,7 +176,7 @@ function ProductCard({ p, idx, userCount }: { p: LoaderProduct; idx: number; use
           </Button>
           <Button
             variant="ghost"
-            className="border border-zinc-800 bg-[#141418] text-zinc-300 hover:bg-zinc-800 hover:text-white rounded-xl text-xs uppercase font-mono"
+            className="border border-white/10 bg-[#16161a] text-zinc-300 hover:bg-white/10 hover:text-white rounded-[0.6rem] text-xs uppercase font-mono"
           >
             <ExternalLink className="h-4 w-4 mr-2" />
             Tutorial

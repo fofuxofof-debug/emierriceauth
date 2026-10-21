@@ -77,7 +77,7 @@ export default function KeyDetailPage() {
     isExpired ? 'expired' : 'active'
 
   const statusConfig = {
-    active:  { label: 'Ativa',    className: 'border-white/30 bg-white/10 text-white font-mono text-xs' },
+    active:  { label: 'Ativa',    className: 'border-[#db00ff]/40 bg-[#db00ff]/20 text-[#db00ff] font-mono text-xs' },
     expired: { label: 'Expirada', className: 'border-zinc-800 bg-zinc-900/60 text-zinc-400 font-mono text-xs' },
     banned:  { label: 'Banida',   className: 'border-red-500/30 bg-red-950/20 text-red-400 line-through font-mono text-xs' },
     paused:  { label: 'Pausada',  className: 'border-zinc-700 bg-zinc-800/40 text-zinc-300 font-mono text-xs' },
@@ -204,157 +204,157 @@ export default function KeyDetailPage() {
         </Badge>
       </div>
 
-      <div className="rounded-xl border border-border bg-card p-5">
+      <div className="rounded-[0.6rem] border border-white/5 bg-[#101012] p-5 shadow-sm">
         <div className="flex items-center gap-3">
-          <code className="flex-1 rounded-lg bg-secondary px-4 py-2.5 font-mono text-sm text-foreground">
+          <code className="flex-1 rounded-[0.5rem] bg-white/[0.03] border border-white/5 px-4 py-2.5 font-mono text-sm text-white">
             {key.key}
           </code>
-          <Button variant="ghost" size="icon" onClick={copyKey} className="text-muted-foreground hover:text-primary">
+          <Button variant="ghost" size="icon" onClick={copyKey} className="text-zinc-400 hover:text-[#db00ff]">
             <Copy className="h-4 w-4" />
           </Button>
         </div>
         <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
           <div className="flex flex-col gap-1">
-            <span className="text-xs text-muted-foreground">Criada em</span>
-            <span className="text-sm text-foreground">{formatDate(key.created_at)}</span>
+            <span className="text-xs text-zinc-500 font-mono">Criada em</span>
+            <span className="text-sm text-white">{formatDate(key.created_at)}</span>
           </div>
           <div className="flex flex-col gap-1">
-            <span className="text-xs text-muted-foreground">Expira em</span>
-            <span className="text-sm text-foreground">{formatDate(key.expires_at)}</span>
+            <span className="text-xs text-zinc-500 font-mono">Expira em</span>
+            <span className="text-sm text-white">{formatDate(key.expires_at)}</span>
           </div>
           <div className="flex flex-col gap-1">
-            <span className="text-xs text-muted-foreground">Dias Restantes</span>
-            <span className={`text-sm font-semibold ${daysLeft <= 0 ? 'text-destructive' : daysLeft <= 7 ? 'text-warning' : 'text-success'}`}>
+            <span className="text-xs text-zinc-500 font-mono">Dias Restantes</span>
+            <span className={`text-sm font-semibold ${daysLeft <= 0 ? 'text-red-400' : daysLeft <= 7 ? 'text-yellow-400' : 'text-[#db00ff]'}`}>
               {daysLeft <= 0 ? 'Expirada' : `${daysLeft} dias`}
             </span>
           </div>
           <div className="flex flex-col gap-1">
-            <span className="text-xs text-muted-foreground">Dispositivos</span>
-            <span className="text-sm text-foreground">{hwids.length}/{key.max_devices}</span>
+            <span className="text-xs text-zinc-500 font-mono">Dispositivos</span>
+            <span className="text-sm text-white">{hwids.length}/{key.max_devices}</span>
           </div>
         </div>
         {key.discord_id && (
-          <div className="mt-4 flex items-center gap-2 rounded-lg bg-secondary p-3">
-            <MessageSquare className="h-4 w-4 text-primary" />
-            <span className="text-sm text-muted-foreground">Discord ID:</span>
-            <code className="font-mono text-sm text-foreground">{key.discord_id}</code>
+          <div className="mt-4 flex items-center gap-2 rounded-[0.5rem] bg-white/[0.02] border border-white/5 p-3">
+            <MessageSquare className="h-4 w-4 text-[#db00ff]" />
+            <span className="text-sm text-zinc-400 font-mono">Discord ID:</span>
+            <code className="font-mono text-sm text-white">{key.discord_id}</code>
           </div>
         )}
         {key.notes && (
-          <div className="mt-3 rounded-lg bg-secondary p-3">
-            <span className="text-xs text-muted-foreground">Notas:</span>
-            <p className="mt-1 text-sm text-foreground">{key.notes}</p>
+          <div className="mt-3 rounded-[0.5rem] bg-white/[0.02] border border-white/5 p-3">
+            <span className="text-xs text-zinc-400 font-mono">Notas:</span>
+            <p className="mt-1 text-sm text-white">{key.notes}</p>
           </div>
         )}
       </div>
 
       <div className="flex flex-wrap gap-3">
-        <Button variant="outline" className="border-border bg-transparent text-foreground hover:bg-secondary" onClick={handleBanToggle}>
-          {key.status === 'banned' ? (<><CheckCircle className="mr-2 h-4 w-4 text-success" />Reativar</>) : (<><Ban className="mr-2 h-4 w-4 text-destructive" />Banir</>)}
+        <Button variant="outline" className="border-white/10 bg-[#16161a] text-white hover:bg-white/10 rounded-[0.6rem]" onClick={handleBanToggle}>
+          {key.status === 'banned' ? (<><CheckCircle className="mr-2 h-4 w-4 text-[#db00ff]" />Reativar</>) : (<><Ban className="mr-2 h-4 w-4 text-red-400" />Banir</>)}
         </Button>
         <Button
           variant="outline"
-          className="border-border bg-transparent text-foreground hover:bg-secondary"
+          className="border-white/10 bg-[#16161a] text-white hover:bg-white/10 rounded-[0.6rem]"
           onClick={handlePauseToggle}
         >
           {key.status === 'paused' ? (
-            <><CheckCircle className="mr-2 h-4 w-4 text-white" />Despausar</>
+            <><CheckCircle className="mr-2 h-4 w-4 text-[#db00ff]" />Despausar</>
           ) : (
-            <><Pause className="mr-2 h-4 w-4 text-white" />Pausar</>
+            <><Pause className="mr-2 h-4 w-4 text-zinc-300" />Pausar</>
           )}
         </Button>
         <AlertDialog>
           <AlertDialogTrigger asChild>
-            <Button variant="outline" className="border-border bg-transparent text-foreground hover:bg-secondary">
-              <RotateCcw className="mr-2 h-4 w-4 text-primary" />
+            <Button variant="outline" className="border-white/10 bg-[#16161a] text-white hover:bg-white/10 rounded-[0.6rem]">
+              <RotateCcw className="mr-2 h-4 w-4 text-[#db00ff]" />
               Resetar HWIDs
             </Button>
           </AlertDialogTrigger>
-          <AlertDialogContent className="border-border bg-card">
+          <AlertDialogContent className="border-white/10 bg-[#101012] text-white rounded-[0.6rem]">
             <AlertDialogHeader>
-              <AlertDialogTitle className="text-foreground">Resetar HWIDs?</AlertDialogTitle>
-              <AlertDialogDescription className="text-muted-foreground">
+              <AlertDialogTitle className="text-white">Resetar HWIDs?</AlertDialogTitle>
+              <AlertDialogDescription className="text-zinc-400">
                 Todos os {hwids.length} dispositivos vinculados serao removidos.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel className="border-border bg-secondary text-foreground hover:bg-muted">Cancelar</AlertDialogCancel>
-              <AlertDialogAction onClick={handleResetHWIDs} className="bg-primary text-primary-foreground hover:bg-primary/90">Confirmar</AlertDialogAction>
+              <AlertDialogCancel className="border-white/10 bg-[#16161a] text-white hover:bg-white/10 rounded-[0.6rem]">Cancelar</AlertDialogCancel>
+              <AlertDialogAction onClick={handleResetHWIDs} className="btn-primary">Confirmar</AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
         <AlertDialog>
           <AlertDialogTrigger asChild>
-            <Button variant="outline" className="border-destructive/30 bg-transparent text-destructive hover:bg-destructive/10">
+            <Button variant="outline" className="border-red-500/30 bg-red-950/20 text-red-400 hover:bg-red-950/40 rounded-[0.6rem]">
               <Trash2 className="mr-2 h-4 w-4" />
               Deletar Key
             </Button>
           </AlertDialogTrigger>
-          <AlertDialogContent className="border-border bg-card">
+          <AlertDialogContent className="border-white/10 bg-[#101012] text-white rounded-[0.6rem]">
             <AlertDialogHeader>
-              <AlertDialogTitle className="text-foreground">Deletar Key?</AlertDialogTitle>
-              <AlertDialogDescription className="text-muted-foreground">
+              <AlertDialogTitle className="text-white">Deletar Key?</AlertDialogTitle>
+              <AlertDialogDescription className="text-zinc-400">
                 Esta acao nao pode ser desfeita.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel className="border-border bg-secondary text-foreground hover:bg-muted">Cancelar</AlertDialogCancel>
-              <AlertDialogAction onClick={handleDeleteKey} className="bg-destructive text-destructive-foreground hover:bg-destructive/90">Deletar</AlertDialogAction>
+              <AlertDialogCancel className="border-white/10 bg-[#16161a] text-white hover:bg-white/10 rounded-[0.6rem]">Cancelar</AlertDialogCancel>
+              <AlertDialogAction onClick={handleDeleteKey} className="bg-red-600 text-white hover:bg-red-700 rounded-[0.6rem]">Deletar</AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
       </div>
 
-      <div className="rounded-xl border border-border bg-card p-5">
-        <h2 className="mb-4 text-lg font-semibold text-foreground">Editar Key</h2>
+      <div className="rounded-[0.6rem] border border-white/5 bg-[#101012] p-5 shadow-sm">
+        <h2 className="mb-4 text-lg font-semibold text-white">Editar Key</h2>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div className="flex flex-col gap-2">
-            <Label className="flex items-center gap-2 text-sm text-muted-foreground"><Hash className="h-3.5 w-3.5" />Label</Label>
-            <Input placeholder={key.label ?? 'Sem label'} value={editLabel} onChange={(e) => setEditLabel(e.target.value)} className="border-border bg-secondary text-foreground placeholder:text-muted-foreground" />
+            <Label className="flex items-center gap-2 text-sm text-zinc-400 font-mono"><Hash className="h-3.5 w-3.5 text-[#db00ff]" />Label</Label>
+            <Input placeholder={key.label ?? 'Sem label'} value={editLabel} onChange={(e) => setEditLabel(e.target.value)} className="border-white/10 bg-[#141418] text-white placeholder:text-zinc-600 rounded-[0.5rem] focus-visible:border-[#db00ff]" />
           </div>
           <div className="flex flex-col gap-2">
-            <Label className="flex items-center gap-2 text-sm text-muted-foreground"><Monitor className="h-3.5 w-3.5" />Max Dispositivos</Label>
-            <Input type="number" min={1} placeholder={String(key.max_devices)} value={editMaxDevices} onChange={(e) => setEditMaxDevices(e.target.value)} className="border-border bg-secondary text-foreground placeholder:text-muted-foreground" />
+            <Label className="flex items-center gap-2 text-sm text-zinc-400 font-mono"><Monitor className="h-3.5 w-3.5 text-[#db00ff]" />Max Dispositivos</Label>
+            <Input type="number" min={1} placeholder={String(key.max_devices)} value={editMaxDevices} onChange={(e) => setEditMaxDevices(e.target.value)} className="border-white/10 bg-[#141418] text-white placeholder:text-zinc-600 rounded-[0.5rem] focus-visible:border-[#db00ff]" />
           </div>
           <div className="flex flex-col gap-2">
-            <Label className="flex items-center gap-2 text-sm text-muted-foreground"><Clock className="h-3.5 w-3.5" />Nova Validade (dias a partir de agora)</Label>
-            <Input type="number" min={1} placeholder="30" value={editExpiryDays} onChange={(e) => setEditExpiryDays(e.target.value)} className="border-border bg-secondary text-foreground placeholder:text-muted-foreground" />
+            <Label className="flex items-center gap-2 text-sm text-zinc-400 font-mono"><Clock className="h-3.5 w-3.5 text-[#db00ff]" />Nova Validade (dias a partir de agora)</Label>
+            <Input type="number" min={1} placeholder="30" value={editExpiryDays} onChange={(e) => setEditExpiryDays(e.target.value)} className="border-white/10 bg-[#141418] text-white placeholder:text-zinc-600 rounded-[0.5rem] focus-visible:border-[#db00ff]" />
           </div>
           <div className="flex flex-col gap-2">
-            <Label className="flex items-center gap-2 text-sm text-muted-foreground"><MessageSquare className="h-3.5 w-3.5" />Discord ID</Label>
-            <Input placeholder={key.discord_id ?? 'Nenhum'} value={editDiscordId} onChange={(e) => setEditDiscordId(e.target.value)} className="border-border bg-secondary text-foreground placeholder:text-muted-foreground" />
+            <Label className="flex items-center gap-2 text-sm text-zinc-400 font-mono"><MessageSquare className="h-3.5 w-3.5 text-[#db00ff]" />Discord ID</Label>
+            <Input placeholder={key.discord_id ?? 'Nenhum'} value={editDiscordId} onChange={(e) => setEditDiscordId(e.target.value)} className="border-white/10 bg-[#141418] text-white placeholder:text-zinc-600 rounded-[0.5rem] focus-visible:border-[#db00ff]" />
           </div>
         </div>
-        <Button onClick={handleSaveChanges} disabled={isSaving} className="mt-4 bg-primary text-primary-foreground hover:bg-primary/90">
+        <Button onClick={handleSaveChanges} disabled={isSaving} className="mt-4 btn-primary">
           {isSaving ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Save className="mr-2 h-4 w-4" />}
           Salvar Alteracoes
         </Button>
       </div>
 
-      <div className="rounded-xl border border-border bg-card">
-        <div className="border-b border-border p-5">
-          <h2 className="text-lg font-semibold text-foreground">Dispositivos Vinculados ({hwids.length}/{key.max_devices})</h2>
+      <div className="rounded-[0.6rem] border border-white/5 bg-[#101012] overflow-hidden shadow-sm">
+        <div className="border-b border-white/5 p-5">
+          <h2 className="text-lg font-semibold text-white">Dispositivos Vinculados ({hwids.length}/{key.max_devices})</h2>
         </div>
         {hwids.length === 0 ? (
           <div className="p-8 text-center">
-            <Monitor className="mx-auto mb-2 h-8 w-8 text-muted-foreground" />
-            <p className="text-sm text-muted-foreground">Nenhum dispositivo vinculado</p>
+            <Monitor className="mx-auto mb-2 h-8 w-8 text-zinc-500" />
+            <p className="text-sm text-zinc-400">Nenhum dispositivo vinculado</p>
           </div>
         ) : (
-          <div className="divide-y divide-border">
+          <div className="divide-y divide-white/5">
             {hwids.map((h) => (
-              <div key={h.id} className="flex items-center gap-4 p-4">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-secondary">
-                  <Monitor className="h-4 w-4 text-primary" />
+              <div key={h.id} className="flex items-center gap-4 p-4 hover:bg-white/[0.02] transition-colors">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[0.5rem] bg-[#db00ff]/10 border border-[#db00ff]/20">
+                  <Monitor className="h-4 w-4 text-[#db00ff]" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <code className="block truncate font-mono text-sm text-foreground">{h.hwid}</code>
-                  <p className="text-xs text-muted-foreground">
+                  <code className="block truncate font-mono text-sm text-white">{h.hwid}</code>
+                  <p className="text-xs text-zinc-500 font-mono">
                     {h.ip_address && `IP: ${h.ip_address} | `}
                     Registrado: {formatDate(h.registered_at)}
                   </p>
                 </div>
-                <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-destructive" onClick={() => handleRemoveHWID(h.id)}>
+                <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400 hover:text-red-400 hover:bg-red-950/20 rounded-[0.5rem]" onClick={() => handleRemoveHWID(h.id)}>
                   <Trash2 className="h-4 w-4" />
                 </Button>
               </div>
@@ -364,21 +364,21 @@ export default function KeyDetailPage() {
       </div>
 
       {logs.length > 0 && (
-        <div className="rounded-xl border border-border bg-card">
-          <div className="border-b border-border p-5">
-            <h2 className="text-lg font-semibold text-foreground">Historico da Key</h2>
+        <div className="rounded-[0.6rem] border border-white/5 bg-[#101012] overflow-hidden shadow-sm">
+          <div className="border-b border-white/5 p-5">
+            <h2 className="text-lg font-semibold text-white">Historico da Key</h2>
           </div>
-          <div className="divide-y divide-border">
+          <div className="divide-y divide-white/5">
             {logs.map((log) => (
-              <div key={log.id} className="flex items-center gap-4 p-4">
+              <div key={log.id} className="flex items-center gap-4 p-4 hover:bg-white/[0.02] transition-colors">
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-foreground">{log.event_type}</p>
-                  <p className="truncate text-xs text-muted-foreground">
+                  <p className="text-sm font-medium text-white">{log.event_type}</p>
+                  <p className="truncate text-xs text-zinc-400 font-mono">
                     {log.ip_address && `IP: ${log.ip_address}`}
                     {log.hwid && ` | HWID: ${log.hwid.slice(0, 16)}...`}
                   </p>
                 </div>
-                <span className="shrink-0 text-xs text-muted-foreground">{formatDate(log.created_at)}</span>
+                <span className="shrink-0 text-xs text-zinc-500 font-mono">{formatDate(log.created_at)}</span>
               </div>
             ))}
           </div>

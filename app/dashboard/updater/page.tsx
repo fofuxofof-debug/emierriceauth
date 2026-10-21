@@ -126,11 +126,11 @@ export default function UpdaterPage() {
   return (
     <div className="flex flex-col gap-8 max-w-6xl mx-auto page-in">
       {/* Header */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-zinc-800 pb-6 card-in">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-white/10 pb-6 card-in">
         <div>
           <div className="flex items-center gap-2 mb-1.5">
-            <span className="h-2.5 w-2.5 rounded-full bg-white animate-pulse" />
-            <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-zinc-400">
+            <span className="h-2.5 w-2.5 rounded-full bg-[#db00ff] animate-pulse" />
+            <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[#db00ff]">
               DISTRIBUIÇÃO DIRETA EM MEMÓRIA (HOT-RELOAD)
             </span>
           </div>
@@ -147,9 +147,9 @@ export default function UpdaterPage() {
             onClick={handleTestStream}
             disabled={testingStream}
             variant="outline"
-            className="border-zinc-800 bg-[#141418] text-zinc-300 hover:text-white hover:bg-zinc-800 font-mono text-xs uppercase tracking-wider rounded-xl transition-all"
+            className="border-white/10 bg-[#16161a] text-zinc-300 hover:text-white hover:bg-white/10 font-mono text-xs uppercase tracking-wider rounded-[0.6rem] transition-all"
           >
-            {testingStream ? <RefreshCw className="h-3.5 w-3.5 mr-1.5 animate-spin" /> : <Activity className="h-3.5 w-3.5 mr-1.5 text-zinc-300" />}
+            {testingStream ? <RefreshCw className="h-3.5 w-3.5 mr-1.5 animate-spin" /> : <Activity className="h-3.5 w-3.5 mr-1.5 text-[#db00ff]" />}
             Testar Conexão {streamLatency !== null && `(${streamLatency}ms)`}
           </Button>
         </div>
@@ -157,8 +157,8 @@ export default function UpdaterPage() {
 
       {/* QUICK STATUS METRICS */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
-        <div className="card-in rounded-2xl border border-zinc-800 bg-[#0e0e11] p-4.5 flex items-center gap-3.5 shadow-sm">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-800/80 text-white">
+        <div className="card-in rounded-[0.6rem] border border-white/5 bg-[#101012] p-4.5 flex items-center gap-3.5 shadow-sm hover:border-[#db00ff]/30 transition-all">
+          <div className="flex h-11 w-11 items-center justify-center rounded-[0.5rem] border border-[#db00ff]/20 bg-[#db00ff]/10 text-[#db00ff]">
             <Cpu className="h-5 w-5" />
           </div>
           <div className="min-w-0">
@@ -169,8 +169,8 @@ export default function UpdaterPage() {
           </div>
         </div>
 
-        <div className="card-in rounded-2xl border border-zinc-800 bg-[#0e0e11] p-4.5 flex items-center gap-3.5 shadow-sm">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-800/80 text-white">
+        <div className="card-in rounded-[0.6rem] border border-white/5 bg-[#101012] p-4.5 flex items-center gap-3.5 shadow-sm hover:border-[#db00ff]/30 transition-all">
+          <div className="flex h-11 w-11 items-center justify-center rounded-[0.5rem] border border-[#db00ff]/20 bg-[#db00ff]/10 text-[#db00ff]">
             <HardDrive className="h-5 w-5" />
           </div>
           <div>
@@ -181,8 +181,8 @@ export default function UpdaterPage() {
           </div>
         </div>
 
-        <div className="card-in rounded-2xl border border-zinc-800 bg-[#0e0e11] p-4.5 flex items-center gap-3.5 shadow-sm">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-800/80 text-white">
+        <div className="card-in rounded-[0.6rem] border border-white/5 bg-[#101012] p-4.5 flex items-center gap-3.5 shadow-sm hover:border-[#db00ff]/30 transition-all">
+          <div className="flex h-11 w-11 items-center justify-center rounded-[0.5rem] border border-[#db00ff]/20 bg-[#db00ff]/10 text-[#db00ff]">
             <ShieldCheck className="h-5 w-5" />
           </div>
           <div>
@@ -203,10 +203,10 @@ export default function UpdaterPage() {
         onDragLeave={() => setIsDragging(false)}
         onDrop={handleDrop}
         onClick={() => fileInputRef.current?.click()}
-        className={`card-in rounded-3xl border-2 border-dashed p-10 sm:p-14 text-center cursor-pointer transition-all duration-300 flex flex-col items-center justify-center gap-4 ${
+        className={`card-in rounded-[0.6rem] border-2 border-dashed p-10 sm:p-14 text-center cursor-pointer transition-all duration-300 flex flex-col items-center justify-center gap-4 ${
           isDragging
-            ? 'border-white bg-white/10 scale-[1.01]'
-            : 'border-zinc-800 bg-[#0e0e11] hover:border-zinc-700 hover:bg-[#141418]'
+            ? 'border-[#db00ff] bg-[#db00ff]/10 scale-[1.01]'
+            : 'border-white/10 bg-[#101012] hover:border-[#db00ff]/40 hover:bg-white/[0.02]'
         }`}
       >
         <input
@@ -221,11 +221,11 @@ export default function UpdaterPage() {
           }}
         />
 
-        <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-zinc-800 bg-[#141418] text-white shadow-inner group-hover:scale-110 transition-transform">
+        <div className="flex h-16 w-16 items-center justify-center rounded-[0.6rem] border border-[#db00ff]/30 bg-[#db00ff]/10 text-[#db00ff] shadow-inner group-hover:scale-110 transition-transform">
           {isUploading ? (
             <RefreshCw className="h-8 w-8 animate-spin" />
           ) : (
-            <UploadCloud className="h-8 w-8 text-white" />
+            <UploadCloud className="h-8 w-8 text-[#db00ff]" />
           )}
         </div>
 
@@ -238,17 +238,17 @@ export default function UpdaterPage() {
           </p>
         </div>
 
-        <div className="mt-2 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-zinc-800 bg-[#141418] text-[11px] font-mono text-zinc-400">
+        <div className="mt-2 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.02] text-[11px] font-mono text-[#db00ff]">
           <span>Formatos aceitos: .EXE, .DLL, .BIN</span>
         </div>
       </div>
 
       {/* ACTIVE BUILD SHOWCASE & DIRECT DOWNLOAD */}
       {activeBuild && (
-        <div className="card-in rounded-2xl border border-zinc-800 bg-[#0e0e11] p-6 shadow-sm">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-800 pb-4 mb-5">
+        <div className="card-in rounded-[0.6rem] border border-white/5 bg-[#101012] p-6 shadow-sm">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/5 pb-4 mb-5">
             <div className="flex items-center gap-2.5">
-              <span className="h-2.5 w-2.5 rounded-full bg-white" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#db00ff]" />
               <h2 className="text-sm font-sans font-bold uppercase tracking-wider text-white">
                 Build Atualmente em Produção
               </h2>
@@ -256,7 +256,7 @@ export default function UpdaterPage() {
             <a href="/api/loader/download?download=true" download={activeBuild.name}>
               <Button
                 size="sm"
-                className="bg-white text-black hover:bg-zinc-200 font-sans font-bold text-xs uppercase tracking-wider rounded-xl cursor-pointer shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+                className="btn-primary font-bold text-xs uppercase tracking-wider cursor-pointer"
               >
                 <Download className="mr-1.5 h-3.5 w-3.5" />
                 Baixar Arquivo Ativo
@@ -265,22 +265,22 @@ export default function UpdaterPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-            <div className="rounded-xl border border-zinc-800 bg-[#141418] p-4 flex flex-col gap-1">
+            <div className="rounded-[0.5rem] border border-white/5 bg-white/[0.02] p-4 flex flex-col gap-1">
               <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500">Nome do Arquivo</span>
               <p className="text-xs font-mono font-bold text-white truncate" title={activeBuild.name}>{activeBuild.name}</p>
             </div>
 
-            <div className="rounded-xl border border-zinc-800 bg-[#141418] p-4 flex flex-col gap-1">
+            <div className="rounded-[0.5rem] border border-white/5 bg-white/[0.02] p-4 flex flex-col gap-1">
               <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500">Tamanho</span>
               <p className="text-xs font-mono font-bold text-white">{formatBytes(activeBuild.size)}</p>
             </div>
 
-            <div className="rounded-xl border border-zinc-800 bg-[#141418] p-4 flex flex-col gap-1">
+            <div className="rounded-[0.5rem] border border-white/5 bg-white/[0.02] p-4 flex flex-col gap-1">
               <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500">Assinatura SHA256</span>
               <p className="text-xs font-mono font-bold text-white">{activeBuild.hash}...</p>
             </div>
 
-            <div className="rounded-xl border border-zinc-800 bg-[#141418] p-4 flex flex-col gap-1">
+            <div className="rounded-[0.5rem] border border-white/5 bg-white/[0.02] p-4 flex flex-col gap-1">
               <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500">Publicado em</span>
               <p className="text-xs font-mono font-bold text-white">
                 {new Date(activeBuild.mtime).toLocaleDateString('pt-BR')} {new Date(activeBuild.mtime).toLocaleTimeString('pt-BR')}
@@ -291,8 +291,8 @@ export default function UpdaterPage() {
       )}
 
       {/* BUILD HISTORY & 1-CLICK ROLLBACK */}
-      <div className="card-in rounded-2xl border border-zinc-800 bg-[#0e0e11] overflow-hidden shadow-sm">
-        <div className="p-5 border-b border-zinc-800 flex items-center justify-between">
+      <div className="card-in rounded-[0.6rem] border border-white/5 bg-[#101012] overflow-hidden shadow-sm">
+        <div className="p-5 border-b border-white/5 flex items-center justify-between">
           <div>
             <h2 className="text-sm font-sans font-bold uppercase tracking-wider text-white">
               Histórico de Versões & Rollback
@@ -309,23 +309,23 @@ export default function UpdaterPage() {
             Nenhuma versão encontrada no histórico.
           </div>
         ) : (
-          <div className="divide-y divide-zinc-800">
+          <div className="divide-y divide-white/5">
             {history.map((build) => {
               const isCurrent = activeBuild?.name === build.name && activeBuild?.mtime === build.mtime
               return (
                 <div
                   key={`${build.name}-${build.mtime}`}
-                  className="flex flex-col sm:flex-row sm:items-center justify-between p-4 gap-3 hover:bg-zinc-900/50 transition-colors"
+                  className="flex flex-col sm:flex-row sm:items-center justify-between p-4 gap-3 hover:bg-white/[0.02] transition-colors"
                 >
                   <div className="flex items-center gap-3.5 min-w-0">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-800 text-white">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[0.5rem] border border-[#db00ff]/20 bg-[#db00ff]/10 text-[#db00ff]">
                       <FileCode className="h-4 w-4" />
                     </div>
                     <div className="min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
                         <p className="text-xs font-mono font-bold text-white truncate">{build.name}</p>
                         {isCurrent && (
-                          <span className="px-2 py-0.5 rounded-full bg-white/10 text-white border border-white/20 text-[10px] font-mono uppercase tracking-wider">
+                          <span className="px-2 py-0.5 rounded-full bg-[#db00ff]/20 text-[#db00ff] border border-[#db00ff]/30 text-[10px] font-mono uppercase tracking-wider">
                             Ativa em Produção
                           </span>
                         )}
@@ -342,7 +342,7 @@ export default function UpdaterPage() {
                         size="sm"
                         variant="outline"
                         onClick={() => handleRollback(build.name)}
-                        className="h-8 border-zinc-800 bg-[#141418] text-zinc-300 hover:text-white hover:bg-zinc-800 font-mono text-xs rounded-xl"
+                        className="h-8 border-white/10 bg-[#16161a] text-zinc-300 hover:text-white hover:bg-white/10 font-mono text-xs rounded-[0.5rem]"
                       >
                         <RotateCcw className="mr-1.5 h-3.5 w-3.5" />
                         Ativar (Rollback)
@@ -352,7 +352,7 @@ export default function UpdaterPage() {
                       size="sm"
                       variant="ghost"
                       onClick={() => handleDelete(build.name)}
-                      className="h-8 text-zinc-500 hover:text-red-400 hover:bg-red-950/20 rounded-xl"
+                      className="h-8 text-zinc-500 hover:text-red-400 hover:bg-red-950/20 rounded-[0.5rem]"
                     >
                       <Trash2 className="h-3.5 w-3.5" />
                     </Button>
