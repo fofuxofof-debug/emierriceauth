@@ -37,20 +37,20 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="relative min-h-screen w-full flex flex-col items-center justify-center p-6 bg-[#050811] text-[#f1f5f9] overflow-hidden font-sans">
+    <div className="relative min-h-screen w-full flex flex-col items-center justify-center p-6 bg-[#07070a] text-[#f8fafc] overflow-hidden font-sans">
       
       {/* Background Ambient Glows */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.15),transparent_70%)] blur-[120px]"
+        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle_at_center,rgba(225,29,72,0.18),transparent_70%)] blur-[130px]"
       />
-      <div className="grid-ambient-dots absolute inset-0 -z-20 opacity-30 pointer-events-none" aria-hidden="true" />
+      <div className="tech-grid absolute inset-0 -z-20 opacity-30 pointer-events-none" aria-hidden="true" />
 
       {/* Back button */}
       <div className="absolute top-6 left-6 z-20">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-[#080d1a]/80 px-4 py-2 text-xs font-semibold text-slate-400 hover:text-white hover:border-sky-500/30 transition-all backdrop-blur-md"
+          className="inline-flex items-center gap-2 rounded-xl border border-zinc-800 bg-zinc-900/80 px-4 py-2 text-xs font-semibold text-zinc-400 hover:text-white hover:border-rose-500/30 transition-all backdrop-blur-md"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           <span>Voltar para a Loja</span>
@@ -61,30 +61,30 @@ export default function LoginPage() {
         
         {/* Brand Header */}
         <div className="mb-8 flex flex-col items-center gap-3 text-center">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-tr from-blue-600 via-sky-500 to-indigo-500 text-white font-extrabold text-xl shadow-[0_0_25px_rgba(14,165,233,0.4)]">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-tr from-rose-600 via-rose-500 to-amber-500 text-white font-extrabold text-xl shadow-[0_0_25px_rgba(244,63,94,0.4)]">
             S
           </div>
           <div>
-            <h1 className="text-2xl font-black tracking-tight text-white flex items-center justify-center gap-1.5">
-              Smooth <span className="text-sky-400">Store</span>
+            <h1 className="text-2xl font-black tracking-tight text-white flex items-center justify-center gap-1.5 uppercase">
+              Smooth <span className="text-rose-500">Store</span>
             </h1>
-            <p className="text-xs text-slate-400 font-medium mt-1">
+            <p className="text-xs text-zinc-400 font-medium mt-1 font-mono">
               Painel de Controle & Gestão de Licenças
             </p>
           </div>
         </div>
 
-        {/* Login Glass Card */}
-        <div className="glass-panel rounded-3xl p-7 shadow-2xl relative">
+        {/* Login Carbon Card */}
+        <div className="carbon-panel rounded-3xl p-7 shadow-2xl relative border border-rose-500/20">
           
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             
             <div className="flex flex-col gap-1.5">
-              <Label htmlFor="username" className="text-xs text-slate-400 uppercase tracking-wider font-semibold">
+              <Label htmlFor="username" className="text-xs text-zinc-400 uppercase tracking-wider font-semibold font-mono">
                 Usuário
               </Label>
-              <div className="flex items-center gap-3 rounded-xl border border-slate-800 bg-[#070c18]/90 px-4 py-3 transition-all duration-300 focus-within:border-sky-500 focus-within:ring-2 focus-within:ring-sky-500/20">
-                <User className="h-4 w-4 text-sky-400 shrink-0" />
+              <div className="flex items-center gap-3 rounded-xl border border-zinc-800 bg-zinc-950/90 px-4 py-3 transition-all duration-300 focus-within:border-rose-500 focus-within:ring-2 focus-within:ring-rose-500/20">
+                <User className="h-4 w-4 text-rose-500 shrink-0" />
                 <input
                   id="username"
                   type="text"
@@ -93,17 +93,17 @@ export default function LoginPage() {
                   autoComplete="username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="flex-1 bg-transparent text-[#f1f5f9] placeholder-slate-600 focus:outline-none text-sm font-medium tracking-normal"
+                  className="flex-1 bg-transparent text-[#f8fafc] placeholder-zinc-600 focus:outline-none text-sm font-medium tracking-normal"
                 />
               </div>
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <Label htmlFor="password" className="text-xs text-slate-400 uppercase tracking-wider font-semibold">
+              <Label htmlFor="password" className="text-xs text-zinc-400 uppercase tracking-wider font-semibold font-mono">
                 Senha
               </Label>
-              <div className="flex items-center gap-3 rounded-xl border border-slate-800 bg-[#070c18]/90 px-4 py-3 transition-all duration-300 focus-within:border-sky-500 focus-within:ring-2 focus-within:ring-sky-500/20">
-                <KeyRound className="h-4 w-4 text-sky-400 shrink-0" />
+              <div className="flex items-center gap-3 rounded-xl border border-zinc-800 bg-zinc-950/90 px-4 py-3 transition-all duration-300 focus-within:border-rose-500 focus-within:ring-2 focus-within:ring-rose-500/20">
+                <KeyRound className="h-4 w-4 text-rose-500 shrink-0" />
                 <input
                   id="password"
                   type="password"
@@ -112,13 +112,13 @@ export default function LoginPage() {
                   autoComplete="current-password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="flex-1 bg-transparent text-[#f1f5f9] placeholder-slate-600 focus:outline-none text-sm font-medium tracking-normal"
+                  className="flex-1 bg-transparent text-[#f8fafc] placeholder-zinc-600 focus:outline-none text-sm font-medium tracking-normal"
                 />
               </div>
             </div>
 
             {error && (
-              <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-xs text-red-400 font-medium">
+              <div className="rounded-xl border border-rose-500/30 bg-rose-500/10 p-3 text-xs text-rose-400 font-medium">
                 {error}
               </div>
             )}
@@ -126,7 +126,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="neon-btn-primary mt-2 flex items-center justify-center gap-2 w-full py-3.5 rounded-xl text-white font-bold text-xs uppercase tracking-wider transition-all disabled:opacity-50 cursor-pointer"
+              className="crimson-btn-primary mt-2 flex items-center justify-center gap-2 w-full py-3.5 rounded-xl text-white font-bold text-xs uppercase tracking-wider transition-all disabled:opacity-50 cursor-pointer shadow-[0_0_20px_rgba(244,63,94,0.35)]"
             >
               {isLoading ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
@@ -143,8 +143,8 @@ export default function LoginPage() {
         </div>
 
         {/* Footer Note */}
-        <p className="text-center text-[11px] text-slate-500 font-medium mt-6 flex items-center justify-center gap-1.5">
-          <Shield className="h-3.5 w-3.5 text-sky-500" />
+        <p className="text-center text-[11px] text-zinc-500 font-medium mt-6 flex items-center justify-center gap-1.5">
+          <Shield className="h-3.5 w-3.5 text-rose-500" />
           Acesso protegido com autenticação segura
         </p>
 

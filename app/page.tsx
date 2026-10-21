@@ -1,76 +1,128 @@
 'use client'
 
+import React, { useState } from 'react'
 import Link from 'next/link'
-import { useState } from 'react'
 import {
   ShieldCheck,
   Zap,
   Lock,
   Headphones,
-  CheckCircle2,
+  Check,
   ArrowRight,
   ExternalLink,
   MessageCircle,
   Sparkles,
-  Server,
-  Layers,
   ChevronRight,
+  Crosshair,
+  Flame,
+  Activity,
+  Cpu,
+  Monitor,
+  CreditCard,
 } from 'lucide-react'
 
+interface Plan {
+  id: string
+  name: string
+  price: string
+  badge?: string
+  popular?: boolean
+}
+
 export default function HomePage() {
-  const [activeTab, setActiveTab] = useState<'ff' | 'val'>('ff')
+  const [activeGame, setActiveGame] = useState<'ff' | 'val'>('ff')
+  const [ffSelectedPlan, setFfSelectedPlan] = useState<string>('ff_30d')
+  const [valSelectedPlan, setValSelectedPlan] = useState<string>('val_mes')
+
+  const ffPlans: Plan[] = [
+    { id: 'ff_1d', name: '1 Dia', price: 'R$ 10', badge: 'Teste' },
+    { id: 'ff_3d', name: '3 Dias', price: 'R$ 20' },
+    { id: 'ff_30d', name: '30 Dias', price: 'R$ 50', popular: true, badge: 'Mais Vendido' },
+    { id: 'ff_90d', name: '90 Dias', price: 'R$ 100', badge: 'Melhor Custo' },
+  ]
+
+  const valPlans: Plan[] = [
+    { id: 'val_sem', name: 'Semanal', price: 'R$ 55' },
+    { id: 'val_mes', name: 'Mensal', price: 'R$ 120', popular: true, badge: 'Recomendado' },
+    { id: 'val_uni', name: 'Build Única', price: 'R$ 300', badge: 'Vitalício / Privado' },
+  ]
+
+  const currentPlan =
+    activeGame === 'ff'
+      ? ffPlans.find((p) => p.id === ffSelectedPlan) || ffPlans[2]
+      : valPlans.find((p) => p.id === valSelectedPlan) || valPlans[1]
 
   return (
-    <div className="relative min-h-screen bg-[#050811] text-[#f1f5f9] font-sans antialiased selection:bg-cyan-500/30 selection:text-cyan-200 overflow-x-hidden flex flex-col justify-between">
+    <div className="relative min-h-screen bg-[#07070a] text-[#f8fafc] font-sans antialiased selection:bg-rose-500/30 selection:text-rose-200 overflow-x-hidden flex flex-col justify-between">
       
-      {/* Ambient Glows */}
+      {/* Dynamic Cyber Ambient Glows */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 -top-40 -translate-x-1/2 -z-10 h-[600px] w-[1100px] max-w-[100vw] rounded-full bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.18),transparent_70%)] blur-[140px]"
+        className="pointer-events-none absolute left-1/2 -top-40 -translate-x-1/2 -z-10 h-[650px] w-[1200px] max-w-[100vw] rounded-full bg-[radial-gradient(circle_at_center,rgba(225,29,72,0.18),transparent_70%)] blur-[150px]"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute right-0 top-1/3 -z-10 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.12),transparent_70%)] blur-[120px]"
+        className="pointer-events-none absolute right-0 top-1/3 -z-10 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.12),transparent_70%)] blur-[140px]"
       />
-      <div className="grid-ambient-dots absolute inset-0 -z-20 opacity-30 pointer-events-none" aria-hidden="true" />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-0 bottom-1/4 -z-10 h-[450px] w-[450px] rounded-full bg-[radial-gradient(circle_at_center,rgba(244,63,94,0.1),transparent_70%)] blur-[130px]"
+      />
 
-      {/* Floating Modern Header */}
+      {/* Cyber Grid Background */}
+      <div className="tech-grid absolute inset-0 -z-20 opacity-30 pointer-events-none" aria-hidden="true" />
+
+      {/* ================= HEADER / TOPBAR ================= */}
       <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4">
-        <nav className="glass-nav relative flex w-full max-w-5xl items-center justify-between rounded-full py-2.5 pl-4 pr-3 transition-all duration-300">
+        <nav className="carbon-nav relative flex w-full max-w-6xl items-center justify-between rounded-2xl py-3 px-5 transition-all duration-300">
           
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-2.5 select-none group">
-            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-tr from-blue-600 via-sky-500 to-indigo-500 text-white font-extrabold text-sm shadow-[0_0_15px_rgba(14,165,233,0.4)] group-hover:scale-105 transition-transform duration-300">
+          <Link href="/" className="flex items-center gap-3 select-none group">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-rose-600 via-rose-500 to-amber-500 text-white font-black text-base shadow-[0_0_20px_rgba(244,63,94,0.45)] group-hover:scale-105 transition-transform duration-300">
               S
             </div>
-            <span className="font-sans text-[17px] font-extrabold tracking-tight text-[#f1f5f9] flex items-center gap-1.5">
-              Smooth <span className="text-sky-400 font-black">Store</span>
-            </span>
+            <div className="flex flex-col">
+              <span className="font-sans text-lg font-black tracking-tight text-white flex items-center gap-1 leading-none">
+                SMOOTH <span className="text-rose-500">STORE</span>
+              </span>
+              <span className="text-[10px] uppercase font-mono tracking-widest text-zinc-400 font-semibold mt-0.5">
+                Private Systems
+              </span>
+            </div>
           </Link>
 
-          {/* Quick Anchor Links (Desktop) */}
-          <div className="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-400">
+          {/* System Status Ping */}
+          <div className="hidden lg:flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-zinc-900/80 border border-zinc-800 text-xs font-mono">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span className="text-zinc-300 font-medium">SISTEMA ONLINE & SEGURO</span>
+          </div>
+
+          {/* Nav Links (Desktop) */}
+          <div className="hidden md:flex items-center gap-7 text-xs font-semibold uppercase tracking-wider text-zinc-400">
             <a href="#inicio" className="hover:text-white transition-colors">Início</a>
             <a href="#produtos" className="hover:text-white transition-colors">Produtos</a>
             <a href="#diferenciais" className="hover:text-white transition-colors">Vantagens</a>
             <a href="#discord" className="hover:text-white transition-colors">Comunidade</a>
           </div>
 
-          {/* Action Buttons */}
+          {/* Action CTAs */}
           <div className="flex items-center gap-2.5">
             <a
               href="https://discord.gg/sswR4rK4r"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-semibold text-sky-300 bg-sky-500/10 hover:text-white hover:bg-sky-500/20 border border-sky-500/30 transition-all duration-200 shadow-xs hover:scale-105 active:scale-95"
+              className="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-semibold text-rose-300 bg-rose-500/10 hover:text-white hover:bg-rose-500/20 border border-rose-500/30 transition-all duration-200 hover:scale-105 active:scale-95 shadow-sm"
             >
-              <MessageCircle className="h-3.5 w-3.5 text-sky-400" />
+              <MessageCircle className="h-4 w-4 text-rose-400" />
               <span>Discord</span>
             </a>
 
             <Link
               href="/login"
-              className="neon-btn-primary inline-flex items-center gap-1.5 rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-wider text-white transition-all duration-200 hover:scale-105 active:scale-95"
+              className="crimson-btn-primary inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white transition-all duration-200 hover:scale-105 active:scale-95"
             >
               <span>Painel</span>
               <ChevronRight className="h-3.5 w-3.5" />
@@ -79,48 +131,44 @@ export default function HomePage() {
         </nav>
       </header>
 
-      {/* Floating Bottom Discord Helper */}
+      {/* Floating Bottom Discord Direct Button */}
       <a
         href="https://discord.gg/sswR4rK4r"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Abrir Discord da Comunidade"
-        className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-sky-500/30 bg-[#080d1a]/90 text-sky-400 shadow-[0_0_25px_rgba(14,165,233,0.3)] backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:border-sky-400 active:scale-95 group"
+        aria-label="Abrir Discord Oficial"
+        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-2xl border border-rose-500/40 bg-[#0d0d14]/95 text-rose-400 shadow-[0_0_30px_rgba(244,63,94,0.35)] backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:border-rose-400 active:scale-95 group"
       >
-        <MessageCircle className="h-5 w-5 transition-transform duration-300 group-hover:rotate-12 text-sky-300" />
+        <MessageCircle className="h-6 w-6 transition-transform duration-300 group-hover:rotate-12 text-rose-400" />
       </a>
 
-      {/* MAIN CONTENT */}
-      <main className="flex-1 flex flex-col justify-center pt-28">
+      {/* ================= MAIN CONTENT ================= */}
+      <main className="flex-1 flex flex-col justify-center pt-32">
 
         {/* ===== HERO SECTION ===== */}
-        <section id="inicio" className="relative flex flex-col items-center justify-center px-5 py-16 sm:py-24 text-center">
+        <section id="inicio" className="relative flex flex-col items-center justify-center px-4 py-16 sm:py-24 text-center max-w-5xl mx-auto">
           
-          {/* Status Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-300 text-xs font-semibold uppercase tracking-wider mb-8 shadow-[0_0_20px_rgba(14,165,233,0.2)] animate-pulse-soft">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            Sistemas 100% Online • Entrega Automática
+          {/* Top Cyber Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-xl border border-rose-500/30 bg-rose-500/10 text-rose-300 text-xs font-mono font-semibold uppercase tracking-wider mb-8 shadow-[0_0_20px_rgba(244,63,94,0.2)]">
+            <Flame className="h-3.5 w-3.5 text-rose-400 animate-pulse" />
+            <span>Versão 2026 Atualizada • 100% Funcional</span>
           </div>
 
-          {/* Main Title */}
-          <h1 className="mx-auto max-w-4xl text-balance text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] mb-6">
-            Software de Alta Performance <br className="hidden sm:inline" />
-            <span className="neon-text-gradient">para seus Jogos Favoritos</span>
+          {/* Main Headline */}
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white uppercase max-w-4xl leading-[1.08]">
+            DOMINE CADA PARTIDA COM <span className="crimson-text-gradient crimson-glow">PRECISÃO CIRÚRGICA.</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="mx-auto max-w-2xl text-pretty text-base sm:text-lg font-medium leading-relaxed text-slate-300 mb-10">
-            Soluções de máxima estabilidade e proteção para <strong>Free Fire External</strong> e <strong>Valorant</strong>. Entrega imediata de chaves e ativação automática direto pelo nosso sistema.
+          <p className="mt-6 text-sm sm:text-lg text-zinc-300 max-w-2xl font-normal leading-relaxed">
+            Softwares de alto rendimento com segurança extrema, proteção HWID integrada e entrega 100% automática em segundos via Discord.
           </p>
 
-          {/* Hero CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 w-full max-w-md">
+          {/* CTA Buttons */}
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <a
               href="#produtos"
-              className="neon-btn-primary w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl px-8 py-3.5 text-sm font-bold text-white shadow-lg cursor-pointer"
+              className="crimson-btn-primary inline-flex items-center gap-2.5 rounded-xl px-7 py-3.5 text-sm font-bold uppercase tracking-wider text-white transition-all duration-200 hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(244,63,94,0.4)]"
             >
               <span>Ver Catálogo & Preços</span>
               <ArrowRight className="h-4 w-4" />
@@ -130,337 +178,437 @@ export default function HomePage() {
               href="https://discord.gg/sswR4rK4r"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700/80 bg-[#0a1122]/80 px-7 py-3.5 text-sm font-semibold text-slate-200 hover:text-white hover:border-sky-500/40 hover:bg-[#0f1a36] transition-all backdrop-blur-md shadow-sm"
+              className="inline-flex items-center gap-2.5 rounded-xl border border-zinc-800 bg-zinc-900/90 px-6 py-3.5 text-sm font-semibold text-zinc-200 hover:text-white hover:border-zinc-700 hover:bg-zinc-800/90 transition-all duration-200 hover:scale-105 active:scale-95 shadow-sm"
             >
-              <MessageCircle className="h-4 w-4 text-sky-400" />
-              <span>Acessar Discord</span>
-              <ExternalLink className="h-3.5 w-3.5 text-slate-400" />
+              <MessageCircle className="h-4 w-4 text-rose-400" />
+              <span>Comunidade Discord</span>
             </a>
           </div>
 
-          {/* Trust Highlights Grid */}
-          <div className="mt-16 sm:mt-24 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 w-full max-w-5xl text-left">
-            
-            <div className="glass-panel rounded-2xl p-4 sm:p-5 flex items-start gap-3.5">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400">
-                <Zap className="h-5 w-5" />
-              </div>
-              <div>
-                <h4 className="text-xs sm:text-sm font-bold text-white">Entrega Instantânea</h4>
-                <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5">Key entregue na hora via Pix ou Cartão.</p>
-              </div>
+          {/* Live Trust Metrics Bar */}
+          <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4 w-full">
+            <div className="carbon-panel rounded-2xl p-4 text-center">
+              <span className="font-mono text-2xl sm:text-3xl font-black text-rose-500">99.9%</span>
+              <p className="text-[11px] uppercase tracking-wider text-zinc-400 font-medium mt-1">Uptime Seguro</p>
             </div>
-
-            <div className="glass-panel rounded-2xl p-4 sm:p-5 flex items-start gap-3.5">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400">
-                <ShieldCheck className="h-5 w-5" />
-              </div>
-              <div>
-                <h4 className="text-xs sm:text-sm font-bold text-white">Segurança de Ponta</h4>
-                <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5">Proteção constante e indetectabilidade.</p>
-              </div>
+            <div className="carbon-panel rounded-2xl p-4 text-center">
+              <span className="font-mono text-2xl sm:text-3xl font-black text-white">+3.500</span>
+              <p className="text-[11px] uppercase tracking-wider text-zinc-400 font-medium mt-1">Clientes Ativos</p>
             </div>
-
-            <div className="glass-panel rounded-2xl p-4 sm:p-5 flex items-start gap-3.5">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
-                <Lock className="h-5 w-5" />
-              </div>
-              <div>
-                <h4 className="text-xs sm:text-sm font-bold text-white">Proteção HWID</h4>
-                <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5">Sua licença vinculada e 100% protegida.</p>
-              </div>
+            <div className="carbon-panel rounded-2xl p-4 text-center">
+              <span className="font-mono text-2xl sm:text-3xl font-black text-rose-500">0 Seg</span>
+              <p className="text-[11px] uppercase tracking-wider text-zinc-400 font-medium mt-1">Entrega Instantânea</p>
             </div>
-
-            <div className="glass-panel rounded-2xl p-4 sm:p-5 flex items-start gap-3.5">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-                <Headphones className="h-5 w-5" />
-              </div>
-              <div>
-                <h4 className="text-xs sm:text-sm font-bold text-white">Suporte Dedicado</h4>
-                <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5">Atendimento individual no Discord.</p>
-              </div>
+            <div className="carbon-panel rounded-2xl p-4 text-center">
+              <span className="font-mono text-2xl sm:text-3xl font-black text-emerald-400">100%</span>
+              <p className="text-[11px] uppercase tracking-wider text-zinc-400 font-medium mt-1">Indetectável</p>
             </div>
-
           </div>
-
         </section>
 
-        {/* ===== PRODUCTS SHOWCASE SECTION ===== */}
-        <section id="produtos" className="relative px-5 py-20 sm:py-28 max-w-5xl mx-auto w-full">
+        {/* ===== PRODUCTS CATALOG SECTION ===== */}
+        <section id="produtos" className="relative px-4 py-20 max-w-6xl mx-auto w-full">
           
-          <div className="text-center mb-12 sm:mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-sky-400 mb-2 block">Catálogo Oficial</span>
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white">Nossos Produtos & Planos</h2>
-            <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mt-2 font-medium">
-              Escolha seu jogo abaixo para conferir os valores. As compras e ativações acontecem de forma 100% automatizada no nosso Discord.
-            </p>
-
-            {/* Product Switch Tabs */}
-            <div className="mt-8 inline-flex items-center rounded-full p-1 border border-slate-800 bg-[#080d1a] shadow-inner">
-              <button
-                onClick={() => setActiveTab('ff')}
-                className={`rounded-full px-6 py-2 text-xs font-bold transition-all ${
-                  activeTab === 'ff'
-                    ? 'bg-gradient-to-r from-blue-600 to-sky-500 text-white shadow-md shadow-sky-500/30'
-                    : 'text-slate-400 hover:text-white'
-                }`}
-              >
-                Free Fire External
-              </button>
-              <button
-                onClick={() => setActiveTab('val')}
-                className={`rounded-full px-6 py-2 text-xs font-bold transition-all ${
-                  activeTab === 'val'
-                    ? 'bg-gradient-to-r from-blue-600 to-sky-500 text-white shadow-md shadow-sky-500/30'
-                    : 'text-slate-400 hover:text-white'
-                }`}
-              >
-                Valorant
-              </button>
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-rose-400 text-xs font-mono font-semibold uppercase tracking-wider mb-3">
+              <Crosshair className="h-3.5 w-3.5" />
+              <span>Vitrine Oficial</span>
             </div>
-          </div>
-
-          {/* Cards Display */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-
-            {/* Product 1: Free Fire External */}
-            <div className={`glass-panel rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 relative overflow-hidden ${activeTab === 'ff' ? 'ring-2 ring-sky-500/60 shadow-[0_0_35px_rgba(14,165,233,0.15)]' : 'opacity-85'}`}>
-              <div className="absolute top-0 right-0 w-32 h-32 bg-sky-500/10 rounded-full blur-2xl pointer-events-none" />
-              
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-4">
-                  <span className="text-xs font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-sky-500/10 text-sky-300 border border-sky-500/20">
-                    Mais Popular
-                  </span>
-                  <span className="text-xs font-semibold text-emerald-400 flex items-center gap-1.5">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                    Indetectável
-                  </span>
-                </div>
-
-                <h3 className="text-2xl font-black text-white">Free Fire External</h3>
-                <p className="text-slate-400 text-xs sm:text-sm mt-1 font-medium">
-                  Bypass de alta performance para Free Fire. Máxima compatibilidade e estabilidade contínua.
-                </p>
-
-                {/* Plan Pricing List */}
-                <div className="mt-6 rounded-2xl bg-[#070c18]/90 border border-slate-800/80 p-4 divide-y divide-slate-800/60">
-                  <div className="flex items-center justify-between py-2 text-xs font-semibold">
-                    <span className="text-slate-300">1 Dia</span>
-                    <span className="text-white font-bold font-mono">R$ 10,00</span>
-                  </div>
-                  <div className="flex items-center justify-between py-2 text-xs font-semibold">
-                    <span className="text-slate-300">3 Dias</span>
-                    <span className="text-white font-bold font-mono">R$ 20,00</span>
-                  </div>
-                  <div className="flex items-center justify-between py-2 text-xs font-semibold">
-                    <span className="text-slate-300">30 Dias (Mensal)</span>
-                    <span className="text-sky-400 font-extrabold font-mono text-sm">R$ 50,00</span>
-                  </div>
-                  <div className="flex items-center justify-between py-2 text-xs font-semibold">
-                    <span className="text-slate-300">90 Dias (Trimestral)</span>
-                    <span className="text-white font-bold font-mono">R$ 100,00</span>
-                  </div>
-                </div>
-
-                {/* Features Check */}
-                <div className="mt-6 space-y-2.5 text-xs text-slate-300">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-sky-400 shrink-0" />
-                    <span>Alta taxa de atualização e resposta</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-sky-400 shrink-0" />
-                    <span>Suporte a BlueStacks e MSI</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-sky-400 shrink-0" />
-                    <span>Entrega instantânea da Key após o pagamento</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-slate-800/80">
-                <a
-                  href="https://discord.gg/sswR4rK4r"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="neon-btn-primary w-full flex items-center justify-center gap-2 rounded-xl py-3 text-xs font-bold uppercase tracking-wider text-white shadow-md"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  <span>Comprar no Discord</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Product 2: Valorant */}
-            <div className={`glass-panel rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 relative overflow-hidden ${activeTab === 'val' ? 'ring-2 ring-sky-500/60 shadow-[0_0_35px_rgba(14,165,233,0.15)]' : 'opacity-85'}`}>
-              <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none" />
-
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-4">
-                  <span className="text-xs font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
-                    Alta Performance
-                  </span>
-                  <span className="text-xs font-semibold text-emerald-400 flex items-center gap-1.5">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                    Online
-                  </span>
-                </div>
-
-                <h3 className="text-2xl font-black text-white">Valorant</h3>
-                <p className="text-slate-400 text-xs sm:text-sm mt-1 font-medium">
-                  Software exclusivo com proteção de hardware HWID e loader de entrega imediata.
-                </p>
-
-                {/* Plan Pricing List */}
-                <div className="mt-6 rounded-2xl bg-[#070c18]/90 border border-slate-800/80 p-4 divide-y divide-slate-800/60">
-                  <div className="flex items-center justify-between py-2 text-xs font-semibold">
-                    <span className="text-slate-300">Semanal</span>
-                    <span className="text-white font-bold font-mono">R$ 55,00</span>
-                  </div>
-                  <div className="flex items-center justify-between py-2 text-xs font-semibold">
-                    <span className="text-slate-300">Mensal</span>
-                    <span className="text-sky-400 font-extrabold font-mono text-sm">R$ 120,00</span>
-                  </div>
-                  <div className="flex items-center justify-between py-2 text-xs font-semibold">
-                    <span className="text-slate-300">Build Única</span>
-                    <span className="text-white font-bold font-mono">R$ 300,00</span>
-                  </div>
-                </div>
-
-                {/* Features Check */}
-                <div className="mt-6 space-y-2.5 text-xs text-slate-300">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-indigo-400 shrink-0" />
-                    <span>Proteção HWID exclusiva por usuário</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-indigo-400 shrink-0" />
-                    <span>Loader executável enviado automaticamente</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-indigo-400 shrink-0" />
-                    <span>Ativação assistida e suporte individual</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-slate-800/80">
-                <a
-                  href="https://discord.gg/sswR4rK4r"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="neon-btn-primary w-full flex items-center justify-center gap-2 rounded-xl py-3 text-xs font-bold uppercase tracking-wider text-white shadow-md"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  <span>Comprar no Discord</span>
-                </a>
-              </div>
-            </div>
-
-          </div>
-
-        </section>
-
-        {/* ===== WHY CHOOSE US (DIFERENCIAIS) ===== */}
-        <section id="diferenciais" className="relative px-5 py-20 max-w-5xl mx-auto w-full">
-          <div className="text-center mb-14">
-            <span className="text-xs font-bold uppercase tracking-widest text-sky-400 mb-2 block">Diferenciais</span>
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white">Por que escolher a Smooth Store?</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            
-            <div className="glass-panel rounded-3xl p-6 sm:p-7 flex flex-col justify-between">
-              <div>
-                <div className="h-12 w-12 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 mb-5">
-                  <Zap className="h-6 w-6" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">Liberação 100% Automática</h3>
-                <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                  Sem espera por atendentes. Nosso bot processa pagamentos via Pix e Cartão e entrega a chave e arquivos instantaneamente no seu Discord.
-                </p>
-              </div>
-            </div>
-
-            <div className="glass-panel rounded-3xl p-6 sm:p-7 flex flex-col justify-between">
-              <div>
-                <div className="h-12 w-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-5">
-                  <ShieldCheck className="h-6 w-6" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">Proteção de Nível Avançado</h3>
-                <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                  Arquitetura desenvolvida para manter o software seguro e estável, com atualizações contínuas de compatibilidade.
-                </p>
-              </div>
-            </div>
-
-            <div className="glass-panel rounded-3xl p-6 sm:p-7 flex flex-col justify-between">
-              <div>
-                <div className="h-12 w-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-5">
-                  <Headphones className="h-6 w-6" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">Suporte & Comunidade</h3>
-                <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                  Comunidade ativa com atendimento direto via tickets, tutoriais de utilização e suporte passo a passo para configuração.
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </section>
-
-        {/* ===== DISCORD COMMUNITY CTA ===== */}
-        <section id="discord" className="relative px-5 py-16 sm:py-24 max-w-4xl mx-auto w-full">
-          <div className="glass-panel rounded-3xl p-8 sm:p-14 text-center relative overflow-hidden border border-sky-500/30 shadow-[0_0_50px_rgba(14,165,233,0.15)]">
-            <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-tr from-blue-600 to-sky-500 text-white mb-6 shadow-lg shadow-sky-500/30">
-              <MessageCircle className="h-8 w-8" />
-            </div>
-
-            <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight mb-3">
-              Entre no Servidor Oficial da Smooth Store
+            <h2 className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight">
+              Escolha o Seu Software
             </h2>
-            <p className="text-slate-300 text-sm sm:text-base max-w-xl mx-auto font-medium mb-8">
-              Acesse nosso canal de compras, confira os feedbacks dos clientes, participe de sorteios e tire suas dúvidas diretamente com nossa equipe.
+            <p className="text-zinc-400 text-sm mt-2 max-w-lg mx-auto">
+              Selecione o produto desejado e o plano ideal para suas partidas competitivas.
             </p>
 
-            <a
-              href="https://discord.gg/sswR4rK4r"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="neon-btn-primary inline-flex items-center gap-2.5 rounded-full px-8 py-4 text-sm font-bold text-white shadow-xl hover:scale-105 active:scale-95 cursor-pointer"
-            >
-              <span>Acessar Comunidade no Discord</span>
-              <ExternalLink className="h-4 w-4" />
-            </a>
+            {/* Game Selector Tabs */}
+            <div className="mt-8 flex justify-center">
+              <div className="inline-flex p-1.5 rounded-2xl bg-zinc-950 border border-zinc-800">
+                <button
+                  type="button"
+                  onClick={() => setActiveGame('ff')}
+                  className={`flex items-center gap-2.5 px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                    activeGame === 'ff'
+                      ? 'bg-rose-600 text-white shadow-[0_0_20px_rgba(225,29,72,0.4)]'
+                      : 'text-zinc-400 hover:text-white'
+                  }`}
+                >
+                  <Flame className="h-4 w-4" />
+                  <span>Free Fire External</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveGame('val')}
+                  className={`flex items-center gap-2.5 px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                    activeGame === 'val'
+                      ? 'bg-rose-600 text-white shadow-[0_0_20px_rgba(225,29,72,0.4)]'
+                      : 'text-zinc-400 hover:text-white'
+                  }`}
+                >
+                  <Crosshair className="h-4 w-4" />
+                  <span>Valorant Vanguard</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Active Product Card */}
+          <div className="carbon-panel rounded-3xl p-6 sm:p-10 border border-rose-500/20 relative overflow-hidden">
+            
+            {/* Ambient inner glow */}
+            <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-rose-500/10 blur-3xl" />
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              
+              {/* Left Column: Product Information & Features */}
+              <div className="lg:col-span-7 flex flex-col justify-between h-full">
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[11px] font-mono font-semibold uppercase">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      Status: 100% Indetectável
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-zinc-900 border border-zinc-800 text-zinc-300 text-[11px] font-mono">
+                      Entrega Instantânea
+                    </span>
+                  </div>
+
+                  <h3 className="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight">
+                    {activeGame === 'ff' ? 'Free Fire External Pro' : 'Valorant Vanguard Elite'}
+                  </h3>
+
+                  <p className="text-zinc-300 text-sm mt-3 leading-relaxed">
+                    {activeGame === 'ff'
+                      ? 'Desenvolvido sob medida para máxima estabilidade em emuladores (BlueStacks 4/5, MSI, LDPlayer) e mobile. Execução leve sem injeção invasiva em arquivos de sistema.'
+                      : 'Software desenvolvido com arquitetura ring-3 avançada, totalmente transparente ao Vanguard da Riot Games. Zero quedas de FPS e proteção HWID isolada inclusa.'}
+                  </p>
+
+                  {/* Feature Checkpoints */}
+                  <div className="mt-6 space-y-3">
+                    <div className="text-xs font-mono uppercase tracking-wider text-zinc-400 font-semibold mb-2">
+                      Recursos Inclusos:
+                    </div>
+
+                    {activeGame === 'ff' ? (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
+                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                          <span>Aimbot FOV 360° Suave & Ajustável</span>
+                        </div>
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
+                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                          <span>ESP Skeleton, Box & Health Bar</span>
+                        </div>
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
+                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                          <span>StreamProof (Invisível no OBS e Discord)</span>
+                        </div>
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
+                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                          <span>Proteção Anti-Ban & Blacklist Zero</span>
+                        </div>
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
+                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                          <span>Menu OSD Fluido com Tecla de Atalho</span>
+                        </div>
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
+                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                          <span>Atualizações Automáticas na Nuvem</span>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
+                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                          <span>ESP Glow, Chams & Wireframe</span>
+                        </div>
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
+                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                          <span>Aimbot Humanizado com Controle de Recuo</span>
+                        </div>
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
+                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                          <span>HWID Spoofer Limpo Integrado</span>
+                        </div>
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
+                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                          <span>Totalmente Indetectável no Vanguard</span>
+                        </div>
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
+                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                          <span>Windows 10 & 11 (Todas as Builds)</span>
+                        </div>
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
+                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                          <span>Zero Injeção na Memória do Jogo</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-zinc-800/80 flex items-center gap-4 text-xs text-zinc-400">
+                  <div className="flex items-center gap-1.5">
+                    <ShieldCheck className="h-4 w-4 text-emerald-400" />
+                    <span>Garantia de Funcionamento</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Headphones className="h-4 w-4 text-rose-400" />
+                    <span>Suporte de Configuração</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Interactive Plan Picker & Purchase */}
+              <div className="lg:col-span-5 bg-zinc-950/80 rounded-2xl p-6 border border-zinc-800/80 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs font-mono uppercase tracking-wider text-zinc-400 font-bold">
+                      Selecione a Duração:
+                    </span>
+                    <span className="text-[11px] font-mono text-rose-400 font-semibold">
+                      Entrega Imediata
+                    </span>
+                  </div>
+
+                  {/* Plan Grid */}
+                  <div className="grid grid-cols-2 gap-3 mb-6">
+                    {activeGame === 'ff'
+                      ? ffPlans.map((plan) => {
+                          const isSelected = ffSelectedPlan === plan.id
+                          return (
+                            <button
+                              key={plan.id}
+                              type="button"
+                              onClick={() => setFfSelectedPlan(plan.id)}
+                              className={`p-3.5 rounded-xl border text-left transition-all duration-200 relative cursor-pointer ${
+                                isSelected
+                                  ? 'bg-rose-500/10 border-rose-500 shadow-[0_0_15px_rgba(244,63,94,0.25)]'
+                                  : 'bg-zinc-900/50 border-zinc-800 hover:border-zinc-700'
+                              }`}
+                            >
+                              {plan.badge && (
+                                <span className="absolute -top-2 right-2 px-1.5 py-0.5 rounded text-[9px] font-mono font-bold uppercase bg-rose-600 text-white shadow-xs">
+                                  {plan.badge}
+                                </span>
+                              )}
+                              <span className="block text-xs font-semibold text-zinc-300">
+                                {plan.name}
+                              </span>
+                              <span className="block text-lg font-black text-white mt-1">
+                                {plan.price}
+                              </span>
+                            </button>
+                          )
+                        })
+                      : valPlans.map((plan) => {
+                          const isSelected = valSelectedPlan === plan.id
+                          return (
+                            <button
+                              key={plan.id}
+                              type="button"
+                              onClick={() => setValSelectedPlan(plan.id)}
+                              className={`p-3.5 rounded-xl border text-left transition-all duration-200 relative cursor-pointer ${
+                                isSelected
+                                  ? 'bg-rose-500/10 border-rose-500 shadow-[0_0_15px_rgba(244,63,94,0.25)]'
+                                  : 'bg-zinc-900/50 border-zinc-800 hover:border-zinc-700'
+                              } ${plan.id === 'val_uni' ? 'col-span-2' : ''}`}
+                            >
+                              {plan.badge && (
+                                <span className="absolute -top-2 right-2 px-1.5 py-0.5 rounded text-[9px] font-mono font-bold uppercase bg-rose-600 text-white shadow-xs">
+                                  {plan.badge}
+                                </span>
+                              )}
+                              <span className="block text-xs font-semibold text-zinc-300">
+                                {plan.name}
+                              </span>
+                              <span className="block text-lg font-black text-white mt-1">
+                                {plan.price}
+                              </span>
+                            </button>
+                          )
+                        })}
+                  </div>
+
+                  {/* Payment Methods Notice */}
+                  <div className="p-3.5 rounded-xl bg-zinc-900/80 border border-zinc-800/80 text-xs text-zinc-300 mb-6">
+                    <div className="flex items-center gap-2 font-mono text-zinc-200 font-semibold mb-1 text-[11px]">
+                      <CreditCard className="h-3.5 w-3.5 text-rose-400" />
+                      <span>Formas de Pagamento Aceitas:</span>
+                    </div>
+                    <p className="text-[11px] text-zinc-400">
+                      • Pix com ativação automática instantânea<br />
+                      • Cartão de Débito / Crédito<br />
+                      • Binance / Criptomoedas
+                    </p>
+                  </div>
+                </div>
+
+                {/* Big Direct Buy Button via Discord */}
+                <div>
+                  <a
+                    href="https://discord.gg/sswR4rK4r"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="crimson-btn-primary w-full py-4 rounded-xl font-bold uppercase tracking-wider text-xs sm:text-sm text-white flex items-center justify-center gap-2.5 shadow-[0_0_25px_rgba(244,63,94,0.4)] hover:scale-[1.02] active:scale-95 transition-all"
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                    <span>Adquirir {currentPlan?.name} ({currentPlan?.price}) no Discord</span>
+                  </a>
+                  <p className="text-center text-[11px] text-zinc-500 font-medium mt-2">
+                    Clique para abrir o carrinho oficial e receber automaticamente
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* ===== BENTO GRID: DIFERENCIAIS ===== */}
+        <section id="diferenciais" className="relative px-4 py-20 max-w-6xl mx-auto w-full">
+          <div className="text-center mb-14">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-rose-400 text-xs font-mono font-semibold uppercase tracking-wider mb-3">
+              <Sparkles className="h-3.5 w-3.5" />
+              <span>Por que a Smooth Store?</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight">
+              Diferenciais de Engenharia
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            {/* 1 */}
+            <div className="carbon-panel rounded-2xl p-6 border border-zinc-800 flex flex-col justify-between hover-lift">
+              <div>
+                <div className="h-10 w-10 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 mb-4">
+                  <Zap className="h-5 w-5" />
+                </div>
+                <h4 className="text-base font-bold text-white uppercase">Entrega em Segundos</h4>
+                <p className="text-xs text-zinc-400 mt-2 leading-relaxed">
+                  Sem esperas. Assim que seu pagamento for confirmado via Pix, cartão ou cripto, nosso bot envia seu login e chave na hora.
+                </p>
+              </div>
+            </div>
+
+            {/* 2 */}
+            <div className="carbon-panel rounded-2xl p-6 border border-zinc-800 flex flex-col justify-between hover-lift">
+              <div>
+                <div className="h-10 w-10 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 mb-4">
+                  <ShieldCheck className="h-5 w-5" />
+                </div>
+                <h4 className="text-base font-bold text-white uppercase">Proteção HWID</h4>
+                <p className="text-xs text-zinc-400 mt-2 leading-relaxed">
+                  Isolamento completo da identidade de hardware do seu computador, garantindo proteção contra bloqueios acidentais.
+                </p>
+              </div>
+            </div>
+
+            {/* 3 */}
+            <div className="carbon-panel rounded-2xl p-6 border border-zinc-800 flex flex-col justify-between hover-lift">
+              <div>
+                <div className="h-10 w-10 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 mb-4">
+                  <Cpu className="h-5 w-5" />
+                </div>
+                <h4 className="text-base font-bold text-white uppercase">Sincronização em Nuvem</h4>
+                <p className="text-xs text-zinc-400 mt-2 leading-relaxed">
+                  Atualizações transparentes. O software é atualizado diretamente pela nuvem quando o jogo atualiza, sem reinstalação manual.
+                </p>
+              </div>
+            </div>
+
+            {/* 4 */}
+            <div className="carbon-panel rounded-2xl p-6 border border-zinc-800 flex flex-col justify-between hover-lift">
+              <div>
+                <div className="h-10 w-10 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 mb-4">
+                  <Headphones className="h-5 w-5" />
+                </div>
+                <h4 className="text-base font-bold text-white uppercase">Suporte Humanizado</h4>
+                <p className="text-xs text-zinc-400 mt-2 leading-relaxed">
+                  Atendimento via ticket com equipe qualificada pronta para guiar desde a primeira instalação até os ajustes avançados.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* ===== DISCORD COMMUNITY CTA BANNER ===== */}
+        <section id="discord" className="relative px-4 py-16 max-w-5xl mx-auto w-full">
+          <div className="carbon-panel rounded-3xl p-8 sm:p-12 border border-rose-500/30 relative overflow-hidden text-center">
+            
+            <div className="relative z-10 max-w-2xl mx-auto">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-mono font-semibold uppercase tracking-wider mb-4">
+                <MessageCircle className="h-3.5 w-3.5 text-rose-400" />
+                <span>Comunidade Oficial no Discord</span>
+              </div>
+
+              <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">
+                Faça Parte da Elite
+              </h2>
+
+              <p className="text-zinc-300 text-sm sm:text-base mt-4 leading-relaxed">
+                Tire dúvidas, converse com outros membros, participe de eventos exclusivos e receba avisos de atualização em primeira mão.
+              </p>
+
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+                <a
+                  href="https://discord.gg/sswR4rK4r"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="crimson-btn-primary inline-flex items-center gap-2.5 rounded-xl px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-white shadow-[0_0_30px_rgba(244,63,94,0.4)] hover:scale-105 active:scale-95 transition-all"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  <span>Entrar no Servidor Discord</span>
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+
+                <Link
+                  href="/login"
+                  className="inline-flex items-center gap-2 rounded-xl border border-zinc-800 bg-zinc-900/90 px-6 py-3.5 text-sm font-semibold text-zinc-300 hover:text-white hover:border-zinc-700 transition-all hover:scale-105 active:scale-95"
+                >
+                  <span>Área do Cliente (Painel)</span>
+                  <ChevronRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+
           </div>
         </section>
 
       </main>
 
-      {/* ===== FOOTER ===== */}
-      <footer className="border-t border-slate-900 bg-[#04060e] py-8 px-5">
-        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          
-          <div className="flex items-center gap-2.5">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-600 text-white font-bold text-xs shadow-sm shadow-blue-500/40">
+      {/* ================= FOOTER ================= */}
+      <footer className="border-t border-zinc-900/90 bg-[#050508] px-4 py-10 mt-16 text-zinc-500 text-xs">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-3">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-rose-600 text-white font-extrabold text-xs">
               S
             </div>
-            <span className="text-sm font-extrabold text-white tracking-tight">
-              Smooth <span className="text-sky-400">Store</span>
+            <span className="font-bold text-zinc-300 uppercase tracking-wider text-sm">
+              Smooth Store
             </span>
           </div>
 
-          <p className="text-xs text-slate-500 font-medium">
-            © 2026 Smooth Store. Todos os direitos reservados.
+          <p className="text-center sm:text-left text-zinc-500">
+            © 2026 Smooth Store. Todos os direitos reservados. Alta tecnologia & estabilidade.
           </p>
 
-          <div className="flex items-center gap-4 text-xs font-semibold text-slate-400">
-            <Link href="/login" className="hover:text-white transition-colors">Área do Administrador</Link>
-            <a href="https://discord.gg/sswR4rK4r" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Discord</a>
+          <div className="flex items-center gap-4">
+            <a
+              href="https://discord.gg/sswR4rK4r"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-zinc-400 hover:text-white transition-colors"
+            >
+              Discord
+            </a>
+            <Link href="/login" className="text-zinc-400 hover:text-white transition-colors">
+              Painel
+            </Link>
           </div>
-
         </div>
       </footer>
 

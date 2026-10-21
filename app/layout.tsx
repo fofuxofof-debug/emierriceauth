@@ -5,12 +5,12 @@ import { Toaster } from 'sonner'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Smooth Store — Performance & Autenticação de Alta Tecnologia',
-  description: 'Plataforma oficial Smooth Store. Ativação instantânea, proteção HWID e softwares de alta performance para Free Fire e Valorant.',
+  title: 'Smooth Store — Alta Performance, Segurança & Entrega Automática',
+  description: 'Plataforma oficial Smooth Store. Ativação instantânea, proteção de ponta e softwares de alto rendimento para Free Fire e Valorant.',
 }
 
 export const viewport: Viewport = {
-  themeColor: '#050811',
+  themeColor: '#07070a',
 }
 
 export default function RootLayout({
@@ -28,16 +28,16 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="font-sans antialiased bg-[#060911] text-[#f1f5f9] min-h-screen selection:bg-blue-500/30 selection:text-blue-200">
+      <body className="font-sans antialiased bg-[#07070a] text-[#f8fafc] min-h-screen selection:bg-rose-500/30 selection:text-rose-200">
         {children}
         <Toaster
           theme="dark"
           position="top-right"
           toastOptions={{
             style: {
-              background: '#0b1222',
-              border: '1px solid #15233c',
-              color: '#f1f5f9',
+              background: '#0e0e14',
+              border: '1px solid #272230',
+              color: '#f8fafc',
             },
           }}
         />
