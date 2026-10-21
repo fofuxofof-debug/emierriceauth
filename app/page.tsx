@@ -44,7 +44,7 @@ export default function HomePage() {
   const valPlans: Plan[] = [
     { id: 'val_sem', name: 'Semanal', price: 'R$ 55' },
     { id: 'val_mes', name: 'Mensal', price: 'R$ 120', popular: true, badge: 'Recomendado' },
-    { id: 'val_uni', name: 'Build Única', price: 'R$ 300', badge: 'Vitalício / Privado' },
+    { id: 'val_uni', name: 'Build Única', price: 'R$ 300', badge: 'Vitalício' },
   ]
 
   const currentPlan =
@@ -53,20 +53,16 @@ export default function HomePage() {
       : valPlans.find((p) => p.id === valSelectedPlan) || valPlans[1]
 
   return (
-    <div className="relative min-h-screen bg-[#07070a] text-[#f8fafc] font-sans antialiased selection:bg-rose-500/30 selection:text-rose-200 overflow-x-hidden flex flex-col justify-between">
+    <div className="relative min-h-screen bg-[#08080a] text-white font-sans antialiased selection:bg-white/20 selection:text-white overflow-x-hidden flex flex-col justify-between">
       
-      {/* Dynamic Cyber Ambient Glows */}
+      {/* Dynamic Monochrome Ambient Glows */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 -top-40 -translate-x-1/2 -z-10 h-[650px] w-[1200px] max-w-[100vw] rounded-full bg-[radial-gradient(circle_at_center,rgba(225,29,72,0.18),transparent_70%)] blur-[150px]"
+        className="pointer-events-none absolute left-1/2 -top-40 -translate-x-1/2 -z-10 h-[650px] w-[1200px] max-w-[100vw] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_70%)] blur-[150px]"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute right-0 top-1/3 -z-10 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.12),transparent_70%)] blur-[140px]"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute left-0 bottom-1/4 -z-10 h-[450px] w-[450px] rounded-full bg-[radial-gradient(circle_at_center,rgba(244,63,94,0.1),transparent_70%)] blur-[130px]"
+        className="pointer-events-none absolute right-0 top-1/3 -z-10 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)] blur-[140px]"
       />
 
       {/* Cyber Grid Background */}
@@ -78,24 +74,24 @@ export default function HomePage() {
           
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-3 select-none group">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-rose-600 via-rose-500 to-amber-500 text-white font-black text-base shadow-[0_0_20px_rgba(244,63,94,0.45)] group-hover:scale-105 transition-transform duration-300">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white text-black font-black text-base shadow-[0_0_15px_rgba(255,255,255,0.3)] group-hover:scale-105 transition-transform duration-300">
               S
             </div>
             <div className="flex flex-col">
               <span className="font-sans text-lg font-black tracking-tight text-white flex items-center gap-1 leading-none">
-                SMOOTH <span className="text-rose-500">STORE</span>
+                SMOOTH <span className="text-zinc-400">STORE</span>
               </span>
-              <span className="text-[10px] uppercase font-mono tracking-widest text-zinc-400 font-semibold mt-0.5">
+              <span className="text-[10px] uppercase font-mono tracking-widest text-zinc-500 font-semibold mt-0.5">
                 Private Systems
               </span>
             </div>
           </Link>
 
           {/* System Status Ping */}
-          <div className="hidden lg:flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-zinc-900/80 border border-zinc-800 text-xs font-mono">
+          <div className="hidden lg:flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#121215] border border-zinc-800 text-xs font-mono">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
             </span>
             <span className="text-zinc-300 font-medium">SISTEMA ONLINE & SEGURO</span>
           </div>
@@ -114,15 +110,15 @@ export default function HomePage() {
               href="https://discord.gg/sswR4rK4r"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-semibold text-rose-300 bg-rose-500/10 hover:text-white hover:bg-rose-500/20 border border-rose-500/30 transition-all duration-200 hover:scale-105 active:scale-95 shadow-sm"
+              className="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-semibold text-zinc-300 bg-[#141418] hover:text-white hover:bg-zinc-800 border border-zinc-800 transition-all duration-200 hover:scale-105 active:scale-95 shadow-sm font-mono"
             >
-              <MessageCircle className="h-4 w-4 text-rose-400" />
+              <MessageCircle className="h-4 w-4 text-white" />
               <span>Discord</span>
             </a>
 
             <Link
               href="/login"
-              className="crimson-btn-primary inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white transition-all duration-200 hover:scale-105 active:scale-95"
+              className="inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold uppercase tracking-wider text-black bg-white hover:bg-zinc-200 transition-all duration-200 hover:scale-105 active:scale-95 shadow-[0_0_15px_rgba(255,255,255,0.25)]"
             >
               <span>Painel</span>
               <ChevronRight className="h-3.5 w-3.5" />
@@ -137,9 +133,9 @@ export default function HomePage() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Abrir Discord Oficial"
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-2xl border border-rose-500/40 bg-[#0d0d14]/95 text-rose-400 shadow-[0_0_30px_rgba(244,63,94,0.35)] backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:border-rose-400 active:scale-95 group"
+        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-2xl border border-zinc-700 bg-[#0e0e11]/95 text-white shadow-[0_0_25px_rgba(255,255,255,0.15)] backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:border-white active:scale-95 group"
       >
-        <MessageCircle className="h-6 w-6 transition-transform duration-300 group-hover:rotate-12 text-rose-400" />
+        <MessageCircle className="h-6 w-6 transition-transform duration-300 group-hover:rotate-12 text-white" />
       </a>
 
       {/* ================= MAIN CONTENT ================= */}
@@ -149,18 +145,18 @@ export default function HomePage() {
         <section id="inicio" className="relative flex flex-col items-center justify-center px-4 py-16 sm:py-24 text-center max-w-5xl mx-auto">
           
           {/* Top Cyber Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-xl border border-rose-500/30 bg-rose-500/10 text-rose-300 text-xs font-mono font-semibold uppercase tracking-wider mb-8 shadow-[0_0_20px_rgba(244,63,94,0.2)]">
-            <Flame className="h-3.5 w-3.5 text-rose-400 animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-xl border border-zinc-800 bg-[#121215] text-zinc-300 text-xs font-mono font-semibold uppercase tracking-wider mb-8 shadow-xs">
+            <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
             <span>Versão 2026 Atualizada • 100% Funcional</span>
           </div>
 
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white uppercase max-w-4xl leading-[1.08]">
-            DOMINE CADA PARTIDA COM <span className="crimson-text-gradient crimson-glow">PRECISÃO CIRÚRGICA.</span>
+            DOMINE CADA PARTIDA COM <span className="monochrome-text-gradient monochrome-glow">PRECISÃO CIRÚRGICA.</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-6 text-sm sm:text-lg text-zinc-300 max-w-2xl font-normal leading-relaxed">
+          <p className="mt-6 text-sm sm:text-lg text-zinc-400 max-w-2xl font-normal leading-relaxed">
             Softwares de alto rendimento com segurança extrema, proteção HWID integrada e entrega 100% automática em segundos via Discord.
           </p>
 
@@ -168,7 +164,7 @@ export default function HomePage() {
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <a
               href="#produtos"
-              className="crimson-btn-primary inline-flex items-center gap-2.5 rounded-xl px-7 py-3.5 text-sm font-bold uppercase tracking-wider text-white transition-all duration-200 hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(244,63,94,0.4)]"
+              className="inline-flex items-center gap-2.5 rounded-xl px-7 py-3.5 text-sm font-bold uppercase tracking-wider text-black bg-white hover:bg-zinc-200 transition-all duration-200 hover:scale-105 active:scale-95 shadow-[0_0_25px_rgba(255,255,255,0.3)]"
             >
               <span>Ver Catálogo & Preços</span>
               <ArrowRight className="h-4 w-4" />
@@ -178,9 +174,9 @@ export default function HomePage() {
               href="https://discord.gg/sswR4rK4r"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 rounded-xl border border-zinc-800 bg-zinc-900/90 px-6 py-3.5 text-sm font-semibold text-zinc-200 hover:text-white hover:border-zinc-700 hover:bg-zinc-800/90 transition-all duration-200 hover:scale-105 active:scale-95 shadow-sm"
+              className="inline-flex items-center gap-2.5 rounded-xl border border-zinc-800 bg-[#121215] px-6 py-3.5 text-sm font-semibold text-zinc-300 hover:text-white hover:border-zinc-700 hover:bg-zinc-800 transition-all duration-200 hover:scale-105 active:scale-95 shadow-sm font-mono"
             >
-              <MessageCircle className="h-4 w-4 text-rose-400" />
+              <MessageCircle className="h-4 w-4 text-white" />
               <span>Comunidade Discord</span>
             </a>
           </div>
@@ -188,20 +184,20 @@ export default function HomePage() {
           {/* Live Trust Metrics Bar */}
           <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4 w-full">
             <div className="carbon-panel rounded-2xl p-4 text-center">
-              <span className="font-mono text-2xl sm:text-3xl font-black text-rose-500">99.9%</span>
-              <p className="text-[11px] uppercase tracking-wider text-zinc-400 font-medium mt-1">Uptime Seguro</p>
+              <span className="font-mono text-2xl sm:text-3xl font-black text-white">99.9%</span>
+              <p className="text-[11px] uppercase tracking-wider text-zinc-400 font-medium mt-1 font-mono">Uptime Seguro</p>
             </div>
             <div className="carbon-panel rounded-2xl p-4 text-center">
-              <span className="font-mono text-2xl sm:text-3xl font-black text-white">+3.500</span>
-              <p className="text-[11px] uppercase tracking-wider text-zinc-400 font-medium mt-1">Clientes Ativos</p>
+              <span className="font-mono text-2xl sm:text-3xl font-black text-zinc-300">+3.500</span>
+              <p className="text-[11px] uppercase tracking-wider text-zinc-400 font-medium mt-1 font-mono">Clientes Ativos</p>
             </div>
             <div className="carbon-panel rounded-2xl p-4 text-center">
-              <span className="font-mono text-2xl sm:text-3xl font-black text-rose-500">0 Seg</span>
-              <p className="text-[11px] uppercase tracking-wider text-zinc-400 font-medium mt-1">Entrega Instantânea</p>
+              <span className="font-mono text-2xl sm:text-3xl font-black text-white">0 Seg</span>
+              <p className="text-[11px] uppercase tracking-wider text-zinc-400 font-medium mt-1 font-mono">Entrega Instantânea</p>
             </div>
             <div className="carbon-panel rounded-2xl p-4 text-center">
-              <span className="font-mono text-2xl sm:text-3xl font-black text-emerald-400">100%</span>
-              <p className="text-[11px] uppercase tracking-wider text-zinc-400 font-medium mt-1">Indetectável</p>
+              <span className="font-mono text-2xl sm:text-3xl font-black text-zinc-300">100%</span>
+              <p className="text-[11px] uppercase tracking-wider text-zinc-400 font-medium mt-1 font-mono">Indetectável</p>
             </div>
           </div>
         </section>
@@ -210,7 +206,7 @@ export default function HomePage() {
         <section id="produtos" className="relative px-4 py-20 max-w-6xl mx-auto w-full">
           
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-rose-400 text-xs font-mono font-semibold uppercase tracking-wider mb-3">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#121215] border border-zinc-800 text-zinc-300 text-xs font-mono font-semibold uppercase tracking-wider mb-3">
               <Crosshair className="h-3.5 w-3.5" />
               <span>Vitrine Oficial</span>
             </div>
@@ -223,13 +219,13 @@ export default function HomePage() {
 
             {/* Game Selector Tabs */}
             <div className="mt-8 flex justify-center">
-              <div className="inline-flex p-1.5 rounded-2xl bg-zinc-950 border border-zinc-800">
+              <div className="inline-flex p-1.5 rounded-2xl bg-[#0e0e11] border border-zinc-800">
                 <button
                   type="button"
                   onClick={() => setActiveGame('ff')}
                   className={`flex items-center gap-2.5 px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
                     activeGame === 'ff'
-                      ? 'bg-rose-600 text-white shadow-[0_0_20px_rgba(225,29,72,0.4)]'
+                      ? 'bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.25)]'
                       : 'text-zinc-400 hover:text-white'
                   }`}
                 >
@@ -242,7 +238,7 @@ export default function HomePage() {
                   onClick={() => setActiveGame('val')}
                   className={`flex items-center gap-2.5 px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
                     activeGame === 'val'
-                      ? 'bg-rose-600 text-white shadow-[0_0_20px_rgba(225,29,72,0.4)]'
+                      ? 'bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.25)]'
                       : 'text-zinc-400 hover:text-white'
                   }`}
                 >
@@ -254,22 +250,19 @@ export default function HomePage() {
           </div>
 
           {/* Active Product Card */}
-          <div className="carbon-panel rounded-3xl p-6 sm:p-10 border border-rose-500/20 relative overflow-hidden">
+          <div className="carbon-panel rounded-3xl p-6 sm:p-10 border border-zinc-800 relative overflow-hidden">
             
-            {/* Ambient inner glow */}
-            <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-rose-500/10 blur-3xl" />
-
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               
               {/* Left Column: Product Information & Features */}
               <div className="lg:col-span-7 flex flex-col justify-between h-full">
                 <div>
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[11px] font-mono font-semibold uppercase">
-                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-zinc-800 border border-zinc-700 text-white text-[11px] font-mono font-semibold uppercase">
+                      <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
                       Status: 100% Indetectável
                     </span>
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-zinc-900 border border-zinc-800 text-zinc-300 text-[11px] font-mono">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#141418] border border-zinc-800 text-zinc-400 text-[11px] font-mono">
                       Entrega Instantânea
                     </span>
                   </div>
@@ -278,7 +271,7 @@ export default function HomePage() {
                     {activeGame === 'ff' ? 'Free Fire External Pro' : 'Valorant Vanguard Elite'}
                   </h3>
 
-                  <p className="text-zinc-300 text-sm mt-3 leading-relaxed">
+                  <p className="text-zinc-400 text-sm mt-3 leading-relaxed">
                     {activeGame === 'ff'
                       ? 'Desenvolvido sob medida para máxima estabilidade em emuladores (BlueStacks 4/5, MSI, LDPlayer) e mobile. Execução leve sem injeção invasiva em arquivos de sistema.'
                       : 'Software desenvolvido com arquitetura ring-3 avançada, totalmente transparente ao Vanguard da Riot Games. Zero quedas de FPS e proteção HWID isolada inclusa.'}
@@ -292,55 +285,55 @@ export default function HomePage() {
 
                     {activeGame === 'ff' ? (
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
-                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-300">
+                          <Check className="h-4 w-4 text-white shrink-0" />
                           <span>Aimbot FOV 360° Suave & Ajustável</span>
                         </div>
-                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
-                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-300">
+                          <Check className="h-4 w-4 text-white shrink-0" />
                           <span>ESP Skeleton, Box & Health Bar</span>
                         </div>
-                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
-                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-300">
+                          <Check className="h-4 w-4 text-white shrink-0" />
                           <span>StreamProof (Invisível no OBS e Discord)</span>
                         </div>
-                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
-                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-300">
+                          <Check className="h-4 w-4 text-white shrink-0" />
                           <span>Proteção Anti-Ban & Blacklist Zero</span>
                         </div>
-                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
-                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-300">
+                          <Check className="h-4 w-4 text-white shrink-0" />
                           <span>Menu OSD Fluido com Tecla de Atalho</span>
                         </div>
-                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
-                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-300">
+                          <Check className="h-4 w-4 text-white shrink-0" />
                           <span>Atualizações Automáticas na Nuvem</span>
                         </div>
                       </div>
                     ) : (
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
-                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-300">
+                          <Check className="h-4 w-4 text-white shrink-0" />
                           <span>ESP Glow, Chams & Wireframe</span>
                         </div>
-                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
-                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-300">
+                          <Check className="h-4 w-4 text-white shrink-0" />
                           <span>Aimbot Humanizado com Controle de Recuo</span>
                         </div>
-                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
-                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-300">
+                          <Check className="h-4 w-4 text-white shrink-0" />
                           <span>HWID Spoofer Limpo Integrado</span>
                         </div>
-                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
-                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-300">
+                          <Check className="h-4 w-4 text-white shrink-0" />
                           <span>Totalmente Indetectável no Vanguard</span>
                         </div>
-                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
-                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-300">
+                          <Check className="h-4 w-4 text-white shrink-0" />
                           <span>Windows 10 & 11 (Todas as Builds)</span>
                         </div>
-                        <div className="flex items-center gap-2.5 text-xs text-zinc-200">
-                          <Check className="h-4 w-4 text-rose-500 shrink-0" />
+                        <div className="flex items-center gap-2.5 text-xs text-zinc-300">
+                          <Check className="h-4 w-4 text-white shrink-0" />
                           <span>Zero Injeção na Memória do Jogo</span>
                         </div>
                       </div>
@@ -348,26 +341,26 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-zinc-800/80 flex items-center gap-4 text-xs text-zinc-400">
+                <div className="mt-8 pt-6 border-t border-zinc-800 flex items-center gap-4 text-xs text-zinc-400">
                   <div className="flex items-center gap-1.5">
-                    <ShieldCheck className="h-4 w-4 text-emerald-400" />
+                    <ShieldCheck className="h-4 w-4 text-white" />
                     <span>Garantia de Funcionamento</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <Headphones className="h-4 w-4 text-rose-400" />
+                    <Headphones className="h-4 w-4 text-white" />
                     <span>Suporte de Configuração</span>
                   </div>
                 </div>
               </div>
 
               {/* Right Column: Interactive Plan Picker & Purchase */}
-              <div className="lg:col-span-5 bg-zinc-950/80 rounded-2xl p-6 border border-zinc-800/80 flex flex-col justify-between">
+              <div className="lg:col-span-5 bg-[#0e0e11] rounded-2xl p-6 border border-zinc-800 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-xs font-mono uppercase tracking-wider text-zinc-400 font-bold">
                       Selecione a Duração:
                     </span>
-                    <span className="text-[11px] font-mono text-rose-400 font-semibold">
+                    <span className="text-[11px] font-mono text-zinc-300 font-semibold">
                       Entrega Imediata
                     </span>
                   </div>
@@ -384,19 +377,19 @@ export default function HomePage() {
                               onClick={() => setFfSelectedPlan(plan.id)}
                               className={`p-3.5 rounded-xl border text-left transition-all duration-200 relative cursor-pointer ${
                                 isSelected
-                                  ? 'bg-rose-500/10 border-rose-500 shadow-[0_0_15px_rgba(244,63,94,0.25)]'
-                                  : 'bg-zinc-900/50 border-zinc-800 hover:border-zinc-700'
+                                  ? 'bg-white/10 border-white text-white shadow-[0_0_15px_rgba(255,255,255,0.2)]'
+                                  : 'bg-[#141418] border-zinc-800 hover:border-zinc-700'
                               }`}
                             >
                               {plan.badge && (
-                                <span className="absolute -top-2 right-2 px-1.5 py-0.5 rounded text-[9px] font-mono font-bold uppercase bg-rose-600 text-white shadow-xs">
+                                <span className="absolute -top-2 right-2 px-1.5 py-0.5 rounded text-[9px] font-mono font-bold uppercase bg-white text-black shadow-xs">
                                   {plan.badge}
                                 </span>
                               )}
                               <span className="block text-xs font-semibold text-zinc-300">
                                 {plan.name}
                               </span>
-                              <span className="block text-lg font-black text-white mt-1">
+                              <span className="block text-lg font-black text-white mt-1 font-mono">
                                 {plan.price}
                               </span>
                             </button>
@@ -411,19 +404,19 @@ export default function HomePage() {
                               onClick={() => setValSelectedPlan(plan.id)}
                               className={`p-3.5 rounded-xl border text-left transition-all duration-200 relative cursor-pointer ${
                                 isSelected
-                                  ? 'bg-rose-500/10 border-rose-500 shadow-[0_0_15px_rgba(244,63,94,0.25)]'
-                                  : 'bg-zinc-900/50 border-zinc-800 hover:border-zinc-700'
+                                  ? 'bg-white/10 border-white text-white shadow-[0_0_15px_rgba(255,255,255,0.2)]'
+                                  : 'bg-[#141418] border-zinc-800 hover:border-zinc-700'
                               } ${plan.id === 'val_uni' ? 'col-span-2' : ''}`}
                             >
                               {plan.badge && (
-                                <span className="absolute -top-2 right-2 px-1.5 py-0.5 rounded text-[9px] font-mono font-bold uppercase bg-rose-600 text-white shadow-xs">
+                                <span className="absolute -top-2 right-2 px-1.5 py-0.5 rounded text-[9px] font-mono font-bold uppercase bg-white text-black shadow-xs">
                                   {plan.badge}
                                 </span>
                               )}
                               <span className="block text-xs font-semibold text-zinc-300">
                                 {plan.name}
                               </span>
-                              <span className="block text-lg font-black text-white mt-1">
+                              <span className="block text-lg font-black text-white mt-1 font-mono">
                                 {plan.price}
                               </span>
                             </button>
@@ -432,12 +425,12 @@ export default function HomePage() {
                   </div>
 
                   {/* Payment Methods Notice */}
-                  <div className="p-3.5 rounded-xl bg-zinc-900/80 border border-zinc-800/80 text-xs text-zinc-300 mb-6">
-                    <div className="flex items-center gap-2 font-mono text-zinc-200 font-semibold mb-1 text-[11px]">
-                      <CreditCard className="h-3.5 w-3.5 text-rose-400" />
+                  <div className="p-3.5 rounded-xl bg-[#141418] border border-zinc-800 text-xs text-zinc-300 mb-6">
+                    <div className="flex items-center gap-2 font-mono text-white font-semibold mb-1 text-[11px]">
+                      <CreditCard className="h-3.5 w-3.5 text-zinc-300" />
                       <span>Formas de Pagamento Aceitas:</span>
                     </div>
-                    <p className="text-[11px] text-zinc-400">
+                    <p className="text-[11px] text-zinc-400 font-mono">
                       • Pix com ativação automática instantânea<br />
                       • Cartão de Débito / Crédito<br />
                       • Binance / Criptomoedas
@@ -451,12 +444,12 @@ export default function HomePage() {
                     href="https://discord.gg/sswR4rK4r"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="crimson-btn-primary w-full py-4 rounded-xl font-bold uppercase tracking-wider text-xs sm:text-sm text-white flex items-center justify-center gap-2.5 shadow-[0_0_25px_rgba(244,63,94,0.4)] hover:scale-[1.02] active:scale-95 transition-all"
+                    className="w-full py-4 rounded-xl font-bold uppercase tracking-wider text-xs sm:text-sm text-black bg-white hover:bg-zinc-200 flex items-center justify-center gap-2.5 shadow-[0_0_20px_rgba(255,255,255,0.25)] hover:scale-[1.02] active:scale-95 transition-all"
                   >
                     <MessageCircle className="h-4 w-4" />
                     <span>Adquirir {currentPlan?.name} ({currentPlan?.price}) no Discord</span>
                   </a>
-                  <p className="text-center text-[11px] text-zinc-500 font-medium mt-2">
+                  <p className="text-center text-[11px] text-zinc-500 font-mono mt-2">
                     Clique para abrir o carrinho oficial e receber automaticamente
                   </p>
                 </div>
@@ -469,7 +462,7 @@ export default function HomePage() {
         {/* ===== BENTO GRID: DIFERENCIAIS ===== */}
         <section id="diferenciais" className="relative px-4 py-20 max-w-6xl mx-auto w-full">
           <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-rose-400 text-xs font-mono font-semibold uppercase tracking-wider mb-3">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#121215] border border-zinc-800 text-zinc-300 text-xs font-mono font-semibold uppercase tracking-wider mb-3">
               <Sparkles className="h-3.5 w-3.5" />
               <span>Por que a Smooth Store?</span>
             </div>
@@ -483,7 +476,7 @@ export default function HomePage() {
             {/* 1 */}
             <div className="carbon-panel rounded-2xl p-6 border border-zinc-800 flex flex-col justify-between hover-lift">
               <div>
-                <div className="h-10 w-10 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 mb-4">
+                <div className="h-10 w-10 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center text-white mb-4">
                   <Zap className="h-5 w-5" />
                 </div>
                 <h4 className="text-base font-bold text-white uppercase">Entrega em Segundos</h4>
@@ -496,7 +489,7 @@ export default function HomePage() {
             {/* 2 */}
             <div className="carbon-panel rounded-2xl p-6 border border-zinc-800 flex flex-col justify-between hover-lift">
               <div>
-                <div className="h-10 w-10 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 mb-4">
+                <div className="h-10 w-10 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center text-white mb-4">
                   <ShieldCheck className="h-5 w-5" />
                 </div>
                 <h4 className="text-base font-bold text-white uppercase">Proteção HWID</h4>
@@ -509,7 +502,7 @@ export default function HomePage() {
             {/* 3 */}
             <div className="carbon-panel rounded-2xl p-6 border border-zinc-800 flex flex-col justify-between hover-lift">
               <div>
-                <div className="h-10 w-10 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 mb-4">
+                <div className="h-10 w-10 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center text-white mb-4">
                   <Cpu className="h-5 w-5" />
                 </div>
                 <h4 className="text-base font-bold text-white uppercase">Sincronização em Nuvem</h4>
@@ -522,7 +515,7 @@ export default function HomePage() {
             {/* 4 */}
             <div className="carbon-panel rounded-2xl p-6 border border-zinc-800 flex flex-col justify-between hover-lift">
               <div>
-                <div className="h-10 w-10 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 mb-4">
+                <div className="h-10 w-10 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center text-white mb-4">
                   <Headphones className="h-5 w-5" />
                 </div>
                 <h4 className="text-base font-bold text-white uppercase">Suporte Humanizado</h4>
@@ -537,11 +530,11 @@ export default function HomePage() {
 
         {/* ===== DISCORD COMMUNITY CTA BANNER ===== */}
         <section id="discord" className="relative px-4 py-16 max-w-5xl mx-auto w-full">
-          <div className="carbon-panel rounded-3xl p-8 sm:p-12 border border-rose-500/30 relative overflow-hidden text-center">
+          <div className="carbon-panel rounded-3xl p-8 sm:p-12 border border-zinc-800 relative overflow-hidden text-center">
             
             <div className="relative z-10 max-w-2xl mx-auto">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-mono font-semibold uppercase tracking-wider mb-4">
-                <MessageCircle className="h-3.5 w-3.5 text-rose-400" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-800 border border-zinc-700 text-zinc-300 text-xs font-mono font-semibold uppercase tracking-wider mb-4">
+                <MessageCircle className="h-3.5 w-3.5 text-white" />
                 <span>Comunidade Oficial no Discord</span>
               </div>
 
@@ -549,7 +542,7 @@ export default function HomePage() {
                 Faça Parte da Elite
               </h2>
 
-              <p className="text-zinc-300 text-sm sm:text-base mt-4 leading-relaxed">
+              <p className="text-zinc-400 text-sm sm:text-base mt-4 leading-relaxed">
                 Tire dúvidas, converse com outros membros, participe de eventos exclusivos e receba avisos de atualização em primeira mão.
               </p>
 
@@ -558,7 +551,7 @@ export default function HomePage() {
                   href="https://discord.gg/sswR4rK4r"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="crimson-btn-primary inline-flex items-center gap-2.5 rounded-xl px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-white shadow-[0_0_30px_rgba(244,63,94,0.4)] hover:scale-105 active:scale-95 transition-all"
+                  className="inline-flex items-center gap-2.5 rounded-xl px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-black bg-white hover:bg-zinc-200 shadow-[0_0_20px_rgba(255,255,255,0.25)] hover:scale-105 active:scale-95 transition-all"
                 >
                   <MessageCircle className="h-4 w-4" />
                   <span>Entrar no Servidor Discord</span>
@@ -567,7 +560,7 @@ export default function HomePage() {
 
                 <Link
                   href="/login"
-                  className="inline-flex items-center gap-2 rounded-xl border border-zinc-800 bg-zinc-900/90 px-6 py-3.5 text-sm font-semibold text-zinc-300 hover:text-white hover:border-zinc-700 transition-all hover:scale-105 active:scale-95"
+                  className="inline-flex items-center gap-2 rounded-xl border border-zinc-800 bg-[#121215] px-6 py-3.5 text-sm font-semibold text-zinc-300 hover:text-white hover:border-zinc-700 transition-all hover:scale-105 active:scale-95"
                 >
                   <span>Área do Cliente (Painel)</span>
                   <ChevronRight className="h-4 w-4" />
@@ -581,19 +574,19 @@ export default function HomePage() {
       </main>
 
       {/* ================= FOOTER ================= */}
-      <footer className="border-t border-zinc-900/90 bg-[#050508] px-4 py-10 mt-16 text-zinc-500 text-xs">
+      <footer className="border-t border-zinc-900 bg-[#08080a] px-4 py-10 mt-16 text-zinc-500 text-xs">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-rose-600 text-white font-extrabold text-xs">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-white text-black font-extrabold text-xs">
               S
             </div>
-            <span className="font-bold text-zinc-300 uppercase tracking-wider text-sm">
+            <span className="font-bold text-white uppercase tracking-wider text-sm">
               Smooth Store
             </span>
           </div>
 
-          <p className="text-center sm:text-left text-zinc-500">
-            © 2026 Smooth Store. Todos os direitos reservados. Alta tecnologia & estabilidade.
+          <p className="text-center sm:text-left text-zinc-500 font-mono">
+            © 2026 Smooth Store. Todos os direitos reservados.
           </p>
 
           <div className="flex items-center gap-4">

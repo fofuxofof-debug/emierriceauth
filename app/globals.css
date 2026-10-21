@@ -3,72 +3,72 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: rgb(7, 7, 10);
-  --foreground: rgb(248, 250, 252);
-  --card: rgb(15, 15, 20);
-  --card-foreground: rgb(248, 250, 252);
-  --popover: rgb(15, 15, 20);
-  --popover-foreground: rgb(248, 250, 252);
-  --primary: rgb(244, 63, 94);
-  --primary-foreground: rgb(255, 255, 255);
-  --secondary: rgb(22, 22, 30);
-  --secondary-foreground: rgb(248, 250, 252);
-  --muted: rgb(22, 22, 30);
+  --background: rgb(8, 8, 10);
+  --foreground: rgb(250, 250, 250);
+  --card: rgb(14, 14, 17);
+  --card-foreground: rgb(250, 250, 250);
+  --popover: rgb(14, 14, 17);
+  --popover-foreground: rgb(250, 250, 250);
+  --primary: rgb(255, 255, 255);
+  --primary-foreground: rgb(0, 0, 0);
+  --secondary: rgb(24, 24, 27);
+  --secondary-foreground: rgb(250, 250, 250);
+  --muted: rgb(24, 24, 27);
   --muted-foreground: rgb(161, 161, 170);
-  --accent: rgba(244, 63, 94, 0.15);
-  --accent-foreground: rgb(251, 113, 133);
-  --destructive: rgb(239, 68, 68);
+  --accent: rgba(255, 255, 255, 0.1);
+  --accent-foreground: rgb(255, 255, 255);
+  --destructive: rgb(244, 63, 94);
   --destructive-foreground: rgb(255, 255, 255);
-  --success: rgb(34, 197, 94);
-  --success-foreground: rgb(255, 255, 255);
-  --warning: rgb(245, 158, 11);
-  --warning-foreground: rgb(255, 255, 255);
-  --border: rgb(32, 31, 42);
-  --input: rgb(22, 22, 30);
-  --ring: rgb(244, 63, 94);
+  --success: rgb(250, 250, 250);
+  --success-foreground: rgb(0, 0, 0);
+  --warning: rgb(212, 212, 216);
+  --warning-foreground: rgb(0, 0, 0);
+  --border: rgb(39, 39, 42);
+  --input: rgb(24, 24, 27);
+  --ring: rgb(255, 255, 255);
   --radius: 0.75rem;
-  --sidebar: rgb(10, 10, 14);
-  --sidebar-foreground: rgb(248, 250, 252);
-  --sidebar-primary: rgb(244, 63, 94);
-  --sidebar-primary-foreground: rgb(255, 255, 255);
-  --sidebar-accent: rgba(244, 63, 94, 0.15);
-  --sidebar-accent-foreground: rgb(251, 113, 133);
-  --sidebar-border: rgb(32, 31, 42);
-  --sidebar-ring: rgb(244, 63, 94);
+  --sidebar: rgb(10, 10, 12);
+  --sidebar-foreground: rgb(250, 250, 250);
+  --sidebar-primary: rgb(255, 255, 255);
+  --sidebar-primary-foreground: rgb(0, 0, 0);
+  --sidebar-accent: rgba(255, 255, 255, 0.1);
+  --sidebar-accent-foreground: rgb(255, 255, 255);
+  --sidebar-border: rgb(39, 39, 42);
+  --sidebar-ring: rgb(255, 255, 255);
 }
 
 .dark {
-  --background: rgb(7, 7, 10);
-  --foreground: rgb(248, 250, 252);
-  --card: rgb(15, 15, 20);
-  --card-foreground: rgb(248, 250, 252);
-  --popover: rgb(15, 15, 20);
-  --popover-foreground: rgb(248, 250, 252);
-  --primary: rgb(244, 63, 94);
-  --primary-foreground: rgb(255, 255, 255);
-  --secondary: rgb(22, 22, 30);
-  --secondary-foreground: rgb(248, 250, 252);
-  --muted: rgb(22, 22, 30);
+  --background: rgb(8, 8, 10);
+  --foreground: rgb(250, 250, 250);
+  --card: rgb(14, 14, 17);
+  --card-foreground: rgb(250, 250, 250);
+  --popover: rgb(14, 14, 17);
+  --popover-foreground: rgb(250, 250, 250);
+  --primary: rgb(255, 255, 255);
+  --primary-foreground: rgb(0, 0, 0);
+  --secondary: rgb(24, 24, 27);
+  --secondary-foreground: rgb(250, 250, 250);
+  --muted: rgb(24, 24, 27);
   --muted-foreground: rgb(161, 161, 170);
-  --accent: rgba(244, 63, 94, 0.15);
-  --accent-foreground: rgb(251, 113, 133);
-  --destructive: rgb(239, 68, 68);
+  --accent: rgba(255, 255, 255, 0.1);
+  --accent-foreground: rgb(255, 255, 255);
+  --destructive: rgb(244, 63, 94);
   --destructive-foreground: rgb(255, 255, 255);
-  --success: rgb(34, 197, 94);
-  --success-foreground: rgb(255, 255, 255);
-  --warning: rgb(245, 158, 11);
-  --warning-foreground: rgb(255, 255, 255);
-  --border: rgb(32, 31, 42);
-  --input: rgb(22, 22, 30);
-  --ring: rgb(244, 63, 94);
-  --sidebar: rgb(10, 10, 14);
-  --sidebar-foreground: rgb(248, 250, 252);
-  --sidebar-primary: rgb(244, 63, 94);
-  --sidebar-primary-foreground: rgb(255, 255, 255);
-  --sidebar-accent: rgba(244, 63, 94, 0.15);
-  --sidebar-accent-foreground: rgb(251, 113, 133);
-  --sidebar-border: rgb(32, 31, 42);
-  --sidebar-ring: rgb(244, 63, 94);
+  --success: rgb(250, 250, 250);
+  --success-foreground: rgb(0, 0, 0);
+  --warning: rgb(212, 212, 216);
+  --warning-foreground: rgb(0, 0, 0);
+  --border: rgb(39, 39, 42);
+  --input: rgb(24, 24, 27);
+  --ring: rgb(255, 255, 255);
+  --sidebar: rgb(10, 10, 12);
+  --sidebar-foreground: rgb(250, 250, 250);
+  --sidebar-primary: rgb(255, 255, 255);
+  --sidebar-primary-foreground: rgb(0, 0, 0);
+  --sidebar-accent: rgba(255, 255, 255, 0.1);
+  --sidebar-accent-foreground: rgb(255, 255, 255);
+  --sidebar-border: rgb(39, 39, 42);
+  --sidebar-ring: rgb(255, 255, 255);
 }
 
 @theme inline {
@@ -128,7 +128,7 @@ html, body {
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(113, 113, 122, 0.4); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(244, 63, 94, 0.6); }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.6); }
 
 /* Animations */
 @keyframes card-in {
@@ -148,7 +148,7 @@ html, body {
 }
 .hover-lift:hover {
   transform: translate3d(0, -2px, 0);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(244, 63, 94, 0.15);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.7), 0 0 15px rgba(255, 255, 255, 0.08);
 }
 
 /* Transitions */
@@ -161,7 +161,7 @@ button, a, input, select, [role="button"] {
     opacity 0.2s ease;
 }
 
-/* ============ Global Label Typography ============ */
+/* Typography */
 label,
 [data-slot="label"],
 .label,
@@ -170,51 +170,54 @@ form label {
   font-weight: 600 !important;
 }
 
-/* ============ Cyber Crimson & Carbon Obsidian (Smooth Store Theme) ============ */
-.carbon-panel {
-  background: rgba(14, 14, 20, 0.85);
+/* ============ Monochrome Black & White Stealth Theme ============ */
+.carbon-panel, .monochrome-panel {
+  background: rgba(14, 14, 17, 0.9);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(244, 63, 94, 0.16);
-  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-.carbon-panel:hover {
-  border-color: rgba(244, 63, 94, 0.35);
-  box-shadow: 0 22px 50px -10px rgba(244, 63, 94, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+.carbon-panel:hover, .monochrome-panel:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 22px 50px -10px rgba(0, 0, 0, 0.95), 0 0 20px rgba(255, 255, 255, 0.05);
 }
 
-.carbon-nav {
-  background: rgba(10, 10, 15, 0.88);
+.carbon-nav, .monochrome-nav {
+  background: rgba(10, 10, 12, 0.92);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(244, 63, 94, 0.2);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.75), 0 0 20px rgba(244, 63, 94, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85);
 }
 
-.crimson-text-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, #ffe4e6 40%, #fb7185 75%, #f43f5e 100%);
+.monochrome-text-gradient, .crimson-text-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #e4e4e7 50%, #a1a1aa 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.crimson-glow {
-  text-shadow: 0 0 25px rgba(244, 63, 94, 0.6);
+.monochrome-glow {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
 }
 
-.crimson-btn-primary {
-  background: linear-gradient(135deg, #e11d48 0%, #be123c 60%, #9f1239 100%);
-  box-shadow: 0 0 25px rgba(225, 29, 72, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+.btn-white, .crimson-btn-primary {
+  background: #ffffff !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 1);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.crimson-btn-primary:hover {
-  background: linear-gradient(135deg, #f43f5e 0%, #e11d48 60%, #be123c 100%);
-  box-shadow: 0 0 35px rgba(244, 63, 94, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+.btn-white:hover, .crimson-btn-primary:hover {
+  background: #e4e4e7 !important;
+  color: #000000 !important;
+  box-shadow: 0 0 28px rgba(255, 255, 255, 0.45);
   transform: translateY(-1px);
 }
 
 .tech-grid {
-  background-image: radial-gradient(rgba(244, 63, 94, 0.12) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
   background-size: 32px 32px;
 }

@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useState, useMemo } from 'react'
 import useSWR from 'swr'
@@ -16,11 +16,9 @@ interface LoaderVariant {
 
 interface LoaderProduct {
   game: string
-  productId: string  // valor que vem do campo `product` da key (lowercase)
+  productId: string
   tag: string
   icon: typeof Flame
-  accent: string
-  glow: string
   description: string
   variants: LoaderVariant[]
 }
@@ -29,10 +27,8 @@ const products: LoaderProduct[] = [
   {
     game: 'FreeFire',
     productId: 'freefire',
-    tag: 'BlueStacks · HD-Player',
+    tag: 'BlueStacks · Emuladores',
     icon: Flame,
-    accent: 'from-blue-500/15 via-blue-600/5 to-transparent',
-    glow: 'rgba(59,130,246,0.25)',
     description: 'Loader principal com bypass anti-detecção e suporte a múltiplas versões do emulador.',
     variants: [
       { id: 'basic',   name: 'Basic',   description: 'Aimbot + ESP essencial. Compatível com qualquer config.', version: '4.2.1', size: '12.4 MB' },
@@ -45,8 +41,6 @@ const products: LoaderProduct[] = [
     productId: 'valorant',
     tag: 'Aim Color',
     icon: Crosshair,
-    accent: 'from-blue-500/15 via-blue-600/5 to-transparent',
-    glow: 'rgba(59,130,246,0.25)',
     description: 'Aim color com trigger bot e aim assist otimizado para o anti-cheat da Riot.',
     variants: [
       { id: 'aimcolor', name: 'Aim Color', description: 'Pacote completo: aim, trigger e visuais.', version: '2.5.3', size: '6.8 MB' },
@@ -57,8 +51,6 @@ const products: LoaderProduct[] = [
     productId: 'cs2',
     tag: 'Counter-Strike 2',
     icon: Target,
-    accent: 'from-blue-500/15 via-blue-600/5 to-transparent',
-    glow: 'rgba(59,130,246,0.25)',
     description: 'Loader externo para CS2 com aim, ESP, radar e configs customizáveis.',
     variants: [
       { id: 'cs2', name: 'CS2 Loader', description: 'Build externo. Compatível com VAC e premier.', version: '1.3.7', size: '9.1 MB' },
@@ -88,41 +80,36 @@ function ProductCard({ p, idx, userCount }: { p: LoaderProduct; idx: number; use
 
   return (
     <div
-      className="card-in hover-lift relative overflow-hidden rounded-2xl border border-border group shadow-[0_1px_2px_rgba(0,0,0,0.03)] bg-card"
+      className="card-in hover-lift relative overflow-hidden rounded-2xl border border-zinc-800 group bg-[#0e0e11] shadow-sm"
       style={{ animationDelay: `${idx * 100}ms` }}
     >
       <div
-        className={`pointer-events-none absolute -top-24 -right-16 h-56 w-56 rounded-full bg-gradient-to-br ${p.accent} blur-3xl opacity-70 group-hover:opacity-100 transition-opacity duration-700`}
-      />
-
-      <div
-        className="flex items-center gap-3 border-b border-border px-5 py-3 relative bg-secondary"
+        className="flex items-center gap-3 border-b border-zinc-800 px-5 py-3 relative bg-[#141418]"
       >
         <span
-          className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-foreground/[0.06] ring-1 ring-foreground/10 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
-          style={{ boxShadow: `0 0 18px ${p.glow}` }}
+          className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-zinc-800 text-white border border-zinc-700"
         >
-          <Icon className="h-4 w-4 text-foreground" />
+          <Icon className="h-4 w-4 text-white" />
         </span>
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-bold text-foreground">{p.game}</p>
-          <p className="text-[10px] text-muted-foreground uppercase tracking-widest mt-0.5">{p.tag}</p>
+          <p className="text-sm font-bold text-white">{p.game}</p>
+          <p className="text-[10px] text-zinc-400 uppercase tracking-widest mt-0.5 font-mono">{p.tag}</p>
         </div>
         <span
-          className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-2.5 py-1 text-[11px] font-semibold text-foreground shadow-sm"
+          className="inline-flex items-center gap-1.5 rounded-full border border-zinc-700 bg-zinc-800 px-2.5 py-1 text-[11px] font-semibold text-white shadow-sm font-mono"
           title={`${userCount} usuário${userCount === 1 ? '' : 's'} criado${userCount === 1 ? '' : 's'} para ${p.game}`}
         >
-          <Users className="h-3 w-3 text-muted-foreground" />
+          <Users className="h-3 w-3 text-zinc-400" />
           <span className="tabular-nums">{userCount}</span>
         </span>
       </div>
 
       <div className="relative p-5 sm:p-6 flex flex-col gap-4">
-        <p className="text-sm text-muted-foreground leading-relaxed">{p.description}</p>
+        <p className="text-sm text-zinc-400 leading-relaxed">{p.description}</p>
 
         {p.variants.length > 1 ? (
           <div className="flex flex-col gap-1.5">
-            <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+            <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 font-mono">
               Versão
             </label>
             <div className="grid grid-cols-3 gap-1.5">
@@ -130,10 +117,10 @@ function ProductCard({ p, idx, userCount }: { p: LoaderProduct; idx: number; use
                 <button
                   key={v.id}
                   onClick={() => setSelected(v.id)}
-                  className={`px-3 py-2 rounded-lg text-xs font-bold uppercase tracking-widest border transition-all duration-300 ${
+                  className={`px-3 py-2 rounded-lg text-xs font-bold uppercase tracking-widest border transition-all duration-300 font-mono ${
                     selected === v.id
-                      ? 'bg-blue-600 text-white border-transparent shadow-[0_4px_16px_rgba(59,130,246,0.3)] scale-[1.02]'
-                      : 'bg-card text-muted-foreground border-border hover:bg-blue-950/40 hover:text-blue-300 hover:border-blue-500/30'
+                      ? 'bg-white text-black border-transparent shadow-[0_0_15px_rgba(255,255,255,0.25)]'
+                      : 'bg-[#141418] text-zinc-400 border-zinc-800 hover:text-white hover:bg-zinc-800'
                   }`}
                 >
                   {v.name}
@@ -145,26 +132,20 @@ function ProductCard({ p, idx, userCount }: { p: LoaderProduct; idx: number; use
 
         <div
           key={variant.id}
-          className="row-in rounded-lg border border-border bg-secondary p-3 sm:p-4"
+          className="row-in rounded-lg border border-zinc-800 bg-[#141418] p-3 sm:p-4"
         >
-          <p className="text-sm font-semibold text-foreground">{variant.name}</p>
-          <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{variant.description}</p>
-          <div className="mt-3 flex items-center gap-3 text-[10px] uppercase tracking-widest text-muted-foreground">
+          <p className="text-sm font-semibold text-white">{variant.name}</p>
+          <p className="text-xs text-zinc-400 mt-1 leading-relaxed">{variant.description}</p>
+          <div className="mt-3 flex items-center gap-3 text-[10px] uppercase tracking-widest text-zinc-400 font-mono">
             <span className="inline-flex items-center gap-1">
-              <Cpu className="h-3 w-3 text-blue-400" />
+              <Cpu className="h-3 w-3 text-zinc-300" />
               v
-              <span
-                className="text-foreground tabular-nums"
-                style={{ fontFamily: "var(--font-jetbrains-mono), 'JetBrains Mono', monospace" }}
-              >
+              <span className="text-white tabular-nums">
                 {variant.version}
               </span>
             </span>
-            <span className="text-muted-foreground/50">·</span>
-            <span
-              className="text-foreground tabular-nums"
-              style={{ fontFamily: "var(--font-jetbrains-mono), 'JetBrains Mono', monospace" }}
-            >
+            <span className="text-zinc-600">·</span>
+            <span className="text-white tabular-nums">
               {variant.size}
             </span>
           </div>
@@ -174,7 +155,7 @@ function ProductCard({ p, idx, userCount }: { p: LoaderProduct; idx: number; use
           <Button
             onClick={handleDownload}
             disabled={downloading}
-            className="button-shine flex-1 bg-blue-600 text-white hover:bg-blue-500 hover:scale-[1.02] active:scale-[0.97] disabled:opacity-50 shadow-md shadow-blue-500/25 font-semibold"
+            className="flex-1 bg-white text-black hover:bg-zinc-200 font-bold uppercase tracking-wider text-xs rounded-xl shadow-[0_0_15px_rgba(255,255,255,0.2)] disabled:opacity-50"
           >
             {done ? (
               <>
@@ -195,7 +176,7 @@ function ProductCard({ p, idx, userCount }: { p: LoaderProduct; idx: number; use
           </Button>
           <Button
             variant="ghost"
-            className="button-shine border border-border bg-card text-muted-foreground hover:bg-accent hover:text-foreground hover:border-foreground/30"
+            className="border border-zinc-800 bg-[#141418] text-zinc-300 hover:bg-zinc-800 hover:text-white rounded-xl text-xs uppercase font-mono"
           >
             <ExternalLink className="h-4 w-4 mr-2" />
             Tutorial
@@ -207,9 +188,8 @@ function ProductCard({ p, idx, userCount }: { p: LoaderProduct; idx: number; use
 }
 
 export default function LoadersPage() {
-  // Busca todas as keys pra contar quantas tem por produto
   const { data: keysResp } = useSWR<{ data: LicenseKey[] }>('/api/keys', fetcher, {
-    refreshInterval: 30_000, // atualiza a cada 30s
+    refreshInterval: 30_000,
   })
   const keys = keysResp?.data ?? []
 
@@ -225,13 +205,13 @@ export default function LoadersPage() {
 
   return (
     <div className="page-in flex flex-col gap-6 max-w-6xl">
-      <div className="border-b border-[#15233c] pb-6 card-in">
+      <div className="border-b border-zinc-800 pb-6 card-in">
         <div className="flex items-center gap-2 mb-1">
-          <span className="h-2 w-2 rounded-full bg-blue-500 animate-beacon" />
-          <span className="text-[11px] font-sans font-semibold uppercase tracking-wider text-blue-400">BUILDS & EXECUTÁVEIS</span>
+          <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
+          <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-zinc-400">BUILDS & EXECUTÁVEIS</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#f1f5f9] font-sans">Loaders & Downloads</h1>
-        <p className="text-xs sm:text-sm text-slate-400 font-sans font-medium">
+        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-sans">Loaders & Downloads</h1>
+        <p className="text-xs sm:text-sm text-zinc-400 font-sans font-medium">
           Builds atualizados de cada produto. Selecione a versão e baixe com proteção de integridade.
         </p>
       </div>
@@ -242,7 +222,7 @@ export default function LoadersPage() {
         ))}
       </div>
 
-      <p className="text-xs text-zinc-500">
+      <p className="text-xs text-zinc-500 font-mono">
         <Download className="inline h-3 w-3 mr-1" />
         Os loaders são preparados para a versão atual do anti-cheat. Mantenha sempre atualizado.
       </p>

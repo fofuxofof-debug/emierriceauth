@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useState, useCallback } from 'react'
 import useSWR from 'swr'
@@ -52,18 +52,18 @@ export default function KeysPage() {
 
   return (
     <div className="flex flex-col gap-6 max-w-7xl mx-auto">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-[#15233c] pb-6 card-in">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-zinc-800 pb-6 card-in">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="h-2 w-2 rounded-full bg-[#3b82f6]" />
-            <span className="text-[11px] font-sans font-semibold uppercase tracking-wider text-[#60a5fa]">GERENCIADOR DE LICENÇAS</span>
+            <span className="h-2 w-2 rounded-full bg-white" />
+            <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-zinc-400">GERENCIADOR DE LICENÇAS</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#f1f5f9] font-sans">Keys & Clientes</h1>
-          <p className="text-xs sm:text-sm text-[#94a3b8] font-sans font-medium">Emissão, bloqueio e acompanhamento de licenças ativas</p>
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-sans">Keys & Clientes</h1>
+          <p className="text-xs sm:text-sm text-zinc-400 font-sans font-medium">Emissão, bloqueio e acompanhamento de licenças ativas</p>
         </div>
         <Button
           onClick={() => setShowCreate(true)}
-          className="button-shine bg-[#3b82f6] text-white hover:bg-[#2563eb] font-sans font-semibold text-xs uppercase tracking-wider rounded-xl cursor-pointer hover:scale-105 transition-all shadow-md shadow-blue-500/20"
+          className="bg-white text-black hover:bg-zinc-200 font-sans font-bold text-xs uppercase tracking-wider rounded-xl cursor-pointer hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,255,255,0.25)]"
         >
           <Plus className="mr-1.5 h-3.5 w-3.5" />
           Nova Key
@@ -72,20 +72,20 @@ export default function KeysPage() {
 
       <div className="flex flex-col gap-3 sm:flex-row">
         <div className="relative flex-1">
-          <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[#94a3b8]" />
+          <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-400" />
           <Input
             placeholder="Buscar por key, label, HWID ou Discord ID..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="border-[#15233c] bg-[#0b1222] pl-10 text-[#f1f5f9] placeholder:text-[#64748b] font-mono text-xs rounded-xl focus-visible:ring-2 focus-visible:ring-blue-500/20 focus-visible:border-[#3b82f6]"
+            className="border-zinc-800 bg-[#0e0e11] pl-10 text-white placeholder:text-zinc-600 font-mono text-xs rounded-xl focus-visible:ring-2 focus-visible:ring-white/20 focus-visible:border-white/40"
           />
         </div>
         <Select value={statusFilter} onValueChange={setStatusFilter}>
-          <SelectTrigger className="w-full border-[#15233c] bg-[#0b1222] text-[#f1f5f9] sm:w-44 font-mono text-xs rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-[#3b82f6]">
-            <Filter className="mr-2 h-3.5 w-3.5 text-[#94a3b8]" />
+          <SelectTrigger className="w-full border-zinc-800 bg-[#0e0e11] text-white sm:w-44 font-mono text-xs rounded-xl focus:ring-2 focus:ring-white/20 focus:border-white/40">
+            <Filter className="mr-2 h-3.5 w-3.5 text-zinc-400" />
             <SelectValue />
           </SelectTrigger>
-          <SelectContent className="border-[#15233c] bg-[#0b1222] text-[#f1f5f9]">
+          <SelectContent className="border-zinc-800 bg-[#0e0e11] text-white">
             <SelectItem value="all">Todos os Status</SelectItem>
             <SelectItem value="active">Ativas</SelectItem>
             <SelectItem value="paused">Pausadas</SelectItem>
@@ -96,7 +96,7 @@ export default function KeysPage() {
       </div>
 
       {error && (
-        <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-600">
+        <div className="rounded-lg border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-400">
           Erro ao carregar keys.
         </div>
       )}

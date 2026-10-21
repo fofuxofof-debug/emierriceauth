@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import useSWR from 'swr'
 import { RecentActivity } from '@/components/recent-activity'
@@ -17,20 +17,20 @@ export default function LogsPage() {
 
   return (
     <div className="flex flex-col gap-6 max-w-7xl mx-auto page-in">
-      <div className="border-b border-[#15233c] pb-6 card-in">
+      <div className="border-b border-zinc-800 pb-6 card-in">
         <div className="flex items-center gap-2 mb-1">
-          <span className="h-2 w-2 rounded-full bg-blue-500 animate-beacon" />
-          <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-blue-400">AUDITORIA E TELEMETRIA</span>
+          <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
+          <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-400">AUDITORIA E TELEMETRIA</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-[#f1f5f9] font-sans">Logs de Autenticação</h1>
-        <p className="text-xs sm:text-sm text-slate-400 font-sans">
+        <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white font-sans">Logs de Autenticação</h1>
+        <p className="text-xs sm:text-sm text-zinc-400 font-sans">
           Histórico detalhado de requisições, eventos de HWID e tentativas de login
         </p>
       </div>
 
       {isLoading && (
-        <div className="flex items-center justify-center rounded-2xl border border-[#15233c] bg-[#0b1222] p-12 shadow-sm">
-          <Loader2 className="h-6 w-6 animate-spin text-blue-500" />
+        <div className="flex items-center justify-center rounded-2xl border border-zinc-800 bg-[#0e0e11] p-12 shadow-sm">
+          <Loader2 className="h-6 w-6 animate-spin text-white" />
         </div>
       )}
 

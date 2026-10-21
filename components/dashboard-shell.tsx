@@ -73,20 +73,20 @@ export function DashboardShell({
   }
 
   return (
-    <div className="flex min-h-screen relative text-[#f8fafc] bg-[#07070a]">
+    <div className="flex min-h-screen relative text-[#fafafa] bg-[#09090b]">
       {/* Desktop Sidebar */}
       <aside
-        className="hidden w-64 flex-col border-r md:flex bg-[#09090e] border-[#1f1e29] text-[#f8fafc]"
+        className="hidden w-64 flex-col border-r md:flex bg-[#0c0c0e] border-zinc-800/80 text-[#fafafa]"
       >
         <Link href="/dashboard" className="block">
           <div
-            className="flex h-16 items-center gap-3 border-b px-6 group cursor-pointer border-[#1f1e29]"
+            className="flex h-16 items-center gap-3 border-b px-6 group cursor-pointer border-zinc-800/80"
           >
-            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-tr from-rose-600 via-rose-500 to-amber-500 text-white font-extrabold text-sm shadow-[0_0_15px_rgba(244,63,94,0.4)] group-hover:scale-105 transition-transform duration-300">
+            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-white text-black font-black text-sm shadow-[0_0_15px_rgba(255,255,255,0.3)] group-hover:scale-105 transition-transform duration-300">
               S
             </div>
-            <span className="text-lg font-black tracking-tight text-[#f8fafc] transition-transform duration-300 group-hover:scale-[1.02] uppercase">
-              Smooth <span className="text-rose-500 font-black">Store</span>
+            <span className="text-lg font-black tracking-tight text-white transition-transform duration-300 group-hover:scale-[1.02] uppercase">
+              Smooth <span className="text-zinc-400 font-bold">Store</span>
             </span>
           </div>
         </Link>
@@ -103,29 +103,29 @@ export function DashboardShell({
                 style={{ animationDelay: `${idx * 25}ms` }}
                 className={`nav-link group relative flex items-center gap-3 rounded-xl px-3 py-2 text-xs font-sans select-none card-in transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] border-0 overflow-hidden ${
                   isActive
-                    ? 'is-active bg-gradient-to-r from-rose-600 via-rose-500 to-rose-700 text-white font-semibold shadow-[0_0_20px_rgba(244,63,94,0.4)] hover:brightness-105'
-                    : 'text-zinc-400 font-medium bg-[#0e0e14] hover:bg-[#181824] hover:text-white hover:translate-x-1.5 hover:shadow-[0_0_18px_rgba(244,63,94,0.2)]'
+                    ? 'is-active bg-white text-black font-bold shadow-[0_0_20px_rgba(255,255,255,0.25)] hover:bg-zinc-200'
+                    : 'text-zinc-400 font-medium bg-[#121215] hover:bg-zinc-800 hover:text-white hover:translate-x-1'
                 }`}
               >
                 {/* Left glowing accent indicator on hover & active */}
                 <span
                   className={`absolute left-0 top-1/2 -translate-y-1/2 w-1 rounded-r-full transition-all duration-300 ease-out ${
                     isActive
-                      ? 'h-4 bg-white shadow-[0_0_10px_rgba(255,255,255,0.9)] opacity-100'
-                      : 'h-0 bg-rose-500 group-hover:h-3.5 group-hover:opacity-100 opacity-0 shadow-[0_0_8px_rgba(244,63,94,0.8)]'
+                      ? 'h-4 bg-black opacity-100'
+                      : 'h-0 bg-white group-hover:h-3.5 group-hover:opacity-100 opacity-0'
                   }`}
                 />
 
                 <div
                   className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] border-0 ${
                     isActive
-                      ? 'bg-white/20 text-white shadow-inner backdrop-blur-xs scale-100'
-                      : 'bg-[#14141e] text-zinc-400 group-hover:bg-rose-600 group-hover:text-white group-hover:scale-110 group-hover:shadow-[0_0_14px_rgba(244,63,94,0.7)]'
+                      ? 'bg-black/10 text-black scale-100'
+                      : 'bg-[#18181b] text-zinc-400 group-hover:bg-zinc-700 group-hover:text-white group-hover:scale-110'
                   }`}
                 >
-                  <item.icon className="h-3.5 w-3.5 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:rotate-[-6deg] group-hover:scale-110" />
+                  <item.icon className="h-3.5 w-3.5 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]" />
                 </div>
-                <span className={`text-xs tracking-wide transition-colors duration-200 ${isActive ? 'font-semibold text-white' : 'text-zinc-400 group-hover:text-white'}`}>
+                <span className={`text-xs tracking-wide transition-colors duration-200 ${isActive ? 'font-bold text-black' : 'text-zinc-400 group-hover:text-white'}`}>
                   {item.label}
                 </span>
               </Link>
@@ -134,23 +134,23 @@ export function DashboardShell({
         </nav>
 
         <div
-          className="border-t border-[#1f1e29] p-4 bg-[#07070a]"
+          className="border-t border-zinc-800/80 p-4 bg-[#09090b]"
         >
           <div className="mb-3 flex items-center gap-3 px-1">
             <div
-              className="flex h-8 w-8 items-center justify-center rounded-xl bg-rose-600 text-xs font-sans font-bold text-white shadow-[0_0_10px_rgba(244,63,94,0.4)]"
+              className="flex h-8 w-8 items-center justify-center rounded-xl bg-zinc-800 border border-zinc-700 text-xs font-sans font-bold text-white shadow-xs"
             >
               {user.email?.[0]?.toUpperCase() ?? 'S'}
             </div>
             <div className="flex-1 truncate">
-              <p className="truncate text-xs font-sans font-semibold text-[#f8fafc]">{user.email}</p>
-              <p className="text-[10px] font-sans font-semibold text-rose-400 font-mono">ADMINISTRADOR</p>
+              <p className="truncate text-xs font-sans font-semibold text-white">{user.email}</p>
+              <p className="text-[10px] font-sans font-semibold text-zinc-400 font-mono">ADMINISTRADOR</p>
             </div>
           </div>
           <Button
             variant="ghost"
             size="sm"
-            className="w-full justify-start gap-2 border border-zinc-800 bg-[#0e0e14] text-zinc-300 hover:text-rose-400 hover:bg-rose-950/20 font-sans font-semibold text-xs active:scale-[0.97] rounded-xl shadow-xs"
+            className="w-full justify-start gap-2 border border-zinc-800 bg-[#121215] text-zinc-400 hover:text-white hover:bg-zinc-800 font-sans font-semibold text-xs active:scale-[0.97] rounded-xl shadow-xs"
             onClick={handleLogout}
           >
             <LogOut className="h-4 w-4" />
@@ -162,24 +162,24 @@ export function DashboardShell({
       {/* Mobile */}
       <div className="flex flex-1 flex-col">
         <header
-          className="flex h-16 items-center justify-between border-b px-4 md:hidden bg-[#09090e] border-[#1f1e29]"
+          className="flex h-16 items-center justify-between border-b px-4 md:hidden bg-[#0c0c0e] border-zinc-800/80"
         >
           <Link href="/dashboard" className="flex items-center gap-2">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-tr from-rose-600 via-rose-500 to-amber-500 text-white font-extrabold text-xs shadow-sm">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-white text-black font-extrabold text-xs shadow-xs">
               S
             </div>
-            <span className="text-lg font-black tracking-tight text-[#f8fafc] uppercase">
-              Smooth <span className="text-rose-500 font-black">Store</span>
+            <span className="text-lg font-black tracking-tight text-white uppercase">
+              Smooth <span className="text-zinc-400 font-bold">Store</span>
             </span>
           </Link>
-          <Button variant="ghost" size="icon" onClick={() => setMobileOpen(!mobileOpen)} className="text-zinc-300 hover:text-rose-400">
+          <Button variant="ghost" size="icon" onClick={() => setMobileOpen(!mobileOpen)} className="text-zinc-300 hover:text-white">
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
         </header>
 
         {mobileOpen && (
           <div
-            className="border-b p-3 md:hidden card-in bg-[#09090e]/95 backdrop-blur-md border-[#1f1e29]"
+            className="border-b p-3 md:hidden card-in bg-[#0c0c0e]/95 backdrop-blur-md border-zinc-800"
           >
             <nav className="flex flex-col gap-1.5">
               {navItems.map((item) => {
@@ -193,27 +193,27 @@ export function DashboardShell({
                     onClick={() => setMobileOpen(false)}
                     className={`nav-link group relative flex items-center gap-3 rounded-xl px-3 py-2 text-xs font-sans select-none transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] border-0 overflow-hidden ${
                       isActive
-                        ? 'is-active bg-gradient-to-r from-rose-600 via-rose-500 to-rose-700 text-white font-semibold shadow-[0_0_20px_rgba(244,63,94,0.4)]'
-                        : 'text-zinc-400 font-medium bg-[#0e0e14] hover:bg-[#181824] hover:text-white'
+                        ? 'is-active bg-white text-black font-bold shadow-[0_0_20px_rgba(255,255,255,0.25)]'
+                        : 'text-zinc-400 font-medium bg-[#121215] hover:bg-zinc-800 hover:text-white'
                     }`}
                   >
                     <span
                       className={`absolute left-0 top-1/2 -translate-y-1/2 w-1 rounded-r-full transition-all duration-300 ease-out ${
                         isActive
-                          ? 'h-4 bg-white shadow-[0_0_10px_rgba(255,255,255,0.9)] opacity-100'
-                          : 'h-0 bg-rose-500 group-hover:h-3.5 group-hover:opacity-100 opacity-0'
+                          ? 'h-4 bg-black opacity-100'
+                          : 'h-0 bg-white group-hover:h-3.5 group-hover:opacity-100 opacity-0'
                       }`}
                     />
                     <div
                       className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] border-0 ${
                         isActive
-                          ? 'bg-white/20 text-white shadow-inner backdrop-blur-xs'
-                          : 'bg-[#14141e] text-zinc-400 group-hover:bg-rose-600 group-hover:text-white group-hover:scale-110'
+                          ? 'bg-black/10 text-black'
+                          : 'bg-[#18181b] text-zinc-400 group-hover:bg-zinc-700 group-hover:text-white'
                       }`}
                     >
                       <item.icon className="h-3.5 w-3.5" />
                     </div>
-                    <span className={`text-xs tracking-wide transition-colors duration-200 ${isActive ? 'font-semibold text-white' : 'text-zinc-400 group-hover:text-white'}`}>
+                    <span className={`text-xs tracking-wide transition-colors duration-200 ${isActive ? 'font-bold text-black' : 'text-zinc-400 group-hover:text-white'}`}>
                       {item.label}
                     </span>
                   </Link>
@@ -221,12 +221,12 @@ export function DashboardShell({
               })}
             </nav>
             <div
-              className="mt-3 border-t pt-3 border-[#1f1e29]"
+              className="mt-3 border-t pt-3 border-zinc-800"
             >
               <Button
                 variant="ghost"
                 size="sm"
-                className="w-full justify-start gap-2 border border-zinc-800 bg-[#0e0e14] text-zinc-300 hover:text-rose-400 hover:bg-rose-950/20 font-sans font-semibold text-xs rounded-xl"
+                className="w-full justify-start gap-2 border border-zinc-800 bg-[#121215] text-zinc-400 hover:text-white hover:bg-zinc-800 font-sans font-semibold text-xs rounded-xl"
                 onClick={handleLogout}
               >
                 <LogOut className="h-4 w-4" />
@@ -236,22 +236,17 @@ export function DashboardShell({
           </div>
         )}
 
-        <main key={pathname} className="route-fade-in flex-1 overflow-auto p-4 md:p-8 bg-[#07070a]">
+        <main key={pathname} className="route-fade-in flex-1 overflow-auto p-4 md:p-8 bg-[#09090b]">
           {children}
         </main>
       </div>
 
-      {/* ===== Toggle de tema (canto inferior esquerdo) ===== */}
+      {/* ===== Toggle de tema ===== */}
       {mounted && (
         <button
           onClick={toggleTheme}
           aria-label={dark ? 'Mudar para tema claro' : 'Mudar para tema escuro'}
-          className="theme-toggle group fixed bottom-5 right-5 z-50 inline-flex h-11 w-11 items-center justify-center rounded-full border shadow-lg transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-110 active:scale-95 hover:shadow-xl"
-          style={{
-            backgroundColor: '#0e0e14',
-            borderColor: '#22212e',
-            color: '#ffffff',
-          }}
+          className="theme-toggle group fixed bottom-5 right-5 z-50 inline-flex h-11 w-11 items-center justify-center rounded-full border border-zinc-800 bg-[#121215] text-white shadow-lg transition-all duration-500 hover:scale-110 active:scale-95 hover:border-zinc-700"
         >
           <span className="relative inline-flex h-5 w-5 items-center justify-center overflow-hidden">
             <Sun
@@ -265,13 +260,6 @@ export function DashboardShell({
               }`}
             />
           </span>
-          {/* Halo subtle */}
-          <span
-            className={`absolute inset-0 rounded-full pointer-events-none transition-opacity duration-500 ${
-              dark ? 'opacity-100' : 'opacity-0'
-            }`}
-            style={{ boxShadow: '0 0 24px rgba(244,63,94,0.25)' }}
-          />
         </button>
       )}
     </div>

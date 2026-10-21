@@ -77,10 +77,10 @@ export default function KeyDetailPage() {
     isExpired ? 'expired' : 'active'
 
   const statusConfig = {
-    active:  { label: 'Ativa',    className: 'border-blue-500/30 bg-blue-500/10 text-blue-400 font-mono text-xs' },
+    active:  { label: 'Ativa',    className: 'border-white/30 bg-white/10 text-white font-mono text-xs' },
     expired: { label: 'Expirada', className: 'border-zinc-800 bg-zinc-900/60 text-zinc-400 font-mono text-xs' },
     banned:  { label: 'Banida',   className: 'border-red-500/30 bg-red-950/20 text-red-400 line-through font-mono text-xs' },
-    paused:  { label: 'Pausada',  className: 'border-amber-500/30 bg-amber-950/20 text-amber-400 font-mono text-xs' },
+    paused:  { label: 'Pausada',  className: 'border-zinc-700 bg-zinc-800/40 text-zinc-300 font-mono text-xs' },
   } as const
 
   const copyKey = () => {
@@ -258,9 +258,9 @@ export default function KeyDetailPage() {
           onClick={handlePauseToggle}
         >
           {key.status === 'paused' ? (
-            <><CheckCircle className="mr-2 h-4 w-4 text-blue-600" />Despausar</>
+            <><CheckCircle className="mr-2 h-4 w-4 text-white" />Despausar</>
           ) : (
-            <><Pause className="mr-2 h-4 w-4 text-blue-600" />Pausar</>
+            <><Pause className="mr-2 h-4 w-4 text-white" />Pausar</>
           )}
         </Button>
         <AlertDialog>
