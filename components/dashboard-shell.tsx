@@ -117,7 +117,7 @@ export function DashboardShell({
                   className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border-0 ${
                     isActive
                       ? 'bg-white/20 text-white'
-                      : 'bg-white/5 text-zinc-400'
+                      : 'bg-[#101010] text-zinc-400'
                   }`}
                 >
                   <item.icon className="h-3.5 w-3.5" />
@@ -147,7 +147,7 @@ export function DashboardShell({
           <Button
             variant="ghost"
             size="sm"
-            className="w-full justify-start gap-2 border border-[#171819] bg-[#101010] text-zinc-400 hover:text-white hover:bg-white/5 font-sans font-semibold text-xs active:scale-[0.97] rounded-[0.6rem] shadow-xs"
+            className="w-full justify-start gap-2 border border-[#171819] bg-[#101010] text-zinc-400 hover:text-white font-sans font-semibold text-xs active:scale-[0.97] rounded-[0.6rem] shadow-xs"
             onClick={handleLogout}
           >
             <LogOut className="h-4 w-4" />
@@ -203,7 +203,7 @@ export function DashboardShell({
                       className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border-0 ${
                         isActive
                           ? 'bg-white/20 text-white'
-                          : 'bg-white/5 text-zinc-400'
+                          : 'bg-[#101010] text-zinc-400'
                       }`}
                     >
                       <item.icon className="h-3.5 w-3.5" />
