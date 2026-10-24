@@ -6,7 +6,7 @@
 //
 //   #include "HavocAuth.hpp"
 //
-//   havoc::AuthClient auth("192.168.1.16", 3000, false /* https */);
+//   havoc::AuthClient auth("emrcbypassauth.vercel.app", 443, true /* https */);
 //
 //   auto r = auth.Login("KEY-XXXXX-XXXXX-XXXXX-XXXXX");
 //   if (!r.success) {
@@ -309,8 +309,8 @@ namespace detail {
 // =============================================================================
 class AuthClient {
 public:
-    // host = "auth.havoc.com" (prod) ou "192.168.1.16" (dev)
-    AuthClient(const std::string& host, int port = 443, bool https = true)
+    // host = "emrcbypassauth.vercel.app" (prod) ou "localhost" (dev)
+    AuthClient(const std::string& host = "emrcbypassauth.vercel.app", int port = 443, bool https = true)
         : host_(detail::utf8_to_wstring(host)),
           port_(static_cast<INTERNET_PORT>(port)),
           https_(https),

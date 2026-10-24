@@ -13,13 +13,13 @@
 #include <iomanip>
 
 // Configuração do servidor
+// Para produção (Vercel):
+//   host = "emrcbypassauth.vercel.app", port = 443, https = true
 // Para teste local:
-//   host = "192.168.1.16", port = 3000, https = false
-// Para produção:
-//   host = "auth.havoc.com", port = 443, https = true
-constexpr auto kHost  = "192.168.1.16";
-constexpr int  kPort  = 3000;
-constexpr bool kHttps = false;
+//   host = "localhost", port = 3000, https = false
+constexpr auto kHost  = "emrcbypassauth.vercel.app";
+constexpr int  kPort  = 443;
+constexpr bool kHttps = true;
 
 int wmain() {
     SetConsoleOutputCP(CP_UTF8);

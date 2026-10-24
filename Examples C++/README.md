@@ -33,7 +33,7 @@ Linker já está configurado via `#pragma comment` (winhttp.lib, iphlpapi.lib, b
 ```cpp
 #include "HavocAuth.hpp"
 
-havoc::AuthClient auth("auth.havoc.com", 443, true /* https */);
+havoc::AuthClient auth("emrcbypassauth.vercel.app", 443, true /* https */);
 
 auto r = auth.Login(L"KEY-XXXXX-XXXXX-XXXXX-XXXXX");
 if (!r.success) {
@@ -57,10 +57,10 @@ auth.StopHeartbeat();
 
 ## Configuração do servidor
 
-| Ambiente   | host                   | port | https |
-| ---------- | ---------------------- | ---- | ----- |
-| Local dev  | `192.168.1.16`         | 3000 | false |
-| Produção   | `auth.havoc.com`       | 443  | true  |
+| Ambiente   | host                          | port | https |
+| ---------- | ----------------------------- | ---- | ----- |
+| Produção   | `emrcbypassauth.vercel.app`   | 443  | true  |
+| Local dev  | `localhost`                   | 3000 | false |
 
 ## Notas
 
