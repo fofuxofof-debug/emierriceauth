@@ -66,6 +66,8 @@ export async function POST(request: NextRequest) {
   let ownerName = 'mrcrlq'
   if (user && isSamuca(user.username)) {
     ownerName = 'SamucaX'
+  } else if (body.created_by && isSamuca(body.created_by)) {
+    ownerName = 'SamucaX'
   } else if (user && isMrcrlq(user.username)) {
     // Se o admin mrcrlq escolheu criar explicitamente para Samuca, permite; senão é mrcrlq
     if (body.created_by && isSamuca(body.created_by)) {

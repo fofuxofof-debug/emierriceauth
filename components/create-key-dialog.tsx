@@ -32,6 +32,7 @@ export function CreateKeyDialog({
   defaultOwner?: string
 }) {
   const [user, setUser] = useState('')
+  const [quantity, setQuantity] = useState('1')
   const [maxDevices, setMaxDevices] = useState('1')
   const [expiryDays, setExpiryDays] = useState('30')
   const [discordId, setDiscordId] = useState('')
@@ -50,6 +51,8 @@ export function CreateKeyDialog({
     try {
       const days = Math.max(Number.parseInt(expiryDays) || 30, 1)
       const devices = Math.max(Number.parseInt(maxDevices) || 1, 1)
+      const qty = Math.min(Math.max(Number.parseInt(quantity) || 1, 1), 50)
+      const targetOwner = canAssignOwner ? assignedOwner : (defaultOwner || 'SamucaX')
 
       const res = await fetch('/api/keys', {
         method: 'POST',
@@ -58,10 +61,11 @@ export function CreateKeyDialog({
           label: user || null,
           max_devices: devices,
           expires_in_days: days,
+          quantity: discordId ? 1 : qty,
           discord_id: discordId || null,
           custom_key: discordId || null,
           product,
-          created_by: canAssignOwner ? assignedOwner : defaultOwner,
+          created_by: targetOwner,
         }),
       })
 
@@ -70,9 +74,10 @@ export function CreateKeyDialog({
         throw new Error(j.error || 'Erro ao criar key')
       }
       const data = await res.json()
-      toast.success(`${data.count} key(s) criada(s) com sucesso!`)
+      toast.success(`${data.count} key(s) criada(s) com sucesso para ${targetOwner}!`)
 
       setUser('')
+      setQuantity('1')
       setMaxDevices('1')
       setExpiryDays('30')
       setDiscordId('')
@@ -85,13 +90,20 @@ export function CreateKeyDialog({
     }
   }
 
+  const isSamuca = defaultOwner === 'SamucaX' || !canAssignOwner
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="border border-[rgb(20,20,20)] bg-[#0a0a0d] text-white sm:max-w-md shadow-2xl rounded-2xl">
         <DialogHeader>
-          <DialogTitle className="text-white font-bold text-lg">Criar Nova Key</DialogTitle>
+          <DialogTitle className="text-white font-bold text-lg flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-[#ff2d8d] animate-pulse" />
+            {isSamuca ? 'Criar Nova Key (Cliente do Samuca)' : 'Criar Nova Key'}
+          </DialogTitle>
           <DialogDescription className="text-zinc-400 text-xs">
-            Configure os parâmetros de licença e validade
+            {isSamuca
+              ? 'A licença será criada e atribuída exclusivamente à carteira de clientes do Samuca.'
+              : 'Configure os parâmetros de licença e atribua ao operador desejado.'}
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleCreate} className="flex flex-col gap-4">
@@ -141,16 +153,28 @@ export function CreateKeyDialog({
           </div>
 
           <div className="flex flex-col gap-2">
-            <Label className="text-xs uppercase tracking-wider font-semibold text-zinc-400 font-mono">User / Identificador</Label>
+            <Label className="text-xs uppercase tracking-wider font-semibold text-zinc-400 font-mono">User / Identificador do Cliente</Label>
             <Input
               value={user}
               onChange={(e) => setUser(e.target.value)}
               placeholder="ex: João Silva"
-              className="border border-[rgb(20,20,20)] bg-black/60 text-white placeholder:text-zinc-500 focus-visible:ring-2 focus-visible:ring-[#ff2d8d]/30 focus-visible:border-[#ff2d8d] rounded-xl h-10"
+              className="border border-[rgb(20,20,20)] bg-black/60 text-white placeholder:text-zinc-500 focus-visible:ring-2 focus-visible:ring-[#ff2d8d]/30 focus-visible:border-[#ff2d8d] rounded-xl h-10 font-mono text-xs"
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-3 gap-3">
+            <div className="flex flex-col gap-2">
+              <Label className="text-xs uppercase tracking-wider font-semibold text-zinc-400 font-mono">Qtd</Label>
+              <Input
+                type="number"
+                min={1}
+                max={50}
+                value={quantity}
+                onChange={(e) => setQuantity(e.target.value)}
+                disabled={!!discordId}
+                className="border border-[rgb(20,20,20)] bg-black/60 text-white focus-visible:ring-2 focus-visible:ring-[#ff2d8d]/30 focus-visible:border-[#ff2d8d] rounded-xl h-10 font-mono text-xs"
+              />
+            </div>
             <div className="flex flex-col gap-2">
               <Label className="text-xs uppercase tracking-wider font-semibold text-zinc-400 font-mono">Slots HWID</Label>
               <Input
@@ -158,17 +182,17 @@ export function CreateKeyDialog({
                 min={1}
                 value={maxDevices}
                 onChange={(e) => setMaxDevices(e.target.value)}
-                className="border border-[rgb(20,20,20)] bg-black/60 text-white focus-visible:ring-2 focus-visible:ring-[#ff2d8d]/30 focus-visible:border-[#ff2d8d] rounded-xl h-10"
+                className="border border-[rgb(20,20,20)] bg-black/60 text-white focus-visible:ring-2 focus-visible:ring-[#ff2d8d]/30 focus-visible:border-[#ff2d8d] rounded-xl h-10 font-mono text-xs"
               />
             </div>
             <div className="flex flex-col gap-2">
-              <Label className="text-xs uppercase tracking-wider font-semibold text-zinc-400 font-mono">Validade (dias)</Label>
+              <Label className="text-xs uppercase tracking-wider font-semibold text-zinc-400 font-mono">Dias</Label>
               <Input
                 type="number"
                 min={1}
                 value={expiryDays}
                 onChange={(e) => setExpiryDays(e.target.value)}
-                className="border border-[rgb(20,20,20)] bg-black/60 text-white focus-visible:ring-2 focus-visible:ring-[#ff2d8d]/30 focus-visible:border-[#ff2d8d] rounded-xl h-10"
+                className="border border-[rgb(20,20,20)] bg-black/60 text-white focus-visible:ring-2 focus-visible:ring-[#ff2d8d]/30 focus-visible:border-[#ff2d8d] rounded-xl h-10 font-mono text-xs"
               />
             </div>
           </div>
@@ -179,7 +203,7 @@ export function CreateKeyDialog({
               value={discordId}
               onChange={(e) => setDiscordId(e.target.value)}
               placeholder="ex: 123456789012345678"
-              className="border border-[rgb(20,20,20)] bg-black/60 text-white placeholder:text-zinc-500 focus-visible:ring-2 focus-visible:ring-[#ff2d8d]/30 focus-visible:border-[#ff2d8d] rounded-xl h-10"
+              className="border border-[rgb(20,20,20)] bg-black/60 text-white placeholder:text-zinc-500 focus-visible:ring-2 focus-visible:ring-[#ff2d8d]/30 focus-visible:border-[#ff2d8d] rounded-xl h-10 font-mono text-xs"
             />
             <p className="text-[11px] text-zinc-500 font-mono">
               Se preenchido, esse valor será usado como a própria key.
