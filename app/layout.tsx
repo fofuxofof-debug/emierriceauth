@@ -5,12 +5,12 @@ import { Toaster } from 'sonner'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Smooth Store — Alta Performance, Comunidade & Segurança',
-  description: 'Softwares de alto rendimento, entrega automática e suporte exclusivo. Smooth Store is not just a store but also a community.',
+  title: 'Painel de Controle — Smooth Store',
+  description: 'Sistema central de autenticação e gerenciamento de licenças.',
 }
 
 export const viewport: Viewport = {
-  themeColor: '#0c0c0c',
+  themeColor: '#000000',
 }
 
 export default function RootLayout({
@@ -24,19 +24,19 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300..1000;1,300..1000&family=Quicksand:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="font-sans antialiased bg-[#0c0c0c] text-[#fafafa] min-h-screen selection:bg-[#db00ff]/30 selection:text-white">
+      <body className="font-sans antialiased bg-[#000000] text-[#fafafa] min-h-screen selection:bg-[#ff2d8d]/30 selection:text-white">
         {children}
         <Toaster
           theme="dark"
           position="top-right"
           toastOptions={{
             style: {
-              background: '#101010',
-              border: '1px solid rgb(23, 24, 25)',
+              background: '#0a0a0d',
+              border: '1px solid rgb(20, 20, 20)',
               color: '#fafafa',
             },
           }}

@@ -12,7 +12,7 @@
       "product": null,
       "created_at": "2026-10-19T00:01:21.007Z",
       "updated_at": "2026-10-19T00:01:21.007Z",
-      "created_by": null
+      "created_by": "mrcrlq"
     },
     "f872f409-59e9-403c-be6d-681f25e8d025": {
       "id": "f872f409-59e9-403c-be6d-681f25e8d025",
@@ -26,7 +26,7 @@
       "product": "ff_external_30d",
       "created_at": "2026-10-19T00:01:21.026Z",
       "updated_at": "2026-10-19T00:01:21.026Z",
-      "created_by": null
+      "created_by": "mrcrlq"
     },
     "2f717363-230d-44c0-bd66-40d3aa370f7c": {
       "id": "2f717363-230d-44c0-bd66-40d3aa370f7c",
@@ -40,7 +40,7 @@
       "product": "ff_external_30d",
       "created_at": "2026-10-19T00:11:14.507Z",
       "updated_at": "2026-10-19T00:53:28.025Z",
-      "created_by": null
+      "created_by": "mrcrlq"
     },
     "f9c98573-8049-4653-ba6f-72584bd563ff": {
       "id": "f9c98573-8049-4653-ba6f-72584bd563ff",
@@ -54,7 +54,7 @@
       "product": "ff_external_30d",
       "created_at": "2026-10-19T00:53:53.453Z",
       "updated_at": "2026-10-19T00:53:53.453Z",
-      "created_by": null
+      "created_by": "mrcrlq"
     }
   },
   "hwids": {
@@ -69,6 +69,68 @@
   },
   "logs": [
     {
+      "id": "af231314-2c73-4888-a6aa-14021c34b972",
+      "key_id": null,
+      "event_type": "key_deleted",
+      "ip_address": null,
+      "hwid": null,
+      "details": {
+        "key": "SMOOTH-RVEAF-O2PAH-BUOOG-6YR28",
+        "by": "SamucaX"
+      },
+      "created_at": "2026-10-24T18:48:40.182Z"
+    },
+    {
+      "id": "915b867a-be9b-4341-b4d7-8c646e3a6d3d",
+      "key_id": "7e0977e3-4d6a-43cb-aa95-e7cdf8fa7f30",
+      "event_type": "key_created",
+      "ip_address": null,
+      "hwid": null,
+      "details": {
+        "key": "SMOOTH-RVEAF-O2PAH-BUOOG-6YR28",
+        "label": "Cliente Especial Samuca",
+        "product": "freefire",
+        "created_by": "SamucaX"
+      },
+      "created_at": "2026-10-24T18:48:40.148Z"
+    },
+    {
+      "id": "1c3e7b34-8fdb-40eb-bb63-998acd2641b1",
+      "key_id": null,
+      "event_type": "key_deleted",
+      "ip_address": null,
+      "hwid": null,
+      "details": {
+        "key": "SMOOTH-32WBA-GH0L6-N8HUO-I7FIE"
+      },
+      "created_at": "2026-10-24T18:48:13.235Z"
+    },
+    {
+      "id": "e2e62259-ee71-4d25-b87f-8f200f551ca1",
+      "key_id": "c2ae1071-5c48-458d-ad8b-b264d99eeba3",
+      "event_type": "key_banned",
+      "ip_address": null,
+      "hwid": null,
+      "details": {
+        "key": "SMOOTH-32WBA-GH0L6-N8HUO-I7FIE"
+      },
+      "created_at": "2026-10-24T18:48:13.228Z"
+    },
+    {
+      "id": "4d3ee38f-6f7b-4e1a-9fce-a1f418969489",
+      "key_id": "c2ae1071-5c48-458d-ad8b-b264d99eeba3",
+      "event_type": "key_created",
+      "ip_address": null,
+      "hwid": null,
+      "details": {
+        "key": "SMOOTH-32WBA-GH0L6-N8HUO-I7FIE",
+        "label": "Cliente Especial Samuca",
+        "product": "freefire",
+        "created_by": "mrcrlq"
+      },
+      "created_at": "2026-10-24T18:48:13.181Z"
+    },
+    {
       "id": "df282877-71f0-48ce-92ee-0698a5c0cc99",
       "key_id": "f9c98573-8049-4653-ba6f-72584bd563ff",
       "event_type": "key_created",
@@ -78,7 +140,8 @@
         "key": "1442199182348910793",
         "label": "foqon",
         "product": "ff_external_30d",
-        "custom": true
+        "custom": true,
+        "created_by": "mrcrlq"
       },
       "created_at": "2026-10-19T00:53:53.454Z"
     },
@@ -91,7 +154,8 @@
       "details": {
         "key": "1517054236041416800",
         "days": 30,
-        "newExpires": "2026-11-20T00:11:14.507Z"
+        "newExpires": "2026-11-20T00:11:14.507Z",
+        "by": "mrcrlq"
       },
       "created_at": "2026-10-19T00:53:28.028Z"
     },
@@ -104,7 +168,8 @@
       "details": {
         "key": "1517054236041416800",
         "days": 1,
-        "newExpires": "2026-10-21T00:11:14.507Z"
+        "newExpires": "2026-10-21T00:11:14.507Z",
+        "by": "mrcrlq"
       },
       "created_at": "2026-10-19T00:17:03.919Z"
     },
@@ -117,7 +182,8 @@
       "details": {
         "key": "SMOOTH-H481O-Y7H0D-LHQ7J-UTQZC",
         "label": "rlqdosrlq (1517054236041416800)",
-        "product": "ff_external_1d"
+        "product": "ff_external_1d",
+        "created_by": "mrcrlq"
       },
       "created_at": "2026-10-19T00:11:14.509Z"
     },
@@ -139,7 +205,8 @@
       "details": {
         "key": "SMOOTH-76YEQ-S7V1B-H1J9F-2OX5M",
         "label": "Cleber (687820421711233055)",
-        "product": "ff_external_30d"
+        "product": "ff_external_30d",
+        "created_by": "mrcrlq"
       },
       "created_at": "2026-10-19T00:01:21.027Z"
     },
@@ -152,7 +219,8 @@
       "details": {
         "key": "SMOOTH-JRREN-6Z89O-922RP-N7DDQ",
         "label": "Demo Key",
-        "demo": true
+        "demo": true,
+        "created_by": "mrcrlq"
       },
       "created_at": "2026-10-19T00:01:21.010Z"
     }

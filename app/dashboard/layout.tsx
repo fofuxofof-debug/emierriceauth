@@ -2,7 +2,12 @@ import React from 'react'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { DashboardShell } from '@/components/dashboard-shell'
-import { SESSION_COOKIE_NAME, USER_COOKIE_NAME, isAuthenticated } from '@/lib/admin-auth'
+import {
+  SESSION_COOKIE_NAME,
+  USER_COOKIE_NAME,
+  isAuthenticated,
+  getUserByUsername,
+} from '@/lib/admin-auth'
 
 export default async function DashboardLayout({
   children,
@@ -16,14 +21,15 @@ export default async function DashboardLayout({
     redirect('/login')
   }
 
-  // Pega o nome do usuário que de fato logou (cookie definido em /api/auth/session)
   const username = cookieStore.get(USER_COOKIE_NAME)?.value || 'admin'
+  const userConfig = getUserByUsername(username)
 
-  // O DashboardShell espera um objeto { id, email }. O "email" é só o display name.
   const shellUser = {
-    id: 'panel-admin',
-    email: username,
+    id: 'panel-user',
+    email: userConfig?.username || username,
+    role: userConfig?.role || 'admin',
+    allowedPaths: userConfig?.allowedPaths || ['*'],
   }
 
-  return <DashboardShell user={shellUser as never}>{children}</DashboardShell>
+  return <DashboardShell user={shellUser}>{children}</DashboardShell>
 }

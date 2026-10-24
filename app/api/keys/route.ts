@@ -1,8 +1,38 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { keysDb, hwidsDb, logsDb, generateKey } from '@/lib/db'
+import {
+  getSessionUser,
+  isSamuca,
+  isMrcrlq,
+} from '@/lib/admin-auth'
 
-export async function GET() {
-  const keys = await keysDb.list()
+export async function GET(request: NextRequest) {
+  const user = getSessionUser(request)
+  const ownerParam = request.nextUrl.searchParams.get('owner')?.toLowerCase()
+
+  let keys = await keysDb.list()
+
+  // Se o usuário logado for Samuca, ele NUNCA vê chaves de mrcrlq
+  if (user && isSamuca(user.username)) {
+    keys = keys.filter((k) => isSamuca(k.created_by))
+  } else if (user && isMrcrlq(user.username)) {
+    // Para mrcrlq (admin):
+    // Padrão (se não passar ?owner ou se passar ?owner=mrcrlq ou ?owner=me): mostra APENAS seus clientes para não misturar!
+    if (!ownerParam || ownerParam === 'me' || ownerParam === 'mrcrlq') {
+      keys = keys.filter((k) => !k.created_by || isMrcrlq(k.created_by))
+    } else if (ownerParam === 'samuca' || ownerParam === 'samucax') {
+      // Se mrcrlq filtrar pelos clientes de Samuca:
+      keys = keys.filter((k) => isSamuca(k.created_by))
+    }
+    // Se ownerParam === 'all', retorna todas sem filtrar
+  } else if (ownerParam) {
+    if (ownerParam === 'samuca' || ownerParam === 'samucax') {
+      keys = keys.filter((k) => isSamuca(k.created_by))
+    } else if (ownerParam === 'mrcrlq' || ownerParam === 'me') {
+      keys = keys.filter((k) => !k.created_by || isMrcrlq(k.created_by))
+    }
+  }
+
   // Enriquece cada key com seus HWIDs vinculados (pra exibicao na tabela)
   const enriched = await Promise.all(
     keys.map(async (k) => ({
@@ -14,6 +44,7 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
+  const user = getSessionUser(request)
   let body: {
     label?: string | null
     max_devices?: number
@@ -23,11 +54,27 @@ export async function POST(request: NextRequest) {
     quantity?: number
     custom_key?: string | null
     product?: string | null
+    created_by?: string | null
   }
   try {
     body = await request.json()
   } catch {
     return NextResponse.json({ error: 'invalid_body' }, { status: 400 })
+  }
+
+  // Determina quem é o dono da key
+  let ownerName = 'mrcrlq'
+  if (user && isSamuca(user.username)) {
+    ownerName = 'SamucaX'
+  } else if (user && isMrcrlq(user.username)) {
+    // Se o admin mrcrlq escolheu criar explicitamente para Samuca, permite; senão é mrcrlq
+    if (body.created_by && isSamuca(body.created_by)) {
+      ownerName = 'SamucaX'
+    } else {
+      ownerName = 'mrcrlq'
+    }
+  } else if (body.created_by) {
+    ownerName = body.created_by
   }
 
   const qty = Math.min(Math.max(Number(body.quantity) || 1, 1), 50)
@@ -44,7 +91,12 @@ export async function POST(request: NextRequest) {
   if (targetKey) {
     const existing = await keysDb.findByKey(targetKey)
     if (existing) {
-      // Se a key já existe (renovação do cliente):
+      // Se a key já existe, verifica permissão caso seja Samuca
+      if (user && isSamuca(user.username) && !isSamuca(existing.created_by)) {
+        return NextResponse.json({ error: 'forbidden' }, { status: 403 })
+      }
+
+      // Renovação da key
       const baseTime = new Date(existing.expires_at) > new Date()
         ? new Date(existing.expires_at).getTime()
         : Date.now()
@@ -60,12 +112,12 @@ export async function POST(request: NextRequest) {
       await logsDb.create({
         key_id: existing.id,
         event_type: 'key_renewed',
-        details: { key: targetKey, days, newExpires },
+        details: { key: targetKey, days, newExpires, renewed_by: ownerName },
       })
       return NextResponse.json({ data: [updated || existing], count: 1 })
     }
 
-    // Cria nova key tendo o Discord ID como a própria Key de Licença
+    // Cria nova key tendo o Discord ID / custom_key como a própria Key de Licença
     const k = await keysDb.create({
       key: targetKey,
       label: body.label || null,
@@ -74,11 +126,12 @@ export async function POST(request: NextRequest) {
       discord_id: body.discord_id || null,
       notes: body.notes || null,
       product,
+      created_by: ownerName,
     })
     await logsDb.create({
       key_id: k.id,
       event_type: 'key_created',
-      details: { key: k.key, label: k.label, product, custom: true },
+      details: { key: k.key, label: k.label, product, custom: true, created_by: ownerName },
     })
     return NextResponse.json({ data: [k], count: 1 })
   }
@@ -94,11 +147,12 @@ export async function POST(request: NextRequest) {
       discord_id: body.discord_id || null,
       notes: body.notes || null,
       product,
+      created_by: ownerName,
     })
     await logsDb.create({
       key_id: k.id,
       event_type: 'key_created',
-      details: { key: k.key, label: k.label, product },
+      details: { key: k.key, label: k.label, product, created_by: ownerName },
     })
     created.push(k)
   }

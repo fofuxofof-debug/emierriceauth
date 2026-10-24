@@ -1,52 +1,122 @@
 // =============================================================================
 // Auth do PAINEL admin (não confundir com auth da API pra C++).
-// Suporta múltiplos usuários via env vars:
-//   - ADMIN_USERNAME + ADMIN_PASSWORD  (primário, single-user, modo legado)
-//   - ADMIN_USERS                       (multi-user, formato "user1:pass1,user2:pass2")
-// Os dois modos coexistem — todos os usuários definidos podem logar.
+// Suporta múltiplos usuários com controle granular de permissões por rota.
 // Compatível com runtime Node e Edge (middleware) — não usa node:crypto.
 // =============================================================================
+
+import type { NextRequest } from 'next/server'
 
 function readEnv(name: string): string | undefined {
   const v = process.env[name]
   return v && v.trim() ? v.trim() : undefined
 }
 
-interface UserCred {
+export type UserRole = 'admin' | 'moderator'
+
+export interface UserCred {
   username: string
   password: string
+  role: UserRole
+  allowedPaths: string[] // ['*'] para total, ou caminhos permitidos específicos
+  defaultPath: string
 }
 
-// Único login autorizado
-const USERS: UserCred[] = [
-  { username: 'mrcrlq', password: '1964f' },
+// Lista de usuários autorizados no painel
+export const USERS: UserCred[] = [
+  {
+    username: 'mrcrlq',
+    password: '1964f',
+    role: 'admin',
+    allowedPaths: ['*'], // Acesso irrestrito a todas as abas
+    defaultPath: '/dashboard',
+  },
+  {
+    username: 'SamucaX',
+    password: 'Bebela',
+    role: 'moderator',
+    allowedPaths: [
+      '/dashboard/keys',
+      '/dashboard/logs',
+      '/dashboard/system',
+    ], // Apenas Keys, Logs e Parar/Status
+    defaultPath: '/dashboard/keys',
+  },
 ]
 
 const AUTH_SECRET = readEnv('AUTH_SECRET') ?? 'dev_secret_unsafe_change_me'
 
 export const SESSION_COOKIE_NAME = 'panel_session'
-
-// Cookie separado que guarda apenas o nome do usuário logado (display only).
-// Sem implicação de segurança: o gate de auth é o SESSION_COOKIE.
 export const USER_COOKIE_NAME = 'panel_user'
+export const ROLE_COOKIE_NAME = 'panel_role'
 
-// O valor do cookie é derivado do AUTH_SECRET. Como o AUTH_SECRET é segredo
-// (env var, fora do git), o valor do cookie também é. Quem só tem o source
-// não consegue forjar uma sessão.
 export const SESSION_COOKIE_VALUE = `panel:${AUTH_SECRET.slice(0, 48)}`
 
-// Retorna true se o painel tem ao menos um usuário configurado.
-// Se faltar, nenhum login é aceito (fail-closed por segurança).
 export function isPanelConfigured(): boolean {
   return USERS.length > 0
 }
 
-export function verifyAdminCredentials(username: string, password: string): boolean {
-  if (!isPanelConfigured()) return false
-  return USERS.some((u) => u.username === username && u.password === password)
+export function getUserByUsername(username: string): UserCred | undefined {
+  if (!username) return undefined
+  const clean = username.trim().toLowerCase()
+  return USERS.find((u) => {
+    const uName = u.username.toLowerCase()
+    return uName === clean || (uName === 'samucax' && clean === 'samuca')
+  })
+}
+
+export function isSamuca(username?: string | null): boolean {
+  if (!username) return false
+  const lower = username.trim().toLowerCase()
+  return lower === 'samucax' || lower === 'samuca'
+}
+
+export function isMrcrlq(username?: string | null): boolean {
+  if (!username) return false
+  const lower = username.trim().toLowerCase()
+  return lower === 'mrcrlq'
+}
+
+export function canAccessKey(user: UserCred | null | undefined, keyOwner: string | null | undefined): boolean {
+  if (!user) return true
+  if (user.role === 'admin') return true
+  if (isSamuca(user.username)) {
+    return isSamuca(keyOwner)
+  }
+  return (keyOwner || '').toLowerCase() === user.username.toLowerCase()
+}
+
+export function getSessionUser(request: NextRequest): UserCred | null {
+  const session = request.cookies.get(SESSION_COOKIE_NAME)?.value
+  if (!isAuthenticated(session)) return null
+  const username = request.cookies.get(USER_COOKIE_NAME)?.value
+  if (!username) return null
+  return getUserByUsername(username) ?? null
+}
+
+export function verifyAdminCredentials(username: string, password: string): UserCred | null {
+  if (!isPanelConfigured()) return null
+  const user = getUserByUsername(username)
+  if (user && user.password === password) {
+    return user
+  }
+  return null
 }
 
 export function isAuthenticated(cookieValue: string | undefined | null): boolean {
   if (!cookieValue) return false
   return cookieValue === SESSION_COOKIE_VALUE
+}
+
+export function isPathAllowedForUser(username: string | undefined | null, pathname: string): boolean {
+  if (!username) return false
+  const user = getUserByUsername(username)
+  if (!user) return false
+
+  // Se o usuário tem permissão total ('*')
+  if (user.allowedPaths.includes('*')) return true
+
+  // Verifica se o caminho atual começa com algum dos caminhos permitidos
+  return user.allowedPaths.some(
+    (allowed) => pathname === allowed || pathname.startsWith(`${allowed}/`)
+  )
 }

@@ -255,17 +255,37 @@ export const hwidsDb = {
 // =============================================================================
 export const logsDb = {
   async list(limit = 100): Promise<AuthLog[]> {
+    let items: AuthLog[] = []
     if (useKv) {
       const c = await kv()
-      const items = await c.lrange<AuthLog>('logs', 0, limit - 1)
-      return items
+      items = (await c.lrange<AuthLog>('logs', 0, limit - 1)) || []
+    } else {
+      items = [...mem.logs]
+        .sort(
+          (a, b) =>
+            new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        )
+        .slice(0, limit)
     }
-    return [...mem.logs]
-      .sort(
-        (a, b) =>
-          new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
-      )
-      .slice(0, limit)
+
+    // Enriquece logs com dados da key (se disponível)
+    return items.map((l) => {
+      if (l.key_id && !l.details?.key) {
+        const k = mem.keys.get(l.key_id)
+        if (k) {
+          return {
+            ...l,
+            details: {
+              ...l.details,
+              key: k.key,
+              label: l.details?.label ?? k.label,
+              product: l.details?.product ?? k.product,
+            },
+          }
+        }
+      }
+      return l
+    })
   },
 
   async listByKey(keyId: string, limit = 50): Promise<AuthLog[]> {
@@ -280,13 +300,23 @@ export const logsDb = {
     hwid?: string | null
     details?: Record<string, unknown>
   }): Promise<AuthLog> {
+    const details = { ...(input.details ?? {}) }
+    if (input.key_id && !details.key) {
+      const k = mem.keys.get(input.key_id)
+      if (k) {
+        details.key = k.key
+        if (k.label && !details.label) details.label = k.label
+        if (k.product && !details.product) details.product = k.product
+      }
+    }
+
     const item: AuthLog = {
       id: randomUUID(),
       key_id: input.key_id ?? null,
       event_type: input.event_type,
       ip_address: input.ip_address ?? null,
       hwid: input.hwid ?? null,
-      details: input.details ?? {},
+      details,
       created_at: new Date().toISOString(),
     }
     if (useKv) {
@@ -305,10 +335,30 @@ export const logsDb = {
 // =============================================================================
 // Stats
 // =============================================================================
-export async function buildStats() {
-  const keys = await keysDb.list()
+export async function buildStats(ownerFilter?: string | null) {
+  let keys = await keysDb.list()
+  if (ownerFilter) {
+    const o = ownerFilter.toLowerCase()
+    if (o === 'samucax' || o === 'samuca') {
+      keys = keys.filter((k) => k.created_by?.toLowerCase() === 'samucax' || k.created_by?.toLowerCase() === 'samuca')
+    } else if (o === 'mrcrlq') {
+      keys = keys.filter((k) => !k.created_by || k.created_by.toLowerCase() === 'mrcrlq')
+    }
+  }
+  const keyIds = new Set(keys.map((k) => k.id))
   const now = new Date()
-  const recent = (await logsDb.list(100)).filter((l) => l.event_type === 'auth_success').length
+
+  let totalHwids = 0
+  for (const k of keys) {
+    const hs = await hwidsDb.listByKey(k.id)
+    totalHwids += hs.length
+  }
+
+  const logs = await logsDb.list(200)
+  const recent = logs.filter(
+    (l) => l.event_type === 'auth_success' && (!ownerFilter || (l.key_id && keyIds.has(l.key_id)))
+  ).length
+
   return {
     total_keys: keys.length,
     active_keys: keys.filter(
@@ -318,7 +368,7 @@ export async function buildStats() {
       (k) => k.status === 'expired' || (k.status === 'active' && new Date(k.expires_at) <= now)
     ).length,
     banned_keys: keys.filter((k) => k.status === 'banned').length,
-    total_hwids: await hwidsDb.count(),
+    total_hwids: totalHwids,
     recent_auths: recent,
   }
 }
@@ -334,10 +384,33 @@ export function generateKey(prefix = 'SMOOTH'): string {
 }
 
 // =============================================================================
-// Seed inicial (só pra dev local sem KV — em produção, key inicial é manual)
+// Seed inicial (migra auth_db.json para KV no Vercel ou cria chave demo)
 // =============================================================================
 async function seedIfNeeded() {
-  if (useKv) return
+  if (useKv) {
+    try {
+      const existing = await keysDb.list()
+      if (existing.length === 0 && fs.existsSync(DB_FILE)) {
+        const parsed = JSON.parse(fs.readFileSync(DB_FILE, 'utf-8'))
+        const c = await kv()
+        if (parsed.keys && Object.keys(parsed.keys).length > 0) {
+          await c.hset('keys', parsed.keys)
+        }
+        if (parsed.hwids && Object.keys(parsed.hwids).length > 0) {
+          await c.hset('hwids', parsed.hwids)
+        }
+        if (Array.isArray(parsed.logs) && parsed.logs.length > 0) {
+          for (const item of parsed.logs) {
+            await c.rpush('logs', item)
+          }
+        }
+      }
+    } catch (e) {
+      console.error('Erro ao popular KV inicial:', e)
+    }
+    return
+  }
+
   if (mem.seeded) return
   if (mem.keys.size > 0) {
     mem.seeded = true
