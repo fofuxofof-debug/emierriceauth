@@ -89,10 +89,10 @@ export default function DiscordPage() {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({
-          username: 'Smooth Store Auth',
+          username: 'Hooked Store Auth',
           embeds: [{
             title: 'Webhook conectado',
-            description: 'Notificações da Smooth Store estão configuradas.',
+            description: 'Notificações da Hooked Store estão configuradas.',
             color: isNaN(colorHex) ? 0x000000 : colorHex,
             timestamp: new Date().toISOString(),
           }],

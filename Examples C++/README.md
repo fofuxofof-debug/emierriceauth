@@ -1,14 +1,14 @@
-# Havoc Bypass Auth — Exemplo C++
+# Hooked Bypass Auth — Exemplo C++
 
 Cliente de autenticação em C++ pra integrar com a API do painel
-(Havoc Bypass Auth System) em qualquer projeto Windows.
+(Hooked Bypass Auth System) em qualquer projeto Windows.
 
 ## Arquivos
 
-- **`HavocAuth.hpp`** — Header único, sem dependências externas.
+- **`HookedAuth.hpp`** — Header único, sem dependências externas.
   Contém:
-  - `havoc::AuthClient` — classe principal (login + heartbeat)
-  - `havoc::hwid::generate()` — HWID estável (volume serial + CPU + MAC, hash SHA256)
+  - `hooked::AuthClient` — classe principal (login + heartbeat)
+  - `hooked::hwid::generate()` — HWID estável (volume serial + CPU + MAC, hash SHA256)
   - HTTP via WinHTTP, JSON parser leve embutido
 - **`AuthExample.cpp`** — Console standalone que pede a key, valida e
   fica fazendo heartbeat até a sessão ser invalidada.
@@ -31,9 +31,9 @@ Linker já está configurado via `#pragma comment` (winhttp.lib, iphlpapi.lib, b
 ## Uso mínimo no seu projeto
 
 ```cpp
-#include "HavocAuth.hpp"
+#include "HookedAuth.hpp"
 
-havoc::AuthClient auth("emrcbypassauth.vercel.app", 443, true /* https */);
+hooked::AuthClient auth("emrcbypassauth.vercel.app", 443, true /* https */);
 
 auto r = auth.Login(L"KEY-XXXXX-XXXXX-XXXXX-XXXXX");
 if (!r.success) {
@@ -42,7 +42,7 @@ if (!r.success) {
 }
 
 // Sessão ativa. Inicia thread de heartbeat (cada 60s).
-auth.StartHeartbeat([](const havoc::HeartbeatResult& hb) {
+auth.StartHeartbeat([](const hooked::HeartbeatResult& hb) {
     if (!hb.success) {
         // Key foi banida/pausada/expirada durante a sessão.
         // Desativa features e/ou ExitProcess(0).

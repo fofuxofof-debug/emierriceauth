@@ -98,11 +98,11 @@ export function DashboardShell({
         <Link href={navItems[0]?.href || '/dashboard'} className="block">
           <div className="flex h-16 items-center gap-3 border-b px-6 group cursor-pointer border-[rgb(20,20,20)]">
             <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-[#ff2d8d] to-[#ff5ca0] text-white font-black text-sm shadow-[0_0_20px_rgba(255,45,141,0.45)] group-hover:scale-105 transition-transform duration-300">
-              S
+              H
             </div>
             <div className="flex flex-col">
               <span className="text-sm font-bold tracking-tight text-white flex items-center gap-1.5">
-                Smooth <span className="text-[#ff2d8d]">Store</span>
+                Hooked <span className="text-[#ff2d8d]">Store</span>
               </span>
               <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider">
                 Auth System v2
@@ -186,10 +186,10 @@ export function DashboardShell({
         <header className="flex h-16 items-center justify-between border-b px-4 md:hidden bg-[#050508]/95 backdrop-blur-xl border-[rgb(20,20,20)]">
           <Link href={navItems[0]?.href || '/dashboard'} className="flex items-center gap-2.5">
             <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-tr from-[#ff2d8d] to-[#ff5ca0] text-white font-extrabold text-xs shadow-md">
-              S
+              H
             </div>
             <span className="text-sm font-bold tracking-tight text-white">
-              Smooth <span className="text-[#ff2d8d]">Store</span>
+              Hooked <span className="text-[#ff2d8d]">Store</span>
             </span>
           </Link>
           <Button

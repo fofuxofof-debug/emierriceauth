@@ -113,7 +113,7 @@ export default function BotKeysPage() {
           <div className="text-sm font-bold text-white mt-1 flex items-center gap-2 font-mono">
             <span className="h-2 w-2 rounded-full bg-[#db00ff]" /> API /api/keys Pronta
           </div>
-          <p className="text-[11px] text-zinc-500 mt-1 font-mono">Recebendo compras do Smooth Sales</p>
+          <p className="text-[11px] text-zinc-500 mt-1 font-mono">Recebendo compras do Hooked Sales</p>
         </div>
       </div>
 

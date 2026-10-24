@@ -27,7 +27,7 @@ export default function DashboardPage() {
           <div className="flex items-center gap-2 mb-1.5">
             <span className="h-2 w-2 rounded-full bg-[#ff2d8d] animate-pulse" />
             <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[#ff2d8d]">
-              SMOOTH CLOUD CORE
+              HOOKED CLOUD CORE
             </span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-sans">

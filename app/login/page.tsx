@@ -56,11 +56,11 @@ export default function LoginPage() {
         {/* Brand Header */}
         <div className="mb-8 flex flex-col items-center gap-3 text-center">
           <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-tr from-[#ff2d8d] to-[#ff5ca0] text-white font-black text-2xl shadow-[0_0_30px_rgba(255,45,141,0.5)]">
-            S
+            H
           </div>
           <div>
             <h1 className="text-2xl font-extrabold tracking-tight text-white flex items-center justify-center gap-1.5">
-              Smooth <span className="text-[#ff2d8d]">Store</span>
+              Hooked <span className="text-[#ff2d8d]">Store</span>
             </h1>
             <p className="text-xs text-zinc-400 font-medium mt-1">
               Painel de Controle & Gestão de Licenças

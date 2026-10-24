@@ -1,5 +1,5 @@
 // =============================================================================
-// AuthExample.cpp — exemplo standalone de uso do HavocAuth.hpp
+// AuthExample.cpp — exemplo standalone de uso do HookedAuth.hpp
 // 
 // Como compilar (cl.exe):
 //   cl /EHsc /std:c++17 AuthExample.cpp
@@ -8,7 +8,7 @@
 // via #pragma comment dentro do header.
 // =============================================================================
 
-#include "HavocAuth.hpp"
+#include "HookedAuth.hpp"
 #include <iostream>
 #include <iomanip>
 
@@ -25,10 +25,10 @@ int wmain() {
     SetConsoleOutputCP(CP_UTF8);
 
     std::wcout << L"================================================\n"
-               << L"   Havoc Bypass Auth Client — Example\n"
+               << L"   Hooked Bypass Auth Client — Example\n"
                << L"================================================\n\n";
 
-    havoc::AuthClient auth(kHost, kPort, kHttps);
+    hooked::AuthClient auth(kHost, kPort, kHttps);
 
     std::wcout << L"HWID: " << auth.GetHwid() << L"\n\n";
 
@@ -65,7 +65,7 @@ int wmain() {
     // ----- Inicia heartbeat -----
     std::wcout << L"Heartbeat iniciado (cada 60s). Ctrl+C pra sair.\n\n";
 
-    auth.StartHeartbeat([](const havoc::HeartbeatResult& hb) {
+    auth.StartHeartbeat([](const hooked::HeartbeatResult& hb) {
         SYSTEMTIME st; GetLocalTime(&st);
         std::wcout << L"["
                    << std::setw(2) << std::setfill(L'0') << st.wHour   << L":"

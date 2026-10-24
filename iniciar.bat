@@ -1,6 +1,6 @@
 @echo off
 chcp 65001 >nul
-title Painel de Controle - Smooth Store (Preto e Rosa)
+title Painel de Controle - Hooked Store (Preto e Rosa)
 
 cd /d "%~dp0"
 
@@ -56,7 +56,7 @@ if errorlevel 1 (
 :START_SERVER
 echo.
 echo =====================================================================
-echo   Iniciando Painel de Controle - Smooth Store (Preto e Rosa)
+echo   Iniciando Painel de Controle - Hooked Store (Preto e Rosa)
 echo   URL: http://localhost:3000
 echo.
 echo   Credenciais de Acesso:

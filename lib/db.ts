@@ -63,10 +63,10 @@ interface MemDB {
   logs: AuthLog[]
   seeded: boolean
 }
-const globalAny = globalThis as unknown as { __havocMem?: MemDB }
+const globalAny = globalThis as unknown as { __hookedMem?: MemDB }
 const mem: MemDB =
-  globalAny.__havocMem ?? loadMem()
-if (process.env.NODE_ENV !== 'production') globalAny.__havocMem = mem
+  globalAny.__hookedMem ?? loadMem()
+if (process.env.NODE_ENV !== 'production') globalAny.__hookedMem = mem
 
 // =============================================================================
 // Keys
@@ -376,7 +376,7 @@ export async function buildStats(ownerFilter?: string | null) {
 // =============================================================================
 // Util
 // =============================================================================
-export function generateKey(prefix = 'SMOOTH'): string {
+export function generateKey(prefix = 'HOOKED'): string {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
   const seg = () =>
     Array.from({ length: 5 }, () => chars[Math.floor(Math.random() * chars.length)]).join('')

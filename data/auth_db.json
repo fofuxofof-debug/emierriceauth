@@ -2,7 +2,7 @@
   "keys": {
     "d5ce45f4-6ca9-4f35-b13f-f3f6f18ef174": {
       "id": "d5ce45f4-6ca9-4f35-b13f-f3f6f18ef174",
-      "key": "SMOOTH-JRREN-6Z89O-922RP-N7DDQ",
+      "key": "HOOKED-JRREN-6Z89O-922RP-N7DDQ",
       "label": "Demo Key",
       "status": "active",
       "max_devices": 3,
@@ -16,13 +16,13 @@
     },
     "f872f409-59e9-403c-be6d-681f25e8d025": {
       "id": "f872f409-59e9-403c-be6d-681f25e8d025",
-      "key": "SMOOTH-76YEQ-S7V1B-H1J9F-2OX5M",
+      "key": "HOOKED-76YEQ-S7V1B-H1J9F-2OX5M",
       "label": "Cleber (687820421711233055)",
       "status": "active",
       "max_devices": 1,
       "expires_at": "2026-11-18T00:01:21.026Z",
       "discord_id": "687820421711233055",
-      "notes": "Venda Automática Discord Bot • Smooth Sales",
+      "notes": "Venda Automática Discord Bot • Hooked Sales",
       "product": "ff_external_30d",
       "created_at": "2026-10-19T00:01:21.026Z",
       "updated_at": "2026-10-19T00:01:21.026Z",
@@ -36,7 +36,7 @@
       "max_devices": 1,
       "expires_at": "2026-11-20T00:11:14.507Z",
       "discord_id": "1517054236041416800",
-      "notes": "Venda Discord Bot • Smooth Sales (Free Fire External (30 Dias))",
+      "notes": "Venda Discord Bot • Hooked Sales (Free Fire External (30 Dias))",
       "product": "ff_external_30d",
       "created_at": "2026-10-19T00:11:14.507Z",
       "updated_at": "2026-10-19T00:53:28.025Z",
@@ -50,7 +50,7 @@
       "max_devices": 1,
       "expires_at": "2026-11-18T00:53:53.453Z",
       "discord_id": "1442199182348910793",
-      "notes": "Venda Discord Bot • Smooth Sales (Free Fire External (30 Dias))",
+      "notes": "Venda Discord Bot • Hooked Sales (Free Fire External (30 Dias))",
       "product": "ff_external_30d",
       "created_at": "2026-10-19T00:53:53.453Z",
       "updated_at": "2026-10-19T00:53:53.453Z",
@@ -75,7 +75,7 @@
       "ip_address": null,
       "hwid": null,
       "details": {
-        "key": "SMOOTH-RVEAF-O2PAH-BUOOG-6YR28",
+        "key": "HOOKED-RVEAF-O2PAH-BUOOG-6YR28",
         "by": "SamucaX"
       },
       "created_at": "2026-10-24T18:48:40.182Z"
@@ -87,7 +87,7 @@
       "ip_address": null,
       "hwid": null,
       "details": {
-        "key": "SMOOTH-RVEAF-O2PAH-BUOOG-6YR28",
+        "key": "HOOKED-RVEAF-O2PAH-BUOOG-6YR28",
         "label": "Cliente Especial Samuca",
         "product": "freefire",
         "created_by": "SamucaX"
@@ -101,7 +101,7 @@
       "ip_address": null,
       "hwid": null,
       "details": {
-        "key": "SMOOTH-32WBA-GH0L6-N8HUO-I7FIE"
+        "key": "HOOKED-32WBA-GH0L6-N8HUO-I7FIE"
       },
       "created_at": "2026-10-24T18:48:13.235Z"
     },
@@ -112,7 +112,7 @@
       "ip_address": null,
       "hwid": null,
       "details": {
-        "key": "SMOOTH-32WBA-GH0L6-N8HUO-I7FIE"
+        "key": "HOOKED-32WBA-GH0L6-N8HUO-I7FIE"
       },
       "created_at": "2026-10-24T18:48:13.228Z"
     },
@@ -123,7 +123,7 @@
       "ip_address": null,
       "hwid": null,
       "details": {
-        "key": "SMOOTH-32WBA-GH0L6-N8HUO-I7FIE",
+        "key": "HOOKED-32WBA-GH0L6-N8HUO-I7FIE",
         "label": "Cliente Especial Samuca",
         "product": "freefire",
         "created_by": "mrcrlq"
@@ -180,7 +180,7 @@
       "ip_address": null,
       "hwid": null,
       "details": {
-        "key": "SMOOTH-H481O-Y7H0D-LHQ7J-UTQZC",
+        "key": "HOOKED-H481O-Y7H0D-LHQ7J-UTQZC",
         "label": "rlqdosrlq (1517054236041416800)",
         "product": "ff_external_1d",
         "created_by": "mrcrlq"
@@ -203,7 +203,7 @@
       "ip_address": null,
       "hwid": null,
       "details": {
-        "key": "SMOOTH-76YEQ-S7V1B-H1J9F-2OX5M",
+        "key": "HOOKED-76YEQ-S7V1B-H1J9F-2OX5M",
         "label": "Cleber (687820421711233055)",
         "product": "ff_external_30d",
         "created_by": "mrcrlq"
@@ -217,7 +217,7 @@
       "ip_address": null,
       "hwid": null,
       "details": {
-        "key": "SMOOTH-JRREN-6Z89O-922RP-N7DDQ",
+        "key": "HOOKED-JRREN-6Z89O-922RP-N7DDQ",
         "label": "Demo Key",
         "demo": true,
         "created_by": "mrcrlq"

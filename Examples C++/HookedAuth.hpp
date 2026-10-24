@@ -1,12 +1,12 @@
 #pragma once
 // =============================================================================
-// HavocAuth — cliente C++ headless para a API de auth (Havoc Bypass Auth System)
+// HookedAuth — cliente C++ headless para a API de auth (Hooked Bypass Auth System)
 //
 // USO:
 //
-//   #include "HavocAuth.hpp"
+//   #include "HookedAuth.hpp"
 //
-//   havoc::AuthClient auth("emrcbypassauth.vercel.app", 443, true /* https */);
+//   hooked::AuthClient auth("emrcbypassauth.vercel.app", 443, true /* https */);
 //
 //   auto r = auth.Login("KEY-XXXXX-XXXXX-XXXXX-XXXXX");
 //   if (!r.success) {
@@ -15,7 +15,7 @@
 //   }
 //
 //   // Sessão ativa. Token está em auth.GetSessionToken().
-//   auth.StartHeartbeat([](const havoc::HeartbeatResult& hb) {
+//   auth.StartHeartbeat([](const hooked::HeartbeatResult& hb) {
 //       if (!hb.success) {
 //           std::wcout << L"Sessão perdida: " << hb.error << L"\n";
 //           ExitProcess(0); // ou desativa features
@@ -49,7 +49,7 @@
 #pragma comment(lib, "iphlpapi.lib")
 #pragma comment(lib, "bcrypt.lib")
 
-namespace havoc {
+namespace hooked {
 
 // ---------- Resultado de Login ----------
 struct LoginResult {
@@ -247,7 +247,7 @@ namespace detail {
         const std::wstring& path, const std::string& body)
     {
         HttpResponse r;
-        HINTERNET session = WinHttpOpen(L"HavocAuth/1.0",
+        HINTERNET session = WinHttpOpen(L"HookedAuth/1.0",
             WINHTTP_ACCESS_TYPE_DEFAULT_PROXY, WINHTTP_NO_PROXY_NAME, WINHTTP_NO_PROXY_BYPASS, 0);
         if (!session) return r;
 
@@ -438,4 +438,7 @@ private:
     std::thread         worker_;
 };
 
-} // namespace havoc
+} // namespace hooked
+
+// Alias para compatibilidade caso código existente use havoc::
+namespace havoc = hooked;

@@ -5,7 +5,7 @@ import { Toaster } from 'sonner'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Painel de Controle — Smooth Store',
+  title: 'Painel de Controle — Hooked Store',
   description: 'Sistema central de autenticação e gerenciamento de licenças.',
 }
 
