@@ -6,7 +6,7 @@
 //
 //   #include "HookedAuth.hpp"
 //
-//   hooked::AuthClient auth("emrcbypassauth.vercel.app", 443, true /* https */);
+//   hooked::AuthClient auth("hookedbypass.vercel.app", 443, true /* https */);
 //
 //   auto r = auth.Login("KEY-XXXXX-XXXXX-XXXXX-XXXXX");
 //   if (!r.success) {
@@ -309,8 +309,8 @@ namespace detail {
 // =============================================================================
 class AuthClient {
 public:
-    // host = "emrcbypassauth.vercel.app" (prod) ou "localhost" (dev)
-    AuthClient(const std::string& host = "emrcbypassauth.vercel.app", int port = 443, bool https = true)
+    // host = "hookedbypass.vercel.app" (prod) ou "localhost" (dev)
+    AuthClient(const std::string& host = "hookedbypass.vercel.app", int port = 443, bool https = true)
         : host_(detail::utf8_to_wstring(host)),
           port_(static_cast<INTERNET_PORT>(port)),
           https_(https),

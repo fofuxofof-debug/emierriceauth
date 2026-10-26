@@ -14,10 +14,10 @@
 
 // Configuração do servidor
 // Para produção (Vercel):
-//   host = "emrcbypassauth.vercel.app", port = 443, https = true
+//   host = "hookedbypass.vercel.app", port = 443, https = true
 // Para teste local:
 //   host = "localhost", port = 3000, https = false
-constexpr auto kHost  = "emrcbypassauth.vercel.app";
+constexpr auto kHost  = "hookedbypass.vercel.app";
 constexpr int  kPort  = 443;
 constexpr bool kHttps = true;
 

@@ -33,7 +33,7 @@ Linker já está configurado via `#pragma comment` (winhttp.lib, iphlpapi.lib, b
 ```cpp
 #include "HookedAuth.hpp"
 
-hooked::AuthClient auth("emrcbypassauth.vercel.app", 443, true /* https */);
+hooked::AuthClient auth("hookedbypass.vercel.app", 443, true /* https */);
 
 auto r = auth.Login(L"KEY-XXXXX-XXXXX-XXXXX-XXXXX");
 if (!r.success) {
@@ -59,7 +59,7 @@ auth.StopHeartbeat();
 
 | Ambiente   | host                          | port | https |
 | ---------- | ----------------------------- | ---- | ----- |
-| Produção   | `emrcbypassauth.vercel.app`   | 443  | true  |
+| Produção   | `hookedbypass.vercel.app`   | 443  | true  |
 | Local dev  | `localhost`                   | 3000 | false |
 
 ## Notas
