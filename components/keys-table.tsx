@@ -5,7 +5,7 @@ import type { LicenseKey, HWID } from '@/lib/types'
 import { getDaysRemaining, formatDate } from '@/lib/keys'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Eye, Copy, Loader2, Monitor, Cpu, User } from 'lucide-react'
+import { Eye, Copy, Loader2, Monitor, Cpu } from 'lucide-react'
 import Link from 'next/link'
 import { toast } from 'sonner'
 
@@ -20,10 +20,10 @@ function statusFor(key: LicenseKey) {
 }
 
 const STATUS_BADGE = {
-  active:  { label: 'Ativa',    className: 'border-[#ff2d8d]/40 bg-[#ff2d8d]/15 text-[#ff2d8d] font-mono text-[10px]' },
-  expired: { label: 'Expirada', className: 'border-[rgb(20,20,20)] bg-white/5 text-zinc-400 font-mono text-[10px]' },
-  banned:  { label: 'Banida',   className: 'border-rose-500/30 bg-rose-500/10 text-rose-400 line-through font-mono text-[10px]' },
-  paused:  { label: 'Pausada',  className: 'border-amber-500/30 bg-amber-500/10 text-amber-400 font-mono text-[10px]' },
+  active:  { label: 'Ativa',    className: 'border-orange-200 bg-orange-50 text-[#ea580c] font-mono text-[10px]' },
+  expired: { label: 'Expirada', className: 'border-slate-200 bg-slate-100 text-slate-500 font-mono text-[10px]' },
+  banned:  { label: 'Banida',   className: 'border-rose-200 bg-rose-50 text-rose-600 line-through font-mono text-[10px]' },
+  paused:  { label: 'Pausada',  className: 'border-amber-200 bg-amber-50 text-amber-600 font-mono text-[10px]' },
 } as const
 
 function StatusBadge({ licenseKey }: { licenseKey: LicenseKey }) {
@@ -38,9 +38,9 @@ export function OwnerBadge({ owner }: { owner?: string | null }) {
     return (
       <Badge
         variant="outline"
-        className="border-[#ff2d8d]/40 bg-[#ff2d8d]/10 text-[#ff2d8d] font-mono text-[10px] tracking-wide inline-flex items-center gap-1"
+        className="border-orange-300 bg-orange-50 text-[#ea580c] font-mono text-[10px] tracking-wide inline-flex items-center gap-1"
       >
-        <span className="h-1.5 w-1.5 rounded-full bg-[#ff2d8d]" />
+        <span className="h-1.5 w-1.5 rounded-full bg-[#f97316]" />
         Samuca
       </Badge>
     )
@@ -48,9 +48,9 @@ export function OwnerBadge({ owner }: { owner?: string | null }) {
   return (
     <Badge
       variant="outline"
-      className="border-[rgb(20,20,20)] bg-white/5 text-zinc-300 font-mono text-[10px] tracking-wide inline-flex items-center gap-1"
+      className="border-slate-200 bg-slate-100 text-slate-700 font-mono text-[10px] tracking-wide inline-flex items-center gap-1"
     >
-      <span className="h-1.5 w-1.5 rounded-full bg-zinc-400" />
+      <span className="h-1.5 w-1.5 rounded-full bg-slate-400" />
       mrcrlq
     </Badge>
   )
@@ -58,7 +58,7 @@ export function OwnerBadge({ owner }: { owner?: string | null }) {
 
 function HwidCell({ hwids }: { hwids?: HWID[] }) {
   if (!hwids || hwids.length === 0) {
-    return <span className="text-xs text-zinc-500 font-mono">—</span>
+    return <span className="text-xs text-slate-400 font-mono">—</span>
   }
   const first = hwids[0].hwid
   const shortened = first.length > 12 ? `${first.slice(0, 12)}…` : first
@@ -75,20 +75,20 @@ function HwidCell({ hwids }: { hwids?: HWID[] }) {
     <div className="flex items-center gap-2 font-mono">
       <code
         title={first}
-        className="rounded-lg border border-[rgb(20,20,20)] bg-black/50 px-2 py-1 font-mono text-[11px] text-zinc-200"
+        className="rounded-lg border border-slate-200 bg-slate-50 px-2 py-1 font-mono text-[11px] text-slate-800"
       >
         {shortened}
       </code>
       <Button
         variant="ghost"
         size="icon"
-        className="h-6 w-6 text-zinc-400 hover:text-[#ff2d8d] hover:bg-white/5"
+        className="h-6 w-6 text-slate-400 hover:text-orange-600 hover:bg-orange-50"
         onClick={copy}
       >
         <Copy className="h-3 w-3" />
       </Button>
       {extra > 0 && (
-        <span className="text-[11px] text-zinc-400">+{extra}</span>
+        <span className="text-[11px] text-slate-400">+{extra}</span>
       )}
     </div>
   )
@@ -109,16 +109,16 @@ export function KeysTable({
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center rounded-2xl border border-[rgb(20,20,20)] bg-[#0a0a0d] p-12 shadow-sm">
-        <Loader2 className="h-6 w-6 animate-spin text-[#ff2d8d]" />
+      <div className="flex items-center justify-center rounded-2xl border border-slate-200 bg-white p-12 shadow-sm">
+        <Loader2 className="h-6 w-6 animate-spin text-[#f97316]" />
       </div>
     )
   }
 
   if (keys.length === 0) {
     return (
-      <div className="rounded-2xl border border-[rgb(20,20,20)] bg-[#0a0a0d] p-12 text-center shadow-sm">
-        <p className="text-sm text-zinc-400 font-mono">Nenhuma chave de licença encontrada.</p>
+      <div className="rounded-2xl border border-slate-200 bg-white p-12 text-center shadow-sm">
+        <p className="text-sm text-slate-500 font-mono">Nenhuma chave de licença encontrada.</p>
       </div>
     )
   }
@@ -132,18 +132,18 @@ export function KeysTable({
           return (
             <div
               key={key.id}
-              className="rounded-2xl border border-[rgb(20,20,20)] bg-[#0a0a0d] p-4 shadow-sm"
+              className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"
             >
               <div className="flex items-start justify-between gap-3 mb-3">
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
-                    <code className="block truncate rounded-lg border border-[rgb(20,20,20)] bg-black/60 px-2 py-1 font-mono text-[11px] text-white">
+                    <code className="block truncate rounded-lg border border-slate-200 bg-slate-50 px-2 py-1 font-mono text-[11px] text-slate-900 font-semibold">
                       {key.key.length > 22 ? `${key.key.slice(0, 22)}…` : key.key}
                     </code>
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="h-7 w-7 text-zinc-400 hover:text-[#ff2d8d] shrink-0"
+                      className="h-7 w-7 text-slate-400 hover:text-orange-600 shrink-0"
                       onClick={() => copyKey(key.key)}
                     >
                       <Copy className="h-3.5 w-3.5" />
@@ -152,7 +152,7 @@ export function KeysTable({
                   <div className="mt-2 flex items-center gap-2">
                     <OwnerBadge owner={key.created_by} />
                     {key.label && (
-                      <p className="text-xs font-mono text-zinc-300 truncate">{key.label}</p>
+                      <p className="text-xs font-mono text-slate-600 truncate">{key.label}</p>
                     )}
                   </div>
                 </div>
@@ -161,40 +161,40 @@ export function KeysTable({
 
               <div className="grid grid-cols-2 gap-3 text-xs mb-3 font-mono">
                 <div className="flex flex-col">
-                  <span className="text-zinc-500 text-[10px] uppercase tracking-wider flex items-center gap-1">
-                    <Cpu className="h-3 w-3 text-[#ff2d8d]" /> HWID
+                  <span className="text-slate-400 text-[10px] uppercase tracking-wider flex items-center gap-1">
+                    <Cpu className="h-3 w-3 text-[#ea580c]" /> HWID
                   </span>
-                  <span className="text-white font-medium">
+                  <span className="text-slate-800 font-medium">
                     <HwidCell hwids={key.hwids} />
                   </span>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-zinc-500 text-[10px] uppercase tracking-wider flex items-center gap-1">
-                    <Monitor className="h-3 w-3 text-[#ff2d8d]" /> Dispositivos
+                  <span className="text-slate-400 text-[10px] uppercase tracking-wider flex items-center gap-1">
+                    <Monitor className="h-3 w-3 text-[#ea580c]" /> Dispositivos
                   </span>
-                  <span className="text-white font-medium text-xs mt-1">
+                  <span className="text-slate-800 font-medium text-xs mt-1">
                     {(key.hwids?.length ?? 0)}/{key.max_devices}
                   </span>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-zinc-500 text-[10px] uppercase tracking-wider">Validade</span>
-                  <span className="font-medium text-white text-xs">
+                  <span className="text-slate-400 text-[10px] uppercase tracking-wider">Validade</span>
+                  <span className="font-medium text-slate-800 text-xs">
                     {daysLeft <= 0 ? 'Expirada' : `${daysLeft} dias`}
                   </span>
                 </div>
               </div>
 
-              <div className="flex items-center justify-between border-t border-[rgb(20,20,20)] pt-3">
-                <span className="text-[10px] font-mono text-zinc-500">
+              <div className="flex items-center justify-between border-t border-slate-100 pt-3">
+                <span className="text-[10px] font-mono text-slate-400">
                   {formatDate(key.expires_at)}
                 </span>
                 <Link href={`/dashboard/keys/${key.id}`}>
                   <Button
                     variant="outline"
                     size="sm"
-                    className="h-7 gap-1.5 text-xs font-mono border border-[rgb(20,20,20)] bg-white/5 text-zinc-300 hover:text-white hover:border-[#ff2d8d]/40 rounded-lg"
+                    className="h-7 gap-1.5 text-xs font-mono border border-slate-200 bg-white text-slate-700 hover:text-orange-600 hover:border-orange-300 rounded-lg shadow-2xs"
                   >
-                    <Eye className="h-3 w-3 text-[#ff2d8d]" />
+                    <Eye className="h-3 w-3 text-[#ea580c]" />
                     Detalhes
                   </Button>
                 </Link>
@@ -205,11 +205,11 @@ export function KeysTable({
       </div>
 
       {/* ========= DESKTOP: table ========= */}
-      <div className="hidden md:block overflow-hidden rounded-2xl border border-[rgb(20,20,20)] bg-[#0a0a0d] shadow-sm">
+      <div className="hidden md:block overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
         <div className="overflow-x-auto">
           <table className="w-full text-xs">
             <thead>
-              <tr className="border-b border-[rgb(20,20,20)] text-[11px] uppercase tracking-wider text-zinc-400 bg-black/40 font-semibold font-mono">
+              <tr className="border-b border-slate-200 text-[11px] uppercase tracking-wider text-slate-500 bg-slate-50/80 font-semibold font-mono">
                 <th className="px-4 py-3.5 text-left font-semibold">Key de Licença</th>
                 <th className="px-4 py-3.5 text-left font-semibold">Label / Cliente</th>
                 <th className="px-4 py-3.5 text-left font-semibold">Dono</th>
@@ -220,28 +220,28 @@ export function KeysTable({
                 <th className="px-4 py-3.5 text-right font-semibold">Ações</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[rgb(20,20,20)]">
+            <tbody className="divide-y divide-slate-100">
               {keys.map((key) => {
                 const daysLeft = getDaysRemaining(key.expires_at)
                 const used = key.hwids?.length ?? 0
                 return (
-                  <tr key={key.id} className="transition-colors hover:bg-white/[0.03]">
+                  <tr key={key.id} className="transition-colors hover:bg-orange-50/30">
                     <td className="whitespace-nowrap px-4 py-3">
                       <div className="flex items-center gap-2">
-                        <code className="rounded-lg border border-[rgb(20,20,20)] bg-black/50 px-2 py-1 font-mono text-xs text-white">
+                        <code className="rounded-lg border border-slate-200 bg-slate-50 px-2 py-1 font-mono text-xs text-slate-900 font-semibold">
                           {key.key.length > 22 ? `${key.key.slice(0, 22)}…` : key.key}
                         </code>
                         <Button
                           variant="ghost"
                           size="icon"
-                          className="h-7 w-7 text-zinc-400 hover:text-[#ff2d8d] hover:bg-white/5"
+                          className="h-7 w-7 text-slate-400 hover:text-orange-600 hover:bg-orange-50"
                           onClick={() => copyKey(key.key)}
                         >
                           <Copy className="h-3.5 w-3.5" />
                         </Button>
                       </div>
                     </td>
-                    <td className="whitespace-nowrap px-4 py-3 text-xs text-zinc-300">{key.label ?? '-'}</td>
+                    <td className="whitespace-nowrap px-4 py-3 text-xs text-slate-700">{key.label ?? '-'}</td>
                     <td className="whitespace-nowrap px-4 py-3">
                       <OwnerBadge owner={key.created_by} />
                     </td>
@@ -249,18 +249,18 @@ export function KeysTable({
                     <td className="whitespace-nowrap px-4 py-3">
                       <HwidCell hwids={key.hwids} />
                     </td>
-                    <td className="whitespace-nowrap px-4 py-3 text-xs text-zinc-400">{used}/{key.max_devices}</td>
+                    <td className="whitespace-nowrap px-4 py-3 text-xs text-slate-600">{used}/{key.max_devices}</td>
                     <td className="whitespace-nowrap px-4 py-3">
                       <div className="flex flex-col">
-                        <span className="text-xs text-white">{formatDate(key.expires_at)}</span>
-                        <span className="text-[10px] text-zinc-500">
+                        <span className="text-xs text-slate-800 font-medium">{formatDate(key.expires_at)}</span>
+                        <span className="text-[10px] text-slate-400">
                           {daysLeft <= 0 ? 'Expirada' : `${daysLeft} dias restantes`}
                         </span>
                       </div>
                     </td>
                     <td className="whitespace-nowrap px-4 py-3 text-right">
                       <Link href={`/dashboard/keys/${key.id}`}>
-                        <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400 hover:text-[#ff2d8d] hover:bg-white/5 rounded-lg">
+                        <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-400 hover:text-orange-600 hover:bg-orange-50 rounded-lg">
                           <Eye className="h-4 w-4" />
                         </Button>
                       </Link>

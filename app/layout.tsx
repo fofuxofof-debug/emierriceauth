@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#000000',
+  themeColor: '#f97316',
 }
 
 export default function RootLayout({
@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR" className="dark" style={{ colorScheme: 'dark' }}>
+    <html lang="pt-BR">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -28,16 +28,17 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="font-sans antialiased bg-[#000000] text-[#fafafa] min-h-screen selection:bg-[#ff2d8d]/30 selection:text-white">
+      <body className="font-sans antialiased bg-[#f8fafc] text-[#0f172a] min-h-screen selection:bg-orange-500/20 selection:text-orange-600">
         {children}
         <Toaster
-          theme="dark"
+          theme="light"
           position="top-right"
           toastOptions={{
             style: {
-              background: '#0a0a0d',
-              border: '1px solid rgb(20, 20, 20)',
-              color: '#fafafa',
+              background: '#ffffff',
+              border: '1px solid #e2e8f0',
+              color: '#0f172a',
+              boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.08)',
             },
           }}
         />

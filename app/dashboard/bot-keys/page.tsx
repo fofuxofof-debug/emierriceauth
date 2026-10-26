@@ -58,20 +58,20 @@ export default function BotKeysPage() {
   const activeBotKeys = (keys ?? []).filter((k) => (!!k.discord_id || (k.notes && k.notes.toLowerCase().includes('bot'))) && k.status === 'active' && new Date(k.expires_at) > new Date()).length
 
   return (
-    <div className="flex flex-col gap-6 max-w-7xl mx-auto">
+    <div className="flex flex-col gap-6 max-w-7xl mx-auto page-in">
       {/* Header */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-white/10 pb-6 card-in">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-slate-200 pb-6 card-in">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="h-2 w-2 rounded-full bg-[#db00ff] animate-pulse" />
-            <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[#db00ff] flex items-center gap-1.5">
+            <span className="h-2 w-2 rounded-full bg-[#f97316] animate-pulse" />
+            <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[#ea580c] flex items-center gap-1.5">
               <Bot className="h-3.5 w-3.5" /> INTEGRAÇÃO DISCORD BOT
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-sans flex items-center gap-2">
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 font-sans flex items-center gap-2">
             Keys Bot (Vendas Automáticas)
           </h1>
-          <p className="text-xs sm:text-sm text-zinc-400 font-sans font-medium">
+          <p className="text-xs sm:text-sm text-slate-500 font-sans font-medium">
             Chaves geradas automaticamente pelo Bot do Discord após aprovação do Pix com validação de Discord ID
           </p>
         </div>
@@ -87,53 +87,53 @@ export default function BotKeysPage() {
 
       {/* Cards de Métricas */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="rounded-[0.6rem] border border-[#171819] bg-[#101010] p-5 shadow-sm hover:border-[#db00ff]/30 transition-all">
-          <div className="flex items-center justify-between text-zinc-400 mb-2">
+        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:border-orange-300 transition-all">
+          <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-semibold uppercase font-sans tracking-wider">Total Geradas pelo Bot</span>
-            <Bot className="h-4 w-4 text-[#db00ff]" />
+            <Bot className="h-4 w-4 text-[#ea580c]" />
           </div>
-          <div className="text-2xl font-black text-white font-mono">{totalBotKeys}</div>
-          <p className="text-[11px] text-zinc-500 mt-1 font-mono">Vinculadas via Discord ID</p>
+          <div className="text-2xl font-black text-slate-900 font-mono">{totalBotKeys}</div>
+          <p className="text-[11px] text-slate-400 mt-1 font-mono">Vinculadas via Discord ID</p>
         </div>
 
-        <div className="rounded-[0.6rem] border border-[#171819] bg-[#101010] p-5 shadow-sm hover:border-[#db00ff]/30 transition-all">
-          <div className="flex items-center justify-between text-zinc-400 mb-2">
+        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:border-orange-300 transition-all">
+          <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-semibold uppercase font-sans tracking-wider">Keys Ativas no Loader</span>
-            <ShieldCheck className="h-4 w-4 text-[#db00ff]" />
+            <ShieldCheck className="h-4 w-4 text-[#ea580c]" />
           </div>
-          <div className="text-2xl font-black text-white font-mono">{activeBotKeys}</div>
-          <p className="text-[11px] text-zinc-500 mt-1 font-mono">Autorizadas para autenticação</p>
+          <div className="text-2xl font-black text-slate-900 font-mono">{activeBotKeys}</div>
+          <p className="text-[11px] text-slate-400 mt-1 font-mono">Autorizadas para autenticação</p>
         </div>
 
-        <div className="rounded-[0.6rem] border border-[#171819] bg-[#101010] p-5 shadow-sm hover:border-[#db00ff]/30 transition-all">
-          <div className="flex items-center justify-between text-zinc-400 mb-2">
+        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:border-orange-300 transition-all">
+          <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-semibold uppercase font-sans tracking-wider">Status da Conexão</span>
-            <Sparkles className="h-4 w-4 text-[#db00ff]" />
+            <Sparkles className="h-4 w-4 text-[#ea580c]" />
           </div>
-          <div className="text-sm font-bold text-white mt-1 flex items-center gap-2 font-mono">
-            <span className="h-2 w-2 rounded-full bg-[#db00ff]" /> API /api/keys Pronta
+          <div className="text-sm font-bold text-slate-900 mt-1 flex items-center gap-2 font-mono">
+            <span className="h-2 w-2 rounded-full bg-[#f97316]" /> API /api/keys Pronta
           </div>
-          <p className="text-[11px] text-zinc-500 mt-1 font-mono">Recebendo compras do Hooked Sales</p>
+          <p className="text-[11px] text-slate-400 mt-1 font-mono">Recebendo compras do Hooked Sales</p>
         </div>
       </div>
 
       {/* Barra de Filtros e Busca */}
       <div className="flex flex-col gap-3 sm:flex-row">
         <div className="relative flex-1">
-          <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-400" />
+          <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
           <Input
             placeholder="Buscar por Discord ID, Key, Tag de cliente ou plano..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="border-[#171819] bg-[#101010] pl-10 text-white placeholder:text-zinc-600 font-mono text-xs rounded-[0.6rem] focus-visible:ring-2 focus-visible:ring-[#db00ff]/30 focus-visible:border-[#db00ff]"
+            className="border-slate-200 bg-white pl-10 text-slate-900 placeholder:text-slate-400 font-mono text-xs rounded-xl focus-visible:ring-2 focus-visible:ring-[#f97316]/20 focus-visible:border-[#f97316] shadow-2xs"
           />
         </div>
         <Select value={statusFilter} onValueChange={setStatusFilter}>
-          <SelectTrigger className="w-full border-[#171819] bg-[#101010] text-white sm:w-44 font-mono text-xs rounded-[0.6rem] focus:ring-2 focus:ring-[#db00ff]/30 focus:border-[#db00ff]">
-            <Filter className="mr-2 h-3.5 w-3.5 text-zinc-400" />
+          <SelectTrigger className="w-full border-slate-200 bg-white text-slate-900 sm:w-44 font-mono text-xs rounded-xl focus:ring-2 focus:ring-[#f97316]/20 focus:border-[#f97316] shadow-2xs">
+            <Filter className="mr-2 h-3.5 w-3.5 text-slate-400" />
             <SelectValue />
           </SelectTrigger>
-          <SelectContent className="border-[#171819] bg-[#101010] text-white">
+          <SelectContent className="border-slate-200 bg-white text-slate-900 rounded-xl shadow-lg">
             <SelectItem value="all">Todos os Status</SelectItem>
             <SelectItem value="active">Ativas</SelectItem>
             <SelectItem value="paused">Pausadas</SelectItem>
@@ -144,7 +144,7 @@ export default function BotKeysPage() {
       </div>
 
       {error && (
-        <div className="rounded-lg border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-400">
+        <div className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-xs text-rose-600 font-medium">
           Erro ao carregar keys do bot.
         </div>
       )}

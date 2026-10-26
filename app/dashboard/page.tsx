@@ -22,18 +22,18 @@ export default function DashboardPage() {
   return (
     <div className="flex flex-col gap-8 max-w-7xl mx-auto page-in">
       {/* Top Header & Actions Bar */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-[rgb(20,20,20)] pb-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-slate-200 pb-6">
         <div>
           <div className="flex items-center gap-2 mb-1.5">
-            <span className="h-2 w-2 rounded-full bg-[#ff2d8d] animate-pulse" />
-            <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[#ff2d8d]">
+            <span className="h-2 w-2 rounded-full bg-[#f97316] animate-pulse" />
+            <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[#ea580c]">
               HOOKED CLOUD CORE
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-sans">
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 font-sans">
             Painel de Controle
           </h1>
-          <p className="text-xs sm:text-sm text-zinc-400 font-medium mt-0.5">
+          <p className="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">
             Gerenciamento central de licenças, HWID e integridade de conexões
           </p>
         </div>
@@ -47,7 +47,7 @@ export default function DashboardPage() {
           </Link>
           <Link href="/dashboard/bot-keys">
             <button className="btn-secondary rounded-xl text-xs uppercase tracking-wider font-mono">
-              <Bot className="mr-1.5 h-3.5 w-3.5 text-[#ff2d8d]" />
+              <Bot className="mr-1.5 h-3.5 w-3.5 text-[#ea580c]" />
               Keys Bot
             </button>
           </Link>
@@ -56,50 +56,50 @@ export default function DashboardPage() {
 
       {/* System Health Matrix Telemetry Box */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-        <div className="card-in hover-lift rounded-2xl border border-[rgb(20,20,20)] bg-[#0a0a0d]/90 backdrop-blur-xl p-4 flex items-center gap-3.5 shadow-sm group hover:border-[#ff2d8d]/40 transition-all">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#ff2d8d]/10 border border-[#ff2d8d]/25 text-[#ff2d8d] group-hover:scale-105 transition-transform">
+        <div className="card-in hover-lift rounded-2xl border border-slate-200 bg-white p-4 flex items-center gap-3.5 shadow-sm group hover:border-orange-300 transition-all">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-orange-50 border border-orange-200 text-[#ea580c] group-hover:scale-105 transition-transform">
             <Cpu className="h-5 w-5" />
           </div>
           <div>
-            <p className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 font-semibold">Kernel System</p>
-            <p className="text-xs font-mono font-bold text-white">Ring0 Active (Hookless)</p>
+            <p className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-semibold">Kernel System</p>
+            <p className="text-xs font-mono font-bold text-slate-900">Ring0 Active (Hookless)</p>
           </div>
         </div>
 
-        <div className="card-in hover-lift rounded-2xl border border-[rgb(20,20,20)] bg-[#0a0a0d]/90 backdrop-blur-xl p-4 flex items-center gap-3.5 shadow-sm group hover:border-[#ff2d8d]/40 transition-all">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 group-hover:scale-105 transition-transform">
+        <div className="card-in hover-lift rounded-2xl border border-slate-200 bg-white p-4 flex items-center gap-3.5 shadow-sm group hover:border-orange-300 transition-all">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-50 border border-cyan-200 text-cyan-600 group-hover:scale-105 transition-transform">
             <Database className="h-5 w-5" />
           </div>
           <div>
-            <p className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 font-semibold">Database Latency</p>
-            <p className="text-xs font-mono font-bold text-white">&lt; 14ms (Local JSON/KV)</p>
+            <p className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-semibold">Database Latency</p>
+            <p className="text-xs font-mono font-bold text-slate-900">&lt; 14ms (Local JSON/KV)</p>
           </div>
         </div>
 
-        <div className="card-in hover-lift rounded-2xl border border-[rgb(20,20,20)] bg-[#0a0a0d]/90 backdrop-blur-xl p-4 flex items-center gap-3.5 shadow-sm group hover:border-[#ff2d8d]/40 transition-all">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 group-hover:scale-105 transition-transform">
+        <div className="card-in hover-lift rounded-2xl border border-slate-200 bg-white p-4 flex items-center gap-3.5 shadow-sm group hover:border-orange-300 transition-all">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-600 group-hover:scale-105 transition-transform">
             <ShieldCheck className="h-5 w-5" />
           </div>
           <div>
-            <p className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 font-semibold">HWID Protection</p>
-            <p className="text-xs font-mono font-bold text-white">100% Locked & Unique</p>
+            <p className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-semibold">HWID Protection</p>
+            <p className="text-xs font-mono font-bold text-slate-900">100% Locked & Unique</p>
           </div>
         </div>
 
-        <div className="card-in hover-lift rounded-2xl border border-[rgb(20,20,20)] bg-[#0a0a0d]/90 backdrop-blur-xl p-4 flex items-center gap-3.5 shadow-sm group hover:border-[#ff2d8d]/40 transition-all">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#ff5ca0]/10 border border-[#ff5ca0]/25 text-[#ff5ca0] group-hover:scale-105 transition-transform">
+        <div className="card-in hover-lift rounded-2xl border border-slate-200 bg-white p-4 flex items-center gap-3.5 shadow-sm group hover:border-orange-300 transition-all">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-orange-50 border border-orange-200 text-[#f97316] group-hover:scale-105 transition-transform">
             <Activity className="h-5 w-5" />
           </div>
           <div>
-            <p className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 font-semibold">Auth API Gateway</p>
-            <p className="text-xs font-mono font-bold text-white">Online • 99.9% Uptime</p>
+            <p className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-semibold">Auth API Gateway</p>
+            <p className="text-xs font-mono font-bold text-slate-900">Online • 99.9% Uptime</p>
           </div>
         </div>
       </div>
 
       {!statsResp ? (
-        <div className="flex items-center justify-center rounded-2xl border border-[rgb(20,20,20)] bg-[#0a0a0d]/90 p-12 shadow-sm">
-          <Loader2 className="h-6 w-6 animate-spin text-[#ff2d8d]" />
+        <div className="flex items-center justify-center rounded-2xl border border-slate-200 bg-white p-12 shadow-sm">
+          <Loader2 className="h-6 w-6 animate-spin text-[#f97316]" />
         </div>
       ) : (
         <StatsCards stats={stats} />

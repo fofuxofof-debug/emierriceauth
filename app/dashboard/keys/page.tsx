@@ -71,18 +71,18 @@ export default function KeysPage() {
 
   return (
     <div className="flex flex-col gap-6 max-w-7xl mx-auto page-in">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-[rgb(20,20,20)] pb-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-slate-200 pb-6">
         <div>
           <div className="flex items-center gap-2 mb-1.5">
-            <span className="h-2 w-2 rounded-full bg-[#ff2d8d] animate-pulse" />
-            <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[#ff2d8d]">
+            <span className="h-2 w-2 rounded-full bg-[#f97316] animate-pulse" />
+            <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[#ea580c]">
               {isSamuca ? 'GERENCIADOR DE LICENÇAS • CLIENTES DE SAMUCA' : 'GERENCIADOR DE LICENÇAS'}
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-sans">
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 font-sans">
             Keys & Clientes
           </h1>
-          <p className="text-xs sm:text-sm text-zinc-400 font-medium">
+          <p className="text-xs sm:text-sm text-slate-500 font-medium">
             {isSamuca
               ? 'Seus clientes e chaves ativas isoladas'
               : 'Gestão isolada de clientes por operador (mrcrlq e Samuca)'}
@@ -99,17 +99,17 @@ export default function KeysPage() {
 
       {/* Tabs / Seletor de Dono para mrcrlq (Admin) */}
       {isMrcrlq && (
-        <div className="flex items-center gap-2 p-1.5 rounded-2xl border border-[rgb(20,20,20)] bg-[#0a0a0d] w-fit overflow-x-auto">
+        <div className="flex items-center gap-2 p-1.5 rounded-2xl border border-slate-200 bg-white w-fit overflow-x-auto shadow-2xs">
           <button
             type="button"
             onClick={() => setOwnerFilter('mrcrlq')}
             className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-mono font-medium transition-all cursor-pointer ${
               ownerFilter === 'mrcrlq'
-                ? 'bg-white/10 text-white border border-[rgb(30,30,30)] font-semibold shadow-sm'
-                : 'text-zinc-400 hover:text-white hover:bg-white/[0.04]'
+                ? 'bg-slate-100 text-slate-900 border border-slate-300 font-semibold shadow-2xs'
+                : 'text-slate-500 hover:text-slate-900 hover:bg-slate-50'
             }`}
           >
-            <User className="h-3.5 w-3.5 text-zinc-400" />
+            <User className="h-3.5 w-3.5 text-slate-400" />
             Meus Clientes (mrcrlq)
           </button>
           <button
@@ -117,11 +117,11 @@ export default function KeysPage() {
             onClick={() => setOwnerFilter('samucax')}
             className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-mono font-medium transition-all cursor-pointer ${
               ownerFilter === 'samucax'
-                ? 'bg-[#ff2d8d]/15 text-[#ff2d8d] border border-[#ff2d8d]/30 font-semibold shadow-[0_0_15px_rgba(255,45,141,0.15)]'
-                : 'text-zinc-400 hover:text-white hover:bg-white/[0.04]'
+                ? 'bg-orange-50 text-[#ea580c] border border-orange-200 font-semibold shadow-2xs'
+                : 'text-slate-500 hover:text-slate-900 hover:bg-slate-50'
             }`}
           >
-            <User className="h-3.5 w-3.5 text-[#ff2d8d]" />
+            <User className="h-3.5 w-3.5 text-[#ea580c]" />
             Clientes de Samuca
           </button>
           <button
@@ -129,11 +129,11 @@ export default function KeysPage() {
             onClick={() => setOwnerFilter('all')}
             className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-mono font-medium transition-all cursor-pointer ${
               ownerFilter === 'all'
-                ? 'bg-white/10 text-white border border-[rgb(30,30,30)] font-semibold shadow-sm'
-                : 'text-zinc-400 hover:text-white hover:bg-white/[0.04]'
+                ? 'bg-slate-100 text-slate-900 border border-slate-300 font-semibold shadow-2xs'
+                : 'text-slate-500 hover:text-slate-900 hover:bg-slate-50'
             }`}
           >
-            <Users className="h-3.5 w-3.5 text-zinc-400" />
+            <Users className="h-3.5 w-3.5 text-slate-400" />
             Todos os Clientes
           </button>
         </div>
@@ -141,8 +141,8 @@ export default function KeysPage() {
 
       {/* Indicador para Samuca */}
       {isSamuca && (
-        <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-2xl border border-[#ff2d8d]/30 bg-[#ff2d8d]/10 text-[#ff2d8d] w-fit">
-          <span className="h-2 w-2 rounded-full bg-[#ff2d8d] animate-pulse" />
+        <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-2xl border border-orange-200 bg-orange-50 text-[#ea580c] w-fit">
+          <span className="h-2 w-2 rounded-full bg-[#f97316] animate-pulse" />
           <span className="text-xs font-mono font-semibold">
             Visualizando exclusivamente seus clientes (Samuca)
           </span>
@@ -151,20 +151,20 @@ export default function KeysPage() {
 
       <div className="flex flex-col gap-3 sm:flex-row">
         <div className="relative flex-1">
-          <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-400" />
+          <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
           <Input
             placeholder="Buscar por key, label, HWID ou Discord ID..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="border border-[rgb(20,20,20)] bg-[#0a0a0d] pl-10 text-white placeholder:text-zinc-500 font-mono text-xs rounded-xl focus-visible:ring-2 focus-visible:ring-[#ff2d8d]/30 focus-visible:border-[#ff2d8d] h-10"
+            className="border border-slate-200 bg-white pl-10 text-slate-900 placeholder:text-slate-400 font-mono text-xs rounded-xl focus-visible:ring-2 focus-visible:ring-[#f97316]/20 focus-visible:border-[#f97316] h-10 shadow-2xs"
           />
         </div>
         <Select value={statusFilter} onValueChange={setStatusFilter}>
-          <SelectTrigger className="w-full border border-[rgb(20,20,20)] bg-[#0a0a0d] text-white sm:w-48 font-mono text-xs rounded-xl focus:ring-2 focus:ring-[#ff2d8d]/30 focus:border-[#ff2d8d] h-10">
-            <Filter className="mr-2 h-3.5 w-3.5 text-zinc-400" />
+          <SelectTrigger className="w-full border border-slate-200 bg-white text-slate-900 sm:w-48 font-mono text-xs rounded-xl focus:ring-2 focus:ring-[#f97316]/20 focus:border-[#f97316] h-10 shadow-2xs">
+            <Filter className="mr-2 h-3.5 w-3.5 text-slate-400" />
             <SelectValue />
           </SelectTrigger>
-          <SelectContent className="border border-[rgb(20,20,20)] bg-[#0a0a0d] text-white rounded-xl">
+          <SelectContent className="border border-slate-200 bg-white text-slate-900 rounded-xl shadow-lg">
             <SelectItem value="all">Todos os Status</SelectItem>
             <SelectItem value="active">Ativas</SelectItem>
             <SelectItem value="paused">Pausadas</SelectItem>
@@ -175,7 +175,7 @@ export default function KeysPage() {
       </div>
 
       {error && (
-        <div className="rounded-xl border border-rose-500/30 bg-rose-500/10 p-4 text-xs text-rose-300 font-medium">
+        <div className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-xs text-rose-600 font-medium">
           Erro ao carregar chaves de licença.
         </div>
       )}

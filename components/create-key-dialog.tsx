@@ -2,27 +2,39 @@
 
 import React, { useState, useEffect } from 'react'
 import {
-  Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle,
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
 } from '@/components/ui/dialog'
-import {
-  Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
-} from '@/components/ui/select'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Loader2, Gamepad2, User } from 'lucide-react'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 import { toast } from 'sonner'
+import { Loader2, User, Gamepad2 } from 'lucide-react'
 
 const GAMES = [
-  { value: 'freefire', label: 'FreeFire' },
+  { value: 'freefire', label: 'Free Fire (Mobile / Emulador)' },
+  { value: 'bloodstrike', label: 'Blood Strike' },
+  { value: 'fivem', label: 'FiveM / GTA V' },
+  { value: 'deltaforce', label: 'Delta Force' },
+  { value: 'warzone', label: 'Call of Duty: Warzone' },
   { value: 'valorant', label: 'Valorant' },
-  { value: 'cs2',      label: 'CS2' },
-] as const
+  { value: 'generic', label: 'Produto Genérico' },
+]
 
 export function CreateKeyDialog({
   open,
   onOpenChange,
   onCreated,
-  canAssignOwner = false,
+  canAssignOwner = true,
   defaultOwner = 'mrcrlq',
 }: {
   open: boolean
@@ -36,45 +48,43 @@ export function CreateKeyDialog({
   const [maxDevices, setMaxDevices] = useState('1')
   const [expiryDays, setExpiryDays] = useState('30')
   const [discordId, setDiscordId] = useState('')
-  const [product, setProduct] = useState<string>('freefire')
-  const [assignedOwner, setAssignedOwner] = useState<string>(defaultOwner)
+  const [product, setProduct] = useState('freefire')
+  const [assignedOwner, setAssignedOwner] = useState(defaultOwner)
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     setAssignedOwner(defaultOwner)
-  }, [defaultOwner, open])
+  }, [defaultOwner])
 
   const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
 
     try {
-      const days = Math.max(Number.parseInt(expiryDays) || 30, 1)
-      const devices = Math.max(Number.parseInt(maxDevices) || 1, 1)
-      const qty = Math.min(Math.max(Number.parseInt(quantity) || 1, 1), 50)
-      const targetOwner = canAssignOwner ? assignedOwner : (defaultOwner || 'SamucaX')
-
       const res = await fetch('/api/keys', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          label: user || null,
-          max_devices: devices,
-          expires_in_days: days,
-          quantity: discordId ? 1 : qty,
-          discord_id: discordId || null,
-          custom_key: discordId || null,
+          label: user.trim() || undefined,
+          quantity: parseInt(quantity, 10),
+          max_devices: parseInt(maxDevices, 10),
+          expiry_days: parseInt(expiryDays, 10),
+          discord_id: discordId.trim() || undefined,
           product,
-          created_by: targetOwner,
+          created_by: assignedOwner,
         }),
       })
 
-      if (!res.ok) {
-        const j = await res.json().catch(() => ({}))
-        throw new Error(j.error || 'Erro ao criar key')
-      }
       const data = await res.json()
-      toast.success(`${data.count} key(s) criada(s) com sucesso para ${targetOwner}!`)
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || 'Erro ao criar key')
+      }
+
+      toast.success(
+        data.data && Array.isArray(data.data)
+          ? `${data.data.length} keys criadas com sucesso!`
+          : 'Key criada com sucesso!'
+      )
 
       setUser('')
       setQuantity('1')
@@ -94,13 +104,13 @@ export function CreateKeyDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="border border-[rgb(20,20,20)] bg-[#0a0a0d] text-white sm:max-w-md shadow-2xl rounded-2xl">
+      <DialogContent className="border border-slate-200 bg-white text-slate-900 sm:max-w-md shadow-2xl rounded-2xl">
         <DialogHeader>
-          <DialogTitle className="text-white font-bold text-lg flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-[#ff2d8d] animate-pulse" />
+          <DialogTitle className="text-slate-900 font-bold text-lg flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-[#f97316] animate-pulse" />
             {isSamuca ? 'Criar Nova Key (Cliente do Samuca)' : 'Criar Nova Key'}
           </DialogTitle>
-          <DialogDescription className="text-zinc-400 text-xs">
+          <DialogDescription className="text-slate-500 text-xs">
             {isSamuca
               ? 'A licença será criada e atribuída exclusivamente à carteira de clientes do Samuca.'
               : 'Configure os parâmetros de licença e atribua ao operador desejado.'}
@@ -109,19 +119,19 @@ export function CreateKeyDialog({
         <form onSubmit={handleCreate} className="flex flex-col gap-4">
           {canAssignOwner && (
             <div className="flex flex-col gap-2">
-              <Label className="text-xs uppercase tracking-wider font-semibold text-zinc-400 inline-flex items-center gap-1.5 font-mono">
-                <User className="h-3.5 w-3.5 text-[#ff2d8d]" />
+              <Label className="text-xs uppercase tracking-wider font-semibold text-slate-600 inline-flex items-center gap-1.5 font-mono">
+                <User className="h-3.5 w-3.5 text-[#ea580c]" />
                 Atribuir Cliente a
               </Label>
               <Select value={assignedOwner} onValueChange={setAssignedOwner}>
-                <SelectTrigger className="border border-[rgb(20,20,20)] bg-black/60 text-white focus:ring-2 focus:ring-[#ff2d8d]/30 focus:border-[#ff2d8d] transition-all rounded-xl h-10 font-mono text-xs">
+                <SelectTrigger className="border border-slate-200 bg-slate-50 text-slate-900 focus:ring-2 focus:ring-[#f97316]/20 focus:border-[#f97316] transition-all rounded-xl h-10 font-mono text-xs">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="border border-[rgb(20,20,20)] bg-[#0a0a0d] text-white rounded-xl">
-                  <SelectItem value="mrcrlq" className="font-mono text-xs cursor-pointer">
+                <SelectContent className="border border-slate-200 bg-white text-slate-900 rounded-xl shadow-lg">
+                  <SelectItem value="mrcrlq" className="font-mono text-xs cursor-pointer hover:bg-orange-50">
                     mrcrlq (Meus Clientes)
                   </SelectItem>
-                  <SelectItem value="SamucaX" className="font-mono text-xs cursor-pointer">
+                  <SelectItem value="SamucaX" className="font-mono text-xs cursor-pointer hover:bg-orange-50">
                     SamucaX (Clientes de Samuca)
                   </SelectItem>
                 </SelectContent>
@@ -130,20 +140,20 @@ export function CreateKeyDialog({
           )}
 
           <div className="flex flex-col gap-2">
-            <Label className="text-xs uppercase tracking-wider font-semibold text-zinc-400 inline-flex items-center gap-1.5 font-mono">
-              <Gamepad2 className="h-3.5 w-3.5 text-[#ff2d8d]" />
+            <Label className="text-xs uppercase tracking-wider font-semibold text-slate-600 inline-flex items-center gap-1.5 font-mono">
+              <Gamepad2 className="h-3.5 w-3.5 text-[#ea580c]" />
               Game / Produto
             </Label>
             <Select value={product} onValueChange={setProduct}>
-              <SelectTrigger className="border border-[rgb(20,20,20)] bg-black/60 text-white focus:ring-2 focus:ring-[#ff2d8d]/30 focus:border-[#ff2d8d] transition-all rounded-xl h-10">
+              <SelectTrigger className="border border-slate-200 bg-slate-50 text-slate-900 focus:ring-2 focus:ring-[#f97316]/20 focus:border-[#f97316] transition-all rounded-xl h-10">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="border border-[rgb(20,20,20)] bg-[#0a0a0d] text-white rounded-xl">
+              <SelectContent className="border border-slate-200 bg-white text-slate-900 rounded-xl shadow-lg">
                 {GAMES.map((g) => (
                   <SelectItem
                     key={g.value}
                     value={g.value}
-                    className="text-zinc-300 focus:bg-[#ff2d8d] focus:text-white cursor-pointer"
+                    className="text-slate-800 hover:bg-orange-50 focus:bg-orange-50 focus:text-orange-950 cursor-pointer"
                   >
                     {g.label}
                   </SelectItem>
@@ -153,18 +163,18 @@ export function CreateKeyDialog({
           </div>
 
           <div className="flex flex-col gap-2">
-            <Label className="text-xs uppercase tracking-wider font-semibold text-zinc-400 font-mono">User / Identificador do Cliente</Label>
+            <Label className="text-xs uppercase tracking-wider font-semibold text-slate-600 font-mono">User / Identificador do Cliente</Label>
             <Input
               value={user}
               onChange={(e) => setUser(e.target.value)}
               placeholder="ex: João Silva"
-              className="border border-[rgb(20,20,20)] bg-black/60 text-white placeholder:text-zinc-500 focus-visible:ring-2 focus-visible:ring-[#ff2d8d]/30 focus-visible:border-[#ff2d8d] rounded-xl h-10 font-mono text-xs"
+              className="border border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-[#f97316]/20 focus-visible:border-[#f97316] rounded-xl h-10 font-mono text-xs"
             />
           </div>
 
           <div className="grid grid-cols-3 gap-3">
             <div className="flex flex-col gap-2">
-              <Label className="text-xs uppercase tracking-wider font-semibold text-zinc-400 font-mono">Qtd</Label>
+              <Label className="text-xs uppercase tracking-wider font-semibold text-slate-600 font-mono">Qtd</Label>
               <Input
                 type="number"
                 min={1}
@@ -172,40 +182,40 @@ export function CreateKeyDialog({
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)}
                 disabled={!!discordId}
-                className="border border-[rgb(20,20,20)] bg-black/60 text-white focus-visible:ring-2 focus-visible:ring-[#ff2d8d]/30 focus-visible:border-[#ff2d8d] rounded-xl h-10 font-mono text-xs"
+                className="border border-slate-200 bg-slate-50 text-slate-900 focus-visible:ring-2 focus-visible:ring-[#f97316]/20 focus-visible:border-[#f97316] rounded-xl h-10 font-mono text-xs"
               />
             </div>
             <div className="flex flex-col gap-2">
-              <Label className="text-xs uppercase tracking-wider font-semibold text-zinc-400 font-mono">Slots HWID</Label>
+              <Label className="text-xs uppercase tracking-wider font-semibold text-slate-600 font-mono">Slots HWID</Label>
               <Input
                 type="number"
                 min={1}
                 value={maxDevices}
                 onChange={(e) => setMaxDevices(e.target.value)}
-                className="border border-[rgb(20,20,20)] bg-black/60 text-white focus-visible:ring-2 focus-visible:ring-[#ff2d8d]/30 focus-visible:border-[#ff2d8d] rounded-xl h-10 font-mono text-xs"
+                className="border border-slate-200 bg-slate-50 text-slate-900 focus-visible:ring-2 focus-visible:ring-[#f97316]/20 focus-visible:border-[#f97316] rounded-xl h-10 font-mono text-xs"
               />
             </div>
             <div className="flex flex-col gap-2">
-              <Label className="text-xs uppercase tracking-wider font-semibold text-zinc-400 font-mono">Dias</Label>
+              <Label className="text-xs uppercase tracking-wider font-semibold text-slate-600 font-mono">Dias</Label>
               <Input
                 type="number"
                 min={1}
                 value={expiryDays}
                 onChange={(e) => setExpiryDays(e.target.value)}
-                className="border border-[rgb(20,20,20)] bg-black/60 text-white focus-visible:ring-2 focus-visible:ring-[#ff2d8d]/30 focus-visible:border-[#ff2d8d] rounded-xl h-10 font-mono text-xs"
+                className="border border-slate-200 bg-slate-50 text-slate-900 focus-visible:ring-2 focus-visible:ring-[#f97316]/20 focus-visible:border-[#f97316] rounded-xl h-10 font-mono text-xs"
               />
             </div>
           </div>
 
           <div className="flex flex-col gap-2">
-            <Label className="text-xs uppercase tracking-wider font-semibold text-zinc-400 font-mono">Discord ID (Opcional)</Label>
+            <Label className="text-xs uppercase tracking-wider font-semibold text-slate-600 font-mono">Discord ID (Opcional)</Label>
             <Input
               value={discordId}
               onChange={(e) => setDiscordId(e.target.value)}
               placeholder="ex: 123456789012345678"
-              className="border border-[rgb(20,20,20)] bg-black/60 text-white placeholder:text-zinc-500 focus-visible:ring-2 focus-visible:ring-[#ff2d8d]/30 focus-visible:border-[#ff2d8d] rounded-xl h-10 font-mono text-xs"
+              className="border border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-[#f97316]/20 focus-visible:border-[#f97316] rounded-xl h-10 font-mono text-xs"
             />
-            <p className="text-[11px] text-zinc-500 font-mono">
+            <p className="text-[11px] text-slate-400 font-mono">
               Se preenchido, esse valor será usado como a própria key.
             </p>
           </div>
